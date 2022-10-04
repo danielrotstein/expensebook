@@ -6,6 +6,4 @@ Today, I worked on:
  of our app. I created a excalidraw for a visual and the team contributed
  on making the connections of the foreign keys and tables in our database.
 
-Today, I learned that pair programming helps everyone learn faster. Although
-it sometimes can take extra time, it helps to see someone else do code wile you
-think of the code.
+Today, I learned that there is a money data type in postgreSQL!
