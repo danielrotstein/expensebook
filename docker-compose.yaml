@@ -11,7 +11,7 @@ services:
         volumes:
             - postgres-data:/var/lib/postgresql/data
         environment:
-            POSTGRES_DB: db
+            POSTGRES_MULTIPLE_DATABASES: db
             POSTGRES_PASSWORD: admin
             POSTGRES_USER: admin
         ports:
@@ -38,14 +38,14 @@ services:
             HOST_OS: ${OS}
             NODE_ENV: development
             HOST: "0.0.0.0"
-    expensebook:
+    api:
         build:
-            context: ./expensebook
+            context: ./api
             dockerfile: ./Dockerfile.dev
         ports:
             - "8000:8000"
         volumes:
-            - ./expensebook:/app
+            - ./api:/app
         environment:
             DATABASE_URL: postgresql://admin:admin@postgres/db
             WAIT_HOSTS: postgres:5432
