@@ -80,7 +80,6 @@
         "start_date": "date",
         "end_date": "date",
         "budget": "integer",
-        "international": "boolean",
         "home_country": "string",
         "destination_country": "string",
       },
@@ -104,7 +103,6 @@
         "start_date": "date",
         "end_date": "date",
         "budget": "integer",
-        "international": "boolean",
         "home_country": "string",
         "destination_country": "string",
       },
@@ -121,7 +119,6 @@
         "start_date": "date",
         "end_date": "date",
         "budget": "integer",
-        "international": "boolean",
         "home_country": "string",
         "destination_country": "string",
       },
@@ -146,7 +143,6 @@
         "start_date": "date",
         "end_date": "date",
         "budget": "integer",
-        "international": "boolean",
         "home_country": "string",
         "destination_country": "string",
       },
@@ -184,7 +180,6 @@
         "start_date": "date",
         "end_date": "date",
         "budget": "integer",
-        "international": "boolean",
         "home_country": "string",
         "destination_country": "string",
       },
@@ -201,7 +196,6 @@
         "start_date": "date",
         "end_date": "date",
         "budget": "integer",
-        "international": "boolean",
         "home_country": "string",
         "destination_country": "string",
       },
@@ -531,3 +525,5 @@
       }
     }
     ```
+
+<!-- add currency API and categories API -->
