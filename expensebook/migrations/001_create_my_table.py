@@ -6,7 +6,7 @@ steps = [
             first_name VARCHAR(50) NOT NULL,
             last_name  VARCHAR(50) NOT NULL,
             email VARCHAR(50) NOT NULL UNIQUE,
-            password VARCHAR(50) NOT NULL,
+            password VARCHAR(20) NOT NULL,
         );
         """,
         """
@@ -21,7 +21,6 @@ steps = [
             start_date DATE NOT NULL,
             end_date DATE NOT NULL,
             budget INT NOT NULL,
-            international BOOLEAN NOT NULL,
             home_country VARCHAR(50) NOT NULL,
             destination_country VARCHAR(50) NULL,
             account_id INT NOT NULL REFERENCES account(id),
@@ -38,6 +37,7 @@ steps = [
             title VARCHAR(200) NOT NULL,
             price INT NOT NULL,
             image TEXT NULL,
+            url TEXT NOT NULL,
             description TEXT NULL,
             category INT NOT NULL REFERENCES category(id),
 
