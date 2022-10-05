@@ -9,7 +9,7 @@ class Error(BaseModel):
     message: str
 
 
-class ExpensesIn(BaseModel):
+class ExpenseIn(BaseModel):
     title: str
     date: date
     expense_total: int
@@ -30,7 +30,7 @@ class ExpensesOut(BaseModel):
 
 
 class ExpenseRepository:
-    def get_all(self) -> Optional[ExpensesOut]:
+    def get_all(self, budget_id: int, category_id: int) -> Optional[ExpensesOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -39,16 +39,20 @@ class ExpenseRepository:
                     # Run our SELECT statement
                     result = db.execute(
                         """
-                        SELECT id
-                             , title
-                             , date
-                             , expense_total
-                             , description
-                             , budget_id
-                             , category_id
+                        SELECT e.id
+                             , e.title
+                             , e.date
+                             , e.expense_total
+                             , e.description
+                             , b.budget_id
+                             , c.category_id
                         FROM expenses
+                        LEFT JOIN budgets AS b
+                            ON (e.budget_id = b.id)
+                        LEFT JOIN categories AS c
+                            ON (e.category_id = c.id)
                         ORDER BY date;
-                        """
+                        """,
                     )
 
                     return [
@@ -61,7 +65,7 @@ class ExpenseRepository:
 
 
 
-    def get_one(self, expense_id: int) -> Optional[ExpensesOut]:
+    def get_one(self, expense_id: int, budget_id: int, category_id: int) -> Optional[ExpensesOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -70,15 +74,20 @@ class ExpenseRepository:
                     # Run our SELECT statement
                     result = db.execute(
                         """
-                        SELECT id
-                             , title
-                             , date
-                             , expense_total
-                             , description
-                             , budget_id
-                             , category_id
+                        SELECT e.id
+                             , e.title
+                             , e.date
+                             , e.expense_total
+                             , e.description
+                             , b.budget_id
+                             , c.category_id
                         FROM expenses
                         WHERE id = %s
+                        LEFT JOIN budgets AS b
+                            ON (e.budget_id = b.id)
+                        LEFT JOIN categories AS c
+                            ON (e.category_id = c.id)
+                        ORDER BY date;
                         """,
                         [expense_id]
                     )
@@ -88,7 +97,51 @@ class ExpenseRepository:
                     return self.record_to_expense_out(record)
         except Exception as e:
             print(e)
-            return {"message": "Could not get that expense"}
+            
+
+
+    def create(self, expense: ExpenseIn, budget_id: int, category_id: int) -> Union[ExpensesOut, Error]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get a cursor (something to run SQL with)
+                with conn.cursor() as db:
+                    # Run our INSERT statement
+                    result = db.execute(
+                        """
+                        INSERT INTO expenses
+                            (e.id
+                             , e.title
+                             , e.date
+                             , e.expense_total
+                             , e.description
+                             , b.budget_id
+                             , c.category_id)
+                        VALUES
+                            (%s, %s, %s, %s, %s, %s, %s)
+                        RETURNING e.id;
+                        """,
+                        [
+                            expense.title,
+                            expense.date,
+                            expense.expense_total,
+                            expense.description,
+                            budget_id.id,
+                            category_id.id
+                        ]
+                    )
+                    id = result.fetchone()[0]
+                    # Return new data
+                    # old_data = vacation.dict()
+                    # return VacationOut(id=id, **old_data)
+                    return self.expense_in_to_out(id, expense)
+        except Exception:
+            return {"message": "Create did not work"}
+
+    def expense_in_to_out(self, id: int, expense: ExpenseIn):
+        old_data = expense.dict()
+        return ExpensesOut(id=id, **old_data)
+            
 
     def record_to_vacation_out(self, record):
         return ExpensesOut(
