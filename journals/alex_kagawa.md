@@ -1,0 +1,6 @@
+# October 5, 2022
+Today, I worked on:
+
+Mapping out the relationships between our database tables in Excalidraw.  We decided to collapse our microservice architecture into a monolith architecture, so rather than having multiple databases, we now have one database, which includes tables for budgets, expenses, accounts, recommendations, and categories.  We planned out which/how each table relates to another using foreign keys, and began creating our tables in our first migrations file based on the mapping we did in Excalidraw.
+
+Today, I found out that each database can use its own framework.  For instance, when we were still exploring architecting ExpenseBook as a microservice app, we had explored using Django for our accounts database, and FastAPI for all other databases.  Obviously, we ultimately moved away from the microservice architecture, but it was an interesting thought exercise to explore how we might implement multiple backend frameworks when the microservice architecture was still on the table.
