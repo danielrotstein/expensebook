@@ -9,7 +9,7 @@ class Error(BaseModel):
     message: str
 
 
-class ExpensesIn(BaseModel):
+class ExpenseIn(BaseModel):
     title: str
     date: date
     expense_total: int
@@ -19,7 +19,7 @@ class ExpensesIn(BaseModel):
     
 
 
-class ExpensesOut(BaseModel):
+class ExpenseOut(BaseModel):
     id: int
     title: str
     date: date
@@ -30,8 +30,43 @@ class ExpensesOut(BaseModel):
 
 
 
-class ExpensesRepository:
-    def get_all(self) -> Union[Error, List[ExpensesOut]]:
+class ExpenseRepository:
+    def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
+        try:
+            # connect the DB
+            with pool.connection() as conn:
+                # get a cursor (something to run SQL with)
+                with conn.cursor() as db:
+                    # Run our INSERT statement
+                    result = db.execute(
+                        """
+                        INSERT INTO expenses
+                            (title, date, expense_total, description, budget_id, category_id)
+                        VALUES
+                            (%s, %s, %s, %s, %s, %s)
+                        RETURNING id;
+                        """,
+                        [
+                            expense.title, 
+                            expense.date,
+                            expense.expense_total, 
+                            expense.description, 
+                            expense.budget_id, 
+                            expense.category_id, 
+                        ]
+                    )
+                    id = result.fetchone()[0]
+                    # Return new data
+                    old_data = expense.dict()
+                    return ExpenseOut(id=id, **old_data)
+
+        except Exception as e:
+            print(e)
+            return {"message": "Could not create vacation!"}
+
+
+
+    def get_all_expenses(self) -> Union[Error, List[ExpenseOut]]:
         try:
         # connect the DB
                 with pool.connection() as conn:
@@ -47,7 +82,7 @@ class ExpensesRepository:
                         )
                         result = []
                         for record in db:
-                            expense = ExpensesOut(
+                            expense = ExpenseOut(
                                 id=record[0],
                                 title=record[1],
                                 date=record[2],
