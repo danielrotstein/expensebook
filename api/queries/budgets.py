@@ -147,21 +147,6 @@ class BudgetRepository:
                 with conn.cursor() as cur:
                     cur.execute(
                         """
-                        DELETE FROM expenses
-                        WHERE id = %s
-                        """,
-                        [budget_id],
-                    )
-                    return True
-        except Exception as e:
-            return False
-
-    def delete_budget(self, budget_id):
-        try:
-            with pool.connection() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        """
                         DELETE FROM budgets
                         WHERE id = %s
                         """,
@@ -170,7 +155,6 @@ class BudgetRepository:
                     return True
         except Exception as e:
             return False
-
 
 
     def update_budget(self, budget_id: int, budget: BudgetIn) -> Union[BudgetOut, Error]:
