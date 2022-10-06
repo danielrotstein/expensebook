@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from router import expenses, accounts, budgets, categories
+from routers import expenses, accounts, budgets, categories
 
 app = FastAPI()
 

@@ -75,3 +75,4 @@ class CategoryRepository:
             title=record[1],
         )
 
+
