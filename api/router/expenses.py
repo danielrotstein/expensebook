@@ -5,52 +5,60 @@ from queries.expenses import (
     Error,
     ExpenseIn,
     ExpenseRepository,
-    ExpensesOut,
+    ExpenseOut,
 )
 
 
 router = APIRouter()
 
 
-@router.post("/expenses", response_model=Union[ExpensesOut, Error])
+@router.post("/expenses", response_model=Union[ExpenseOut, Error])
 def create_expense(
     expense: ExpenseIn,
     repo: ExpenseRepository = Depends(),
 ):
-    return repo.create(expense)
+    return repo.create_expense(expense)
 
-@router.get("/expenses", response_model=Union[List[ExpensesOut], Error])
-def get_all(
+@router.get("/expenses", response_model=Union[List[ExpenseOut], Error])
+def get_all_expense(
     repo: ExpenseRepository = Depends(),
 ):
-    return repo.get_all()
+    return repo.get_all_expense()
 
-@router.get("/expenses/{expense_id}", response_model=Optional[ExpensesOut])
+@router.get("/expenses/{expense_id}", response_model=Optional[ExpenseOut])
 def get_one_expense(
     expense_id: int,
     response: Response,
     repo: ExpenseRepository = Depends(),
-) -> ExpensesOut:
-    expense = repo.get_one(expense_id)
+) -> ExpenseOut:
+    expense = repo.get_one_expense(expense_id)
     if expense is None:
         response.status_code = 404
     return expense
 
 
-@router.put("/expenses/{expense_id}", response_model=Union[ExpensesOut, Error])
-def update_vacation(
+@router.post("/expenses", response_model=Union[ExpenseOut, Error])
+def create_expense(
+    expense: ExpenseIn,
+    repo: ExpenseRepository = Depends(),
+):
+    return repo.create_expense(expense)
+
+
+@router.put("/expenses/{expense_id}", response_model=Union[ExpenseOut, Error])
+def update_expense(
     expense_id: int,
     expense: ExpenseIn,
     repo: ExpenseRepository = Depends(),
-) -> Union[Error, ExpensesOut]:
-    return repo.update(expense_id, expense)
+) -> Union[Error, ExpenseOut]:
+    return repo.update_expense(expense_id, expense)
 
 
 @router.delete("/expenses/{expense_id}", response_model=bool)
-def delete_vacation(
+def delete_expense(
     expense_id: int,
     repo: ExpenseRepository = Depends(),
 ) -> bool:
-    return repo.delete(expense_id)
+    return repo.delete_expense(expense_id)
 
 

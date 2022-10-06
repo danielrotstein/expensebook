@@ -19,7 +19,7 @@ class ExpenseIn(BaseModel):
     
 
 
-class ExpensesOut(BaseModel):
+class ExpenseOut(BaseModel):
     id: int
     title: str
     date: date
@@ -30,7 +30,7 @@ class ExpensesOut(BaseModel):
 
 
 class ExpenseRepository:
-    def get_all(self) -> Optional[ExpensesOut]:
+    def get_all_expense(self) -> Optional[ExpenseOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -65,7 +65,7 @@ class ExpenseRepository:
 
 
 
-    def get_one(self, expense_id: int) -> Optional[ExpensesOut]:
+    def get_one_expense(self, expense_id) -> Optional[ExpenseOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -81,15 +81,15 @@ class ExpenseRepository:
                              , e.description
                              , b.id
                              , c.id
-                        FROM expenses
-                        WHERE id = %s
+                        FROM expenses AS e
                         LEFT JOIN budgets AS b
                             ON (e.budget_id = b.id)
                         LEFT JOIN categories AS c
                             ON (e.category_id = c.id)
-                        ORDER BY date;
+                        WHERE e.id = %s
+                        ORDER BY e.date;
                         """,
-                        [expense_id]
+                        [expense_id],
                     )
                     record = result.fetchone()
                     if record is None:
@@ -100,7 +100,7 @@ class ExpenseRepository:
             
 
 
-    def create(self, expense: ExpenseIn) -> Union[ExpensesOut, Error]:
+    def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -110,41 +110,41 @@ class ExpenseRepository:
                     result = db.execute(
                         """
                         INSERT INTO expenses
-                            (id
-                             ,title
-                             ,date
-                             ,expense_total
-                             ,description
-                             ,budget_id
-                             ,category_id)
+                            (
+                             title
+                            ,date
+                            ,expense_total
+                            ,description
+                            ,budget_id
+                            ,category_id)
                         VALUES
-                            (%s, %s, %s, %s, %s, %s, %s)
-                        RETURNING e.id;
+                            (%s, %s, %s, %s, %s, %s)
+                        RETURNING id;
                         """,
                         [
-                            expense.title,
-                            expense.date,
-                            expense.expense_total,
-                            expense.description,
-                            expense.budget_id,
-                            expense.category_id
+                             expense.title
+                            ,expense.date
+                            ,expense.expense_total
+                            ,expense.description
+                            ,expense.budget_id
+                            ,expense.category_id
                         ]
                     )
                     id = result.fetchone()[0]
                     # Return new data
-                    # old_data = vacation.dict()
-                    # return VacationOut(id=id, **old_data)
+                    # old_data = expense.dict()
+                    # return ExpenseOut(id=id, **old_data)
                     return self.expense_in_to_out(id, expense)
         except Exception:
-            return {"message": "Create did not work"}
+            return {"message": "Unable to create an expense"}
 
     def expense_in_to_out(self, id: int, expense: ExpenseIn):
         old_data = expense.dict()
-        return ExpensesOut(id=id, **old_data)
+        return ExpenseOut(id=id, **old_data)
             
 
-    def record_to_vacation_out(self, record):
-        return ExpensesOut(
+    def record_to_expense_out(self, record):
+        return ExpenseOut(
             id=record[0],
             title=record[1],
             date=record[2],
