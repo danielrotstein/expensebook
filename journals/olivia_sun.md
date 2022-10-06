@@ -1,5 +1,6 @@
 10/5/2022
-Migrated and created tables in Postgres, started coding on main.py, router.expenses.py, queries.expenses.py, 
+Migrated and created tables in Postgres, started coding on main.py, router.expenses.py, queries.expenses.py;
+Got through create category, get all category, create budget, get all budget, create expense, get all expense, get one expense".
 
 10/4/2022
 Tried to modify the Docker compose.yaml when switch from mulitiple database to one database. 
