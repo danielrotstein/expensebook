@@ -4,7 +4,6 @@ from datetime import date
 from queries.pool import pool
 
 
-
 class Error(BaseModel):
     message: str
 
@@ -17,7 +16,6 @@ class ExpenseIn(BaseModel):
     budget_id: int
     category_id: int
     
-
 
 class ExpenseOut(BaseModel):
     id: int
