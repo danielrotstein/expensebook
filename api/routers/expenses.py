@@ -12,13 +12,6 @@ from queries.expenses import (
 router = APIRouter(tags=["Expenses"])
 
 
-@router.post("/expenses", response_model=Union[ExpenseOut, Error])
-def create_expense(
-    expense: ExpenseIn,
-    repo: ExpenseRepository = Depends(),
-):
-    return repo.create_expense(expense)
-
 @router.get("/expenses", response_model=Union[List[ExpenseOut], Error])
 def get_all_expense(
     repo: ExpenseRepository = Depends(),

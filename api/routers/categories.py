@@ -11,15 +11,6 @@ from queries.categories import (
 router = APIRouter(tags=["Categories"])
 
 
-@router.post("/categories", response_model=Union[CategoryOut, Error])
-def create_category(
-    category: CategoryIn,
-    repo: CategoryRepository = Depends(),
-):
-    return repo.create_category(category)
-
-
-
 @router.get("/categories", response_model=Union[List[CategoryOut], Error])
 def get_all_category(
     repo: CategoryRepository = Depends(),
@@ -37,6 +28,14 @@ def get_one_category(
     if category is None:
         response.status_code = 404
     return category
+
+
+@router.post("/categories", response_model=Union[CategoryOut, Error])
+def create_category(
+    category: CategoryIn,
+    repo: CategoryRepository = Depends(),
+):
+    return repo.create_category(category)
 
 
 @router.put("/categories/{category_id}", response_model=Union[CategoryOut, Error])
