@@ -1,3 +1,14 @@
+## 10/05/22
+
+Today, I worked on:
+
+* Pair coding with Olivia and Joey starting with sql-code for the Expenses pydantic model in queries.py and writing python to interact with FastAPI in routers.py.
+
+While I was driving they both helped out to get the code up&running.
+
+Today, I learned how to write CRUD to be able to dynamically interact the data in FastAPI.
+
+
 ## 10/04/22
 
 Today, I worked on:
