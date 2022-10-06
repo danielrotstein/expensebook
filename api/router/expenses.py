@@ -15,10 +15,8 @@ router = APIRouter()
 @router.post("/expenses", response_model=Union[ExpensesOut, Error])
 def create_expense(
     expense: ExpenseIn,
-    response: Response,
     repo: ExpenseRepository = Depends(),
 ):
-    response.status_code = 400
     return repo.create(expense)
 
 @router.get("/expenses", response_model=Union[List[ExpensesOut], Error])

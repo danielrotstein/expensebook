@@ -30,7 +30,7 @@ class ExpensesOut(BaseModel):
 
 
 class ExpenseRepository:
-    def get_all(self, budget_id: int, category_id: int) -> Optional[ExpensesOut]:
+    def get_all(self) -> Optional[ExpensesOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -44,9 +44,9 @@ class ExpenseRepository:
                              , e.date
                              , e.expense_total
                              , e.description
-                             , b.budget_id
-                             , c.category_id
-                        FROM expenses
+                             , b.id
+                             , c.id
+                        FROM expenses AS e
                         LEFT JOIN budgets AS b
                             ON (e.budget_id = b.id)
                         LEFT JOIN categories AS c
@@ -65,7 +65,7 @@ class ExpenseRepository:
 
 
 
-    def get_one(self, expense_id: int, budget_id: int, category_id: int) -> Optional[ExpensesOut]:
+    def get_one(self, expense_id: int) -> Optional[ExpensesOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -79,8 +79,8 @@ class ExpenseRepository:
                              , e.date
                              , e.expense_total
                              , e.description
-                             , b.budget_id
-                             , c.category_id
+                             , b.id
+                             , c.id
                         FROM expenses
                         WHERE id = %s
                         LEFT JOIN budgets AS b
@@ -100,7 +100,7 @@ class ExpenseRepository:
             
 
 
-    def create(self, expense: ExpenseIn, budget_id: int, category_id: int) -> Union[ExpensesOut, Error]:
+    def create(self, expense: ExpenseIn) -> Union[ExpensesOut, Error]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -110,13 +110,13 @@ class ExpenseRepository:
                     result = db.execute(
                         """
                         INSERT INTO expenses
-                            (e.id
-                             , e.title
-                             , e.date
-                             , e.expense_total
-                             , e.description
-                             , b.budget_id
-                             , c.category_id)
+                            (id
+                             ,title
+                             ,date
+                             ,expense_total
+                             ,description
+                             ,budget_id
+                             ,category_id)
                         VALUES
                             (%s, %s, %s, %s, %s, %s, %s)
                         RETURNING e.id;
@@ -126,8 +126,8 @@ class ExpenseRepository:
                             expense.date,
                             expense.expense_total,
                             expense.description,
-                            budget_id.id,
-                            category_id.id
+                            expense.budget_id,
+                            expense.category_id
                         ]
                     )
                     id = result.fetchone()[0]
