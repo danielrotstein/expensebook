@@ -25,6 +25,7 @@ def get_all_expense(
 ):
     return repo.get_all_expense()
 
+
 @router.get("/expenses/{expense_id}", response_model=Optional[ExpenseOut])
 def get_one_expense(
     expense_id: int,
