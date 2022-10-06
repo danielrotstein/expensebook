@@ -8,7 +8,7 @@ from queries.categories import (
     CategoryOut,
 )
 
-router = APIRouter()
+router = APIRouter(tags=["Categories"])
 
 
 @router.post("/categories", response_model=Union[CategoryOut, Error])

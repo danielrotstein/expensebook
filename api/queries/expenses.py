@@ -136,6 +136,58 @@ class ExpenseRepository:
         except Exception:
             return {"message": "Unable to create an expense"}
 
+
+    def delete_expense(self, expense_id):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        DELETE FROM expenses
+                        WHERE id = %s
+                        """,
+                        [expense_id],
+                    )
+                    return True
+        except Exception as e:
+            return False
+
+
+    def update_expense(self, expense_id: int, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get a cursor (something to run SQL with)
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE expenses
+                        SET title = %s
+                          , date = %s
+                          , expense_total = %s
+                          , description = %s
+                          , budget_id = %s
+                          , category_id = %s
+                        WHERE id = %s
+                        """,
+                        [
+                            expense.title
+                            ,expense.date
+                            ,expense.expense_total
+                            ,expense.description
+                            ,expense.budget_id
+                            ,expense.category_id
+                            ,expense_id
+                        ],
+                    )
+                    # old_data = expense.dict()
+                    # return ExpenseOut(id=expense_id, **old_data)
+                    return self.expense_in_to_out(expense_id, expense)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not update that expense"}
+
+
     def expense_in_to_out(self, id: int, expense: ExpenseIn):
         old_data = expense.dict()
         return ExpenseOut(id=id, **old_data)

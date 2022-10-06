@@ -9,7 +9,7 @@ from queries.expenses import (
 )
 
 
-router = APIRouter()
+router = APIRouter(tags=["Expenses"])
 
 
 @router.post("/expenses", response_model=Union[ExpenseOut, Error])

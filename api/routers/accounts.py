@@ -11,7 +11,7 @@ from queries.accounts import(
 )
 
 
-router = APIRouter()
+router = APIRouter(tags=["Accounts"])
 
 
 @router.get("/accounts", response_model=Union[List[AccountOut], Error])
