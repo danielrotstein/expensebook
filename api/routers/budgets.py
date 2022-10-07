@@ -17,10 +17,10 @@ router = APIRouter(tags=["Budgets"])
 
 
 @router.get("/budgets", response_model=Union[List[BudgetOut], Error])
-def get_all_budgets(
+def get_all_budget(
     repo: BudgetRepository = Depends(),
 ):
-    return repo.get_all_budgets()
+    return repo.get_all_budget()
 
 
 @router.get("/budgets/{budget_id}", response_model=Optional[BudgetOut])

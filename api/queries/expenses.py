@@ -52,7 +52,6 @@ class ExpenseRepository:
                         ORDER BY date;
                         """,
                     )
-
                     return [
                         self.record_to_expense_out(record)
                         for record in result
