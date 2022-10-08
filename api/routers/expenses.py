@@ -8,6 +8,8 @@ from queries.expenses import (
     ExpenseOut,
 )
 
+from authenticator import authenticator
+
 
 router = APIRouter(tags=["Expenses"])
 
@@ -15,6 +17,7 @@ router = APIRouter(tags=["Expenses"])
 @router.get("/expenses", response_model=Union[List[ExpenseOut], Error])
 def get_all_expense(
     repo: ExpenseRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.get_all_expense()
 
