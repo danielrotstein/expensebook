@@ -1,3 +1,10 @@
+## 10/6/22
+Today:
+
+We worked as a group to complete the remaining CRUD views for the app and tested to ensure functionality. 
+
+I learned that doing group programming can help you identify mistakes and mispellings to reduce the amount of errors in code.
+
 ## 10/5/22
 Today:
 
