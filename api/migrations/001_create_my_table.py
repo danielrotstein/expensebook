@@ -14,6 +14,9 @@ steps = [
         DROP TABLE accounts;
         """
     ],
+
+
+
     [
         """
         CREATE TABLE categories (
@@ -35,6 +38,7 @@ steps = [
             budget INT NOT NULL,
             home_country VARCHAR(50) NOT NULL,
             destination_country VARCHAR(50) NULL,
+            image VARCHAR(300),
             account_id INT REFERENCES accounts(id)
         );
         """,

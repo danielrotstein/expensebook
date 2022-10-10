@@ -4,7 +4,6 @@ from routers import expenses, accounts, budgets, categories, auth
 from authenticator import authenticator
 
 app = FastAPI()
-app.include_router(expenses.router)
 
 app.include_router(accounts.router)
 app.include_router(categories.router)

@@ -31,7 +31,6 @@ def get_one_budget(
     budget_id: int,
     response: Response,
     repo: BudgetRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> BudgetOut:
     budget = repo.get_one_budget(budget_id)
     if budget is None:
@@ -54,7 +53,6 @@ def update_budget(
     budget_id: int,
     budget: BudgetIn,
     repo: BudgetRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[Error, BudgetOut]:
     return repo.update_budget(budget_id, budget)
 
@@ -63,7 +61,5 @@ def update_budget(
 def delete_budget(
     budget_id: int,
     repo: BudgetRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete_budget(budget_id)
-

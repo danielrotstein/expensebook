@@ -52,14 +52,13 @@ class ExpenseRepository:
                         ORDER BY date;
                         """,
                     )
-
                     return [
                         self.record_to_expense_out(record)
                         for record in result
                     ]
         except Exception as e:
             print(e)
-            return {"message": "Could not all expenses"}
+            return {"message": "Could not get all expenses"}
 
 
 
@@ -162,21 +161,21 @@ class ExpenseRepository:
                         """
                         UPDATE expenses
                         SET title = %s
-                            , date = %s
-                            , expense_total = %s
-                            , description = %s
-                            , budget_id = %s
-                            , category_id = %s
+                          , date = %s
+                          , expense_total = %s
+                          , description = %s
+                          , budget_id = %s
+                          , category_id = %s
                         WHERE id = %s
                         """,
                         [
                             expense.title
-                            , expense.date
-                            , expense.expense_total
-                            , expense.description
-                            , expense.budget_id
-                            , expense.category_id
-                            , expense_id
+                            ,expense.date
+                            ,expense.expense_total
+                            ,expense.description
+                            ,expense.budget_id
+                            ,expense.category_id
+                            ,expense_id
                         ],
                     )
                     # old_data = expense.dict()
@@ -187,7 +186,7 @@ class ExpenseRepository:
             return {"message": "Could not update that expense"}
 
 
-    def expense_in_to_out(self, id: int, expense: ExpenseIn) -> ExpenseOut:
+    def expense_in_to_out(self, id: int, expense: ExpenseIn):
         old_data = expense.dict()
         return ExpenseOut(id=id, **old_data)
             

@@ -19,6 +19,7 @@ class BudgetIn(BaseModel):
     budget: int
     home_country: str
     destination_country: str
+    image: str
     account_id: int
 
 
@@ -30,6 +31,7 @@ class BudgetOut(BaseModel):
     budget: int
     home_country: str
     destination_country: str
+    image: str
     account_id: int
 
 
@@ -40,14 +42,16 @@ class BudgetRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id
-                             , title
-                             , start_date
-                             , end_date
-                             , budget
-                             , home_country
-                             , destination_country
-                             , account_id
+                        SELECT 
+                            id
+                            , title
+                            , start_date
+                            , end_date
+                            , budget
+                            , home_country
+                            , destination_country
+                            , image
+                            , account_id
                         FROM budgets
                         ORDER BY id;
                         """,
@@ -57,7 +61,6 @@ class BudgetRepository:
                         self.record_to_budget_out(record)
                         for record in result
                     ]
-
         except Exception as e:
             print("There was an error: ", e)
             return {"message": "Unable to get all budgets"}
@@ -79,6 +82,7 @@ class BudgetRepository:
                              , b.budget
                              , b.home_country
                              , b.destination_country
+                             , b.image
                              , a.id
                         FROM budgets AS b
                         LEFT JOIN accounts AS a
@@ -103,16 +107,18 @@ class BudgetRepository:
                     result = db.execute(
                         """
                         INSERT INTO budgets
-                            (   title 
-                              , start_date
-                              , end_date
-                              , budget 
-                              , home_country
-                              , destination_country
-                              , account_id
+                            (
+                                 title 
+                                , start_date
+                                , end_date
+                                , budget 
+                                , home_country
+                                , destination_country
+                                , image
+                                , account_id
                             )
                         VALUES
-                            (%s, %s, %s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -122,6 +128,7 @@ class BudgetRepository:
                             budget.budget,
                             budget.home_country,
                             budget.destination_country,
+                            budget.image,
                             budget.account_id,
                         ]
                     )
@@ -158,12 +165,13 @@ class BudgetRepository:
                         """
                         UPDATE budgets
                         SET title = %s
-                            , start_date = %s
-                            , end_date = %s
-                            , budget = %s
-                            , home_country = %s
-                            , destination_country = %s
-                            , account_id = %s
+                          , start_date = %s
+                          , end_date = %s
+                          , budget = %s
+                          , home_country = %s
+                          , destination_country = %s
+                          , image = %s
+                          , account_id = %s
                         WHERE id = %s
                         """,
                         [
@@ -173,11 +181,11 @@ class BudgetRepository:
                             , budget.budget
                             , budget.home_country
                             , budget.destination_country
+                            , budget.image
                             , budget.account_id
                             , budget_id
                         ],
                     )
-
                     return self.budget_in_to_out(budget_id, budget)
         except Exception as e:
             print(e)
@@ -197,5 +205,6 @@ class BudgetRepository:
             budget=record[4],
             home_country=record[5],
             destination_country=record[6],
-            account_id=record[7],
+            image=record[7],
+            account_id=record[8],
         )

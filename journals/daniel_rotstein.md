@@ -1,3 +1,13 @@
+## 10/06/22
+
+Today, I worked on:
+
+* Helping to finsih up the remaining CRUD functions for ExpenseBook and testing all of them.
+
+Today, I learnerd how to use JOIN to successfully combine rows for all our tables.
+
+
+
 ## 10/05/22
 
 Today, I worked on:

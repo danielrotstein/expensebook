@@ -10,9 +10,8 @@ from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
 
 from pydantic import BaseModel
-from typing import Union, List
+
 from queries.accounts import (
-    Error,
     AccountRepository,
     AccountOut,
     AccountIn,
@@ -30,15 +29,8 @@ class HttpError(BaseModel):
     detail: str
 
 
-# router = APIRouter(tags=["SIGN IN"])
-router = APIRouter(tags=["Accounts"])
+router = APIRouter(tags=["SIGN IN"])
 
-
-@router.get("/accounts", response_model=Union[List[AccountOut], Error])
-def get_all_account(
-    repo: AccountRepository = Depends(),
-):
-    return repo.get_all_account()
 
 
 @router.post("/api/accounts", response_model=AccountToken | HttpError)
@@ -55,11 +47,30 @@ async def create_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.get("/accounts", response_model=Union[List[AccountOut], Error])
-def get_all_account(
-    repo: AccountRepository = Depends(),
-):
-    return repo.get_all_account()
+
+
+
+# from fastapi import(
+#     APIRouter, 
+#     Depends,
+# )
+# from typing import Union, List
+# from queries.accounts import(
+#     Error,
+#     AccountRepository,
+#     AccountIn,
+#     AccountOut,
+# )
+
+
+# router = APIRouter(tags=["Accounts"])
+
+
+# @router.get("/accounts", response_model=Union[List[AccountOut], Error])
+# def get_accounts(
+#     repo: AccountRepository = Depends(),
+# ):
+#     return repo.get_accounts()
 
 
 # @router.post("/accounts", response_model=Union[AccountOut, Error])
@@ -68,20 +79,3 @@ def get_all_account(
 #     repo: AccountRepository = Depends(),
 # ):
 #     return repo.create_account(account)
-
-
-@router.put("/accounts/{account_id}", response_model=Union[AccountOut, Error])
-def update_account(
-    account_id: int,
-    account: AccountIn,
-    repo: AccountRepository = Depends(),
-) -> Union[Error, AccountOut]:
-    return repo.update_account(account_id, account)
-
-
-@router.delete("/accounts/{account_id}", response_model=bool)
-def delete_account(
-    account_id: int,
-    repo: AccountRepository = Depends(),
-) -> bool:
-    return repo.delete_account(account_id)
