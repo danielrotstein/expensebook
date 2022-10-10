@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AboutUs from './AboutUs';
+import CurrencyConverter from './CurrencyConverter';
+import LoginForm from './LoginComponents/Login';
+import SignUpForm from './LoginComponents/SignUp';
+import MainPage from './MainPage';
+import Nav from './Nav';
+import ExpenseForm from './TripComponents/ExpenseForm';
+import TripDashboard from './TripComponents/TripDashboard';
+import TripDetails from './TripComponents/TripDetails';
+import TripForm from './TripComponents/TripForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path='/' element={<MainPage />}/>
+        <Route path='about' element={< AboutUs/>}/>
+        <Route path='login' element={<LoginForm/>}/>
+        <Route path='signup' element={< SignUpForm/>} />
+        <Route path='currency-converter' element={< CurrencyConverter/>}/>
+        <Route path='trips'>
+          <Route index element={<TripDashboard />} />
+          <Route path='details' element={< TripDetails/>} />
+          <Route path='add-trip' element={< TripForm/>} />
+          <Route path='add-expense' element={< ExpenseForm/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
