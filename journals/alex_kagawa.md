@@ -1,3 +1,10 @@
+# October 10, 2022
+Today, I worked on:
+
+Implementing the routers and queries for the recommendations table, and started researching the implementation of the Pexels API.
+
+I learned that you can modify an existing table by simply updating the original migrations file with the change without needing to create a new migrations file and/or re-migrate.
+
 # October 6, 2022
 Today, I worked on:
 
