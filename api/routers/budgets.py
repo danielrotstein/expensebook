@@ -11,7 +11,7 @@ from queries.budgets import(
 )
 
 
-router = APIRouter()
+router = APIRouter(tags=["Budgets"])
 
 
 @router.get("/budgets", response_model=Union[List[BudgetOut], Error])
