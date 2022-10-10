@@ -9,7 +9,6 @@ class Auth(BaseModel):
     full_name: str
 
 
-
 class AuthIn(BaseModel):
     email: str
     password: str
