@@ -12,6 +12,8 @@ from queries.budgets import(
     BudgetOut,
 )
 
+from authenticator import authenticator
+
 
 router = APIRouter(tags=["Budgets"])
 
@@ -19,6 +21,7 @@ router = APIRouter(tags=["Budgets"])
 @router.get("/budgets", response_model=Union[List[BudgetOut], Error])
 def get_all_budgets(
     repo: BudgetRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.get_all_budgets()
 
