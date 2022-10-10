@@ -58,7 +58,7 @@ class ExpenseRepository:
                     ]
         except Exception as e:
             print(e)
-            return {"message": "Could not all expenses"}
+            return {"message": "Could not get all expenses"}
 
 
 

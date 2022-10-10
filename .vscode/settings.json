@@ -18,5 +18,10 @@
         "titleBar.inactiveBackground": "#00485599",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "rgb(0,72,85)"
+    "peacock.color": "rgb(0,72,85)",
+    "cSpell.words": [
+        "auths",
+        "Pexel",
+        "pexels"
+    ]
 }
