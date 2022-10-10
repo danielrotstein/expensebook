@@ -1,3 +1,15 @@
+## 10/10/22
+
+Today, I worked on:
+
+* Figuring out the authentication code for ExpenseBook to successfully create an account, login/logout.
+
+While I was driving, Olivia and George helped out to implement the authentication code with the existing accounts table. Now we can successfully create an account & login/logout. Also we added some code for some services like get_all_expensen for example, that a user needs to be logged in to get all the expenses data.
+
+Today, I learnerd how to change an already created table and how to use authentication-tokens.
+
+
+
 ## 10/06/22
 
 Today, I worked on:

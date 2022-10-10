@@ -1,3 +1,10 @@
+## 10/10/22
+Today:
+
+I created and wired up routes in the ghi for our app and created folders to organize the components.
+
+I also learned how to do a forced git push using "git push -f origin main". This was needed because there was some commits that were pushd to main on accident.
+
 ## 10/6/22
 Today:
 
