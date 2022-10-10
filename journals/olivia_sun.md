@@ -1,3 +1,6 @@
+10/6/2022
+Updated routers/accounts.py, budgets.py, categories.py, expenses.py, queries/accounts.py, budgets.py, categories.py, expenses.py
+
 10/5/2022
 Migrated and created tables in Postgres, started coding on main.py, router.expenses.py, queries.expenses.py;
 Got through create category, get all categories, create budget, get all budgets, create expense, get all expenses, get one expense".

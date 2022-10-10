@@ -187,7 +187,7 @@ class ExpenseRepository:
             return {"message": "Could not update that expense"}
 
 
-    def expense_in_to_out(self, id: int, expense: ExpenseIn):
+    def expense_in_to_out(self, id: int, expense: ExpenseIn) -> ExpenseOut:
         old_data = expense.dict()
         return ExpenseOut(id=id, **old_data)
             

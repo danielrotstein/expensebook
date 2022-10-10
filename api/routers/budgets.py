@@ -1,3 +1,4 @@
+
 from fastapi import(
     APIRouter, 
     Depends,
@@ -12,6 +13,7 @@ from queries.budgets import(
     BudgetOut,
 )
 
+from authenticator import authenticator
 
 router = APIRouter(tags=["Budgets"])
 
@@ -19,6 +21,7 @@ router = APIRouter(tags=["Budgets"])
 @router.get("/budgets", response_model=Union[List[BudgetOut], Error])
 def get_all_budget(
     repo: BudgetRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.get_all_budget()
 
@@ -28,6 +31,7 @@ def get_one_budget(
     budget_id: int,
     response: Response,
     repo: BudgetRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> BudgetOut:
     budget = repo.get_one_budget(budget_id)
     if budget is None:
@@ -39,6 +43,7 @@ def get_one_budget(
 def create_budget(
     budget: BudgetIn,
     repo: BudgetRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create_budget(budget)
 
@@ -49,6 +54,7 @@ def update_budget(
     budget_id: int,
     budget: BudgetIn,
     repo: BudgetRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[Error, BudgetOut]:
     return repo.update_budget(budget_id, budget)
 
@@ -57,6 +63,7 @@ def update_budget(
 def delete_budget(
     budget_id: int,
     repo: BudgetRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete_budget(budget_id)
 
