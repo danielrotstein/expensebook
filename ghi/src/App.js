@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}/>
         <Route path='about' element={< AboutUs/>}/>
-        <Route path='login' element={<LoginForm/>}/>
+        <Route path='login' element={< LoginForm/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
         <Route path='currency-converter' element={< CurrencyConverter/>}/>
