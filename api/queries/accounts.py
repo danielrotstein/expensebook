@@ -96,41 +96,37 @@ class AccountRepository:
                 )
 
 
-
-
-
-
-    # def get_accounts(self) -> Union[List[AccountOut], Error]:
-    #     try:
-    #         with pool.connection() as conn:
-    #             with conn.cursor() as db:
-    #                 result = db.execute(
-    #                     """
-    #                     SELECT id
-    #                         , first_name
-    #                         , last_name
-    #                         , email
-    #                         , password
-    #                         , hashed_password
-    #                     FROM accounts
-    #                     ORDER BY id 
-    #                     """
-    #                 )
-    #                 output = []
-    #                 for record in db:
-    #                     account = AccountOut(
-    #                         id = record[0],
-    #                         first_name = record[1],
-    #                         last_name = record[2],
-    #                         email = record[3],
-    #                         password = record[4],
-    #                         hashed_password = record[5]
-    #                     )
-    #                     output.append(account)
-    #                 return output
-    #     except Exception as e:
-    #         print("There was an error: ", e)
-    #         return {"message": "Unable to get all accounts"}
+    def get_accounts(self) -> Union[List[AccountOut], Error]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id
+                            , first_name
+                            , last_name
+                            , email
+                            , password
+                            , hashed_password
+                        FROM accounts
+                        ORDER BY id 
+                        """
+                    )
+                    output = []
+                    for record in db:
+                        account = AccountOut(
+                            id = record[0],
+                            first_name = record[1],
+                            last_name = record[2],
+                            email = record[3],
+                            password = record[4],
+                            hashed_password = record[5]
+                        )
+                        output.append(account)
+                    return output
+        except Exception as e:
+            print("There was an error: ", e)
+            return {"message": "Unable to get all accounts"}
 
 
     

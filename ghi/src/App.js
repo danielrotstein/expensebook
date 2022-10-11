@@ -9,6 +9,8 @@ import ExpenseForm from './TripComponents/ExpenseForm';
 import TripDashboard from './TripComponents/TripDashboard';
 import TripDetails from './TripComponents/TripDetails';
 import TripForm from './TripComponents/TripForm';
+import AccountList from './AccountList';
+
 
 function App() {
   return (
@@ -17,9 +19,12 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}/>
         <Route path='about' element={< AboutUs/>}/>
-        <Route path='login' element={<LoginForm/>}/>
+        <Route path='login' element={< LoginForm/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='currency-converter' element={< CurrencyConverter/>}/>
+
+        <Route path="/accounts" element={<AccountList />} />
+
         <Route path='trips'>
           <Route index element={<TripDashboard />} />
           <Route path='details' element={< TripDetails/>} />

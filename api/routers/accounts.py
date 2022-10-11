@@ -8,10 +8,11 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-
+from typing import Union, List
 from pydantic import BaseModel
 
 from queries.accounts import (
+    Error,
     AccountRepository,
     AccountOut,
     AccountIn,
@@ -66,11 +67,11 @@ async def create_account(
 # router = APIRouter(tags=["Accounts"])
 
 
-# @router.get("/accounts", response_model=Union[List[AccountOut], Error])
-# def get_accounts(
-#     repo: AccountRepository = Depends(),
-# ):
-#     return repo.get_accounts()
+@router.get("/accounts", response_model=Union[List[AccountOut], Error])
+def get_accounts(
+    repo: AccountRepository = Depends(),
+):
+    return repo.get_accounts()
 
 
 # @router.post("/accounts", response_model=Union[AccountOut, Error])
