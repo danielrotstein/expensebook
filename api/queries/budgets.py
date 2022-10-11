@@ -50,7 +50,6 @@ class BudgetRepository:
                             , budget
                             , home_country
                             , destination_country
-                            , image
                             , account_id
                         FROM budgets
                         ORDER BY id;
