@@ -1,4 +1,6 @@
-import { useGetBudgetsQuery } from "../store/budgetsApi";
+import { Link } from 'react-router-dom';
+import ErrorNotification from '../ErrorNotification';
+import { useGetBudgetsQuery } from '../store/budgetsApi';
 
 
 function BudgetDashboard() {
@@ -12,13 +14,16 @@ function BudgetDashboard() {
 
     return (
         <div className="container">
-            {console.log("DATA: ", data)}
-            <h1>Budget Dashboard Page</h1>
+            <ErrorNotification error={error} />
+            <div className="create-new-trip-div">
+                <Link to="/budgets/add-budget" className="btn btn-primary px-4 gap-3">Create New Budget</Link>
+            </div>
             {data.map(budget => {
                 return (
-                    <div key={budget.id}>
-                        <h3>{budget.title}</h3>
-                        <p>{`${budget.start_date} ${budget.end_date}`}</p>
+                    <div className="budget-card shadow-sm" key={budget.id}>
+                        <h3 className="budget-title">{budget.title}</h3>
+                        <p className="budget-date">{`${budget.start_date} ${budget.end_date}`}</p>
+                        <h2 className="budget-amount">${budget.budget.toLocaleString()}</h2>
                     </div>
                 )}
             )}

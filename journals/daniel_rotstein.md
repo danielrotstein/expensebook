@@ -1,3 +1,15 @@
+## 10/11/22
+
+Today, I worked on:
+
+* Starting with the Front-End of ExpenseBook using Redux.
+
+While Alex was driving, we helped out to implement the code for displaying a dashboard for all budgets data and a form to create a new budget.
+
+Today, I learned how to implement Redux in our React frontend, so all the states can be managed central via store.
+
+
+
 ## 10/10/22
 
 Today, I worked on:
@@ -6,7 +18,7 @@ Today, I worked on:
 
 While I was driving, Olivia and George helped out to implement the authentication code with the existing accounts table. Now we can successfully create an account & login/logout. Also we added some code for some services like get_all_expenses for example, that a user needs to be logged in to get all the expenses data.
 
-Today, I learnerd how to change an already created table and how to use authentication-tokens.
+Today, I learned how to change an already created table and how to use authentication-tokens.
 
 
 
@@ -14,9 +26,9 @@ Today, I learnerd how to change an already created table and how to use authenti
 
 Today, I worked on:
 
-* Helping to finsih up the remaining CRUD functions for ExpenseBook and testing all of them.
+* Helping to finish up the remaining CRUD functions for ExpenseBook and testing all of them.
 
-Today, I learnerd how to use JOIN to successfully combine rows for all our tables.
+Today, I learned how to use JOIN to successfully combine rows for all our tables.
 
 
 
@@ -53,4 +65,4 @@ Dockerfile.dev
 main.py
 requirements.txt
 
-Today, I learned that there's no real polling between microservices instead we'll be usinig foreign keys between tables to communicate with each other. 
+Today, I learned that there's no real polling between microservices instead we'll be using foreign keys between tables to communicate with each other. 

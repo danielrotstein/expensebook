@@ -10,8 +10,18 @@ export const budgetsApi = createApi({
     getBudgets: builder.query({
       query: () => '/budgets',
     }),
+    createBudget: builder.mutation({
+      query: data => ({
+        url: '/budgets',
+        body: data,
+        method: 'POST',
+      }),
+    }),
   }),
 });
 
 
-export const { useGetBudgetsQuery } = budgetsApi;
+export const { 
+    useGetBudgetsQuery,
+    useCreateBudgetMutation, 
+} = budgetsApi;
