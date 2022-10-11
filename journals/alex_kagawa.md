@@ -1,3 +1,10 @@
+# October 11, 2022
+Today, I worked on:
+
+Implementing Redux.  I worked with the team on creating our app's store, and implementing our first query and mutation for our budgets API, which we were able to connect to the BudgetDashboard and BudgetForm components respectively.
+
+I learned that Redux doesn't necessarily need to replace the use of any hooks in React.  You can still use hooks to create and update state, and use the 'local' state created/modified via hooks alongside the 'global' state created/modified via Redux.
+
 # October 10, 2022
 Today, I worked on:
 
