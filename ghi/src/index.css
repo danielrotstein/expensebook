@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.create-new-trip-div {
+  margin-top: 50px;
+}
+
+.budget-card {
+  width: 350px;
+  height: 250px;
+  margin-top: 50px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.budget-title {
+  margin: 20px;
+}
+
+.budget-date {
+  margin: 20px;
+}
+
+.budget-amount {
+  margin: 20px;
+}
