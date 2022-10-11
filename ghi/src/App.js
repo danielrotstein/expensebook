@@ -5,12 +5,10 @@ import LoginForm from './LoginComponents/Login';
 import SignUpForm from './LoginComponents/SignUp';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import ExpenseForm from './TripComponents/ExpenseForm';
-import TripDashboard from './TripComponents/TripDashboard';
-import TripDetails from './TripComponents/TripDetails';
-import TripForm from './TripComponents/TripForm';
-import AccountList from './AccountList';
-
+import ExpenseForm from './BudgetComponents/ExpenseForm';
+import BudgetDashboard from './BudgetComponents/BudgetDashboard';
+import BudgetDetails from './BudgetComponents/BudgetDetails';
+import BudgetForm from './BudgetComponents/BudgetForm';
 
 function App() {
   return (
@@ -21,14 +19,12 @@ function App() {
         <Route path='about' element={< AboutUs/>}/>
         <Route path='login' element={< LoginForm/>}/>
         <Route path='signup' element={< SignUpForm/>} />
+        <Route path='accounts' />
         <Route path='currency-converter' element={< CurrencyConverter/>}/>
-
-        <Route path="/accounts" element={<AccountList />} />
-
-        <Route path='trips'>
-          <Route index element={<TripDashboard />} />
-          <Route path='details' element={< TripDetails/>} />
-          <Route path='add-trip' element={< TripForm/>} />
+        <Route path='budgets'>
+          <Route index element={<BudgetDashboard />} />
+          <Route path='details' element={< BudgetDetails/>} />
+          <Route path='add-budget' element={< BudgetForm/>} />
           <Route path='add-expense' element={< ExpenseForm/>} />
         </Route>
       </Routes>

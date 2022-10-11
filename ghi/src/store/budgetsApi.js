@@ -1,17 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
-export const accountsApi = createApi({
-  reducerPath: 'accounts',
+export const budgetsApi = createApi({
+  reducerPath: 'budgets',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_FAST_API,
   }),
   endpoints: builder => ({
-    getAccounts: builder.query({
-      query: () => '/api/accounts/',
+    getBudgets: builder.query({
+      query: () => '/budgets',
     }),
   }),
 });
 
 
-export const { useGetAccountsQuery } = accountsApi;
+export const { useGetBudgetsQuery } = budgetsApi;
