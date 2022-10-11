@@ -1,3 +1,10 @@
+## 10/11/22
+Today:
+
+We did group programming while Alex wrote the code for the creating a budget form and listing the budgets. 
+
+I learned that when using an anon function to call a function, you must pass the params thru so that the function will run properly.
+
 ## 10/10/22
 Today:
 
