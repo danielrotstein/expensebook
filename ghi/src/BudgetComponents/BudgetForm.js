@@ -40,7 +40,7 @@ function BudgetForm() {
             <div className="columns is-centered">
                 <div className="column is-one-third">
                     <ErrorNotification error={error} />
-                    <form onSubmit={() => handleSubmit}>
+                    <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="mb-3">
                             <label htmlFor="title">Title</label>
                             <BulmaInput onChange={setTitle} value={title.title} required placeholder="Title" type="text" name="title" id="title" className="form-control"/>
