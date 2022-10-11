@@ -19,7 +19,6 @@ class BudgetIn(BaseModel):
     budget: int
     home_country: str
     destination_country: str
-    image: str
     account_id: int
 
 
@@ -31,7 +30,6 @@ class BudgetOut(BaseModel):
     budget: int
     home_country: str
     destination_country: str
-    image: str
     account_id: int
 
 
@@ -50,7 +48,6 @@ class BudgetRepository:
                             , budget
                             , home_country
                             , destination_country
-                            , image
                             , account_id
                         FROM budgets
                         ORDER BY id;
@@ -82,7 +79,6 @@ class BudgetRepository:
                              , b.budget
                              , b.home_country
                              , b.destination_country
-                             , b.image
                              , a.id
                         FROM budgets AS b
                         LEFT JOIN accounts AS a
@@ -114,11 +110,10 @@ class BudgetRepository:
                                 , budget 
                                 , home_country
                                 , destination_country
-                                , image
                                 , account_id
                             )
                         VALUES
-                            (%s, %s, %s, %s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -128,7 +123,6 @@ class BudgetRepository:
                             budget.budget,
                             budget.home_country,
                             budget.destination_country,
-                            budget.image,
                             budget.account_id,
                         ]
                     )
@@ -171,7 +165,6 @@ class BudgetRepository:
                           , budget = %s
                           , home_country = %s
                           , destination_country = %s
-                          , image = %s
                           , account_id = %s
                         WHERE id = %s
                         """,
@@ -182,7 +175,6 @@ class BudgetRepository:
                             , budget.budget
                             , budget.home_country
                             , budget.destination_country
-                            , budget.image
                             , budget.account_id
                             , budget_id
                         ],
@@ -206,7 +198,6 @@ class BudgetRepository:
             budget=record[4],
             home_country=record[5],
             destination_country=record[6],
-            image=record[7],
-            account_id=record[8],
+            account_id=record[7],
         )
 
