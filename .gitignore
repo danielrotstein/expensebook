@@ -1,2 +1,7 @@
 # Byte-compiled / optimized / DLL files
+<<<<<<< HEAD
+__pycache__/
 **/__pycache__/
+=======
+**/__pycache__/
+>>>>>>> 4b26ba6839ef99c546d8e3ac977c5c8fa140ab92

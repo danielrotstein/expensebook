@@ -1,6 +1,9 @@
+<<<<<<< HEAD
+=======
 10/10/2022
 Updated accounts.py and resovle the conflicts for git. Got the currency converter work. 
 
+>>>>>>> 2e043c57848d8ea39250cc0e3bba45ea7ccd0e1a
 10/6/2022
 Updated routers/accounts.py, budgets.py, categories.py, expenses.py, queries/accounts.py, budgets.py, categories.py, expenses.py
 

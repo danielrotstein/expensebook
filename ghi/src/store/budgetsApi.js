@@ -15,6 +15,7 @@ export const budgetsApi = createApi({
         url: '/budgets',
         body: data,
         method: 'POST',
+        credentials: 'include',
       }),
     }),
   }),

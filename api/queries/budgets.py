@@ -34,7 +34,7 @@ class BudgetOut(BaseModel):
 
 
 class BudgetRepository:
-    def get_all_budgets(self) -> Union[List[BudgetOut], Error]:
+    def get_all_budget(self) -> Union[List[BudgetOut], Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -127,8 +127,7 @@ class BudgetRepository:
                         ]
                     )
                     id = result.fetchone()[0]
-                    old_data = budget.dict()
-                    return BudgetOut(id=id, **old_data)
+                    return self.budget_in_to_out(id, budget)
         except Exception as e:
             print("There was an error: ", e)
             return {"message": "Unable to create a budget"}
@@ -200,4 +199,3 @@ class BudgetRepository:
             destination_country=record[6],
             account_id=record[7],
         )
-

@@ -52,7 +52,6 @@ class ExpenseRepository:
                         ORDER BY date;
                         """,
                     )
-
                     return [
                         self.record_to_expense_out(record)
                         for record in result
@@ -108,24 +107,23 @@ class ExpenseRepository:
                     result = db.execute(
                         """
                         INSERT INTO expenses
-                            (
-                             title
-                            ,date
-                            ,expense_total
-                            ,description
-                            ,budget_id
-                            ,category_id)
+                            ( title
+                            , date
+                            , expense_total
+                            , description
+                            , budget_id
+                            , category_id)
                         VALUES
                             (%s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
-                             expense.title
-                            ,expense.date
-                            ,expense.expense_total
-                            ,expense.description
-                            ,expense.budget_id
-                            ,expense.category_id
+                              expense.title
+                            , expense.date
+                            , expense.expense_total
+                            , expense.description
+                            , expense.budget_id
+                            , expense.category_id
                         ]
                     )
                     id = result.fetchone()[0]
@@ -203,3 +201,4 @@ class ExpenseRepository:
             budget_id=record[5],
             category_id=record[6]
         )
+

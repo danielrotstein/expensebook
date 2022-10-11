@@ -16,17 +16,18 @@ function BudgetForm() {
     //     destinationCountry: "",
     // });
     const [title, setTitle] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [start_date, setStartDate] = useState('');
+    const [end_date, setEndDate] = useState('');
     const [budget, setBudget] = useState('');
-    const [homeCountry, setHomeCountry] = useState('');
-    const [destinationCountry, setDestinationCountry] = useState('');
+    const [home_country, setHomeCountry] = useState('');
+    const [destination_country, setDestinationCountry] = useState('');
+    const [account_id, setAccount] = useState('');
     const [error, setError] = useState('');
     const [createBudget, result] = useCreateBudgetMutation();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createBudget({title, startDate, endDate, budget, homeCountry, destinationCountry});
+        createBudget({title, start_date, end_date, budget: Number.parseInt(budget), home_country, destination_country, account_id: Number.parseInt(account_id),});
     }
 
     if (result.isSuccess) {
@@ -47,11 +48,11 @@ function BudgetForm() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="startDate">Start Date</label>
-                            <BulmaInput onChange={setStartDate} value={startDate.start_date} required placeholder="Start Date" type="date" name="startDate" id="startDate" className="form-control"/>
+                            <BulmaInput onChange={setStartDate} value={start_date.start_date} required placeholder="Start Date" type="date" name="startDate" id="startDate" className="form-control"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="endDate">End Date</label>
-                            <BulmaInput onChange={setEndDate} value={endDate.end_date} required placeholder="End Date" type="date" name="endDate" id="endDate" className="form-control"/>
+                            <BulmaInput onChange={setEndDate} value={end_date.end_date} required placeholder="End Date" type="date" name="endDate" id="endDate" className="form-control"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="budget">Budget</label>
@@ -59,11 +60,15 @@ function BudgetForm() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="homeCountry">Home Country</label>
-                            <BulmaInput onChange={setHomeCountry} value={homeCountry.home_country} required placeholder="Home Country" type="text" name="homeCountry" id="homeCountry" className="form-control"/>
+                            <BulmaInput onChange={setHomeCountry} value={home_country.home_country} required placeholder="Home Country" type="text" name="homeCountry" id="homeCountry" className="form-control"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="destinationCountry">Destination Country</label>
-                            <BulmaInput onChange={setDestinationCountry} value={destinationCountry.destination_country} required placeholder="Destination Country" type="text" name="destinationCountry" id="destinationCountry" className="form-control"/>
+                            <BulmaInput onChange={setDestinationCountry} value={destination_country.destination_country} required placeholder="Destination Country" type="text" name="destinationCountry" id="destinationCountry" className="form-control"/>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="account_id">Account</label>
+                            <BulmaInput onChange={setAccount} value={account_id.account_id} required placeholder="account_id" type="number" name="account_id" id="account_id" className="form-control"/>
                         </div>
                         <div className="field">
                             <button className="btn btn-primary">Save</button>

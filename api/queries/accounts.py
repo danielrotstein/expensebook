@@ -36,7 +36,6 @@ class AccountOut(BaseModel):
 
 
 class AccountRepository:
-
     def get_one(self, email: str) -> Account:
         # connect the database
         with pool.connection() as conn:
