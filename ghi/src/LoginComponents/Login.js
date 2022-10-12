@@ -16,7 +16,7 @@ function LogIn() {
     
     async function handleSubmit(e) {
         e.preventDefault();
-        createAccount({email, password});
+        createAccount({username: email, password});
     }
 
     if (result.isSuccess) {
