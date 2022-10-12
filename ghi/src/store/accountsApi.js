@@ -14,6 +14,15 @@ export const accountsApi = createApi({
     }),
     createAccounts: builder.mutation({
       query: data => ({
+        url: '/accounts',
+        body: data,
+        method: 'POST',
+        credentials: 'include',
+      }),
+      invalidatesTags: ['BudgetDashboard'],
+    }),
+    createToken: builder.mutation({
+      query: data => ({
         url: '/token',
         body: data,
         method: 'POST',
@@ -23,6 +32,7 @@ export const accountsApi = createApi({
     }),
   }),
 });
-  
 
-export const { useGetAccountsQuery, useCreateAccountsMutation } = accountsApi;
+
+export const { useGetAccountsQuery, useCreateAccountsMutation, useCreateTokenMutation } = accountsApi;
+
