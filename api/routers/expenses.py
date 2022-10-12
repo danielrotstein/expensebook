@@ -17,7 +17,7 @@ router = APIRouter(tags=["Expenses"])
 @router.get("/expenses", response_model=Union[List[ExpenseOut], Error])
 def get_all_expense(
     repo: ExpenseRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.get_all_expense()
 
@@ -27,7 +27,7 @@ def get_one_expense(
     expense_id: int,
     response: Response,
     repo: ExpenseRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> ExpenseOut:
     expense = repo.get_one_expense(expense_id)
     if expense is None:
@@ -48,7 +48,7 @@ def update_expense(
     expense_id: int,
     expense: ExpenseIn,
     repo: ExpenseRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[Error, ExpenseOut]:
     return repo.update_expense(expense_id, expense)
 
