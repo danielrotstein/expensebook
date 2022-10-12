@@ -25,9 +25,16 @@ function BudgetDashboard() {
                         <p className="budget-date">{`${budget.start_date} ${budget.end_date}`}</p>
                         <h2 className="budget-amount">${budget.budget.toLocaleString()}</h2>
                     </div>
+   
                 )}
             )}
         </div>
+        
+        
+        
+
+
+
     )
 }
 

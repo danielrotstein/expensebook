@@ -73,6 +73,7 @@ function BudgetForm() {
                         <div className="field">
                             <button className="btn btn-primary">Save</button>
                         </div>
+
                     </form>
                 </div>
             </div>
