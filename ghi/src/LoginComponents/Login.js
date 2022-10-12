@@ -17,7 +17,7 @@ function LogIn() {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(e.target);
-        createAccount(new FormData(e.target));
+        createToken(new FormData(e.target));
     }
 
     if (result.isSuccess) {
