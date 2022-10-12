@@ -16,7 +16,8 @@ function LogIn() {
     
     async function handleSubmit(e) {
         e.preventDefault();
-        createAccount({username: email, password});
+        console.log(e.target);
+        createAccount(new FormData(e.target));
     }
 
     if (result.isSuccess) {
@@ -34,11 +35,14 @@ function LogIn() {
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="mb-3">
                             <label htmlFor="email">Email</label>
-                            <BulmaInput onChange={setEmail} value={email.email} required placeholder="Email" type="email" name="email" id="email" className="form-control"/>
+                            <BulmaInput onChange={setEmail} value={email.email} required placeholder="Email" 
+                            type="email" name="username" id="email" className="form-control"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="password">Password</label>
-                            <BulmaInput onChange={setPassword} value={password.password} required placeholder="Password" type="password" name="password" id="password" className="form-control"/>
+                            <BulmaInput onChange={setPassword} value={password.password} 
+                            required placeholder="Password" type="password" name="password" id="password" 
+                            className="form-control"/>
                         </div>
 
                         {/* <div className="mb-3">
