@@ -7,27 +7,20 @@ import BulmaInput from '../BulmaInput';
 
 function BudgetForm() {
     const navigate = useNavigate();
-    // const [budget, setBudget] = useState({
-    //     title: "",
-    //     startDate: "",
-    //     endDate: "",
-    //     budget: "",
-    //     homeCountry: "",
-    //     destinationCountry: "",
-    // });
     const [title, setTitle] = useState('');
     const [start_date, setStartDate] = useState('');
     const [end_date, setEndDate] = useState('');
-    const [budget, setBudget] = useState('');
+    const [budget, setBudget] = useState(0);
     const [home_country, setHomeCountry] = useState('');
     const [destination_country, setDestinationCountry] = useState('');
-    const [account_id, setAccount] = useState('');
+    const [account_id, setAccount] = useState(0);
     const [error, setError] = useState('');
     const [createBudget, result] = useCreateBudgetMutation();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createBudget({title, start_date, end_date, budget: Number.parseInt(budget), home_country, destination_country, account_id: Number.parseInt(account_id),});
+        createBudget({title, start_date, end_date, budget, 
+            home_country, destination_country, account_id,});
     }
 
     if (result.isSuccess) {
