@@ -2,7 +2,7 @@
 
 Today, I worked on:
 
-* Getting the login page up & running.
+* Getting the login page up&running.
 
 While I was driving, Olivia, Alex and George helped out to implement the login code. We got it to work, so now we can successfully login with the username/password credentials, we created in the backend.
 
