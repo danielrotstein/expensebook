@@ -1,11 +1,12 @@
 function BulmaInput(props) {
-    const { type, required=true, label, id, placeholder, value, onChange } = props;
+    const { name, type, required=true, label, id, placeholder, value, onChange } = props;
   
     return (
         <div className="field">
             <label htmlFor={id}>{label}</label>
             <div className="control">
             <input
+                name={name}
                 required={required}
                 value={value}
                 onChange={e => onChange(e.target.value)}
