@@ -1,3 +1,10 @@
+# October 12, 2022
+Today, I worked on:
+
+Implementing our Login component, which required us to create a new mutation in Redux.  After the work we did today, we're now able to create a token using our login form.
+
+I learned that CORS errors aren't necessarily caused by CORS-specific issues.  We were getting a CORS error today while hooking up our login component, and it turned out that that error stemmed from a syntax error in one of our mutations rather than an issue with our CORS configuration.
+
 # October 11, 2022
 Today, I worked on:
 
