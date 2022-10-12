@@ -1,3 +1,6 @@
+10/12/2022
+Updated the currency converter, debug with team on login function.
+
 10/11/2022
 modified the currency converter, integrate to the html file. Pair coding with team members.
 

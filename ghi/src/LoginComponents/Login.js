@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateAccountsMutation } from '../store/accountsApi';
+import { useCreateTokenMutation } from '../store/accountsApi';
 import ErrorNotification from '../ErrorNotification';
 import BulmaInput from '../BulmaInput';
 
@@ -12,12 +12,12 @@ function LogIn() {
     // const [first_name, setFirstName] = useState('');
     // const [last_name, setLastName] = useState('');
     const [error, setError] = useState('');
-    const [createAccount, result] = useCreateAccountsMutation();
+    const [createToken, result] = useCreateTokenMutation();
     
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(e.target);
-        createAccount(new FormData(e.target));
+        createToken(new FormData(e.target));
     }
 
     if (result.isSuccess) {
