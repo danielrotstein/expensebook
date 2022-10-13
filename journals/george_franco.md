@@ -14,5 +14,18 @@ This process took about 5-6 hours of debugging the python and SQL code. For a lo
 ## 10/06/22
 Today we spent most of our time collaborating to build the routers and queries for accounts, budgets, expenses, and categories. We got the needed CRUD functions for each of these working effectively with our Postgres database. 
 
+I learned a lot aout SQL and how to write INSERT and LEFT JOIN statements. 
+
 ## 10/10/22
 Today Daniel, Olivia, and I focused on adding authentication to our accounts table we developed previously. The authentication allowed us to create a specific token when users log in. This log in token was then made a requriement for any user who wishes to access certain application functionalities such as creating or viewing a budget. After suceeding we have completed our applications back end excluding one or two third-party APIs that we plan to implement. 
+
+
+## 10/11/22
+Today we began to implement Redux into our project. This included creating a store.js file as well as API's for budgets and accounts. This was an important first step in beginning to work on the front end of our project. We also began to work on some of our intial react forms. We began with our budget dashboard (budget list) and the form to submit new budgets.
+
+Since this was the first day we had used Redux I learned a lot about how to format our code using useState(). I also learned about how to best format a handleSubmit button so that it preventsDefault. 
+
+## 10/12/22
+Today we continued working on the early stages of our front end. Our team collaborated together in order to get the log-in form up and running. This required a long debugging process as the POST was sending the data formatted as JSON rather than Python code as it was expecting. On the back end with Redux we had to add a POST statement to our accounting API that generates a token upon login. 
+
+I further developed on what we learned yesterday with Redux. Working on Accounts allowed us to work on a different problem while applying the same principles as we had to our Budgets API the day before. 
