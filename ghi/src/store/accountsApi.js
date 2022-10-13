@@ -6,11 +6,11 @@ export const accountsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_FAST_API,
   }),
-  tagTypes: ['BudgetDashboard'],
+  tagTypes: ['BudgetDashboard', 'Account', 'Token'],
   endpoints: builder => ({
     getAccounts: builder.query({
       query: () => '/accounts',
-      providesTags: ['BudgetDashboard'],
+      providesTags: ['Account'],
     }),
     createAccounts: builder.mutation({
       query: data => ({
@@ -19,7 +19,7 @@ export const accountsApi = createApi({
         method: 'POST',
         credentials: 'include',
       }),
-      invalidatesTags: ['BudgetDashboard'],
+      invalidatesTags: ['Account'],
     }),
     createToken: builder.mutation({
       query: data => ({
@@ -28,11 +28,21 @@ export const accountsApi = createApi({
         method: 'POST',
         credentials: 'include',
       }),
-      invalidatesTags: ['BudgetDashboard'],
+      invalidatesTags: ['Token'],
+    }),
+    getToken: builder.query({
+      query: () => ({
+        url: '/token',
+        credentials: 'include',
+      }),
+      providesTags: ['Token'],
     }),
   }),
 });
 
 
-export const { useGetAccountsQuery, useCreateAccountsMutation, useCreateTokenMutation } = accountsApi;
-
+export const { 
+  useGetAccountsQuery, 
+  useCreateAccountsMutation, 
+  useCreateTokenMutation,
+  usegetTokenQuery,} = accountsApi;
