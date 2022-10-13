@@ -1,3 +1,15 @@
+## 10/13/22
+
+Today, I worked on:
+
+* Exploring more options on how our currency converter should be set up, and helping Alex with the expense form.
+
+Joey and I brainstormed on different approaches on how to implement a currency converter into ExpenseBook. Looks like 3rd party Api's are limited to only a few requests per day. Another option instead of hardcoding could be to fetch data from XML files saved to google sheets.
+
+Today, I learned the steps needed to get our app deployed.
+
+
+
 ## 10/12/22
 
 Today, I worked on:
