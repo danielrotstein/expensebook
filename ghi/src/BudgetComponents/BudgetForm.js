@@ -61,7 +61,7 @@ function BudgetForm() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="account_id">Account</label>
-                            <BulmaInput onChange={setAccount} value={account_id.account_id} required placeholder="account_id" type="number" name="account_id" id="account_id" className="form-control"/>
+                            <BulmaInput onChange={setAccount} value={account_id.account_id} required placeholder="Account" type="number" name="account_id" id="account_id" className="form-control"/>
                         </div>
                         <div className="field">
                             <button className="btn btn-primary">Save</button>

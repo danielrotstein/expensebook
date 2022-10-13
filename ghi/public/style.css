@@ -1,0 +1,47 @@
+.button {
+  display: inline-block;
+  background-color: #0d6efd; 
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 40px;
+  width: 158px;
+  padding: 2px 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  }
+  button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  }
+  button span:after {
+  content: '0bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  }
+  button:hover {
+  background-color: #5bc0de;
+  }
+  button:hover span {
+  padding-right: 25px;
+  }
+  button:hover span:after {
+  opacity: 1;
+  right: 0;
+  } 
+
+footer {
+  text-align: right;
+  padding: 3px;
+  background-color: whitesmoke;
+  color: white;
+}
