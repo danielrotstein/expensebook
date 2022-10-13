@@ -13,7 +13,7 @@ function LogIn() {
     // const [last_name, setLastName] = useState('');
     const [error, setError] = useState('');
     const [createToken, result] = useCreateTokenMutation();
-    
+
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(e.target);
@@ -35,13 +35,13 @@ function LogIn() {
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="mb-3">
                             <label htmlFor="email">Email</label>
-                            <BulmaInput onChange={setEmail} value={email.email} required placeholder="Email" 
+                            <BulmaInput onChange={setEmail} value={email.email} required placeholder="Email"
                             type="email" name="username" id="email" className="form-control"/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="password">Password</label>
-                            <BulmaInput onChange={setPassword} value={password.password} 
-                            required placeholder="Password" type="password" name="password" id="password" 
+                            <BulmaInput onChange={setPassword} value={password.password}
+                            required placeholder="Password" type="password" name="password" id="password"
                             className="form-control"/>
                         </div>
 
@@ -57,7 +57,7 @@ function LogIn() {
 
 
 
-                        
+
                         <div className="field">
                             <button className="btn btn-primary">Save</button>
                         </div>
