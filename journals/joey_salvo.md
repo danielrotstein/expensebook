@@ -1,3 +1,17 @@
+## 10/13/22
+Today:
+
+I Started working on with Daniel on the Currency converter. We brainstormed the best way to get currency conversions and how they will be applied into our app. This is still a work in progress and we will be pursuing more options to create the converter tomorrow. 
+
+I learned that you can import som XML files to google sheets then you can import those sheets into SQL 
+
+## 10/12/22
+Today:
+
+I started working on building the main homepage for expensebook. For this, we decided to use material UI framework for our app. We were able to import the library and update the dependancies so that we could use some of the templates.
+
+I learned how to npm install material UI and force the install because our version of react is new and Material UI has yet to be updated to support the version that we are using. 
+
 ## 10/11/22
 Today:
 
