@@ -6,9 +6,11 @@ export const budgetsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_FAST_API,
   }),
+  tagTypes: ['BudgetDashboard'],
   endpoints: builder => ({
     getBudgets: builder.query({
       query: () => '/budgets',
+      providesTags: ['BudgetDashboard'],
     }),
     createBudget: builder.mutation({
       query: data => ({
@@ -17,6 +19,7 @@ export const budgetsApi = createApi({
         method: 'POST',
         credentials: 'include',
       }),
+      invalidatesTags: ['BudgetDashboard'],
     }),
   }),
 });

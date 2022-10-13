@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AboutUs from './AboutUs';
-import CurrencyConverter from './CurrencyConverter';
-import LoginForm from './LoginComponents/Login';
+// import CurrencyConverter from './CurrencyConverter';
+import LogIn from './LoginComponents/Login';
 import SignUpForm from './LoginComponents/SignUp';
 import MainPage from './MainPage';
 import Nav from './Nav';
@@ -17,10 +17,11 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}/>
         <Route path='about' element={< AboutUs/>}/>
-        <Route path='login' element={<LoginForm/>}/>
+        <Route path='login' element={< LogIn/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
-        <Route path='currency-converter' element={< CurrencyConverter/>}/>
+        {/* <Route path='currency-converter' element={< CurrencyConverter/>}/> */}
+        {/* <Route exact path="/converter" render={() => {window.location.href="CurrencyConverter.html"}} /> */}
         <Route path='budgets'>
           <Route index element={<BudgetDashboard />} />
           <Route path='details' element={< BudgetDetails/>} />

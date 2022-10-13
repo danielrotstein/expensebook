@@ -7,6 +7,8 @@ function Nav() {
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to="/">ExpenseBook</NavLink>
                     <NavLink className="navbar-brand" to="/budgets">Budgets</NavLink>
+                    <NavLink className="navbar-brand" to="/login">Login</NavLink>
+                    {/* <NavLink className="navbar-brand" to="/CurrencyConverter">CurrencyConverter</NavLink> */}
                 </div>
             </nav>
         </div>

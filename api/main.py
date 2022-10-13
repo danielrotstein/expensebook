@@ -15,10 +15,7 @@ app.include_router(recommendations.router)
 app.include_router(authenticator.router)
 
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-]
+origins = ["*"]
 
 
 app.add_middleware(

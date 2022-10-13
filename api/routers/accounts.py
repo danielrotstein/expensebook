@@ -8,10 +8,11 @@ from fastapi import (
 )
 from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
-
+from typing import Union, List
 from pydantic import BaseModel
 
 from queries.accounts import (
+    Error,
     AccountRepository,
     AccountOut,
     AccountIn,
@@ -19,7 +20,7 @@ from queries.accounts import (
 
 
 class AccountForm(BaseModel):
-    username: str
+    email: str
     password: str
 
 class AccountToken(Token):
@@ -33,7 +34,7 @@ router = APIRouter(tags=["SIGN IN"])
 
 
 
-@router.post("/api/accounts", response_model=AccountToken | HttpError)
+@router.post("/accounts", response_model=AccountToken | HttpError)
 async def create_account(
     info: AccountIn,
     request: Request,
@@ -42,7 +43,7 @@ async def create_account(
 ):
     hashed_password = authenticator.hash_password(info.password)
     account = repo.create(info, hashed_password)
-    form = AccountForm(username=info.email, password=info.password)
+    form = AccountForm(email=info.email, password=info.password)
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
 
@@ -66,11 +67,11 @@ async def create_account(
 # router = APIRouter(tags=["Accounts"])
 
 
-# @router.get("/accounts", response_model=Union[List[AccountOut], Error])
-# def get_accounts(
-#     repo: AccountRepository = Depends(),
-# ):
-#     return repo.get_accounts()
+@router.get("/accounts", response_model=Union[List[AccountOut], Error])
+def get_accounts(
+    repo: AccountRepository = Depends(),
+):
+    return repo.get_accounts()
 
 
 # @router.post("/accounts", response_model=Union[AccountOut, Error])
