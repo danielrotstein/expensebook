@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLogOutMutation } from '../store/accountsApi';
 import ErrorNotification from '../ErrorNotification';
 
-function LogoutButton() {
+function Logout() {
     const navigate = useNavigate();
     const [logOut, { data }] = useLogOutMutation;
 
@@ -21,3 +21,5 @@ function LogoutButton() {
         </div>
     );
 }
+
+export default Logout;

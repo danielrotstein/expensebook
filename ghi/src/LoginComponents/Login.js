@@ -5,7 +5,7 @@ import ErrorNotification from '../ErrorNotification';
 import BulmaInput from '../BulmaInput';
 
 
-function LogIn() {
+function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -52,4 +52,4 @@ function LogIn() {
     )
 }
 
-  export default LogIn;
+  export default Login;
