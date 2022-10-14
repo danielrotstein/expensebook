@@ -1,17 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { budgetsApi } from './budgetsApi';
 import { accountsApi } from './accountsApi';
+import { budgetsApi } from './budgetsApi';
+import { expensesApi } from './expensesApi';
 
 export const store = configureStore({
   reducer: {
-    [budgetsApi.reducerPath]: budgetsApi.reducer,
     [accountsApi.reducerPath]: accountsApi.reducer,
+    [budgetsApi.reducerPath]: budgetsApi.reducer,
+    [expensesApi.reducerPath]: expensesApi.reducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
-      .concat(budgetsApi.middleware)
       .concat(accountsApi.middleware)
+      .concat(budgetsApi.middleware)
+      .concat(expensesApi.middleware)
 });
 
 setupListeners(store.dispatch);

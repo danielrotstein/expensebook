@@ -1,3 +1,10 @@
+## 10/13/22
+Today:
+
+I Started working on with Daniel on the Currency converter. We brainstormed the best way to get currency conversions and how they will be applied into our app. This is still a work in progress and we will be pursuing more options to create the converter tomorrow. 
+
+I learned that you can import som XML files to google sheets then you can import those sheets into SQL 
+
 ## 10/12/22
 Today:
 
