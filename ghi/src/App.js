@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AboutUs from './AboutUs';
 // import CurrencyConverter from './CurrencyConverter';
-import LogIn from './LoginComponents/Login';
+import Login from './LoginComponents/Login';
+import Logout from './LoginComponents/Logout'
 import SignUpForm from './LoginComponents/SignUp';
 import MainPage from './MainPage';
 import Nav from './Nav';
@@ -9,6 +10,7 @@ import ExpenseForm from './BudgetComponents/ExpenseForm';
 import BudgetDashboard from './BudgetComponents/BudgetDashboard';
 import BudgetDetails from './BudgetComponents/BudgetDetails';
 import BudgetForm from './BudgetComponents/BudgetForm';
+// import { useState } from 'react';
 
 
 function App() {
@@ -18,7 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />}/>
         <Route path='about' element={< AboutUs/>}/>
-        <Route path='login' element={< LogIn/>}/>
+        <Route path='login' element={< Login/>}/>
+        <Route path='logout' element={< Logout/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
         {/* <Route path='currency-converter' element={< CurrencyConverter/>}/> */}
