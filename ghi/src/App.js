@@ -10,6 +10,7 @@ import BudgetDashboard from './BudgetComponents/BudgetDashboard';
 import BudgetDetails from './BudgetComponents/BudgetDetails';
 import BudgetForm from './BudgetComponents/BudgetForm';
 
+
 function App() {
   return (
     <BrowserRouter>

@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
+import countries from '../countryList'
 
 
-function BudgetForm() {
+function BudgetForm(props) {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [start_date, setStartDate] = useState('');
@@ -22,6 +23,20 @@ function BudgetForm() {
         createBudget({title, start_date, end_date, budget, 
             home_country, destination_country, account_id,});
     }
+
+    const handleHomeCountryInputChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setHomeCountry(value);
+    };
+
+    const handleDestinationCountryInputChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setDestinationCountry(value);
+    };
+
+
 
     if (result.isSuccess) {
         navigate("/budgets");
@@ -52,12 +67,24 @@ function BudgetForm() {
                             <BulmaInput onChange={setBudget} value={budget.budget} required placeholder="Budget" type="number" name="budget" id="budget" className="form-control"/>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="homeCountry">Home Country</label>
-                            <BulmaInput onChange={setHomeCountry} value={home_country.home_country} required placeholder="Home Country" type="text" name="homeCountry" id="homeCountry" className="form-control"/>
+                            <select onChange={handleHomeCountryInputChange} value={home_country.home_country} required name="Home Country" id="homeCountry" className="form-select">
+                                <option value="">Home Country</option>
+                                {
+                                    countries.map(country => {
+                                        return <option key={country.name} value={country.name}>{country.name}</option>
+                                    })
+                                }
+                            </select>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="destinationCountry">Destination Country</label>
-                            <BulmaInput onChange={setDestinationCountry} value={destination_country.destination_country} required placeholder="Destination Country" type="text" name="destinationCountry" id="destinationCountry" className="form-control"/>
+                            <select onChange={handleDestinationCountryInputChange} value={destination_country.destination_country} required name="Home Country" id="destinationCountry" className="form-select">
+                                <option value="">Destination Country</option>
+                                {
+                                    countries.map(country => {
+                                        return <option key={country.name} value={country.name}>{country.name}</option>
+                                    })
+                                }
+                            </select>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="account_id">Account</label>
