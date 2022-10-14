@@ -1,3 +1,16 @@
+# October 13, 2022
+Today, I worked on:
+
+Implementing the POST form for our Expense data type.  It was the first form we've begun implementing with foreign keys to other data types, which has been a bit challenging.  We've confirmed the form submits when hard coding the IDs for the appropriate foreign keys in the form, but when selecting a budget and a category from a drop-down menu in the expense form, the IDs don't seem to be passing through correctly, so the POST doesn't actually happen.  We're not quite there yet, but are very very close to getting the form to submit successfully.
+
+I learned that you can reassign deconstructed values to different variables with the following syntax:
+
+const { 
+        data: categoriesData, 
+        error: categoriesError, 
+        isLoading: categoriesIsLoading 
+    } = useGetCategoriesQuery();
+
 # October 12, 2022
 Today, I worked on:
 
