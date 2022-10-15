@@ -28,7 +28,7 @@ function App() {
         {/* <Route exact path="/converter" render={() => {window.location.href="CurrencyConverter.html"}} /> */}
         <Route path='budgets'>
           <Route index element={<BudgetDashboard />} />
-          <Route path='details' element={< BudgetDetails/>} />
+          <Route path=':budget_id' element={< BudgetDetails/>} />
           <Route path='add-budget' element={< BudgetForm/>} />
           <Route path='add-expense' element={< ExpenseForm/>} />
         </Route>

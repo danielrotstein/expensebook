@@ -68,7 +68,7 @@ function BudgetForm(props) {
                         </div>
                         <div className="mb-3">
                             <select onChange={handleHomeCountryInputChange} value={home_country.home_country} required name="Home Country" id="homeCountry" className="form-select">
-                                <option value="">Home Country</option>
+                                <option value="">Home Country:</option>
                                 {
                                     countries.map(country => {
                                         return <option key={country.name} value={country.name}>{country.name}</option>
@@ -78,7 +78,7 @@ function BudgetForm(props) {
                         </div>
                         <div className="mb-3">
                             <select onChange={handleDestinationCountryInputChange} value={destination_country.destination_country} required name="Home Country" id="destinationCountry" className="form-select">
-                                <option value="">Destination Country</option>
+                                <option value="">Destination Country:</option>
                                 {
                                     countries.map(country => {
                                         return <option key={country.name} value={country.name}>{country.name}</option>

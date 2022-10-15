@@ -21,21 +21,18 @@ function BudgetDashboard() {
             <div className="d-flex">
                 {data.map(budget => {
                     return (
-                        <div className="budget-card shadow-sm" key={budget.id}>
+                        <Link to={`/budgets/${budget.id}`}>
+                            
+                            <div className="budget-card shadow-sm" key={budget.id}>
                             <h3 className="budget-title">{budget.title}</h3>
                             <p className="budget-date">{`${budget.start_date} ${budget.end_date}`}</p>
                             <h2 className="budget-amount">${budget.budget.toLocaleString()}</h2>
                         </div>
+                        </Link>
                     )}
                 )}
             </div>
         </div>
-        
-        
-        
-
-
-
     )
 }
 

@@ -89,7 +89,7 @@ function ExpenseForm() {
                             </div>
                             <div className="mb-3">
                                 <select onChange={handleBudgetIdInputChange} value={budget.budget_id} required name="budget_id" id="budget" className="form-select">
-                                    <option value="">Budget</option>
+                                    <option value="">Budgets:</option>
                                     {
                                         budgetsData.map(budget => {
                                             return <option key={budget.id} value={budget.id}>{budget.title}</option>
@@ -99,7 +99,7 @@ function ExpenseForm() {
                             </div>
                             <div className="mb-3">
                                 <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select">
-                                    <option value="">Category</option>
+                                    <option value="">Categories:</option>
                                     {
                                         categoriesData.map(category => {
                                             return <option key={category.id} value={category.id}>{category.title}</option>
