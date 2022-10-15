@@ -22,7 +22,7 @@ export const budgetsApi = createApi({
       invalidatesTags: ['BudgetDashboard'],
     }),
     getBudget: builder.query({
-      query: (budgetID) => `/budgets/${budgetID}`,
+      query: (budgetId) => `/budgets/${budgetId}`,
     })
   }),
 });

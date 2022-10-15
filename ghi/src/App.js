@@ -26,7 +26,7 @@ function App() {
         <Route path='accounts' />
         <Route path='budgets'>
           <Route index element={<BudgetDashboard />} />
-          <Route path=':budget_id' element={< BudgetDetails/>} />
+          <Route path=':budgetId' element={< BudgetDetails/>} />
           <Route path='add-budget' element={< BudgetForm/>} />
           <Route path='add-expense' element={< ExpenseForm/>} />
         </Route>

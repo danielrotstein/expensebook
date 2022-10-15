@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 
 function BudgetDetails() {
-    const { budget_id } = useParams();
-    const { data, error, isLoading } = useGetBudgetQuery(budget_id);
+    const { budgetId } = useParams();
+    const { data, error, isLoading } = useGetBudgetQuery(budgetId);
 
     if (isLoading) {
         return (
