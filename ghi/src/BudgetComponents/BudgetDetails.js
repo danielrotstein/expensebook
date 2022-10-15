@@ -12,8 +12,7 @@ function BudgetDetails() {
             <progress className="progress is-primary" max="100"></progress>
         );
     }
-    console.log("DATA________: ", data)
-    console.log("BUDGET-ID: ", budget_id)
+
     return (
         <div className="container">
             <ErrorNotification error={error} />
