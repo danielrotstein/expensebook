@@ -7,6 +7,7 @@ import BulmaInput from '../BulmaInput';
 
 function BudgetForm() {
     const navigate = useNavigate();
+    const [step, setStep] = useState(1);
     const [title, setTitle] = useState('');
     const [start_date, setStartDate] = useState('');
     const [end_date, setEndDate] = useState('');
@@ -16,6 +17,14 @@ function BudgetForm() {
     const [account_id, setAccount] = useState(0);
     const [error, setError] = useState('');
     const [createBudget, result] = useCreateBudgetMutation();
+
+    const handleNextClick = () => {
+        setStep(step + 1);
+    };
+
+    const handleResetClick = () => {
+        setStep(1);
+    };
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -31,43 +40,87 @@ function BudgetForm() {
 
     return (
         <div className="container">
-            <div className="columns is-centered">
-                <div className="column is-one-third">
-                    <ErrorNotification error={error} />
-                    <form onSubmit={(e) => handleSubmit(e)}>
-                        <div className="mb-3">
-                            <label htmlFor="title">Title</label>
-                            <BulmaInput onChange={setTitle} value={title.title} required placeholder="Title" type="text" name="title" id="title" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="startDate">Start Date</label>
-                            <BulmaInput onChange={setStartDate} value={start_date.start_date} required placeholder="Start Date" type="date" name="startDate" id="startDate" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="endDate">End Date</label>
-                            <BulmaInput onChange={setEndDate} value={end_date.end_date} required placeholder="End Date" type="date" name="endDate" id="endDate" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="budget">Budget</label>
-                            <BulmaInput onChange={setBudget} value={budget.budget} required placeholder="Budget" type="number" name="budget" id="budget" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="homeCountry">Home Country</label>
-                            <BulmaInput onChange={setHomeCountry} value={home_country.home_country} required placeholder="Home Country" type="text" name="homeCountry" id="homeCountry" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="destinationCountry">Destination Country</label>
-                            <BulmaInput onChange={setDestinationCountry} value={destination_country.destination_country} required placeholder="Destination Country" type="text" name="destinationCountry" id="destinationCountry" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="account_id">Account</label>
-                            <BulmaInput onChange={setAccount} value={account_id.account_id} required placeholder="Account" type="number" name="account_id" id="account_id" className="form-control"/>
-                        </div>
-                        <div className="field">
-                            <button className="btn btn-primary">Save</button>
-                        </div>
-                    </form>
-                </div>
+            <div className="budget-form-div">
+                <ErrorNotification error={error} />
+                <form onSubmit={(e) => handleSubmit(e)} className="create-budget-form">
+                    {step == 1 
+                        ? <div className="create-budget mb-3">
+                            <div className="input-div">
+                                <label htmlFor="title">Let's add a title to your budget</label>
+                                <BulmaInput onChange={setTitle} value={title.title} required type="text" name="title" id="title" className="form-control input"/>
+                                <div className="form-buttons-div d-flex">
+                                    {!(title.length) 
+                                        ? <button className="btn btn-primary form-button" id="first-button">Next</button>
+                                        : <button onClick={handleNextClick} className="btn btn-primary form-button" id="first-button">Next</button>
+                                    }
+                                </div>
+                            </div>
+                        </div> : null
+                    }
+                    {step == 2
+                        ? <div className="create-budget mb-3">
+                            <div className="input-div">
+                                <label htmlFor="startDate">When are you departing?</label>
+                                <BulmaInput onChange={setStartDate} value={start_date.start_date} required type="date" name="startDate" id="startDate" className="form-control input"/>
+                                <br />
+                                <label htmlFor="endDate">And when are you returning?</label>
+                                <BulmaInput onChange={setEndDate} value={end_date.end_date} required type="date" name="endDate" id="endDate" className="form-control input"/>
+                                <div className="form-buttons-div d-flex">
+                                    <p className="reset-button" onClick={handleResetClick}>Reset</p>
+                                    {!(start_date) || !(end_date) 
+                                        ? <button className="btn btn-primary form-button">Next</button>
+                                        : <button onClick={handleNextClick} className="btn btn-primary form-button">Next</button>
+                                    }
+                                </div>
+                            </div>
+                        </div> : null
+                    }
+                    {step == 3
+                        ? <div className="create-budget mb-3">
+                            <div className="input-div">
+                                <label htmlFor="budget">What's your target budget?</label>
+                                <BulmaInput onChange={setBudget} value={budget.budget} required type="number" name="budget" id="budget" className="form-control input"/>
+                                <div className="form-buttons-div d-flex">
+                                    <p className="reset-button" onClick={handleResetClick}>Reset</p>
+                                    {!(budget) 
+                                    ? <button className="btn btn-primary next-button">Next</button>
+                                    : <button onClick={handleNextClick} className="btn btn-primary next-button">Next</button>
+                                }
+                                </div>
+                            </div>
+                        </div> : null
+                    }
+                    {step == 4
+                        ? <div className="create-budget mb-3">
+                            <div className="input-div">
+                                <label htmlFor="homeCountry">Where are you based?</label>
+                                <BulmaInput onChange={setHomeCountry} value={home_country.home_country} required type="text" name="homeCountry" id="homeCountry" className="form-control input"/>
+                                <br />
+                                <label htmlFor="destinationCountry">And where are you traveling to?</label>
+                                <BulmaInput onChange={setDestinationCountry} value={destination_country.destination_country} required type="text" name="destinationCountry" id="destinationCountry" className="form-control input"/>
+                                <div className="form-buttons-div d-flex">
+                                    <p className="reset-button" onClick={handleResetClick}>Reset</p>
+                                    {!(home_country) || !(destination_country)
+                                        ? <button className="btn btn-primary form-button">Next</button>
+                                        : <button onClick={handleNextClick} className="btn btn-primary form-button">Next</button>
+                                    }
+                                </div>
+                            </div>
+                        </div> : null
+                    }
+                    {step == 5
+                        ? <div className="create-budget mb-3">
+                            <div className="input-div">
+                                <label htmlFor="account_id">Account ID</label>
+                                <BulmaInput onChange={setAccount} value={account_id.account_id} required type="number" name="account_id" id="account_id" className="form-control input"/>
+                                <div className="form-buttons-div d-flex">
+                                    <p className="reset-button" onClick={handleResetClick}>Reset</p>
+                                    <button className="btn btn-primary form-button">Save</button>
+                                </div>
+                            </div>
+                        </div> : null
+                    }
+                </form>
             </div>
         </div>
     )

@@ -12,27 +12,193 @@ code {
     monospace;
 }
 
-.create-new-trip-div {
-  margin-top: 50px;
+p {
+  font-family: Avenir;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 80%;
+  }
+}
+
+.navbar {
+  border-bottom: 1px solid #dcdcdc80;
+}
+
+.navbar-brand {
+  font-family: Avenir;
+  font-size: 24px;
+  font-weight: 800;
+  color: #70c244;
+  margin-left: 10px;
+  width: 90%;
+}
+
+.navbar-brand:hover {
+  color: #70c244;
+  text-decoration: underline;
+}
+
+.nav-link {
+  font-family: Avenir;
+  font-size: 18px;
+  font-weight: 500;
+  color: #70c244;
+}
+
+.nav-link:hover {
+  color: #70c244;
+  text-decoration: underline;
+}
+
+.navbar-toggler-icon {
+  background-color: #70c244;
+}
+
+/* .navbar-collapse {
+  margin-right: 20px;
+} */
+
+.btn-primary {
+  background-color: #70c244;
+  font: Avenir;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #70c24499;
+}
+
+.dashboard-title {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+#create-new-budget-button {
+  margin-left: 10px;
+}
+
+.create-new-budget-div {
+  margin-top: 10px;
 }
 
 .budget-card {
   width: 350px;
   height: 250px;
-  margin-top: 50px;
-  margin-right: 50px;
-  border-radius: 5px;
-  border: 1px solid black;
+  margin-top: 30px;
+  margin-right: 35px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  transition: box-shadow 0.5s;
+}
+
+.budget-card:hover {
+  box-shadow: 10px 10px 1px #70c244;
 }
 
 .budget-title {
-  margin: 20px;
+  font-size: 26px;
+  font-weight: 500;
+  margin: 20px 30px;
 }
 
 .budget-date {
-  margin: 20px;
+  font-size: 16px;
+  margin: 20px 30px;
 }
 
 .budget-amount {
-  margin: 20px;
+  font-size: 40px;
+  font-weight: 800;
+  color: #70c244;
+  margin: 20px 30px;
+}
+
+.budget-form-div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0px;
+  width: 100%;
+}
+
+.create-budget-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 440px;
+  width: 100%;
+}
+
+.create-budget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+  width: 400px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  transition: box-shadow 0.5s;
+}
+
+.create-budget:hover {
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.input-div {
+  width: 300px;
+}
+
+label {
+  font-family: Avenir;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.input {
+  font-family: Avenir;
+  font-size: 18px;
+  width: 300px;
+}
+
+.form-buttons-div {
+  display: flex;
+  align-items: center;
+  float: right;
+  margin-top: 20px;
+}
+
+#first-button {
+  margin-top: 8px;
+}
+
+.reset-button {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.footer-margin {
+  height: 0;
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #dcdcdc;
+  margin-top: 10px;
+  padding: 30px 20px 20px;
+  background-color: white;
+}
+
+.footer-div {
+  display: inline-flex;
+}
+
+.footer-div p {
+  font-size: 14px;
 }
