@@ -24,8 +24,6 @@ function App() {
         <Route path='logout' element={< Logout/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
-        {/* <Route path='currency-converter' element={< CurrencyConverter/>}/> */}
-        {/* <Route exact path="/converter" render={() => {window.location.href="CurrencyConverter.html"}} /> */}
         <Route path='budgets'>
           <Route index element={<BudgetDashboard />} />
           <Route path=':budget_id' element={< BudgetDetails/>} />
