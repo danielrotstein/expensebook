@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { useGetBudgetQuery } from '../store/budgetsApi';
 import ErrorNotification from '../ErrorNotification';
 import { useParams } from 'react-router-dom';
-import { useGetExpenseQuery } from '../store/expensesApi';
+// import { useGetExpenseQuery } from '../store/expensesApi';
 
 
 function BudgetDetails() {
-    const { budget_id, expense_id } = useParams();
+    const { budget_id } = useParams();
     const { data, error, isLoading } = useGetBudgetQuery(budget_id);
-    const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
+    // const { expense_id } = useParams();
+    // const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
     if (isLoading) {
         return (
@@ -22,7 +23,7 @@ function BudgetDetails() {
     // }
     
     console.log("BUDGETS ____: ", data)
-    console.log("EXPENSES----: ", data2)
+    // console.log("EXPENSES----: ", data2)
 
     return (
         <div className="container">
