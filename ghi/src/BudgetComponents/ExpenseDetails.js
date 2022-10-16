@@ -1,7 +1,7 @@
 function ExpenseDetails() {
     return (
         <div className="container-fluid">
-            <h1>Detail Expense</h1>
+            <h1>Expense Details</h1>
         </div>
     )
 }

@@ -6,20 +6,20 @@ import { useGetExpenseQuery } from '../store/expensesApi';
 
 
 function BudgetDetails() {
-    const { budget_id } = useParams();
+    const { budget_id, expense_id } = useParams();
     const { data, error, isLoading } = useGetBudgetQuery(budget_id);
-    const { data2, isLoading2 } = useGetExpenseQuery();
+    const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
     if (isLoading) {
         return (
             <progress className="progress is-primary" max="100"></progress>
         );
     }
-    if (isLoading2) {
-        return (
-            <progress className="progress is-primary" max="100"></progress>
-        );
-    }
+    // if (isLoading2) {
+    //     return (
+    //         <progress className="progress is-primary" max="100"></progress>
+    //     );
+    // }
     
     console.log("BUDGETS ____: ", data)
     console.log("EXPENSES----: ", data2)
