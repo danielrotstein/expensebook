@@ -2,21 +2,27 @@ import { Link } from 'react-router-dom';
 import { useGetBudgetQuery } from '../store/budgetsApi';
 import ErrorNotification from '../ErrorNotification';
 import { useParams } from 'react-router-dom';
-import { useGetExpensesQuery } from '../store/expensesApi';
+import { useGetExpenseQuery } from '../store/expensesApi';
 
 
 function BudgetDetails() {
     const { budget_id } = useParams();
     const { data, error, isLoading } = useGetBudgetQuery(budget_id);
-    // const { data2, isLoading2 } = useGetExpensesQuery();
+    const { data2, isLoading2 } = useGetExpenseQuery();
 
     if (isLoading) {
         return (
             <progress className="progress is-primary" max="100"></progress>
         );
     }
+    if (isLoading2) {
+        return (
+            <progress className="progress is-primary" max="100"></progress>
+        );
+    }
     
-    // console.log("EXPENSES----: ", data2)
+    console.log("BUDGETS ____: ", data)
+    console.log("EXPENSES----: ", data2)
 
     return (
         <div className="container">

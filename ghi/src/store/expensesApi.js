@@ -29,6 +29,9 @@ export const expensesApi = createApi({
       },
       invalidatesTags: ['BudgetDetails'],
     }),
+    getExpense: builder.query({
+      query: (expense_id) => `/budgets/${expense_id}`,
+    })
   }),
 });
 
@@ -37,5 +40,6 @@ export const {
     useGetBudgetsQuery,
     useGetCategoriesQuery,
     useGetExpensesQuery,
-    useCreateExpenseMutation, 
+    useCreateExpenseMutation,
+    useGetExpenseQuery, 
 } = expensesApi;
