@@ -51,7 +51,7 @@ function ExpenseForm() {
     }
 
     if (result.isSuccess) {
-        navigate("/budgets");
+        navigate("/budgets/:budget_id");
     } else if (result.isError) {
         setError(result.error);
     }

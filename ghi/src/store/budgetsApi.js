@@ -24,6 +24,9 @@ export const budgetsApi = createApi({
     getBudget: builder.query({
       query: (budget_id) => `/budgets/${budget_id}`,
     })
+    // getExpense: builder.query({
+    //   query: (budget_id) => `/budgets/${budget_id}/add-expense`,
+    // })
   }),
 });
 
