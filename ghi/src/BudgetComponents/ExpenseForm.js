@@ -131,6 +131,10 @@
 
 
 
+
+
+
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
@@ -186,19 +190,11 @@ function ExpenseForm(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const budget_id = budget.budget_id
+        const budget_id = props.props
         const category_id = category.category_id
         createExpense({title, date, expense_total, description, 
             budget_id, category_id,});
     }
-
-    
-    // if (result.isSuccess) {
-    //     navigate(`/budgets/${budget.budget_id}`);
-    // } else if (result.isError) {
-    //     setError(result.error);
-    // }
-    
 
     if (budgetsIsLoading || categoriesIsLoading) {
         return (
@@ -243,7 +239,7 @@ function ExpenseForm(props) {
                                 <label htmlFor="description">Description</label>
                                 <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control"/>
                             </div>
-                            <div className="mb-3">
+                            {/* <div className="mb-3">
                                 <select onChange={handleBudgetIdInputChange} value={budget.budget_id} required name="budget_id" id="budget" className="form-select">
                                     <option value="">Budgets:</option>
                                     {
@@ -252,7 +248,7 @@ function ExpenseForm(props) {
                                         })
                                     }
                                 </select>
-                            </div>
+                            </div> */}
                             <div className="mb-3">
                                 <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select">
                                     <option value="">Categories:</option>
