@@ -166,7 +166,7 @@ function ExpenseForm(props) {
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
     const [description, setDescription] = useState('');
-    const [budget, setBudget] = useState(0);
+    // const [budget, setBudget] = useState(0);
     const [category, setCategory] = useState(0);
     const [error, setError] = useState('');
     const [createExpense, result] = useCreateExpenseMutation();
@@ -176,11 +176,11 @@ function ExpenseForm(props) {
     const handleShow = () => setShow(true);
 
 
-    const handleBudgetIdInputChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setBudget({ ...budget, [name]: parseInt(value) });
-    };
+    // const handleBudgetIdInputChange = (e) => {
+    //     const name = e.target.name;
+    //     const value = e.target.value;
+    //     setBudget({ ...budget, [name]: parseInt(value) });
+    // };
 
     const handleCategoryIdInputChange = (e) => {
         const name = e.target.name;
@@ -212,13 +212,13 @@ function ExpenseForm(props) {
                         <ErrorNotification error={error} />
                         
                         <Button variant="dark my-5" onClick={handleShow}>
-                            Expense Form
+                            Add Expense
                         </Button>
 
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
                             
-                            <Modal.Title>Create an account</Modal.Title>
+                            <Modal.Title>Add Expense</Modal.Title>
                             </Modal.Header>
 
                         <Modal.Body>

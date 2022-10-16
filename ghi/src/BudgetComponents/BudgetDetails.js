@@ -31,12 +31,8 @@ function BudgetDetails() {
     return (
         <div className="container">
             <ErrorNotification error={error} />
-            <div className="add-expense-div mt-3">
-                <Link to="add-expense" className="btn btn-dark px-4 gap-3">
-                    Add Expense
-                </Link>
-            </div>
-            <div className="budget-card shadow-sm">
+            <ExpenseForm props={budget_id}/>
+            <div className="budget-card shadow-sm mb-5">
                 <h1>Budget details</h1>
                 <p>Title: {data.title}</p>
                 <p>Date: {data.start_date} - {data.end_date}</p>
@@ -54,7 +50,7 @@ function BudgetDetails() {
                 )}
             </div> */}
             </div>
-            <ExpenseForm props={budget_id}/>
+            
         </div>
     )
 }
