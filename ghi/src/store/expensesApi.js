@@ -16,7 +16,7 @@ export const expensesApi = createApi({
     }),
     getExpenses: builder.query({
       query: () => '/expenses',
-      providesTags: ['BudgetDetails'],
+      // providesTags: ['BudgetDetails'],
     }),
     createExpense: builder.mutation({
       query: data => {
