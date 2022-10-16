@@ -3,7 +3,6 @@ import { useGetBudgetQuery } from '../store/budgetsApi';
 import ErrorNotification from '../ErrorNotification';
 import { useParams } from 'react-router-dom';
 // import { useGetExpenseQuery } from '../store/expensesApi';
-import ExpenseModal from './ExpenseModal';
 import ExpenseForm from './ExpenseForm';
 
 
