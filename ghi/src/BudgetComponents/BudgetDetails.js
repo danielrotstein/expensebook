@@ -2,33 +2,36 @@ import { Link } from 'react-router-dom';
 import { useGetBudgetQuery } from '../store/budgetsApi';
 import ErrorNotification from '../ErrorNotification';
 import { useParams } from 'react-router-dom';
-import { useGetExpenseQuery } from '../store/expensesApi';
+// import { useGetExpenseQuery } from '../store/expensesApi';
+import ExpenseModal from './ExpenseModal';
+import ExpenseForm from './ExpenseForm';
+
 
 
 function BudgetDetails() {
     const { budget_id } = useParams();
     const { data, error, isLoading } = useGetBudgetQuery(budget_id);
-    const { expense_id } = useParams();
-    const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
+    // const { expense_id } = useParams();
+    // const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
     if (isLoading) {
         return (
             <progress className="progress is-primary" max="100"></progress>
         );
     }
-    if (isLoading2) {
-        return (
-            <progress className="progress is-primary" max="100"></progress>
-        );
-    }
+    // if (isLoading2) {
+    //     return (
+    //         <progress className="progress is-primary" max="100"></progress>
+    //     );
+    // }
     
     // console.log("BUDGETS ____: ", data)
-    console.log("EXPENSES----: ", expense_id)
+    // console.log("EXPENSES----: ", expense_id)
 
     return (
         <div className="container">
             <ErrorNotification error={error} />
-            <div className="create-new-trip-div">
+            <div className="add-expense-div mt-3">
                 <Link to="add-expense" className="btn btn-dark px-4 gap-3">
                     Add Expense
                 </Link>
@@ -38,6 +41,7 @@ function BudgetDetails() {
                 <p>Title: {data.title}</p>
                 <p>Date: {data.start_date} - {data.end_date}</p>
                 <p>Budget: {data.budget}</p>
+
                 {/* <div className="d-flex">
                 {data2.map(expense => {
                     return (
@@ -50,6 +54,7 @@ function BudgetDetails() {
                 )}
             </div> */}
             </div>
+            <ExpenseForm props={budget_id}/>
         </div>
     )
 }

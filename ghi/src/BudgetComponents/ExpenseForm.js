@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
@@ -7,8 +7,12 @@ import { useCreateExpenseMutation } from '../store/expensesApi';
 import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
 
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-function ExpenseForm() {
+
+
+function ExpenseForm(props) {
     const { 
         data: budgetsData, 
         error: budgetsError, 
@@ -29,6 +33,11 @@ function ExpenseForm() {
     const [category, setCategory] = useState(0);
     const [error, setError] = useState('');
     const [createExpense, result] = useCreateExpenseMutation();
+    // Modal Stuff
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     const handleBudgetIdInputChange = (e) => {
         const name = e.target.name;
@@ -50,11 +59,14 @@ function ExpenseForm() {
             budget_id, category_id,});
     }
 
-    if (result.isSuccess) {
-        navigate("/budgets");
-    } else if (result.isError) {
-        setError(result.error);
-    }
+    useEffect(() => {
+        if (result.isSuccess) {
+          navigate(`/budgets/${budget.budget_id}`);
+        } else if (result.isError) {
+          setError(result.error);
+        }
+      },[result.isSuccess])
+    
 
     if (budgetsIsLoading || categoriesIsLoading) {
         return (
@@ -70,6 +82,21 @@ function ExpenseForm() {
                         <ErrorNotification error={budgetsError} />
                         <ErrorNotification error={categoriesError} />
                         <ErrorNotification error={error} />
+                        
+                        <Button variant="dark my-5" onClick={handleShow}>
+                            Expense Form
+                        </Button>
+
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                            
+                            <Modal.Title>Create an account</Modal.Title>
+                            </Modal.Header>
+
+
+
+
+                        <Modal.Body>
                         <form onSubmit={(e) => handleSubmit(e)}>
                             <div className="mb-3">
                                 <label htmlFor="title">Title</label>
@@ -108,9 +135,11 @@ function ExpenseForm() {
                                 </select>
                             </div>
                             <div className="field">
-                                <button className="btn btn-primary">Save</button>
+                                <button className="btn btn-dark" onClick={handleClose}>Save</button>
                             </div>
                         </form>
+                        </Modal.Body>
+                        </Modal>
                     </div>
                 </div>
             </div>
@@ -120,3 +149,5 @@ function ExpenseForm() {
 
 
 export default ExpenseForm;
+
+

@@ -31,10 +31,10 @@ function App() {
           <Route path='add-budget' element={< BudgetForm/>} />
           <Route path=':budget_id/add-expense' element={< ExpenseForm/>} />
         </Route>
-        <Route path='expenses'>
+        {/* <Route path='expenses'>
           <Route index element={<ExpensesDashboard />} />
           <Route path=':expense_id' element={< ExpenseDetails/>} />
-        </Route>
+        </Route> */}
       </Routes>
     </BrowserRouter>
   );
