@@ -30,7 +30,7 @@ function BudgetDetails() {
         <div className="container">
             <ErrorNotification error={error} />
             <ExpenseForm props={budget_id}/>
-            <div className="budget-card shadow-sm my-3">
+            <div className="budget-card shadow-sm">
                 <h1>{data.title}</h1>
                 <p>Date: {data.start_date} - {data.end_date}</p>
                 <p>Budget: ${data.budget}</p>
