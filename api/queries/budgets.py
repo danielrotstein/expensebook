@@ -183,6 +183,7 @@ class BudgetRepository:
             print(e)
             return {"message": "Could not update that budget"}
 
+
     def budget_in_to_out(self, id: int, budget: BudgetIn):
         old_data = budget.dict()
         return BudgetOut(id=id, **old_data)            

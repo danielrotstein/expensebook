@@ -61,7 +61,6 @@ class ExpenseRepository:
             return {"message": "Could not get all expenses"}
 
 
-
     def get_one_expense(self, expense_id) -> Optional[ExpenseOut]:
         try:
             # connect the database
@@ -95,7 +94,6 @@ class ExpenseRepository:
         except Exception as e:
             print(e)
             
-
 
     def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
         try:
