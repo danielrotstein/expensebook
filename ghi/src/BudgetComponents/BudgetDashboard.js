@@ -1,6 +1,8 @@
+import Moment from 'moment';
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
-import BudgetForm from './BudgetForm';
+import { Link } from 'react-router-dom';
+
 
 
 function BudgetDashboard() {
@@ -15,22 +17,20 @@ function BudgetDashboard() {
     return (
         <div className="container">
             <ErrorNotification error={error} />
-            <BudgetForm />
-            {/* <div className="create-new-trip-div">
-                <Link to="/budgets/add-budget" className="btn btn-dark px-4 gap-3">
-                    Create New Budget
-                </Link>
-            </div> */}
-            <div className="d-flex">
+            <p className="dashboard-title">Budget Dashboard</p>
+            <div className="create-new-budget-div">
+                <Link to="/budgets/add-budget" className="btn btn-primary px-4 gap-3" id="create-new-budget-button">Create New Budget</Link>
+            </div>
+            <div className="sub-container d-flex">
                 {data.map(budget => {
                     return (
-                        <div className="budget-card shadow-sm" key={budget.id}>
-                            <a href={`/budgets/${budget.id}`}>
-                                <h3 className="budget-title">{budget.title}</h3>
-                            </a>
-                                <p className="budget-date">{`${budget.start_date} ${budget.end_date}`}</p>
-                                <h2 className="budget-amount">${budget.budget.toLocaleString()}</h2>
-                        </div>
+                        <a href={`/budgets/${budget.id}`}>
+                            <div className="budget-card" key={budget.id}>
+                                <p className="budget-title">{budget.title}</p>
+                                <p className="budget-date">{`${Moment(budget.start_date).format('MMM DD, YYYY')} - ${Moment(budget.end_date).format('MMM DD, YYYY')}`}</p>
+                                <p className="budget-amount">${budget.budget.toLocaleString()}</p>
+                            </div>
+                        </a>
                     )}
                 )}
             </div>

@@ -1,3 +1,15 @@
+## 10/14/22
+
+Today, I worked on:
+
+*  Creating the currency converter for Expensebook.
+
+Joey and I created a new file countryList that has an array of objects with country name and the associate currency code. We then imported that file to the BudgetForm so we can select countries via dropdown menu. Now the country is saved in the DB. We then should be able to work with the associate currency code to fill out the ExpenseForm to perform a currency conversion.
+
+Today, I learned how to successfully import a js file into a react component, use it in a form and then be saved in the DB.
+
+
+
 ## 10/13/22
 
 Today, I worked on:
