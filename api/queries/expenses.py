@@ -28,7 +28,7 @@ class ExpenseOut(BaseModel):
 
 
 class ExpenseRepository:
-    def get_all_expense(self) -> Optional[ExpenseOut]:
+    def get_all_expenses(self) -> Optional[ExpenseOut]:
         try:
             # connect the database
             with pool.connection() as conn:
