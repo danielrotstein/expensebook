@@ -149,7 +149,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-
 function ExpenseForm(props) {
     const { 
         data: budgetsData, 
@@ -239,7 +238,8 @@ function ExpenseForm(props) {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description">Description</label>
-                                <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control"/>
+                                    <textarea BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control">
+                                    </textarea>
                             </div>
                             {/* <div className="mb-3">
                                 <select onChange={handleBudgetIdInputChange} value={budget.budget_id} required name="budget_id" id="budget" className="form-select">
