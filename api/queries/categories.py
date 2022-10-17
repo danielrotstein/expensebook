@@ -91,6 +91,24 @@ class CategoryRepository:
             return {"message": "Unable to create a category"}
 
 
+
+    def delete_category(self, category_id):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        DELETE FROM categories
+                        WHERE id = %s
+                        """,
+                        [category_id],
+                    )
+                    return True
+        except Exception as e:
+            return False
+
+
+
     def update_category(self, category_id: int, category: CategoryIn) -> Union[CategoryOut, Error]:
         try:
             # connect the database
