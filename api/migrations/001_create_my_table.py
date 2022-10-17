@@ -62,7 +62,7 @@ steps = [
         DROP TABLE recommendations;
         """
     ],
-
+    
     [
         """
         CREATE TABLE expenses (

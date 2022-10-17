@@ -23,12 +23,10 @@ function ExpenseForm(props) {
         isLoading: categoriesIsLoading 
     } = useGetCategoriesQuery();
 
-    // const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
     const [description, setDescription] = useState('');
-    // const [budget, setBudget] = useState(0);
     const [category, setCategory] = useState(0);
     const [error, setError] = useState('');
     const [createExpense, result] = useCreateExpenseMutation();
@@ -38,12 +36,6 @@ function ExpenseForm(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-
-    // const handleBudgetIdInputChange = (e) => {
-    //     const name = e.target.name;
-    //     const value = e.target.value;
-    //     setBudget({ ...budget, [name]: parseInt(value) });
-    // };
 
     const handleCategoryIdInputChange = (e) => {
         const name = e.target.name;
@@ -102,16 +94,6 @@ function ExpenseForm(props) {
                                 <label htmlFor="description">Description</label>
                                     <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control"/>
                             </div>
-                            {/* <div className="mb-3">
-                                <select onChange={handleBudgetIdInputChange} value={budget.budget_id} required name="budget_id" id="budget" className="form-select">
-                                    <option value="">Budgets:</option>
-                                    {
-                                        budgetsData.map(budget => {
-                                            return <option key={budget.id} value={budget.id}>{budget.title}</option>
-                                        })
-                                    }
-                                </select>
-                            </div> */}
                             <div className="mb-3">
                                 <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select">
                                     <option value="">Categories:</option>
@@ -123,7 +105,7 @@ function ExpenseForm(props) {
                                 </select>
                             </div>
                             <div className="field">
-                                <button className="btn btn-dark" onClick={handleClose}>Save</button>
+                                <button className="btn btn-primary" onClick={handleClose}>Save</button>
                             </div>
                         </form>
                         </Modal.Body>
