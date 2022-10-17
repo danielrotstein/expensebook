@@ -212,7 +212,7 @@ function ExpenseForm(props) {
                         <ErrorNotification error={categoriesError} />
                         <ErrorNotification error={error} />
                         
-                        <Button variant="dark my-5" onClick={handleShow}>
+                        <Button variant="dark my-3" onClick={handleShow}>
                             Add Expense
                         </Button>
 
