@@ -34,7 +34,7 @@ class BudgetOut(BaseModel):
 
 
 class BudgetRepository:
-    def get_all_budget(self) -> Union[List[BudgetOut], Error]:
+    def get_all_budgets(self) -> Union[List[BudgetOut], Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
