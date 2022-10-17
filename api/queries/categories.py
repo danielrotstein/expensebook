@@ -89,7 +89,6 @@ class CategoryRepository:
             return {"message": "Could not update that category"}
 
 
-
     def category_in_to_out(self, id: int, category: CategoryIn):
         old_data = category.dict()
         return CategoryOut(id=id, **old_data)
