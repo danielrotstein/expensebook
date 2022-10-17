@@ -4,7 +4,6 @@ import { useGetBudgetsQuery } from '../store/budgetsApi';
 import { Link } from 'react-router-dom';
 
 
-
 function BudgetDashboard() {
     const { data, error, isLoading } = useGetBudgetsQuery();
 
