@@ -28,7 +28,7 @@ class ExpenseOut(BaseModel):
 
 
 class ExpenseRepository:
-    def get_all_expense(self) -> Optional[ExpenseOut]:
+    def get_all_expenses(self) -> Optional[ExpenseOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -59,7 +59,6 @@ class ExpenseRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not get all expenses"}
-
 
 
     def get_one_expense(self, expense_id) -> Optional[ExpenseOut]:
@@ -95,7 +94,6 @@ class ExpenseRepository:
         except Exception as e:
             print(e)
             
-
 
     def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
         try:

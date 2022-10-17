@@ -19,11 +19,11 @@ router = APIRouter(tags=["Budgets"])
 
 
 @router.get("/budgets", response_model=Union[List[BudgetOut], Error])
-def get_all_budget(
+def get_all_budgets(
     repo: BudgetRepository = Depends(),
     # account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return repo.get_all_budget()
+    return repo.get_all_budgets()
 
 
 @router.get("/budgets/{budget_id}", response_model=Optional[BudgetOut])
@@ -47,7 +47,14 @@ def create_budget(
     return repo.create_budget(budget)
 
 
+@router.delete("/budgets/{budget_id}", response_model=bool)
+def delete_budget(
+    budget_id: int,
+    repo: BudgetRepository = Depends(),
+) -> bool:
+    return repo.delete_budget(budget_id)
 
+    
 @router.put("/budgets/{budget_id}", response_model=Union[BudgetOut, Error])
 def update_budget(
     budget_id: int,
@@ -55,11 +62,3 @@ def update_budget(
     repo: BudgetRepository = Depends(),
 ) -> Union[Error, BudgetOut]:
     return repo.update_budget(budget_id, budget)
-
-
-@router.delete("/budgets/{budget_id}", response_model=bool)
-def delete_budget(
-    budget_id: int,
-    repo: BudgetRepository = Depends(),
-) -> bool:
-    return repo.delete_budget(budget_id)

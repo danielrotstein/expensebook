@@ -12,10 +12,10 @@ router = APIRouter(tags=["Categories"])
 
 
 @router.get("/categories", response_model=Union[List[CategoryOut], Error])
-def get_all_category(
+def get_all_categories(
     repo: CategoryRepository = Depends(),
 ):
-    return repo.get_all_category()
+    return repo.get_all_categories()
 
 
 @router.get("/categories/{category_id}", response_model=Optional[CategoryOut])
