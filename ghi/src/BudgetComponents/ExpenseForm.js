@@ -105,7 +105,7 @@ function ExpenseForm(props) {
                                 </select>
                             </div>
                             <div className="field">
-                                <button className="btn btn-dark" onClick={handleClose}>Save</button>
+                                <button className="btn btn-primary" onClick={handleClose}>Save</button>
                             </div>
                         </form>
                         </Modal.Body>

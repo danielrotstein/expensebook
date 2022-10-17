@@ -14,9 +14,6 @@ steps = [
         DROP TABLE accounts;
         """
     ],
-
-
-
     [
         """
         CREATE TABLE categories (
@@ -62,7 +59,6 @@ steps = [
         DROP TABLE recommendations;
         """
     ],
-
     [
         """
         CREATE TABLE expenses (
