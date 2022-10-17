@@ -18,7 +18,7 @@ class CategoryOut(BaseModel):
 
 
 class CategoryRepository:
-    def get_all_category(self) -> Optional[CategoryOut]:
+    def get_all_categories(self) -> Optional[CategoryOut]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -91,7 +91,6 @@ class CategoryRepository:
             return {"message": "Unable to create a category"}
 
 
-
     def delete_category(self, category_id):
         try:
             with pool.connection() as conn:
@@ -106,7 +105,6 @@ class CategoryRepository:
                     return True
         except Exception as e:
             return False
-
 
 
     def update_category(self, category_id: int, category: CategoryIn) -> Union[CategoryOut, Error]:
