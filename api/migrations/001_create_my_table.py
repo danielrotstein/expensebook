@@ -62,7 +62,7 @@ steps = [
         DROP TABLE recommendations;
         """
     ],
-
+# added expense_converted field for expense conversion API
     [
         """
         CREATE TABLE expenses (
@@ -70,6 +70,7 @@ steps = [
             title VARCHAR(200) NOT NULL,
             date DATE NOT NULL,
             expense_total INT NOT NULL,
+            expense_converted INT NOT NULL,
             description TEXT NULL,
             budget_id INT REFERENCES budgets(id),
             category_id INT REFERENCES categories(id)
