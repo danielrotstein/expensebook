@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useGetBudgetQuery } from '../store/budgetsApi';
 import ErrorNotification from '../ErrorNotification';
 import { useParams } from 'react-router-dom';
@@ -31,11 +30,10 @@ function BudgetDetails() {
         <div className="container">
             <ErrorNotification error={error} />
             <ExpenseForm props={budget_id}/>
-            <div className="budget-card shadow-sm mb-5">
-                <h1>Budget details</h1>
-                <p>Title: {data.title}</p>
+            <div className="budget-card shadow-sm my-3">
+                <h1>{data.title}</h1>
                 <p>Date: {data.start_date} - {data.end_date}</p>
-                <p>Budget: {data.budget}</p>
+                <p>Budget: ${data.budget}</p>
 
                 {/* <div className="d-flex">
                 {data2.map(expense => {
