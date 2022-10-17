@@ -30,7 +30,7 @@ function App() {
           <Route index element={<BudgetDashboard />} />
           <Route path=':budget_id' element={< BudgetDetails/>} />
           <Route path='add-budget' element={< BudgetForm/>} />
-          <Route path=':budget_id/add-expense' element={< ExpenseForm/>} />
+          {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}
         </Route>
         {/* <Route path='expenses'>
           <Route index element={<ExpensesDashboard />} />
