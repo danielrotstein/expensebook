@@ -42,6 +42,31 @@ class CategoryRepository:
             return {"message": "Could not get all categories"}
 
 
+    def get_one_category(self, category_id) -> Optional[CategoryOut]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get a cursor (something to run SQL with)
+                with conn.cursor() as db:
+                    # Run our SELECT statement
+                    result = db.execute(
+                        """
+                        SELECT id
+                             , title
+                        FROM categories
+                        WHERE id = %s
+                        ORDER BY id;
+                        """,
+                        [category_id],
+                    )
+                    record = result.fetchone()
+                    if record is None:
+                        return None
+                    return self.record_to_category_out(record)
+        except Exception as e:
+            print(e)
+
+
     def create_category(self, category: CategoryIn) -> Union[CategoryOut, Error]:
         try:
             with pool.connection() as conn:
