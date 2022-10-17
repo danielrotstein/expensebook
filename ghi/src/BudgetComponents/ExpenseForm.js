@@ -12,15 +12,15 @@ import Modal from 'react-bootstrap/Modal';
 
 
 function ExpenseForm(props) {
-    const { 
-        data: budgetsData, 
-        error: budgetsError, 
-        isLoading: budgetsIsLoading 
+    const {
+        data: budgetsData,
+        error: budgetsError,
+        isLoading: budgetsIsLoading
     } = useGetBudgetsQuery();
-    const { 
-        data: categoriesData, 
-        error: categoriesError, 
-        isLoading: categoriesIsLoading 
+    const {
+        data: categoriesData,
+        error: categoriesError,
+        isLoading: categoriesIsLoading
     } = useGetCategoriesQuery();
 
     // const navigate = useNavigate();
@@ -32,7 +32,7 @@ function ExpenseForm(props) {
     const [category, setCategory] = useState(0);
     const [error, setError] = useState('');
     const [createExpense, result] = useCreateExpenseMutation();
-    
+
     // Modal Stuff
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -55,8 +55,10 @@ function ExpenseForm(props) {
         e.preventDefault();
         const budget_id = props.props
         const category_id = category.category_id
-        createExpense({title, date, expense_total, description, 
+        createExpense({title, date, expense_total, description,
             budget_id, category_id,});
+            // ^^ need to add expense converted field
+            // and get data from currency API
     }
 
     if (budgetsIsLoading || categoriesIsLoading) {
@@ -73,14 +75,14 @@ function ExpenseForm(props) {
                         <ErrorNotification error={budgetsError} />
                         <ErrorNotification error={categoriesError} />
                         <ErrorNotification error={error} />
-                        
+
                         <Button className="btn btn-primary" variant="dark my-3" onClick={handleShow}>
                             Add Expense
                         </Button>
 
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
-                            
+
                             <Modal.Title>Add Expense</Modal.Title>
                             </Modal.Header>
 

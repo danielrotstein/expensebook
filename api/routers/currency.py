@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends
 import requests
 import json
-from budgets import get_one_budget
 
 router = APIRouter(tags=["Currency"])
 
