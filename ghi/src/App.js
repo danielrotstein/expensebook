@@ -6,6 +6,7 @@ import Logout from './LoginComponents/Logout'
 import SignUpForm from './LoginComponents/SignUp';
 import MainPage from './MainPage';
 import Nav from './Nav';
+import Footer from './Footer';
 import ExpenseForm from './BudgetComponents/ExpenseForm';
 import BudgetDashboard from './BudgetComponents/BudgetDashboard';
 import BudgetDetails from './BudgetComponents/BudgetDetails';
@@ -33,6 +34,7 @@ function App() {
           <Route path='add-expense' element={< ExpenseForm/>} />
         </Route>
       </Routes>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

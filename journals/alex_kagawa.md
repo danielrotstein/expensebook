@@ -1,3 +1,10 @@
+# October 14, 2022
+Today, I worked on:
+
+Establishing the color pallet, branding, and styling of our application by designing our first few screens using bootstrap and CSS starting with the budget dashboard and the budget POST form.
+
+I learned how to couple CSS transitions with box-shadows to trigger a box-shadow to gradually appear whenever key elements are hovered.  I feel this effect gives the site a sleeker look-and-feel, which is exactly what we're going for.
+
 # October 13, 2022
 Today, I worked on:
 
