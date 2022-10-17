@@ -20,7 +20,7 @@ function BudgetDashboard() {
             <div className="create-new-budget-div">
                 <Link to="/budgets/add-budget" className="btn btn-primary px-4 gap-3" id="create-new-budget-button">Create New Budget</Link>
             </div>
-            <div className="d-flex">
+            <div className="sub-container d-flex">
                 {data.map(budget => {
                     return (
                         <div className="budget-card" key={budget.id}>
@@ -32,12 +32,6 @@ function BudgetDashboard() {
                 )}
             </div>
         </div>
-        
-        
-        
-
-
-
     )
 }
 
