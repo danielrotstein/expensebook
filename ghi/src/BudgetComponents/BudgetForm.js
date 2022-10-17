@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
+import countries from '../countryList'
 
 
-function BudgetForm() {
+function BudgetForm(props) {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [title, setTitle] = useState('');
@@ -31,6 +32,20 @@ function BudgetForm() {
         createBudget({title, start_date, end_date, budget, 
             home_country, destination_country, account_id,});
     }
+
+    const handleHomeCountryInputChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setHomeCountry(value);
+    };
+
+    const handleDestinationCountryInputChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setDestinationCountry(value);
+    };
+
+
 
     if (result.isSuccess) {
         navigate("/budgets");
