@@ -11,7 +11,8 @@ import ExpenseForm from './BudgetComponents/ExpenseForm';
 import BudgetDashboard from './BudgetComponents/BudgetDashboard';
 import BudgetDetails from './BudgetComponents/BudgetDetails';
 import BudgetForm from './BudgetComponents/BudgetForm';
-// import { useState } from 'react';
+import ExpensesDashboard from './BudgetComponents/ExpenseDashboard';
+import ExpenseDetails from './BudgetComponents/ExpenseDetails';
 
 
 function App() {
@@ -25,14 +26,16 @@ function App() {
         <Route path='logout' element={< Logout/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
-        {/* <Route path='currency-converter' element={< CurrencyConverter/>}/> */}
-        {/* <Route exact path="/converter" render={() => {window.location.href="CurrencyConverter.html"}} /> */}
         <Route path='budgets'>
           <Route index element={<BudgetDashboard />} />
-          <Route path='details' element={< BudgetDetails/>} />
-          <Route path='add-budget' element={< BudgetForm/>} />
-          <Route path='add-expense' element={< ExpenseForm/>} />
+          <Route path=':budget_id' element={< BudgetDetails/>} />
+          {/* <Route path='add-budget' element={< BudgetForm/>} /> */}
+          {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}
         </Route>
+        {/* <Route path='expenses'>
+          <Route index element={<ExpensesDashboard />} />
+          <Route path=':expense_id' element={< ExpenseDetails/>} />
+        </Route> */}
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

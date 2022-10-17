@@ -8,7 +8,6 @@ from queries.recommendations import (
     RecommendationOut,
 )
 
-
 router = APIRouter(tags=["Recommendation"])
 
 
@@ -17,14 +16,6 @@ def get_all_recommendations(
     repo: RecommendationRepository = Depends(),
 ):
     return repo.get_all_recommendations()
-
-
-@router.post("/recommendation", response_model=Union[RecommendationOut, Error])
-def create_recommendation(
-    recommendation: RecommendationIn,
-    repo: RecommendationRepository = Depends(),
-):
-    return repo.create_recommendation(recommendation)
 
 
 @router.get("/recommendations/{recommendation_id}", response_model=Optional[RecommendationOut])
@@ -39,13 +30,12 @@ def get_one_recommendation(
     return recommendation
 
 
-@router.put("/recommendations/{recommendation_id}", response_model=Union[RecommendationOut, Error])
-def update_recommendation(
-    recommendation_id: int,
+@router.post("/recommendation", response_model=Union[RecommendationOut, Error])
+def create_recommendation(
     recommendation: RecommendationIn,
     repo: RecommendationRepository = Depends(),
-) -> Union[Error, RecommendationOut]:
-    return repo.update_recommendation(recommendation_id, recommendation)
+):
+    return repo.create_recommendation(recommendation)
 
 
 @router.delete("/recommendations/{recommendation_id}", response_model=bool)
@@ -54,5 +44,14 @@ def delete_recommendation(
     repo: RecommendationRepository = Depends(),
 ) -> bool:
     return repo.delete_recommendation(recommendation_id)
+
+
+@router.put("/recommendations/{recommendation_id}", response_model=Union[RecommendationOut, Error])
+def update_recommendation(
+    recommendation_id: int,
+    recommendation: RecommendationIn,
+    repo: RecommendationRepository = Depends(),
+) -> Union[Error, RecommendationOut]:
+    return repo.update_recommendation(recommendation_id, recommendation)
 
 

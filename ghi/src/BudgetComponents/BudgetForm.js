@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
-import countries from '../CountryList'
+import countries from '../CountryList';
+import { useNavigate } from "react-router-dom";
 
 
 function BudgetForm(props) {
@@ -37,6 +37,7 @@ function BudgetForm(props) {
         setDestinationCountry(value);
     };
 
+
     async function handleSubmit(e) {
         e.preventDefault();
         createBudget({title, start_date, end_date, budget,
@@ -48,6 +49,7 @@ function BudgetForm(props) {
     } else if (result.isError) {
         setError(result.error);
     }
+
 
     return (
         <div className="container">

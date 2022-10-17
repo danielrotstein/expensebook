@@ -34,7 +34,7 @@ class BudgetOut(BaseModel):
 
 
 class BudgetRepository:
-    def get_all_budget(self) -> Union[List[BudgetOut], Error]:
+    def get_all_budgets(self) -> Union[List[BudgetOut], Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -182,6 +182,7 @@ class BudgetRepository:
         except Exception as e:
             print(e)
             return {"message": "Could not update that budget"}
+
 
     def budget_in_to_out(self, id: int, budget: BudgetIn):
         old_data = budget.dict()

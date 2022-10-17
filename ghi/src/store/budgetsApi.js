@@ -21,11 +21,17 @@ export const budgetsApi = createApi({
       }),
       invalidatesTags: ['BudgetDashboard'],
     }),
+    getBudget: builder.query({
+      query: (budget_id) => `/budgets/${budget_id}`,
+    })
+    // getExpense: builder.query({
+    //   query: (budget_id) => `/budgets/${budget_id}/add-expense`,
+    // })
   }),
 });
 
-
 export const { 
     useGetBudgetsQuery,
-    useCreateBudgetMutation, 
+    useCreateBudgetMutation,
+    useGetBudgetQuery, 
 } = budgetsApi;

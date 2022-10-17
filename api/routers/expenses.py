@@ -15,11 +15,11 @@ router = APIRouter(tags=["Expenses"])
 
 
 @router.get("/expenses", response_model=Union[List[ExpenseOut], Error])
-def get_all_expense(
+def get_all_expenses(
     repo: ExpenseRepository = Depends(),
     # account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return repo.get_all_expense()
+    return repo.get_all_expenses()
 
 
 @router.get("/expenses/{expense_id}", response_model=Optional[ExpenseOut])
@@ -43,6 +43,14 @@ def create_expense(
     return repo.create_expense(expense)
 
 
+@router.delete("/expenses/{expense_id}", response_model=bool)
+def delete_expense(
+    expense_id: int,
+    repo: ExpenseRepository = Depends(),
+) -> bool:
+    return repo.delete_expense(expense_id)
+
+
 @router.put("/expenses/{expense_id}", response_model=Union[ExpenseOut, Error])
 def update_expense(
     expense_id: int,
@@ -51,13 +59,5 @@ def update_expense(
     # account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[Error, ExpenseOut]:
     return repo.update_expense(expense_id, expense)
-
-
-@router.delete("/expenses/{expense_id}", response_model=bool)
-def delete_expense(
-    expense_id: int,
-    repo: ExpenseRepository = Depends(),
-) -> bool:
-    return repo.delete_expense(expense_id)
 
 
