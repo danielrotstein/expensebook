@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
+import countries from '../CountryList'
 
 
 function BudgetForm() {
@@ -24,6 +25,16 @@ function BudgetForm() {
 
     const handleResetClick = () => {
         setStep(1);
+    };
+
+    const handleHomeCountryInputChange = (e) => {
+        const value = e.target.value;
+        setHomeCountry(value);
+    };
+
+    const handleDestinationCountryInputChange = (e) => {
+        const value = e.target.value;
+        setDestinationCountry(value);
     };
 
     async function handleSubmit(e) {
@@ -94,10 +105,24 @@ function BudgetForm() {
                         ? <div className="create-budget mb-3">
                             <div className="input-div">
                                 <label htmlFor="homeCountry">Where are you based?</label>
-                                <BulmaInput onChange={setHomeCountry} value={home_country.home_country} required type="text" name="homeCountry" id="homeCountry" className="form-control input"/>
+                                <select onChange={handleHomeCountryInputChange} value={home_country.home_country} required name="homeCountry" id="homeCountry" className="form-select input">
+                                    <option value="">Home Country</option>
+                                    {
+                                        countries.map(country => {
+                                            return <option key={country.name} value={country.name}>{country.name}</option>
+                                        })
+                                    }
+                                </select>
                                 <br />
                                 <label htmlFor="destinationCountry">And where are you traveling to?</label>
-                                <BulmaInput onChange={setDestinationCountry} value={destination_country.destination_country} required type="text" name="destinationCountry" id="destinationCountry" className="form-control input"/>
+                                <select onChange={handleDestinationCountryInputChange} value={destination_country.destination_country} required name="destinationCountry" id="destinationCountry" className="form-select input">
+                                    <option value="">Destination Country</option>
+                                    {
+                                        countries.map(country => {
+                                            return <option key={country.name} value={country.name}>{country.name}</option>
+                                        })
+                                    }
+                                </select>
                                 <div className="form-buttons-div d-flex">
                                     <p className="reset-button" onClick={handleResetClick}>Reset</p>
                                     {!(home_country) || !(destination_country)
