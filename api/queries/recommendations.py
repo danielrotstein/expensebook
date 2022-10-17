@@ -161,7 +161,7 @@ class RecommendationRepository:
                     return self.recommendation_in_to_out(recommendation_id, recommendation)
         except Exception as e:
             print(e)
-            return {"message": "Could not update that expense"}
+            return {"message": "Could not update that recommendation"}
 
 
     def delete_recommendation(self, recommendation_id):

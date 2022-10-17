@@ -63,7 +63,36 @@ class CategoryRepository:
                     return CategoryOut(id=id, **old_data)
         except Exception as e:
             print("There was an error: ", e)
-            return {"message": "Unable to create an category"}
+            return {"message": "Unable to create a category"}
+
+
+    def update_category(self, category_id: int, category: CategoryIn) -> Union[CategoryOut, Error]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get a cursor (something to run SQL with)
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE categories
+                        SET title = %s
+                        WHERE id = %s
+                        """,
+                        [
+                            category.title
+                            , category_id
+                        ],
+                    )
+                    return self.category_in_to_out(category_id, category)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not update that category"}
+
+
+
+    def category_in_to_out(self, id: int, category: CategoryIn):
+        old_data = category.dict()
+        return CategoryOut(id=id, **old_data)
 
 
     def record_to_category_out(self, record):
@@ -71,5 +100,6 @@ class CategoryRepository:
             id=record[0],
             title=record[1],
         )
+
 
 
