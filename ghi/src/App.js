@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AboutUs from './AboutUs';
-// import CurrencyConverter from './CurrencyConverter';
+import CurrencyConverter from './CurrencyConverter';
 import Login from './LoginComponents/Login';
 import SignUpForm from './LoginComponents/SignUp';
 import MainPage from './MainPage';
@@ -29,12 +29,8 @@ function App() {
           <Route path='add-budget' element={< BudgetForm/>} />
           {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}
         </Route>
-        {/* <Route path='expenses'>
-          <Route index element={<ExpensesDashboard />} />
-          <Route path=':expense_id' element={< ExpenseDetails/>} />
-        </Route> */}
+        <Route path='currency' element={< CurrencyConverter/>} />
       </Routes>
-      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

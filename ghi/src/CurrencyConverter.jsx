@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
 
-function CurrencyConverter() {
+
+function CurrencyConverter(props) {
+   
+
     return (
         <div>
-            <h1>Currency Converter</h1>
-
+            <input type="text" value={1}/>
+            <select></select>
         </div>
     )
 }
