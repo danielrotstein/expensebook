@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
+import BudgetForm from './BudgetForm';
 
 
 function BudgetDashboard() {
@@ -15,11 +15,12 @@ function BudgetDashboard() {
     return (
         <div className="container">
             <ErrorNotification error={error} />
-            <div className="create-new-trip-div">
+            <BudgetForm />
+            {/* <div className="create-new-trip-div">
                 <Link to="/budgets/add-budget" className="btn btn-dark px-4 gap-3">
                     Create New Budget
                 </Link>
-            </div>
+            </div> */}
             <div className="d-flex">
                 {data.map(budget => {
                     return (

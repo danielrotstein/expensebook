@@ -47,7 +47,6 @@ function BudgetDetails() {
                 )}
             </div> */}
             </div>
-            
         </div>
     )
 }

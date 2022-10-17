@@ -114,15 +114,19 @@
 
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
 import countries from '../countryList'
 
+// Modal Stuff
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 
 function BudgetForm(props) {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [start_date, setStartDate] = useState('');
     const [end_date, setEndDate] = useState('');
@@ -133,6 +137,11 @@ function BudgetForm(props) {
     const [error, setError] = useState('');
     const [createBudget, result] = useCreateBudgetMutation();
 
+     // Modal Stuff
+     const [show, setShow] = useState(false);
+     const handleClose = () => setShow(false);
+     const handleShow = () => setShow(true);
+
     async function handleSubmit(e) {
         e.preventDefault();
         createBudget({title, start_date, end_date, budget, 
@@ -140,30 +149,50 @@ function BudgetForm(props) {
     }
 
     const handleHomeCountryInputChange = (e) => {
-        const name = e.target.name;
+        // const name = e.target.name;
         const value = e.target.value;
         setHomeCountry(value);
     };
 
     const handleDestinationCountryInputChange = (e) => {
-        const name = e.target.name;
+        // const name = e.target.name;
         const value = e.target.value;
         setDestinationCountry(value);
     };
 
 
 
-    if (result.isSuccess) {
-        navigate("/budgets");
-    } else if (result.isError) {
-        setError(result.error);
-    }
+    // if (result.isSuccess) {
+    //     navigate("/budgets");
+    // } else if (result.isError) {
+    //     setError(result.error);
+    // }
 
     return (
         <div className="container">
             <div className="columns is-centered">
                 <div className="column is-one-third">
                     <ErrorNotification error={error} />
+
+
+
+
+                    <Button variant="dark my-3" onClick={handleShow}>
+                            Create New Budget
+                        </Button>
+
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                            
+                            <Modal.Title>Create New Budget</Modal.Title>
+                            </Modal.Header>
+
+                        <Modal.Body>
+
+
+
+
+
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="mb-3">
                             <label htmlFor="title">Title</label>
@@ -206,9 +235,11 @@ function BudgetForm(props) {
                             <BulmaInput onChange={setAccount} value={account_id.account_id} required placeholder="Account" type="number" name="account_id" id="account_id" className="form-control"/>
                         </div>
                         <div className="field">
-                            <button className="btn btn-dark my-3">Save</button>
+                        <button className="btn btn-dark" onClick={handleClose}>Save</button>
                         </div>
                     </form>
+                    </Modal.Body>
+                    </Modal>
                 </div>
             </div>
         </div>
