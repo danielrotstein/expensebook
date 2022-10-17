@@ -1,6 +1,13 @@
 ## 10/13/22
 Today:
 
+Daniel and I pair programmed and worked on the currency converter. We made an update to the BudgetForm.js to have a dropdown with countries and the countries value will be the currency code for that country. This will be needed for when we are doing a currency conversion when adding an expense.
+
+I learned that in JSX when importing a variable from a different file, the variable MUST be exported before being imported to another file. 
+
+## 10/13/22
+Today:
+
 I Started working on with Daniel on the Currency converter. We brainstormed the best way to get currency conversions and how they will be applied into our app. This is still a work in progress and we will be pursuing more options to create the converter tomorrow. 
 
 I learned that you can import som XML files to google sheets then you can import those sheets into SQL 
