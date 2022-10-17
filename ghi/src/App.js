@@ -13,7 +13,6 @@ import BudgetForm from './BudgetComponents/BudgetForm';
 import ExpensesDashboard from './BudgetComponents/ExpenseDashboard';
 import ExpenseDetails from './BudgetComponents/ExpenseDetails';
 
-
 function App() {
   return (
     <BrowserRouter>
