@@ -14,6 +14,10 @@ import Moment from 'moment';
 
 function BudgetDetails() {
     const { budget_id } = useParams();
+    const wrap = "id".concat("=", budget_id);
+    const { data, error, isLoading } = useGetBudgetQuery(wrap);
+    // const { expense_id } = useParams();
+    // const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
     const { 
         data: budgetsData, 

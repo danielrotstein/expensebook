@@ -21,9 +21,16 @@ export const budgetsApi = createApi({
       }),
       invalidatesTags: ['BudgetDashboard'],
     }),
+
     getBudget: builder.query({
       query: (budget_id) => `/budgets/${budget_id}`,
-    })
+    }),
+
+    getBudgetsByOneUser: builder.query({
+      query: (email) => `/budgets/${email}`,
+      providesTags: ['BudgetDashboard'],
+    }),   
+
     // getExpense: builder.query({
     //   query: (budget_id) => `/budgets/${budget_id}/add-expense`,
     // })
@@ -34,4 +41,5 @@ export const {
     useGetBudgetsQuery,
     useCreateBudgetMutation,
     useGetBudgetQuery, 
+    useGetBudgetsByOneUserQuery,
 } = budgetsApi;

@@ -63,7 +63,7 @@ class BudgetRepository:
             return {"message": "Unable to get all budgets"}
 
 
-    def get_one_budget(self, budget_id) -> Optional[BudgetOut]:
+    def get_one_budget(self, budget_id: int) -> Optional[BudgetOut]:
         try:
             # connect the database
             with pool.connection() as conn:
