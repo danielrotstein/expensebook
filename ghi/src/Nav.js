@@ -17,8 +17,8 @@ function Logout() {
 
     return (
         <div className="buttons">
-            <Link to={'/login'}><button onClick={logOut} className="button is-light">
-                Log out
+            <Link to={'/login'}><button onClick={logOut} className="btn btn-primary logout">
+                Log Out
             </button></Link>
         </div>
     );
