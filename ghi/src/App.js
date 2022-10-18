@@ -24,10 +24,9 @@ function App() {
         <Route path='login' element={< Login/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
-        {/* <Route path='budgets'> */}
+        
         <Route path='budgets'> 
           <Route index element={<BudgetDashboard />} />
-          {/* <Route path=':email'  element={<BudgetDashboard />} /> */}
           <Route path='id=:budget_id' element={< BudgetDetails/>} />
           <Route path='add-budget' element={< BudgetForm/>} />
           {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}

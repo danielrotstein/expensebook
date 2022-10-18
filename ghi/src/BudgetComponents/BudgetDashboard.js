@@ -8,16 +8,16 @@ import { Link } from 'react-router-dom';
 
 
 function BudgetDashboard() {
-    // const email = localStorage.getItem('email');
-    const email = "two@two.com";
+    const email = JSON.parse(localStorage.getItem('email'));
+    console.log("email: ", email);
     const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
+    console.log("data: ", data);
 
     if (isLoading) {
         return (
             <progress className="progress is-primary" max="100"></progress>
         );
     }
-
 
     return (
         <div className="container">

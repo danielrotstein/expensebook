@@ -1,50 +1,33 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreateTokenMutation } from '../store/accountsApi';
-// import { useGetOneAccountQuery } from '../store/accountsApi';
-import { useGetTokenQuery } from '../store/accountsApi';
 import ErrorNotification from '../ErrorNotification';
 import BulmaInput from '../BulmaInput';
-
-import React, { useState, useEffect } from "react";
-
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 function Login() {
-    // const navigate = useNavigate();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [createToken, result] = useCreateTokenMutation();
-    // const [getToken, token_result] = useGetTokenQuery();
-
-    // const {account_result} = useGetOneAccountQuery({});
-    // console.log("createToken data: ", result.data);
-    // console.log("getOneAccount data: ", account_result.data);
-    console.log("email: ", email);
- 
+    
     async function handleSubmit(e) {
         e.preventDefault();
-        // console.log(e.target);
         createToken(new FormData(e.target));
-
-        console.log("e.target: ", e.target);
-        // save value in localStorage for later use
-        localStorage.setItem('email', JSON.stringify(email));
-        // localStorage.setItem('token', JSON.stringify(true));
-        // token = localStorage.getItem('token');
-        // console.log("localStorage email: ", localStorage.getItem('email'));
-        // console.log("localStorage token: ", localStorage.getItem('token'));
     }
 
-    // if (result.isSuccess) {
-    //     navigate("/budgets");
-    // } else if (result.isError) {
-    //     setError(result.error);
-    // }
-
+    if (result.isSuccess) {
+        navigate("/budgets");
+        localStorage.setItem('email', JSON.stringify(email));
+        localStorage.setItem('token', JSON.stringify(result.data.access_token));
+        console.log("localStorage email: ", localStorage.getItem('email'));
+        console.log("localStorage token: ", localStorage.getItem('token'))
+        console.log("RESULT", result.data.access_token)
+    } else if (result.isError) {
+        setError(result.error);
+    }
 
     return (
         <div className="container">
@@ -53,36 +36,6 @@ function Login() {
 
                 <div className="navbar-nav mr-auto">
                    </div>
-                   {/* {localStorage.getItem('token') ? ( 
-                     <div className="navbar-nav ml-auto">
-                       <li className="nav-item">
-                         <Link to={"/Logout"} className="nav-link">
-                           {email}
-                         </Link>
-                       </li>
-                         <Link to={"/expenses"} className="nav-link">                         
-                          Expenses
-                         </Link>
-                       <li className="nav-item">
-                         <a href="/Logout" className="nav-link">
-                           LogOut
-                         </a>
-                       </li>
-                     </div>
-                   ) : (
-                     <div className="navbar-nav ml-auto">
-                       <li className="nav-item">
-                         <Link to={"/Login"} className="nav-link">
-                           Login
-                         </Link>
-                       </li>
-          
-                       <li className="nav-item">
-                         <Link to={"/SignUp"} className="nav-link">
-                           Sign Up
-                         </Link>
-                       </li> */}
-                     
                     <ErrorNotification error={error} />
                     
                     <form onSubmit={(e) => handleSubmit(e)}>
@@ -105,11 +58,8 @@ function Login() {
                         </div>
                     </form> 
                     </div>                    
-                   {/* )} */}
                 </div>
             </div>
-        // </div>
-
     )
 }
 

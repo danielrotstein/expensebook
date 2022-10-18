@@ -10,8 +10,6 @@ function Logout() {
     useEffect(() => {
       if (data) {
         navigate('/');
-        // console.log("email before clear local storage: ", localStorage.getItem('email'));
-        // console.log("token before clear local storage: ", localStorage.getItem('token'));
       }
     }, [data, navigate]);
   
@@ -42,20 +40,17 @@ function Nav() {
                             : token
                               ? <>
                                 <li className="nav-item">
+                                    Welcome logged in User!
+                                </li>                              
+                                <li className="nav-item">
                                     <Logout className="nav-link" />
                                 </li>
-                                {/* <li className="nav-item">
+                                <li className="nav-item">
                                   <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
-                                </li> */}
+                                </li>
                               </>
                               : 
                               <>
-                                <li className="nav-item">
-                                  <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    You need to log in or sign up first
-                                </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/login">Login</NavLink>
                                 </li>
