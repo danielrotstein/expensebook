@@ -33,23 +33,31 @@ function BudgetDetails() {
     } = useGetCategoriesQuery();
 
 
-    const [filteredExpenses, setFilteredExpenes] = useState([]);
+    const [expenses, setExpenes] = useState([]);
+    const [dates, setDates] = useState([]);
+    const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [total, setTotal] = useState(0);
 
 
     useEffect(() => {
         if (!(expensesIsLoading)) {
-            const filtered = [];
+            const expenses = [];
+            const dates = [];
             expensesData.map(expense => {
                 if (expense.budget_id === parseInt(budget_id)) {
-                    filtered.push(expense);
+                    expenses.push(expense);
+                    if (!(dates.includes(expense.date))) {
+                        dates.push(expense.date);
+                    }
                 }
                 return null;
             });
-            setFilteredExpenes(filtered);
+            setExpenes(expenses);
+            setDates(dates);
+            setFilteredExpenses(expenses);
 
             let total = 0;
-            filtered.map(expense => {
+            expenses.map(expense => {
                 total += expense.expense_total;
             });
             setTotal(total);
@@ -57,11 +65,37 @@ function BudgetDetails() {
     }, [expensesData]);
 
 
-    const handleChange = event => {
-        const {name, value} = event.target;
-        this.setState({
-            [name]: value
-        });
+    const handleDateChange = event => {
+        const value = event.target.value;
+        const dateExpenses = [];
+
+        if (value === "") {
+            setFilteredExpenses(expenses);
+        } else {
+            expenses.map(expense => {
+                if (expense.date === value) {
+                    dateExpenses.push(expense);
+                }
+            });
+            setFilteredExpenses(dateExpenses);
+        }
+    }
+
+
+    const handleCategoryChange = event => {
+        const value = event.target.value;
+        const categoryExpenses = [];
+
+        if (value === "") {
+            setFilteredExpenses(expenses);
+        } else {
+            expenses.map(expense => {
+                if (expense.category_id.toString() === value) {
+                    categoryExpenses.push(expense);
+                }
+            });
+            setFilteredExpenses(categoryExpenses);
+        }
     }
 
 
@@ -83,7 +117,7 @@ function BudgetDetails() {
                             <p className="metric-label">Budget</p>
                         </div>
                         <div className="col-sm">
-                            <p className="primary-metric">${(budgetsData.budget - total).toLocaleString()}</p>
+                            <p className={(budgetsData.budget - total) > 0 ? "primary-metric" : "primary-metric-over"}>${(budgetsData.budget - total).toLocaleString()}</p>
                             <p className="metric-label">Budget Remaining</p>
                         </div>
                         <div className="col-sm">
@@ -95,15 +129,15 @@ function BudgetDetails() {
                 <div className="container filters-div">
                     <div className="d-flex">
                         <div className="d-flex filters-sub-div">
-                            <select onChange={handleChange} value="" name="date" id="date" className="form-select filter">
+                            <select onChange={handleDateChange} name="date" id="date" className="form-select filter">
                                 <option value="">Filter by Date</option>
                                     {
-                                        filteredExpenses.map(expense => {
-                                            return <option key={expense.id} value={expense.id}>{Moment(expense.date).format('MMM DD, YYYY')}</option>
+                                        dates.map((date, index) => {
+                                            return <option key={index} value={date}>{Moment(date).format('MMM DD, YYYY')}</option>
                                         })
                                     }
                             </select>
-                            <select onChange={handleChange} value="" name="category" id="category" className="form-select filter">
+                            <select onChange={handleCategoryChange} name="category" id="category" className="form-select filter">
                                 <option value="">Filter by Category</option>
                                     {
                                         categoriesData.map(category => {
@@ -113,7 +147,10 @@ function BudgetDetails() {
                             </select>
                         </div>
                         <div className="add-expense-component">
-                            <ExpenseForm props={budget_id} />
+                            <ExpenseForm 
+                                props={budget_id} 
+                                remaining={budgetsData.budget - total}
+                            />
                         </div>
                     </div>
                 </div>
@@ -126,7 +163,11 @@ function BudgetDetails() {
                         remaining={budgetsData.budget - total}
                     />
                 </div>
-                <TravelRecommendations categories={categoriesData}/>
+                <TravelRecommendations 
+                    budget={budget_id}
+                    categories={categoriesData} 
+                    remaining={budgetsData.budget - total}
+                />
             </>
         )
     }

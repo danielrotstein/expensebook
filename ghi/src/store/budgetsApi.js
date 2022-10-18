@@ -27,13 +27,10 @@ export const budgetsApi = createApi({
     getBudgetsByOneUser: builder.query({
       query: (email) => `/budgets/${email}`,
       providesTags: ['BudgetDashboard'],
-    }),   
-
-    // getExpense: builder.query({
-    //   query: (budget_id) => `/budgets/${budget_id}/add-expense`,
-    // })
+    }),
   }),
 });
+
 
 export const { 
     useGetBudgetsQuery,
