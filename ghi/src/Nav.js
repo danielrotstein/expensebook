@@ -4,21 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function Logout() {
-    const navigate = useNavigate();
     const [logOut, { data }] = useLogOutMutation();
   
     useEffect(() => {
       if (data) {
         navigate('/');
       }
-    }, [data, navigate]);
+    }, [data]);
   
     return (
-      <div className="buttons">
-        <button onClick={logOut} className="button is-light">
-          Log out
-        </button>
-      </div>
+        <div className="buttons">
+            <Link to={'/login'}><button onClick={logOut} className="button is-light">
+                Log out
+            </button></Link>
+        </div>
     );
   }
   

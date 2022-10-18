@@ -24,7 +24,7 @@ function Login() {
         localStorage.setItem('token', JSON.stringify(result.data.access_token));
         console.log("localStorage email: ", localStorage.getItem('email'));
         console.log("localStorage token: ", localStorage.getItem('token'))
-        console.log("RESULT", result.data.access_token)
+        console.log("TOKEN", result.data.access_token)
     } else if (result.isError) {
         setError(result.error);
     }

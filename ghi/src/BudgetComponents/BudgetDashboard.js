@@ -27,6 +27,7 @@ function BudgetDashboard() {
                 <Link to="/budgets/add-budget" className="btn btn-primary px-4 gap-3" id="create-new-budget-button">Create New Budget</Link>
             </div>
             <div className="sub-container d-flex">
+                {/* FILTER BY ACCOUNT_id=USER */}
                 {data.map(budget => {
                     return (
                         <a href={`/budgets/id=${budget.id}`} key={budget.id} className="budget-card">

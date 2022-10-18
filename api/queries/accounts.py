@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import ( 
     Union, 
     List,
+    Optional,
 )
 from datetime import date
 from queries.pool import pool
@@ -21,7 +22,6 @@ class Account(BaseModel):
     email: str
     password: str
     hashed_password: str
-
 
 class AccountIn(BaseModel):
     first_name: str
