@@ -329,6 +329,10 @@ label {
   font-size: 16px;
 }
 
+#description {
+  max-width: 500px;
+}
+
 #budget-remaining {
   color: #70c244;
   font-size: 18px;
