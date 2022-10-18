@@ -10,10 +10,7 @@ import { Link } from 'react-router-dom';
 
 function BudgetDashboard() {
     const email = JSON.parse(localStorage.getItem('email'));
-    console.log("email: ", email);
     const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
-    console.log("data: ", data);
-    // const { query } = useGetAccountsQuery();
     
 
     if (isLoading) {
