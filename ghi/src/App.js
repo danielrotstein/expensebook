@@ -31,7 +31,7 @@ function App() {
         </Route>
         <Route path='$converter' element={< CurrencyConverter/>} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
