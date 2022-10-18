@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ErrorNotification from '../ErrorNotification';
+import ExpenseForm from './ExpenseForm';
 import { useGetBudgetQuery } from '../store/budgetsApi';
 import { useGetExpensesQuery } from '../store/expensesApi';
 import { useGetCategoriesQuery } from '../store/expensesApi';
@@ -8,6 +9,7 @@ import ExpensesList from './ExpensesList';
 import TravelRecommendations from './TravelRecommendations';
 import Notification from '../Notification';
 import Moment from 'moment';
+
 
 
 function BudgetDetails() {
@@ -111,7 +113,7 @@ function BudgetDetails() {
                                     }
                             </select>
                         </div>
-                        <button className="btn btn-primary add-expense-cta">Add Expense</button>
+                        <ExpenseForm props={budget_id}/>
                     </div>
                 </div>
                 <br />
