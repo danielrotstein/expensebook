@@ -53,7 +53,7 @@ def create_budget(
     return repo.create_budget(budget)
 
 
-@router.put("/budgets/{budget_id}", response_model=Union[BudgetOut, Error])
+@router.put("/budgets/id={budget_id}", response_model=Union[BudgetOut, Error])
 def update_budget(
     budget_id: int,
     budget: BudgetIn,
@@ -62,7 +62,7 @@ def update_budget(
     return repo.update_budget(budget_id, budget)
 
 
-@router.delete("/budgets/{budget_id}", response_model=bool)
+@router.delete("/budgets/id={budget_id}", response_model=bool)
 def delete_budget(
     budget_id: int,
     repo: BudgetRepository = Depends(),

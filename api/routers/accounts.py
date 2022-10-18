@@ -75,7 +75,7 @@ async def create_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.put("/accounts/{account_id}", response_model=Union[AccountOut, Error])
+@router.put("/accounts/id={account_id}", response_model=Union[AccountOut, Error])
 def update_account(
     account_id: int,
     account: AccountIn,
@@ -84,7 +84,7 @@ def update_account(
     return repo.update_account(account_id, account)
 
 
-@router.delete("/accounts/{account_id}", response_model=bool)
+@router.delete("/accounts/id={account_id}", response_model=bool)
 def delete_account(
     account_id: int,
     repo: AccountRepository = Depends(),
