@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
+import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
 import countries from '../CountryList';
 import { useNavigate } from "react-router-dom";
 
 
 function BudgetForm(props) {
+    const email = JSON.parse(localStorage.getItem('email'));
+    console.log("email: ", email);
+    const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
+    console.log("ACCOUNT ID ", data);
+
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [title, setTitle] = useState('');
@@ -15,9 +21,17 @@ function BudgetForm(props) {
     const [budget, setBudget] = useState(0);
     const [home_country, setHomeCountry] = useState('');
     const [destination_country, setDestinationCountry] = useState('');
-    const [account_id, setAccount] = useState(0);
-    const [error, setError] = useState('');
+    const [account_id, setAccountID] = useState(data[0].account_id)
+    // const [error, setError] = useState('');
     const [createBudget, result] = useCreateBudgetMutation();
+
+    if (isLoading) {
+        return (
+            <progress className="progress is-primary" max="100"></progress>
+        );
+    } else {
+        console.log("ACCOUNTS ", data[0].account_id);
+    }
 
     const handleNextClick = () => {
         setStep(step + 1);
@@ -37,17 +51,24 @@ function BudgetForm(props) {
         setDestinationCountry(value);
     };
 
+    const handleConfirmClick = (data) => {
+        const value = data[0].account_id
+        setAccountID(value)
+    }
  
     async function handleSubmit(e) {
         e.preventDefault();
         createBudget({title, start_date, end_date, budget, 
-            home_country, destination_country, account_id,});
+            home_country, destination_country, account_id});
+        
     }
 
     if (result.isSuccess) {
         navigate("/budgets");
+        console.log("RESULT", result)
     } else if (result.isError) {
-        setError(result.error);
+        // setError(result.error);
+        console.log("ERROR")
     }
 
 
@@ -158,23 +179,26 @@ function BudgetForm(props) {
                         </div> : null
                     }
                     {step == 5
-                        ? <div className="create-budget-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="#70c244" class="bi bi-person-circle budget-form-icon" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                            </svg>
-                            <div className="create-budget mb-3" id="less-margin-top">
-                                <div className="input-div">
-                                    <label htmlFor="account_id">Account ID</label>
-                                    <BulmaInput onChange={setAccount} value={account_id.account_id} required type="number" name="account_id" id="account_id" className="form-control input"/>
-                                    <div className="form-buttons-div d-flex">
-                                        <p className="reset-button" onClick={handleResetClick}>Reset</p>
-                                        <button className="btn btn-primary form-button">Save</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> : null
-                    }
+                        ?   <div>
+                                <button onClick={handleConfirmClick} value={account_id.account_id} className="btn btn-primary next-button">Confirm</button>
+                            </div> : null
+                        // ? <div className="create-budget-card">
+                        //     <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="#70c244" class="bi bi-person-circle budget-form-icon" viewBox="0 0 16 16">
+                        //         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        //         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        //     </svg>
+                        //     <div className="create-budget mb-3" id="less-margin-top">
+                        //         <div className="input-div">
+                        //             <label htmlFor="account_id">Account ID</label>
+                        //             <BulmaInput value={account_id} required type="number" name="account_id" id="account_id" className="form-control input"/>
+                        //             <div className="form-buttons-div d-flex">
+                        //                 <p className="reset-button" onClick={handleResetClick}>Reset</p>
+                        //                 <button className="btn btn-primary form-button">Save</button>
+                        //             </div>
+                        //         </div>
+                        //     </div>
+                        // </div> : null
+                    } 
                 </form>
             </div>
         </div>
