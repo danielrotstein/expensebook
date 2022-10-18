@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AboutUs from './AboutUs';
-import CurrencyConverter from './CurrencyConverter';
+import CurrencyConverter from './ConverterComponents/CurrencyConverter';
 import Login from './LoginComponents/Login';
 import SignUpForm from './LoginComponents/SignUp';
 import MainPage from './MainPage';

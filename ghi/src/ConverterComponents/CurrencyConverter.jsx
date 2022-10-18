@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import CurrencyRow from './CurrencyRow'
+import CurrencyRow from './CurrencyRow';
 
 // const url = "https://api.apilayer.com/exchangerates_data/latest"
 // const api_key = "chVGAxFwlHINXiLLCQW29oRM1VAPZq3l"
