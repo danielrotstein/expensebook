@@ -5,8 +5,6 @@ import { useGetCategoriesQuery } from '../store/expensesApi';
 import { useCreateExpenseMutation } from '../store/expensesApi';
 import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
-
-// Modal Stuff
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -30,8 +28,6 @@ function ExpenseForm(props) {
     const [category, setCategory] = useState(0);
     const [error, setError] = useState('');
     const [createExpense, result] = useCreateExpenseMutation();
-    
-    // Modal Stuff
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
