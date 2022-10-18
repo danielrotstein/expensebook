@@ -31,6 +31,7 @@ function App() {
         </Route>
         <Route path='currency' element={< CurrencyConverter/>} />
       </Routes>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
