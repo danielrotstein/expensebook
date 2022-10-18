@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import ( 
     Union, 
     List,
+    Optional,
 )
 from datetime import date
 from queries.pool import pool
@@ -18,7 +19,6 @@ class Account(BaseModel):
     email: str
     password: str
     hashed_password: str
-
 
 class AccountIn(BaseModel):
     first_name: str
@@ -126,41 +126,3 @@ class AccountRepository:
         except Exception as e:
             print("There was an error: ", e)
             return {"message": "Unable to get all accounts"}
-
-
-    
-
-
-
-
-
-    # def create_account(self, account: AccountIn) -> Union[AccountOut, Error]:
-    #     try:
-    #         with pool.connection() as conn:
-    #             with conn.cursor() as db:
-    #                 result = db.execute(
-    #                     """
-    #                     INSERT INTO accounts
-    #                         (
-    #                             first_name,
-    #                             last_name,
-    #                             email,
-    #                             password
-    #                         )
-    #                     VALUES
-    #                         (%s, %s, %s, %s)
-    #                     RETURNING id;
-    #                     """,
-    #                     [
-    #                         account.first_name,
-    #                         account.last_name,
-    #                         account.email,
-    #                         account.password,
-    #                     ]
-    #                 )
-    #                 id = result.fetchone()[0]
-    #                 old_data = account.dict()
-    #                 return AccountOut(id=id, **old_data)
-    #     except Exception as e:
-    #         print("There was an error: ", e)
-    #         return {"message": "Unable to create an account"}

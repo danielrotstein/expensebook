@@ -9,6 +9,7 @@ import ExpenseForm from './ExpenseForm';
 function BudgetDetails() {
     const { budget_id } = useParams();
     const { data, error, isLoading } = useGetBudgetQuery(budget_id);
+    console.log("DATA", data)
     // const { expense_id } = useParams();
     // const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
