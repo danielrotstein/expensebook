@@ -124,6 +124,19 @@ a:hover {
   margin-top: 20px;
 }
 
+.signup-card {
+  width: 500px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.signup-button {
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-bottom: 40px;
+}
+
 .dashboard-title {
   font-size: 30px;
   font-weight: 500;
