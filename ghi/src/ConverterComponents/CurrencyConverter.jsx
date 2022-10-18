@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRow from './CurrencyRow';
+import countries from '../CountryList';
 
 const url = "https://api.exchangerate.host/latest"
 
@@ -11,6 +12,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+  const [country, setCountry] = useState()
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -51,6 +53,10 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
+  const handleCountryInputChange = (e) => {
+    const value = e.target.value;
+    setCountry(value);
+};
 
   return (
     <>
@@ -78,6 +84,18 @@ function CurrencyConverter() {
         amount={toAmount}
       />
       </div>
+      <h4>Search currency code by country</h4>
+
+      <select onChange={handleCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
+          <option value="">Search Country:</option>
+          {
+              countries.map(country => {
+                  return <option key={country.name} value={country.name}>{country.name}</option>
+              })
+          }
+      </select>
+      <h1> </h1>
+
     </>
   );
 }
