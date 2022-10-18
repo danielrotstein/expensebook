@@ -53,7 +53,7 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
-  const handleCountryInputChange = (e) => {
+  const handleSearchCountryInputChange = (e) => {
     const value = e.target.value;
     setCountry(value);
 };
@@ -86,7 +86,7 @@ function CurrencyConverter() {
       </div>
       <h4>Want to search currency code by country?</h4>
 
-      <select onChange={handleCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
+      <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
           <option value="">Search Country:</option>
           {
               countries.map(country => {
