@@ -84,6 +84,12 @@ a:hover {
   background-color: #70c24499;
 }
 
+.logout {
+  width: 100px;
+  margin-top: 3px;
+  margin-right: 20px;
+}
+
 .auth-form-div {
   position: absolute;
   top: 50%;
@@ -222,7 +228,6 @@ label {
   font-family: Avenir;
   font-size: 18px;
   width: 300px;
-  margin-top: -50px;
 }
 
 .form-buttons-div {

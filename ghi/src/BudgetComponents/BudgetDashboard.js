@@ -40,6 +40,8 @@ function BudgetDashboard() {
                     )}
                 )}
             </div>
+            <br />
+            <br />
         </div>
     )
 }
