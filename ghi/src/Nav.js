@@ -1,6 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useGetTokenQuery, useLogOutMutation } from './store/accountsApi';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function Logout() {
@@ -8,7 +7,9 @@ function Logout() {
   
     useEffect(() => {
       if (data) {
-        navigate('/');
+        localStorage.clear();
+        console.log("email before clear local storage: ", localStorage.getItem('email'));
+        console.log("token before clear local storage: ", localStorage.getItem('token'));
       }
     }, [data]);
   
