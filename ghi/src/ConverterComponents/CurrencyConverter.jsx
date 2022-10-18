@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CurrencyRow from './CurrencyRow';
 
 const url = "https://api.exchangerate.host/latest"
@@ -50,8 +51,13 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
+
   return (
     <>
+      <div className="create-new-budget-div">
+        <Link to="/signup" className="btn btn-primary px-4 gap-3" id="sign-up-button">Sign Up</Link>
+      </div>
+      <div className='container'>
       <h1>Your Friendly Currency Converter</h1>
       <br/>
       <h3>From</h3>
@@ -71,6 +77,7 @@ function CurrencyConverter() {
         onChangeAmount={handleToAmountChange}
         amount={toAmount}
       />
+      </div>
     </>
   );
 }

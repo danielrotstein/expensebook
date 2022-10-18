@@ -3,7 +3,6 @@ import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
 import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
 import { useParams } from 'react-router-dom';
-
 import { Link } from 'react-router-dom';
 
 
