@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 function Logout() {
     const [logOut, { data }] = useLogOutMutation();
   
+
     useEffect(() => {
       if (data) {
         localStorage.clear();
@@ -13,10 +14,11 @@ function Logout() {
       }
     }, [data]);
   
+
     return (
         <div className="buttons">
-            <Link to={'/login'}><button onClick={logOut} className="button is-light">
-                Log out
+            <Link to={'/login'}><button onClick={logOut} className="btn btn-primary logout">
+                Log Out
             </button></Link>
         </div>
     );
@@ -38,15 +40,12 @@ function Nav() {
                           {tokenLoading
                             ? <></>
                             : token
-                              ? <>
+                              ? <>                            
                                 <li className="nav-item">
-                                    Welcome logged in User!
-                                </li>                              
-                                <li className="nav-item">
-                                    <Logout className="nav-link" />
+                                    <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                  <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
+                                    <Logout className="nav-link" />
                                 </li>
                                 <li className="nav-item">
                                   <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>

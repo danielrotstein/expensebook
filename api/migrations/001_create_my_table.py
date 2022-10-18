@@ -55,7 +55,6 @@ steps = [
             url TEXT NOT NULL,
             description TEXT NULL,
             category_id INT REFERENCES categories(id)
-
         );
         """,
         """

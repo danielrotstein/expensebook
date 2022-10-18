@@ -60,8 +60,8 @@ function ExpensesList(props) {
                         <td className="table-data"></td>
                         <td className="table-data"></td>
                         <td className="table-data"></td>
-                        <td className="table-data" id="budget-remaining">Budget Remaining</td>
-                        <td className="table-data" id="budget-remaining">${props.remaining.toLocaleString()}</td>
+                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>Budget Remaining</td>
+                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>${props.remaining.toLocaleString()}</td>
                     </tr>
                 </tbody>
             </table>

@@ -62,7 +62,7 @@ function ExpenseForm(props) {
                         <ErrorNotification error={categoriesError} />
                         <ErrorNotification error={error} />
                         
-                        <Button className="btn btn-primary" variant="dark my-3" onClick={handleShow}>
+                        <Button className="btn btn-primary" id={props.remaining < 0 ? "over-budget" : null} variant="dark my-3" onClick={handleShow}>
                             Add Expense
                         </Button>
 
