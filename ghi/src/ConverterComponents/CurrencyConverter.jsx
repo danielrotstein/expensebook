@@ -84,7 +84,7 @@ function CurrencyConverter() {
         amount={toAmount}
       />
       </div>
-      <h4>Search currency code by country</h4>
+      <h4>Want to search currency code by country?</h4>
 
       <select onChange={handleCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
           <option value="">Search Country:</option>
