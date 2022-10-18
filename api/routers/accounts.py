@@ -86,9 +86,10 @@ def get_accounts(
     return repo.get_accounts()
 
 
-# @router.post("/accounts", response_model=Union[AccountOut, Error])
-# def create_account(
-#     account: AccountIn,
-#     repo: AccountRepository = Depends(),
-# ):
-#     return repo.create_account(account)
+@router.get("/accounts/{id}", response_model=Union[List[AccountOut], Error])
+def get_account_by_id(
+    id: int,
+    repo: AccountRepository = Depends(),
+
+):
+    return repo.get_account_by_id(id)
