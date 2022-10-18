@@ -15,15 +15,12 @@ import Moment from 'moment';
 function BudgetDetails() {
     const { budget_id } = useParams();
     const wrap = "id".concat("=", budget_id);
-    const { data, error, isLoading } = useGetBudgetQuery(wrap);
-    // const { expense_id } = useParams();
-    // const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
     const { 
         data: budgetsData, 
         error: budgetsError, 
         isLoading: budgetsIsLoading,
-    } = useGetBudgetQuery(budget_id);
+    } = useGetBudgetQuery(wrap);
     const { 
         data: expensesData, 
         error: expensesError, 
@@ -56,7 +53,6 @@ function BudgetDetails() {
                 total += expense.expense_total;
             });
             setTotal(total);
-            
         }
     }, [expensesData]);
 
@@ -83,7 +79,6 @@ function BudgetDetails() {
                     <p className="dashboard-title">{budgetsData.title}</p>
                     <div className="row metrics-div">
                         <div className="col-sm">
-                        {console.log(budgetsData)}
                             <p className="sub-metric">${budgetsData.budget.toLocaleString()}</p>
                             <p className="metric-label">Budget</p>
                         </div>
