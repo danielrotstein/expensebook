@@ -65,37 +65,31 @@ function ExpenseForm(props) {
                         <ErrorNotification error={budgetsError} />
                         <ErrorNotification error={categoriesError} />
                         <ErrorNotification error={error} />
-                        
                         <Button className="btn btn-primary" id={props.remaining < 0 ? "over-budget" : null} variant="dark my-3" onClick={handleShow}>
                             Add Expense
                         </Button>
 
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
-                            
-                            <Modal.Title>Add Expense</Modal.Title>
+                            <Modal.Title className="expense-popup-title">Add Expense</Modal.Title>
                             </Modal.Header>
 
                         <Modal.Body>
                         <form onSubmit={(e) => handleSubmit(e)}>
                             <div className="mb-3">
-                                <label htmlFor="title">Title</label>
-                                <BulmaInput onChange={setTitle} value={title.title} required placeholder="Title" type="text" name="title" id="title" className="form-control"/>
+                                <BulmaInput onChange={setTitle} value={title.title} required placeholder="Title" type="text" name="title" id="title" className="form-control input" label="Title"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="date">Date</label>
-                                <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control"/>
+                                <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="expenseTotal">Expense Total</label>
-                                <BulmaInput onChange={setExpenseTotal} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control"/>
+                                <BulmaInput onChange={setExpenseTotal} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="description">Description</label>
-                                    <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control"/>
+                                <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control input" label="Description"/>
                             </div>
                             <div className="mb-3">
-                                <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select">
+                                <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select category-input input" label="Select a Category">
                                     <option value="">Categories:</option>
                                     {
                                         categoriesData.map(category => {
@@ -105,7 +99,7 @@ function ExpenseForm(props) {
                                 </select>
                             </div>
                             <div className="field">
-                                <button className="btn btn-primary" onClick={handleClose}>Save</button>
+                                <button className="btn btn-primary expense-save" onClick={handleClose}>Save</button>
                             </div>
                         </form>
                         </Modal.Body>
