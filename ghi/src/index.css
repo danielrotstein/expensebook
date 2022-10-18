@@ -54,6 +54,7 @@ a:hover {
 }
 
 .nav-link {
+  width: 120px;
   font-family: Avenir;
   font-size: 18px;
   font-weight: 500;
@@ -81,6 +82,40 @@ a:hover {
 
 .btn-primary:hover {
   background-color: #70c24499;
+}
+
+.auth-form-div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0px;
+  width: 100%;
+}
+
+.auth-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 440px;
+  width: 100%;
+}
+
+.auth-card {
+  height: 440px;
+  width: 500px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.auth-div {
+  display: block;
+  width: 300px;
+  margin: auto;
+}
+
+.auth-button {
+  margin-top: 20px;
 }
 
 .dashboard-title {
@@ -187,6 +222,7 @@ label {
   font-family: Avenir;
   font-size: 18px;
   width: 300px;
+  margin-top: -50px;
 }
 
 .form-buttons-div {

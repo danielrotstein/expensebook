@@ -1,3 +1,10 @@
+# October 18, 2022
+Today, I worked on:
+
+Finalizing our TravelRecommendations component, and adding the ability to filter the data being displayed on our BudgetDetails page.
+
+I learned how to use the localStorage read-only property based on the work Olivia did last night related to authentication.
+
 # October 17, 2022
 Today, I worked on:
 

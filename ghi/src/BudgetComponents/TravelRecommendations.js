@@ -6,6 +6,7 @@ import { useGetRecommendationsQuery } from '../store/recommendationsApi';
 function TravelRecommendations(props) {
     const { data, error, isLoading } = useGetRecommendationsQuery();
     
+    
     const handlePriceChange = event => {
         return null;
     }
