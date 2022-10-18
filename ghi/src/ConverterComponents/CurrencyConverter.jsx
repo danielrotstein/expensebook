@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import CurrencyRow from './CurrencyRow';
 
-// const url = "https://api.apilayer.com/exchangerates_data/latest"
-// const api_key = "chVGAxFwlHINXiLLCQW29oRM1VAPZq3l"
-
 const url = "https://api.exchangerate.host/latest"
+
 
 function CurrencyConverter() {
   const [currencyOptions, setCurrencyOptions] = useState([])
@@ -13,8 +11,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-  const [countryName, setCountryName] = useState()
-  
+
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
