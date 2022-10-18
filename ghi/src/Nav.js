@@ -48,9 +48,15 @@ function Nav() {
                                 <li className="nav-item">
                                   <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
                                 </li>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                </li>
                               </>
                               : 
                               <>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/login">Login</NavLink>
                                 </li>

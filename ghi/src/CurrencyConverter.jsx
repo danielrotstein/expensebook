@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CurrencyRow from './CurrencyRow'
+import countries from './CountryList';
 
-// const url = "https://api.getgeoapi.com/v2/currency/convert"
-// const api_key = "3295c3d5ae0f827aa313cc5bc5a533493f5f9001"
+// const url = "https://api.apilayer.com/exchangerates_data/latest"
+// const api_key = "chVGAxFwlHINXiLLCQW29oRM1VAPZq3l"
 
-const url = "https://api.apilayer.com/exchangerates_data/latest"
-const api_key = "chVGAxFwlHINXiLLCQW29oRM1VAPZq3l"
-
+const url = "https://api.exchangerate.host/latest"
 
 function CurrencyConverter() {
   const [currencyOptions, setCurrencyOptions] = useState([])
@@ -16,7 +15,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-
+  
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -29,13 +28,13 @@ function CurrencyConverter() {
 
 
   useEffect(() => {
-    fetch(`${url}?apikey=${api_key}`)
+    fetch(`${url}`)
       .then(res => res.json())
       .then(data => {
-        const firstCurrency = Object.keys(data.rates)[149]
-        setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-        setFromCurrency(data.base)
-        setToCurrency(firstCurrency)
+        const firstCurrency = Object.keys(data.rates)[46]
+        setCurrencyOptions([data.base="USD", ...Object.keys(data.rates)])
+        setFromCurrency(data.base) // EURO
+        setToCurrency(firstCurrency) // USD
         setExchangeRate(data.rates[firstCurrency])
       })
   }, [])
@@ -43,7 +42,7 @@ function CurrencyConverter() {
 
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null) {
-      fetch(`${url}?apikey=${api_key}&base=${fromCurrency}&symbols=${toCurrency}`)
+      fetch(`${url}?base=${fromCurrency}&symbols=${toCurrency}`)
         .then(res => res.json())
         .then(data => setExchangeRate(data.rates[toCurrency]))
     }
@@ -61,9 +60,21 @@ function CurrencyConverter() {
   }
 
 
+  
+  {
+    countries.map(country => {
+        return <option key={country.name} value={country.name}>{country.name}</option>
+    })
+  }
+
+
+
+
   return (
     <>
       <h1>Your Friendly Currency Converter</h1>
+      <br/>
+      <h3>From</h3>
       <CurrencyRow
         currencyOptions={currencyOptions}
         selectedCurrency={fromCurrency}
@@ -71,7 +82,8 @@ function CurrencyConverter() {
         onChangeAmount={handleFromAmountChange}
         amount={fromAmount}
       />
-      <div className="equals">=</div>
+      <br/>
+      <h3>To</h3>
       <CurrencyRow
         currencyOptions={currencyOptions}
         selectedCurrency={toCurrency}

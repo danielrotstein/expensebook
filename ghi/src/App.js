@@ -30,7 +30,7 @@ function App() {
           <Route path='add-budget' element={< BudgetForm/>} />
           {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}
         </Route>
-        <Route path='currency' element={< CurrencyConverter/>} />
+        <Route path='$converter' element={< CurrencyConverter/>} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
