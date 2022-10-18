@@ -1,3 +1,10 @@
+# October 17, 2022
+Today, I worked on:
+
+Implementing and styling the BudgetDetails component, which included implementing an ExpensesList and a TravelRecommendations component as well.  Over the weekend, I was also able to finalize the styling for the budget POST form.
+
+I learned (and now very much appreciate) just how valuable the Redux store is today.  The budget details screen is the most visually complex page we're building as part of our MVP, so breaking it down into several components was necessary, and not having to pass props from one component to another made the implementation of that screen and its various components much easier with the help of Redux.
+
 # October 14, 2022
 Today, I worked on:
 

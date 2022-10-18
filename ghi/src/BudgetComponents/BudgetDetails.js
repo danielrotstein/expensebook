@@ -78,6 +78,7 @@ function BudgetDetails() {
                     <br />
                     <div className="row metrics-div">
                         <div className="col-sm">
+                        {console.log(budgetsData)}
                             <p className="sub-metric">${budgetsData.budget.toLocaleString()}</p>
                             <p className="metric-label">Budget</p>
                         </div>
