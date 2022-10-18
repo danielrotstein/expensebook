@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CurrencyRow from './CurrencyRow'
-import countries from './CountryList';
 
 // const url = "https://api.apilayer.com/exchangerates_data/latest"
 // const api_key = "chVGAxFwlHINXiLLCQW29oRM1VAPZq3l"
@@ -15,6 +14,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+  const [countryName, setCountryName] = useState()
   
 
   let toAmount, fromAmount
@@ -58,16 +58,6 @@ function CurrencyConverter() {
     setAmount(e.target.value)
     setAmountInFromCurrency(false)
   }
-
-
-  
-  {
-    countries.map(country => {
-        return <option key={country.name} value={country.name}>{country.name}</option>
-    })
-  }
-
-
 
 
   return (
