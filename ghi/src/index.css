@@ -241,20 +241,23 @@ label {
 }
 
 .filters-div {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .filters-sub-div {
   width: 100%;
+  align-items: center;
 }
 
 .filter {
   width: 200px;
+  height: 38px;
   margin-right: 10px;
 }
 
-.add-expense-cta {
-  width: 140px;
+.add-expense-component {
+  margin-right: -40px;
+  width: 220px;
 }
 
 .table-header, .table-data {

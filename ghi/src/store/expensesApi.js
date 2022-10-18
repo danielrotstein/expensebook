@@ -13,7 +13,7 @@ export const expensesApi = createApi({
     }),
     getExpenses: builder.query({
       query: () => '/expenses',
-      // providesTags: ['BudgetDetails'],
+      providesTags: ['BudgetDetails'],
     }),
     getExpense: builder.query({
       query: (expense_id) => `/expenses/${expense_id}`,

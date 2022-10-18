@@ -15,15 +15,12 @@ import Moment from 'moment';
 function BudgetDetails() {
     const { budget_id } = useParams();
     const wrap = "id".concat("=", budget_id);
-    const { data, error, isLoading } = useGetBudgetQuery(wrap);
-    // const { expense_id } = useParams();
-    // const { data2, isLoading2 } = useGetExpenseQuery(expense_id);
 
     const { 
         data: budgetsData, 
         error: budgetsError, 
         isLoading: budgetsIsLoading,
-    } = useGetBudgetQuery(budget_id);
+    } = useGetBudgetQuery(wrap);
     const { 
         data: expensesData, 
         error: expensesError, 
@@ -56,7 +53,6 @@ function BudgetDetails() {
                 total += expense.expense_total;
             });
             setTotal(total);
-            
         }
     }, [expensesData]);
 
@@ -81,7 +77,6 @@ function BudgetDetails() {
                 <div className="container">
                     <ErrorNotification error={budgetsError} />
                     <p className="dashboard-title">{budgetsData.title}</p>
-                    <br />
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">${budgetsData.budget.toLocaleString()}</p>
@@ -117,10 +112,11 @@ function BudgetDetails() {
                                     }
                             </select>
                         </div>
-                        <ExpenseForm props={budget_id}/>
+                        <div className="add-expense-component">
+                            <ExpenseForm props={budget_id} />
+                        </div>
                     </div>
                 </div>
-                <br />
                 <div className="container">
                     <br />         
                     <ExpensesList 
