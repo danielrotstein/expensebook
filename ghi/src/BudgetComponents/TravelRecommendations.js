@@ -38,7 +38,6 @@ function TravelRecommendations(props) {
                                     }
                             </select>
                         </div>
-                        <button className="btn btn-primary add-expense-cta">Shuffle</button>
                     </div>
                 </div>
                 <div className="container">
