@@ -5,6 +5,7 @@ import { useGetCategoriesQuery } from '../store/expensesApi';
 import { useCreateExpenseMutation } from '../store/expensesApi';
 import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
+import ExchangeRates from '../ExchangeRates';
 
 // Modal Stuff
 import Button from 'react-bootstrap/Button';
@@ -27,6 +28,7 @@ function ExpenseForm(props) {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
+    const [expense_converted, setConvertedTotal] = useState('')
     const [description, setDescription] = useState('');
     // const [budget, setBudget] = useState(0);
     const [category, setCategory] = useState(0);
@@ -45,6 +47,19 @@ function ExpenseForm(props) {
     //     setBudget({ ...budget, [name]: parseInt(value) });
     // };
 
+    // let currency = []
+    // for (let i of budgetsData) {
+    //     console.log("here", i["id"])
+    //     if (i === props.props)
+    //     console.log("i",i)
+    //     currency.push(i["home_country"])
+
+
+    // }
+    // console.log("currency", currency)
+    // console.log(props.props)
+    // console.log("budget",budgetsData)
+
     const handleCategoryIdInputChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -55,11 +70,26 @@ function ExpenseForm(props) {
         e.preventDefault();
         const budget_id = props.props
         const category_id = category.category_id
-        createExpense({title, date, expense_total, description,
+        createExpense({title, date, expense_total, expense_converted, description,
             budget_id, category_id,});
-            // ^^ need to add expense converted field
+            // ^^ need to add expense_converted field
             // and get data from currency API
     }
+
+    let homeCountry = "";
+    let destination = "";
+    async function budgetInfo(){
+        destination += budgetsData[parseInt(props.props)-1]["destination_country"];
+        homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
+    }
+    budgetInfo();
+    let rates = ExchangeRates(homeCountry);
+    // console.log(rates)
+    console.log("converted", homeCountry)
+    console.log("local", destination)
+    // console.log("budgets", budgetsData[budgetID])
+    // console.log("props", props)
+
 
     if (budgetsIsLoading || categoriesIsLoading) {
         return (
@@ -99,6 +129,10 @@ function ExpenseForm(props) {
                             <div className="mb-3">
                                 <label htmlFor="expenseTotal">Expense Total</label>
                                 <BulmaInput onChange={setExpenseTotal} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control"/>
+                            </div>
+                            <div>
+                                <label htmlFor='convertedTotal'>Home Currency Total</label>
+                                <p name="convertedTotal" placeholder='0' onChange={setConvertedTotal} value={parseFloat(expense_total / rates[destination]).toFixed(2)}>{parseFloat(expense_total / rates[destination]).toFixed(2)}</p>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description">Description</label>
