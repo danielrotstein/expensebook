@@ -14,18 +14,16 @@ export const budgetsApi = createApi({
     }),
     createBudget: builder.mutation({
       query: data => ({
-        url: '/budgets',
+        url: '/budgets/',
         body: data,
         method: 'POST',
         credentials: 'include',
       }),
       invalidatesTags: ['BudgetDashboard'],
     }),
-
     getBudget: builder.query({
       query: (budget_id) => `/budgets/${budget_id}`,
     }),
-
     getBudgetsByOneUser: builder.query({
       query: (email) => `/budgets/${email}`,
       providesTags: ['BudgetDashboard'],

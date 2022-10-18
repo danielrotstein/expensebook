@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useCreateTokenMutation } from '../store/accountsApi';
 import ErrorNotification from '../ErrorNotification';
 import BulmaInput from '../BulmaInput';
-// import { Link } from 'react-router-dom';
 
 
 function Login() {
@@ -25,6 +24,7 @@ function Login() {
         console.log("localStorage email: ", localStorage.getItem('email'));
         console.log("localStorage token: ", localStorage.getItem('token'))
         console.log("TOKEN", result.data.access_token)
+        console.log("RESULT", result)
     } else if (result.isError) {
         setError(result.error);
     }
