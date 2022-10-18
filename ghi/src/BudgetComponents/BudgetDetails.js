@@ -77,7 +77,6 @@ function BudgetDetails() {
                 <div className="container">
                     <ErrorNotification error={budgetsError} />
                     <p className="dashboard-title">{budgetsData.title}</p>
-                    <br />
                     <div className="row metrics-div">
                         <div className="col-sm">
                         {console.log(budgetsData)}
@@ -114,10 +113,11 @@ function BudgetDetails() {
                                     }
                             </select>
                         </div>
-                        <ExpenseForm props={budget_id}/>
+                        <div className="add-expense-component">
+                            <ExpenseForm props={budget_id} />
+                        </div>
                     </div>
                 </div>
-                <br />
                 <div className="container">
                     <br />         
                     <ExpensesList 
