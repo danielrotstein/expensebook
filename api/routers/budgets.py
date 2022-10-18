@@ -1,4 +1,3 @@
-
 from fastapi import(
     APIRouter, 
     Depends,
@@ -26,15 +25,6 @@ def get_all_budget(
     return repo.get_all_budget()
 
 
-@router.get("/budgets/{email}", response_model=Union[List[BudgetOut], Error])
-def get_all_budget_by_oneuser(
-    email: str,
-    repo: BudgetRepository = Depends(),
-    # account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    return repo.get_all_budget_by_oneuser(email)
-
-
 @router.get("/budgets/{budget_id}", response_model=Optional[BudgetOut])
 def get_one_budget(
     budget_id: int,
@@ -47,17 +37,13 @@ def get_one_budget(
     return budget
 
 
-@router.get("/budgets/{budget_id}/{email}", response_model=Optional[BudgetOut])
-def get_one_budget_by_oneuser(
-    budget_id: int,
+@router.get("/budgets/{email}", response_model=Union[List[BudgetOut], Error])
+def get_all_budget_by_oneuser(
     email: str,
-    response: Response,
     repo: BudgetRepository = Depends(),
-) -> BudgetOut:
-    budget = repo.get_one_budget_by_oneuser(budget_id, email)
-    if budget is None:
-        response.status_code = 404
-    return budget
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    return repo.get_all_budget_by_oneuser(email)
 
 
 @router.post("/budgets", response_model=Union[BudgetOut, Error])
@@ -67,7 +53,6 @@ def create_budget(
     # account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create_budget(budget)
-
 
 
 @router.put("/budgets/{budget_id}", response_model=Union[BudgetOut, Error])
