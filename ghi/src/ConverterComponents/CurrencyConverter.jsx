@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CurrencyRow from './CurrencyRow';
 
-
 const url = "https://api.exchangerate.host/latest"
-
 
 function CurrencyConverter() {
   const [currencyOptions, setCurrencyOptions] = useState([])
@@ -13,7 +11,6 @@ function CurrencyConverter() {
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
-
   let toAmount, fromAmount
   if (amountInFromCurrency) {
     fromAmount = amount
@@ -22,7 +19,6 @@ function CurrencyConverter() {
     toAmount = amount
     fromAmount = amount / exchangeRate
   }
-
 
   useEffect(() => {
     fetch(`${url}`)
@@ -36,7 +32,6 @@ function CurrencyConverter() {
       })
   }, [])
   
-
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null) {
       fetch(`${url}?base=${fromCurrency}&symbols=${toCurrency}`)
@@ -44,7 +39,6 @@ function CurrencyConverter() {
         .then(data => setExchangeRate(data.rates[toCurrency]))
     }
   }, [fromCurrency, toCurrency])
-
 
   function handleFromAmountChange(e) {
     setAmount(e.target.value)
@@ -55,7 +49,6 @@ function CurrencyConverter() {
     setAmount(e.target.value)
     setAmountInFromCurrency(false)
   }
-
 
   return (
     <>
