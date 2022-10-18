@@ -1,3 +1,15 @@
+## 10/17/22
+
+Today, I worked on:
+
+*  Changing code so only budget detail of a specific ID will be displayed and creating a modal for Add Expense "form".
+
+When user clicks on a specific budget in the dashboard, only that specific budget will be displayed in details page, so with that, once we create a new expense for that certain budget, the budget ID is already stored in the DB. Inside specific budget detail, there's now an Add Expense modal "form", just need to figure out how the data gets populated to the details page without having to refresh the page first.
+
+Today, I learned how to write code to use modal for one of our forms.
+
+
+
 ## 10/14/22
 
 Today, I worked on:
