@@ -1,5 +1,5 @@
 10/18/2022
-Got the user authorization work, logged-in user can only see his/her budgets list. Updated the budgets files in routers and queries to resovle the url confliction between account_id and email.
+Got the user authorization work, logged-in user can only see his/her budgets list. Updated the budgets files in routers and queries to resovle the url confliction between account_id and email. Worked with George on the budget create function: only logged-in user can create his own budget. George drove coding.
 
 10/17/2022
 George figured out token can be got by result.data.access_token and to use a logout button instead of the logout file. George drove coding to integrate our auth code with main project. Working with team to integrate code from all team members. 

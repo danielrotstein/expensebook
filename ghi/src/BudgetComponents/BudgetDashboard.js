@@ -4,7 +4,6 @@ import { useGetBudgetsQuery } from '../store/budgetsApi';
 import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
 import { useGetAccountsQuery } from '../store/accountsApi';
 import { useParams } from 'react-router-dom';
-
 import { Link } from 'react-router-dom';
 
 
