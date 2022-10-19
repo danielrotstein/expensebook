@@ -16,7 +16,7 @@ const countries = [
         "currency_code": "USD"
     },
     {
-        "name": "Andorra, Albania, Belgium, Cyprus, Estonia",
+        "name": "Andorra, Albania, Belgium, Cyprus, Estonia, Finland, French Guiana",
         "currency_code": "EUR"
     },
     {
