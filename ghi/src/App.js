@@ -14,6 +14,8 @@ import BudgetForm from './BudgetComponents/BudgetForm';
 
 function App() {
   return (
+    // <div className="page-container">
+    //   <div className="content-wrap">
     <BrowserRouter>
       <Nav />
       <Routes>
@@ -22,7 +24,6 @@ function App() {
         <Route path='login' element={< Login/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
-        
         <Route path='budgets'> 
           <Route index element={<BudgetDashboard />} />
           <Route path='id=:budget_id' element={< BudgetDetails/>} />
@@ -31,8 +32,11 @@ function App() {
         </Route>
         <Route path='$converter' element={< CurrencyConverter/>} />
       </Routes>
-      {/* <Footer /> */}
+      
     </BrowserRouter>
+    // {/* </div> */}
+    // <Footer />
+    // {/* </div> */}
   );
 }
 
