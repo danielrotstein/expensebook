@@ -180,7 +180,7 @@ const countries = [
         "currency_code": "AUD"
     },
     {
-        "name": "Cocos Islands",
+        "name": "Cocos (Keeling) Islands",
         "currency_code": "AUD"
     },
     {
