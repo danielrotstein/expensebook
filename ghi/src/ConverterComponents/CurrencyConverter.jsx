@@ -27,6 +27,7 @@ function CurrencyConverter() {
     fetch(`${url}`)
       .then(res => res.json())
       .then(data => {
+        console.log(data.rates)
         const firstCurrency = Object.keys(data.rates)[46]
         setCurrencyOptions([data.base="USD", ...Object.keys(data.rates)])
         setFromCurrency(data.base) // EURO
