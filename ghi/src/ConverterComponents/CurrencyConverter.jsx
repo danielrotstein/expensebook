@@ -84,18 +84,19 @@ function CurrencyConverter() {
         amount={toAmount}
       />
       </div>
-      <h4>Want to search currency code by country?</h4>
+      <br/>
+      <div className='container'>
+      <h4>Look up currency code for each country:</h4>
 
       <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
-          <option value="">Search Country:</option>
+          <option value="">Search</option>
           {
               countries.map(country => {
-                  return <option key={country.name} value={country.name}>{country.name}</option>
+                  return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
               })
           }
       </select>
-      <h1> </h1>
-
+      </div>
     </>
   );
 }
