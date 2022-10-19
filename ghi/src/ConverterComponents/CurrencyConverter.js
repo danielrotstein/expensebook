@@ -51,7 +51,6 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
-
   return (
     <>
       <div className="create-new-budget-div">
