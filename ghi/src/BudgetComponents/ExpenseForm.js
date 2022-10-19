@@ -24,11 +24,14 @@ function ExpenseForm(props) {
         isLoading: categoriesIsLoading
     } = useGetCategoriesQuery();
 
+    // console.log("cat data", categoriesData)
+    // console.log("props", props)
+
     // const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
-    const [expense_converted, setConvertedTotal] = useState('')
+    const [expense_converted, setExpenseConverted] = useState(0)
     const [description, setDescription] = useState('');
     // const [budget, setBudget] = useState(0);
     const [category, setCategory] = useState(0);
@@ -47,18 +50,11 @@ function ExpenseForm(props) {
     //     setBudget({ ...budget, [name]: parseInt(value) });
     // };
 
-    // let currency = []
-    // for (let i of budgetsData) {
-    //     console.log("here", i["id"])
-    //     if (i === props.props)
-    //     console.log("i",i)
-    //     currency.push(i["home_country"])
-
-
+    // const handleExpenseConverted = (e) => {
+    //     const value = e.target.value;
+    //     setExpenseConverted(value)
+    //     console.log(value)
     // }
-    // console.log("currency", currency)
-    // console.log(props.props)
-    // console.log("budget",budgetsData)
 
     const handleCategoryIdInputChange = (e) => {
         const name = e.target.name;
@@ -79,17 +75,16 @@ function ExpenseForm(props) {
     let homeCountry = "";
     let destination = "";
     async function budgetInfo(){
-        destination += budgetsData[parseInt(props.props)-1]["destination_country"];
-        homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
+        try{
+            destination += budgetsData[parseInt(props.props)-1]["destination_country"];
+            homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
+        } catch(err) {
+            console.log("")
+        }
     }
     budgetInfo();
-    let rates = ExchangeRates(homeCountry);
-    // console.log(rates)
-    console.log("converted", homeCountry)
-    console.log("local", destination)
-    // console.log("budgets", budgetsData[budgetID])
-    // console.log("props", props)
-
+    let rates = ExchangeRates(props);
+    console.log("rates", rates)
 
     if (budgetsIsLoading || categoriesIsLoading) {
         return (
@@ -127,12 +122,18 @@ function ExpenseForm(props) {
                                 <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="expenseTotal">Expense Total</label>
+                                <label htmlFor="expenseTotal">Expense Total ({destination})</label>
                                 <BulmaInput onChange={setExpenseTotal} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control"/>
                             </div>
-                            <div>
-                                <label htmlFor='convertedTotal'>Home Currency Total</label>
-                                <p name="convertedTotal" placeholder='0' onChange={setConvertedTotal} value={parseFloat(expense_total / rates[destination]).toFixed(2)}>{parseFloat(expense_total / rates[destination]).toFixed(2)}</p>
+                            <div className="mb-3 text-left">
+                                <label htmlFor='convertedTotal'>Home Currency Total ({homeCountry})</label>
+                                <p name="convertedTotal"
+                                    placeholder='0'
+                                    // onChange={handleExpenseConverted}
+                                    value={parseFloat(expense_total / rates[destination]).toFixed(2).expense_converted}
+                                    >
+                                    {parseFloat(expense_total / rates[destination]).toFixed(2)}
+                                </p>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description">Description</label>
