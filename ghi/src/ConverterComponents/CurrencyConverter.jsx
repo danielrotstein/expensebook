@@ -27,6 +27,7 @@ function CurrencyConverter() {
     fetch(`${url}`)
       .then(res => res.json())
       .then(data => {
+        console.log(data.rates)
         const firstCurrency = Object.keys(data.rates)[46]
         setCurrencyOptions([data.base="USD", ...Object.keys(data.rates)])
         setFromCurrency(data.base) // EURO
@@ -53,7 +54,7 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
-  const handleCountryInputChange = (e) => {
+  const handleSearchCountryInputChange = (e) => {
     const value = e.target.value;
     setCountry(value);
 };
@@ -84,18 +85,19 @@ function CurrencyConverter() {
         amount={toAmount}
       />
       </div>
-      <h4>Want to search currency code by country?</h4>
+      <br/>
+      <div className='container'>
+      <h4>Look up currency code for each country:</h4>
 
-      <select onChange={handleCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
-          <option value="">Search Country:</option>
+      <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
+          <option value="">Search</option>
           {
               countries.map(country => {
-                  return <option key={country.name} value={country.name}>{country.name}</option>
+                  return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
               })
           }
       </select>
-      <h1> </h1>
-
+      </div>
     </>
   );
 }
