@@ -8,15 +8,15 @@ export const expensesApi = createApi({
   }),
   tagTypes: ['BudgetDetails'],
   endpoints: builder => ({
-    getBudgets: builder.query({
-      query: () => '/budgets',
-    }),
     getCategories: builder.query({
       query: () => '/categories',
     }),
     getExpenses: builder.query({
       query: () => '/expenses',
-      // providesTags: ['BudgetDetails'],
+      providesTags: ['BudgetDetails'],
+    }),
+    getExpense: builder.query({
+      query: (expense_id) => `/expenses/${expense_id}`,
     }),
     createExpense: builder.mutation({
       query: data => {
@@ -28,18 +28,14 @@ export const expensesApi = createApi({
         }
       },
       invalidatesTags: ['BudgetDetails'],
-    }),
-    getExpense: builder.query({
-      query: (expense_id) => `/expenses/${expense_id}`,
     })
   }),
 });
 
 
 export const { 
-    useGetBudgetsQuery,
     useGetCategoriesQuery,
     useGetExpensesQuery,
-    useCreateExpenseMutation,
     useGetExpenseQuery, 
+    useCreateExpenseMutation,
 } = expensesApi;

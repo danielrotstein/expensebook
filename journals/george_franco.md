@@ -29,3 +29,18 @@ Since this was the first day we had used Redux I learned a lot about how to form
 Today we continued working on the early stages of our front end. Our team collaborated together in order to get the log-in form up and running. This required a long debugging process as the POST was sending the data formatted as JSON rather than Python code as it was expecting. On the back end with Redux we had to add a POST statement to our accounting API that generates a token upon login. 
 
 I further developed on what we learned yesterday with Redux. Working on Accounts allowed us to work on a different problem while applying the same principles as we had to our Budgets API the day before. 
+
+## 10/13/22
+Olivia and I have begun to focus on the authentication process for the application. At this point I built the signup and logout forms. Through testing we were able to confirm that sign up was posting the data to our Postgres database. At this time we do not have a way to track whether a user is signed in or out so we cannot test the logout page, it is however redirecting users when clicked like it should.
+
+## 10/14/22
+
+## 10/17/22
+Today I spent much of my time collaborating with Olivia to finish authentication. I was able to dig into the data variable and find our token when we login. Using this we are able to store it and use it to filter certain pages based on if the queried token can be found. 
+
+I learned about locale storage today. 
+
+## 10/18/22
+Today my main focus was on being able to query the current user by their unique email address. We already had similar logic working from Olivia's work to filter the Budgets Dashboard by user. However, the budget POST we were working on used different routers and API methods. So while the logic was the same we needed to be creative in how we applied it. By using locale storage and our accountsAPI, we were able to query budgets by accounts using the email that is stored upon log in. Once we had the budgets we dug into that list of lists in order to assign the related account ID to the budgets created in the budgetform. 
+
+I felt I learned more about React and React Hooks by going through this process today. 

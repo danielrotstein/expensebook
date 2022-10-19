@@ -15,8 +15,6 @@ steps = [
         """
     ],
 
-
-
     [
         """
         CREATE TABLE categories (
@@ -28,6 +26,7 @@ steps = [
         DROP TABLE categories;
         """
     ],
+
     [
         """
         CREATE TABLE budgets (
@@ -45,6 +44,7 @@ steps = [
         DROP TABLE budgets;
         """
     ],
+
     [
         """
         CREATE TABLE recommendations (
@@ -55,7 +55,6 @@ steps = [
             url TEXT NOT NULL,
             description TEXT NULL,
             category_id INT REFERENCES categories(id)
-
         );
         """,
         """

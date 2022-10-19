@@ -1,6 +1,32 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useGetTokenQuery, useLogOutMutation } from './store/accountsApi';
+import { useEffect } from 'react';
+
+function Logout() {
+    const [logOut, { data }] = useLogOutMutation();
+  
+
+    useEffect(() => {
+      if (data) {
+        localStorage.clear();
+        console.log("email before clear local storage: ", localStorage.getItem('email'));
+        console.log("token before clear local storage: ", localStorage.getItem('token'));
+      }
+    }, [data]);
+  
+
+    return (
+        <div className="buttons">
+            <Link to={'/login'}><button onClick={logOut} className="btn btn-primary logout">
+                Log Out
+            </button></Link>
+        </div>
+    );
+  }
+  
 
 function Nav() {
+    const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
     return (
         <div>
             <nav className="navbar navbar-expand-lg">
@@ -11,15 +37,33 @@ function Nav() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/login">Login</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/login">Logout</NavLink>
-                            </li>
+                          {tokenLoading
+                            ? <></>
+                            : token
+                              ? <>                            
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <Logout className="nav-link" />
+                                </li>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                </li>
+                              </>
+                              : 
+                              <>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/login">Login</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                                </li>                              
+                              </>
+                            }
                         </ul>
                     </div>
                 </div>

@@ -54,6 +54,7 @@ a:hover {
 }
 
 .nav-link {
+  width: 120px;
   font-family: Avenir;
   font-size: 18px;
   font-weight: 500;
@@ -81,6 +82,59 @@ a:hover {
 
 .btn-primary:hover {
   background-color: #70c24499;
+}
+
+.logout {
+  width: 100px;
+  margin-top: 3px;
+  margin-right: 20px;
+}
+
+.auth-form-div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0px;
+  width: 100%;
+}
+
+.auth-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 440px;
+  width: 100%;
+}
+
+.auth-card {
+  height: 440px;
+  width: 500px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.auth-div {
+  display: block;
+  width: 300px;
+  margin: auto;
+}
+
+.auth-button {
+  margin-top: 20px;
+}
+
+.signup-card {
+  width: 500px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.signup-button {
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-bottom: 40px;
 }
 
 .dashboard-title {
@@ -211,6 +265,145 @@ label {
   text-decoration: underline;
 }
 
+.metrics-div {
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.primary-metric {
+  color: #70c244;
+  font-size: 85px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0px;
+  line-height: 85px;
+}
+
+.primary-metric-over {
+  color: #ee4b2b;
+  font-size: 85px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0px;
+  line-height: 85px;
+}
+
+.sub-metric {
+  font-size: 60px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0px;
+  line-height: 60px;
+}
+
+.metric-label {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.filters-div {
+  margin-top: 30px;
+}
+
+.filters-sub-div {
+  width: 100%;
+  align-items: center;
+}
+
+.filter {
+  width: 200px;
+  height: 38px;
+  margin-right: 10px;
+}
+
+.add-expense-component {
+  margin-right: -40px;
+  width: 220px;
+}
+
+.table-header, .table-data {
+  font-family: Avenir;
+  font-size: 16px;
+}
+
+#description {
+  max-width: 500px;
+}
+
+#budget-remaining {
+  color: #70c244;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#budget-remaining-over {
+  color: #ee4b2b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#over-budget {
+  background-color: #ee4b2b;
+}
+
+#row-no-border {
+  border-bottom: 1px solid white;
+}
+
+.expense-popup-title {
+  font-family: Avenir;
+  margin-top: 10px;
+}
+
+.category-input {
+  margin-top: 25px;
+}
+
+.expense-save {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.recs-div {
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  margin-bottom: 20px;
+}
+
+.rec-image {
+  width: 220px;
+  height: auto;
+  max-height: 220px;
+  margin: 30px 20px 30px 30px;
+  border-radius: 10px;
+}
+
+.rec-details {
+  margin: 30px 0px;
+}
+
+.rec-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rec-cta-div {
+  margin: 80px 30px 0px 20px;
+}
+
+.rec-price {
+  font-size: 20px;
+  text-align: center;
+}
+
+.rec-url {
+  width: 110px;
+  margin-left: 5px;
+}
+
 .footer-margin {
   height: 0;
 }
@@ -231,4 +424,9 @@ label {
 
 .footer-div p {
   font-size: 14px;
+}
+
+
+#sign-up-button {
+  margin-left: 10px;
 }
