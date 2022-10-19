@@ -25,9 +25,6 @@ function ExpenseForm(props) {
         isLoading: categoriesIsLoading
     } = useGetCategoriesQuery();
 
-    // console.log("cat data", categoriesData)
-    // console.log("currency", currencyData)
-
     // const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
@@ -83,15 +80,19 @@ function ExpenseForm(props) {
     }
     budgetInfo();
 
-    // let rates = ExchangeRates(props);
-    // console.log("rates", rates)
     const {
         data: currencyData,
         error: currencyError,
         isLoading: currencyIsLoading
     } = useGetCurrencyRatesQuery(homeCountry);
-
     console.log("currency", currencyData)
+
+    function setExpenseAndConvert(expense_total){
+        // set converted value
+        setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[destination]).toFixed(2)))
+        setExpenseTotal(Number(expense_total))
+    }
+
 
     if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading) {
         return (
@@ -132,7 +133,7 @@ function ExpenseForm(props) {
                                 <label htmlFor="expenseTotal">Expense Total
                                 ({destination})
                                 </label>
-                                <BulmaInput onChange={setExpenseTotal} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control"/>
+                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control"/>
                             </div>
                             <div className="mb-3 text-left">
                                 <label htmlFor='convertedTotal'>Home Currency Total
@@ -140,11 +141,11 @@ function ExpenseForm(props) {
                                 </label>
                                 <p name="convertedTotal"
                                     placeholder='0'
-                                    // onChange={handleExpenseConverted}
-                                    // value={parseFloat(expense_total / rates[destination]).toFixed(2).expense_converted}
+
                                     >
                                     {parseFloat(expense_total / currencyData.rates[destination]).toFixed(2)}
                                 </p>
+                                {/* <input onChange={handleCurrencyChange} type="text" value={expense_converted.expense_converted}></input> */}
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description">Description</label>

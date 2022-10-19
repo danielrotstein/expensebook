@@ -11,8 +11,8 @@ class Error(BaseModel):
 class ExpenseIn(BaseModel):
     title: str
     date: date
-    expense_total: int
-    expense_converted: int
+    expense_total: float
+    expense_converted: float
     description: Optional[str]
     budget_id: int
     category_id: int
@@ -22,8 +22,8 @@ class ExpenseOut(BaseModel):
     id: int
     title: str
     date: date
-    expense_total: int
-    expense_converted: int
+    expense_total: float
+    expense_converted: float
     description: Optional[str]
     budget_id: int
     category_id: int
