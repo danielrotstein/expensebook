@@ -151,7 +151,7 @@ function BudgetForm(props) {
                                             <option value="">Home Country</option>
                                             {
                                                 countries.map(country => {
-                                                    return <option key={country.name} value={country.name}>{country.name}</option>
+                                                    return <option key={country.name} value={country.currency_code}>{country.name}</option>
                                                 })
                                             }
                                         </select>
@@ -161,7 +161,7 @@ function BudgetForm(props) {
                                             <option value="">Destination Country</option>
                                             {
                                                 countries.map(country => {
-                                                    return <option key={country.name} value={country.name}>{country.name}</option>
+                                                    return <option key={country.name} value={country.currency_code}>{country.name}</option>
                                                 })
                                             }
                                         </select>
