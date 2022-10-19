@@ -1,4 +1,18 @@
-## 10/13/22
+##10/18/22
+Today:
+
+I continued to work on the currency conversions for the app. I was able to use the state and props to populate the correct url for the base currency and I was also able to implement a hook to get all currency exchange rates. 
+
+I learned that you cannot send props up to a parent module and that they can only be passed down. 
+
+##10/17/22
+Today:
+
+I worked on calling the API to get conversion rates and implimented them onto the expense form. I was able to get the conversions to work but now need to get the base currency from the API to convert to a users home currency. 
+
+I learned that when calling the api you can change the base currency with the currency code. 
+
+## 10/14/22
 Today:
 
 Daniel and I pair programmed and worked on the currency converter. We made an update to the BudgetForm.js to have a dropdown with countries and the countries value will be the currency code for that country. This will be needed for when we are doing a currency conversion when adding an expense.

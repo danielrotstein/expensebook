@@ -353,6 +353,20 @@ label {
   border-bottom: 1px solid white;
 }
 
+.expense-popup-title {
+  font-family: Avenir;
+  margin-top: 10px;
+}
+
+.category-input {
+  margin-top: 25px;
+}
+
+.expense-save {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
 .recs-div {
   border-radius: 20px;
   background-color: #dcdcdc60;
