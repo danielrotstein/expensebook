@@ -1,4 +1,3 @@
-// https://github.com/fawazahmed0/currency-api#readme
 const countries = [
     {
         "name": "Afghanistan",
