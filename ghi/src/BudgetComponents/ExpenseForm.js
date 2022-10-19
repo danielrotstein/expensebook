@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
+import { useGetCurrencyRatesQuery } from '../store/exchangeRatesApi';
 import { useGetCategoriesQuery } from '../store/expensesApi';
 import { useCreateExpenseMutation } from '../store/expensesApi';
 import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
-import ExchangeRates from '../ExchangeRates';
+// import ExchangeRates from '../ExchangeRates';
 
 // Modal Stuff
 import Button from 'react-bootstrap/Button';
@@ -25,7 +26,7 @@ function ExpenseForm(props) {
     } = useGetCategoriesQuery();
 
     // console.log("cat data", categoriesData)
-    // console.log("props", props)
+    // console.log("currency", currencyData)
 
     // const navigate = useNavigate();
     const [title, setTitle] = useState('');
@@ -68,8 +69,6 @@ function ExpenseForm(props) {
         const category_id = category.category_id
         createExpense({title, date, expense_total, expense_converted, description,
             budget_id, category_id,});
-            // ^^ need to add expense_converted field
-            // and get data from currency API
     }
 
     let homeCountry = "";
@@ -79,14 +78,22 @@ function ExpenseForm(props) {
             destination += budgetsData[parseInt(props.props)-1]["destination_country"];
             homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
         } catch(err) {
-            console.log("")
+            console.log("EEEKK")
         }
     }
     budgetInfo();
-    let rates = ExchangeRates(props);
-    console.log("rates", rates)
 
-    if (budgetsIsLoading || categoriesIsLoading) {
+    // let rates = ExchangeRates(props);
+    // console.log("rates", rates)
+    const {
+        data: currencyData,
+        error: currencyError,
+        isLoading: currencyIsLoading
+    } = useGetCurrencyRatesQuery(homeCountry);
+
+    console.log("currency", currencyData)
+
+    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading) {
         return (
           <div className="container">
             <Notification type="info">Loading...</Notification>
@@ -122,17 +129,21 @@ function ExpenseForm(props) {
                                 <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="expenseTotal">Expense Total ({destination})</label>
+                                <label htmlFor="expenseTotal">Expense Total
+                                ({destination})
+                                </label>
                                 <BulmaInput onChange={setExpenseTotal} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control"/>
                             </div>
                             <div className="mb-3 text-left">
-                                <label htmlFor='convertedTotal'>Home Currency Total ({homeCountry})</label>
+                                <label htmlFor='convertedTotal'>Home Currency Total
+                                ({homeCountry})
+                                </label>
                                 <p name="convertedTotal"
                                     placeholder='0'
                                     // onChange={handleExpenseConverted}
-                                    value={parseFloat(expense_total / rates[destination]).toFixed(2).expense_converted}
+                                    // value={parseFloat(expense_total / rates[destination]).toFixed(2).expense_converted}
                                     >
-                                    {parseFloat(expense_total / rates[destination]).toFixed(2)}
+                                    {parseFloat(expense_total / currencyData.rates[destination]).toFixed(2)}
                                 </p>
                             </div>
                             <div className="mb-3">
