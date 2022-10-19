@@ -5,6 +5,14 @@ export const accountsApi = createApi({
   reducerPath: 'accounts',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_FAST_API,
+    prepareHeaders: (headers, { getState }) => {
+      const selector = accountsApi.endpoints.getToken.select();
+      const { data: tokenData } = selector(getState());
+      if (tokenData && tokenData.access_token) {
+        headers.set('Authorization', 'Bearer ${tokenData.access_token}')
+      }
+      return headers;
+    }
   }),
   tagTypes: ['BudgetDashboard', 'Account', 'Token', 'Account', 'Token'],
   endpoints: builder => ({
