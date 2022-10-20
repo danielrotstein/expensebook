@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRow from './CurrencyRow';
-import countries from '../CountryList';
 
 const url = "https://api.exchangerate.host/latest"
 
@@ -12,7 +11,6 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-  const [country, setCountry] = useState()
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -27,7 +25,6 @@ function CurrencyConverter() {
     fetch(`${url}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data.rates)
         const firstCurrency = Object.keys(data.rates)[46]
         setCurrencyOptions([data.base="USD", ...Object.keys(data.rates)])
         setFromCurrency(data.base) // EURO
@@ -54,11 +51,6 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
-  const handleSearchCountryInputChange = (e) => {
-    const value = e.target.value;
-    setCountry(value);
-};
-
   return (
     <>
       <div className="create-new-budget-div">
@@ -84,20 +76,7 @@ function CurrencyConverter() {
         onChangeAmount={handleToAmountChange}
         amount={toAmount}
       />
-      </div>
-      <br/>
-      <div className='container'>
-      <h4>Look up currency code for each country:</h4>
-
-      <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
-          <option value="">Search</option>
-          {
-              countries.map(country => {
-                  return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
-              })
-          }
-      </select>
-      </div>
+      </div>     
     </>
   );
 }
