@@ -12,6 +12,8 @@ function CurrencyConverter() {
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
 
+  console.log(currencyOptions)
+
   let toAmount, fromAmount
   if (amountInFromCurrency) {
     fromAmount = amount

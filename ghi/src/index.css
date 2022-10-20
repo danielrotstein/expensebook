@@ -74,6 +74,10 @@ a:hover {
   margin-right: 20px;
 } */
 
+#signup {
+  margin-left: -40px;
+}
+
 .btn-primary {
   background-color: #70c244;
   font: Avenir;
