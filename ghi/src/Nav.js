@@ -55,7 +55,10 @@ function Nav() {
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
-                                </li>                              
+                                </li>     
+                                <script type="text/javascript">
+                                    document.body.innerHTML = '';
+                                </script>                         
                               </>
                             }
                         </ul>
