@@ -16,7 +16,7 @@ class ExpenseIn(BaseModel):
     description: Optional[str]
     budget_id: int
     category_id: int
-    
+
 
 class ExpenseOut(BaseModel):
     id: int
@@ -97,7 +97,7 @@ class ExpenseRepository:
                     return self.record_to_expense_out(record)
         except Exception as e:
             print(e)
-            
+
 
     def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
         try:
@@ -195,7 +195,7 @@ class ExpenseRepository:
     def expense_in_to_out(self, id: int, expense: ExpenseIn):
         old_data = expense.dict()
         return ExpenseOut(id=id, **old_data)
-            
+
 
     def record_to_expense_out(self, record):
         return ExpenseOut(
@@ -208,4 +208,3 @@ class ExpenseRepository:
             budget_id=record[6],
             category_id=record[7]
         )
-

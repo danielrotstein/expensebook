@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRow from './CurrencyRow';
-import countries from '../CountryList';
 
 const url = "https://api.exchangerate.host/latest"
 
@@ -12,7 +11,6 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-  const [country, setCountry] = useState()
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -52,11 +50,6 @@ function CurrencyConverter() {
     setAmount(e.target.value)
     setAmountInFromCurrency(false)
   }
-
-  const handleCountryInputChange = (e) => {
-    const value = e.target.value;
-    setCountry(value);
-};
 
   return (
     <>

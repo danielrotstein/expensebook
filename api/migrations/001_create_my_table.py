@@ -44,7 +44,7 @@ steps = [
         DROP TABLE budgets;
         """
     ],
-    
+
     [
         """
         CREATE TABLE recommendations (
@@ -62,7 +62,7 @@ steps = [
         DROP TABLE recommendations;
         """
     ],
-    
+# added expense_converted field for expense conversion API
     [
         """
         CREATE TABLE expenses (

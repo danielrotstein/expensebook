@@ -12,7 +12,7 @@ function SignUpForm() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [createAccount, result] = useCreateAccountsMutation();
-    
+
     async function handleSubmit(e) {
         e.preventDefault();
         console.log("E.TARGET", e.target);
@@ -47,18 +47,18 @@ function SignUpForm() {
                             <div className="auth-input">
                                 <label htmlFor="last_name">Last Name</label>
                                 <BulmaInput onChange={setLastName} value={last_name} required placeholder="last_name" type="text" name="last_name" id="last_name" className="form-control input"/>
-                            </div>  
-                            <br />  
+                            </div>
+                            <br />
                             <div className="auth-input">
                                 <label htmlFor="email">Email</label>
-                                <BulmaInput onChange={setEmail} value={email} required placeholder="Email" 
+                                <BulmaInput onChange={setEmail} value={email} required placeholder="Email"
                                 type="email" name="email" id="email" className="form-control input"/>
                             </div>
                             <br />
                             <div className="auth-input">
                                 <label htmlFor="password">Password</label>
-                                <BulmaInput onChange={setPassword} value={password} 
-                                required placeholder="Password" type="password" name="password" id="password" 
+                                <BulmaInput onChange={setPassword} value={password}
+                                required placeholder="Password" type="password" name="password" id="password"
                                 className="form-control input"/>
                             </div>
                         </div>
