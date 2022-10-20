@@ -54,6 +54,7 @@ steps = [
             image TEXT NULL,
             url TEXT NOT NULL,
             description TEXT NULL,
+            country VARCHAR(50) NOT NULL,
             category_id INT REFERENCES categories(id)
         );
         """,
@@ -68,7 +69,8 @@ steps = [
             id SERIAL PRIMARY KEY NOT NULL,
             title VARCHAR(200) NOT NULL,
             date DATE NOT NULL,
-            expense_total INT NOT NULL,
+            expense_total DECIMAL NOT NULL,
+            expense_converted DECIMAL NOT NULL,
             description TEXT NULL,
             budget_id INT REFERENCES budgets(id),
             category_id INT REFERENCES categories(id)

@@ -86,8 +86,7 @@ a:hover {
 
 .logout {
   width: 100px;
-  margin-top: 3px;
-  margin-right: 20px;
+  margin: 3px 20px 0px 30px;
 }
 
 .auth-form-div {
@@ -402,6 +401,25 @@ label {
 .rec-url {
   width: 110px;
   margin-left: 5px;
+}
+
+.converter-title {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.converter-sub-title {
+  font-size: 20px;
+}
+
+.converter-input {
+  font-family: Avenir;
+  height: 35px;
+  color: #fff;
+  background-color: #70c244;
+  border: 1px solid #70c244;
+  border-radius: 3px;
 }
 
 .footer-margin {

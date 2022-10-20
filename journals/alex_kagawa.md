@@ -1,3 +1,10 @@
+# October 19, 2022
+Today, I worked on:
+
+Updating the recommendations table to include a country property, so that we can filter which recommendations we show to which budgets.  Now we have the ability to query recommendations based on the country the user inputs for the budget they create.  Separately, we also now have the ability to filter recommendations by category or by price from the budget details screen.
+
+I learned more CSS and bootstrap tricks to be more effective at applying flex and grid displays.
+
 # October 18, 2022
 Today, I worked on:
 
