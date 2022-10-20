@@ -6,6 +6,7 @@ from queries.expenses import (
     ExpenseIn,
     ExpenseRepository,
     ExpenseOut,
+    ExpensePatch,
 )
 
 from authenticator import authenticator
@@ -61,3 +62,11 @@ def update_expense(
     return repo.update_expense(expense_id, expense)
 
 
+@router.put("/expenses/{expense_id}", response_model=Union[ExpenseOut, Error])
+def patch_expense(
+    expense_id: int,
+    expense: ExpensePatch,
+    repo: ExpenseRepository = Depends(),
+    # account_data: dict = Depends(authenticator.get_current_account_data),
+) -> Union[Error, ExpenseOut]:
+    return repo.update_expense(expense_id, expense)

@@ -1,8 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import ExpenseForm from './ExpenseForm';
-import { useGetBudgetQuery } from '../store/budgetsApi';
+import { useGetBudgetQuery, useDeleteBudgetMutation, useUpdateBudgetMutation } from '../store/budgetsApi';
 import { useGetExpensesQuery } from '../store/expensesApi';
 import { useGetCategoriesQuery } from '../store/expensesApi';
 import ExpensesList from './ExpensesList';
@@ -37,6 +37,9 @@ function BudgetDetails() {
     const [dates, setDates] = useState([]);
     const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [total, setTotal] = useState(0);
+    const [deleteBudget, deleted] = useDeleteBudgetMutation(budget_id);
+    const [updateBudget, update_response] = useUpdateBudgetMutation(budget_id);
+
 
 
     useEffect(() => {
@@ -98,7 +101,6 @@ function BudgetDetails() {
         }
     }
 
-
     if (budgetsIsLoading || expensesIsLoading || categoriesIsLoading) {
         return (
           <div className="container">
@@ -111,6 +113,8 @@ function BudgetDetails() {
                 <div className="container">
                     <ErrorNotification error={budgetsError} />
                     <p className="dashboard-title">{budgetsData.title}</p>
+                    <Link to={'/budgets'}><button onClick={() => deleteBudget(budget_id)} className="btn btn-primary">Delete</button></Link>
+                    <Link to={'/budgets/add-budget'}><button onChange={updateBudget} className="btn btn-primary">Update</button></Link>
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">${budgetsData.budget.toLocaleString()}</p>

@@ -28,6 +28,22 @@ export const budgetsApi = createApi({
       query: (email) => `/budgets/${email}`,
       providesTags: ['BudgetDashboard'],
     }),
+    deleteBudget: builder.mutation({
+      query: (budget_id) => ({
+        url: `/budgets/id=${budget_id}`,
+        method: 'delete',
+        credentials: 'include',
+      }),
+      invalidatesTags: ['BudgetDashboard'],
+    }),
+    updateBudget: builder.mutation({
+      query: (budget_id) => ({
+        url: `/budgets/id=${budget_id}`,
+        method: 'PUT',
+        credentials: 'include',
+      }),
+      invalidatesTags: ['BudgetDashboard'],
+    }),
   }),
 });
 
@@ -37,4 +53,6 @@ export const {
     useCreateBudgetMutation,
     useGetBudgetQuery, 
     useGetBudgetsByOneUserQuery,
+    useDeleteBudgetMutation,
+    useUpdateBudgetMutation,
 } = budgetsApi;
