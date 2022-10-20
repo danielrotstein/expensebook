@@ -62,7 +62,7 @@ function BudgetForm(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createBudget({title, start_date, end_date, budget, 
+        createBudget({title, start_date, end_date, budget,
             home_country, destination_country, account_id});
     }
 
@@ -79,7 +79,7 @@ function BudgetForm(props) {
             <div className="budget-form-div">
                 <ErrorNotification error={error} />
                 <form onSubmit={(e) => handleSubmit(e)} className="create-budget-form">
-                    {step == 1 
+                    {step == 1
                         ? <div className="create-budget-card">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#70c244" className="bi bi-currency-exchange budget-form-icon" viewBox="0 0 16 16">
                                 <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
@@ -89,7 +89,7 @@ function BudgetForm(props) {
                                     <label htmlFor="title">Let's add a title to your budget</label>
                                     <BulmaInput onChange={setTitle} value={title.title} required type="text" name="title" id="title" className="form-control input"/>
                                     <div className="form-buttons-div d-flex">
-                                        {!(title.length) 
+                                        {!(title.length)
                                             ? <button className="btn btn-primary form-button" id="first-button">Next</button>
                                             : <button onClick={handleNextClick} className="btn btn-primary form-button" id="first-button">Next</button>
                                         }
@@ -103,7 +103,7 @@ function BudgetForm(props) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#70c244" className="bi bi-calendar-day budget-form-icon" viewBox="0 0 16 16">
                                 <path d="M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43zm.094 5.093h.672V7.418h-.672v4.105z"/>
                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                            </svg> 
+                            </svg>
                             <div className="create-budget mb-3">
                                 <div className="input-div">
                                     <label htmlFor="startDate">When are you departing?</label>
@@ -113,7 +113,7 @@ function BudgetForm(props) {
                                     <BulmaInput onChange={setEndDate} value={end_date.end_date} required type="date" name="endDate" id="endDate" className="form-control input"/>
                                     <div className="form-buttons-div d-flex">
                                         <p className="reset-button" onClick={handleResetClick}>Reset</p>
-                                        {!(start_date) || !(end_date) 
+                                        {!(start_date) || !(end_date)
                                             ? <button className="btn btn-primary form-button">Next</button>
                                             : <button onClick={handleNextClick} className="btn btn-primary form-button">Next</button>
                                         }
@@ -134,7 +134,7 @@ function BudgetForm(props) {
                                     <BulmaInput onChange={setBudget} value={budget.budget} required type="number" name="budget" id="budget" className="form-control input"/>
                                     <div className="form-buttons-div d-flex">
                                         <p className="reset-button" onClick={handleResetClick}>Reset</p>
-                                        {!(budget) 
+                                        {!(budget)
                                         ? <button className="btn btn-primary next-button">Next</button>
                                         : <button onClick={handleNextClick} className="btn btn-primary next-button">Next</button>
                                     }
@@ -155,7 +155,7 @@ function BudgetForm(props) {
                                         <option value="">Home Country</option>
                                         {
                                             countries.map(country => {
-                                                return <option key={country.name} value={country.name}>{country.name}</option>
+                                                return <option key={country.name} value={country.currency_code}>{country.name}</option>
                                             })
                                         }
                                     </select>
@@ -165,7 +165,7 @@ function BudgetForm(props) {
                                         <option value="">Destination Country</option>
                                         {
                                             countries.map(country => {
-                                                return <option key={country.name} value={country.name}>{country.name}</option>
+                                                return <option key={country.name} value={country.currency_code}>{country.name}</option>
                                             })
                                         }
                                     </select>
@@ -186,7 +186,7 @@ function BudgetForm(props) {
                                 {console.log("tpye of data.id: ", typeof data.id)}
                                 <button onClick={handleConfirmClick} value={account_id} className="btn btn-primary next-button">Confirm</button>
                             </div> : null
-                    } 
+                    }
                 </form>
             </div>
         </div>

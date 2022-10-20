@@ -12,7 +12,7 @@ function SignUpForm() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [createAccount, result] = useCreateAccountsMutation();
-    
+
     async function handleSubmit(e) {
         e.preventDefault();
         console.log("E.TARGET", e.target);
@@ -30,36 +30,42 @@ function SignUpForm() {
 
     return (
         <div className="container">
-            <h1>Sign Up</h1>
-            <div className="columns is-centered">
-                <div className="column is-one-third">
-                    <ErrorNotification error={error} />
-                    <form onSubmit={(e) => handleSubmit(e)}>
-                    <div className="mb-3">
-                            <label htmlFor="first_name">First Name</label>
-                            <BulmaInput onChange={setFirstName} value={first_name} required placeholder="first_name" type="text" name="first_name" id="first_name" className="form-control"/>
+            <div className="auth-form-div">
+            <ErrorNotification error={error} />
+                <form onSubmit={(e) => handleSubmit(e)} className="auth-form">
+                    <div className="signup-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#70c244" className="bi bi-person-circle budget-form-icon" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <br />
+                        <div className="auth-div mb-3">
+                            <div className="auth-input">
+                                <label htmlFor="first_name">First Name</label>
+                                <BulmaInput onChange={setFirstName} value={first_name} required placeholder="first_name" type="text" name="first_name" id="first_name" className="form-control input"/>
+                            </div>
+                            <br />
+                            <div className="auth-input">
+                                <label htmlFor="last_name">Last Name</label>
+                                <BulmaInput onChange={setLastName} value={last_name} required placeholder="last_name" type="text" name="last_name" id="last_name" className="form-control input"/>
+                            </div>
+                            <br />
+                            <div className="auth-input">
+                                <label htmlFor="email">Email</label>
+                                <BulmaInput onChange={setEmail} value={email} required placeholder="Email"
+                                type="email" name="email" id="email" className="form-control input"/>
+                            </div>
+                            <br />
+                            <div className="auth-input">
+                                <label htmlFor="password">Password</label>
+                                <BulmaInput onChange={setPassword} value={password}
+                                required placeholder="Password" type="password" name="password" id="password"
+                                className="form-control input"/>
+                            </div>
                         </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="last_name">Last Name</label>
-                            <BulmaInput onChange={setLastName} value={last_name} required placeholder="last_name" type="text" name="last_name" id="last_name" className="form-control"/>
-                        </div>    
-                        <div className="mb-3">
-                            <label htmlFor="email">Email</label>
-                            <BulmaInput onChange={setEmail} value={email} required placeholder="Email" 
-                            type="email" name="email" id="email" className="form-control"/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="password">Password</label>
-                            <BulmaInput onChange={setPassword} value={password} 
-                            required placeholder="Password" type="password" name="password" id="password" 
-                            className="form-control"/>
-                        </div>
-                        <div className="field">
-                            <button className="btn btn-primary">Save</button>
-                        </div>
-                    </form>
-                </div>
+                        <button className="btn btn-primary signup-button">Sign Up</button>
+                    </div>
+                </form>
             </div>
         </div>
     )
