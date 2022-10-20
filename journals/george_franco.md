@@ -39,3 +39,8 @@ Olivia and I have begun to focus on the authentication process for the applicati
 Today I spent much of my time collaborating with Olivia to finish authentication. I was able to dig into the data variable and find our token when we login. Using this we are able to store it and use it to filter certain pages based on if the queried token can be found. 
 
 I learned about locale storage today. 
+
+## 10/18/22
+Today my main focus was on being able to query the current user by their unique email address. We already had similar logic working from Olivia's work to filter the Budgets Dashboard by user. However, the budget POST we were working on used different routers and API methods. So while the logic was the same we needed to be creative in how we applied it. By using locale storage and our accountsAPI, we were able to query budgets by accounts using the email that is stored upon log in. Once we had the budgets we dug into that list of lists in order to assign the related account ID to the budgets created in the budgetform. 
+
+I felt I learned more about React and React Hooks by going through this process today. 

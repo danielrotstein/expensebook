@@ -17,8 +17,8 @@ function Logout() {
 
     return (
         <div className="buttons">
-            <Link to={'/login'}><button onClick={logOut} className="button is-light">
-                Log out
+            <Link to={'/login'}><button onClick={logOut} className="btn btn-primary logout">
+                Log Out
             </button></Link>
         </div>
     );
@@ -47,9 +47,15 @@ function Nav() {
                                 <li className="nav-item">
                                     <Logout className="nav-link" />
                                 </li>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                </li>
                               </>
                               : 
                               <>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/login">Login</NavLink>
                                 </li>

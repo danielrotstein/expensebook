@@ -66,12 +66,10 @@ function BudgetForm(props) {
         e.preventDefault();
         createBudget({title, start_date, end_date, budget, 
             home_country, destination_country, account_id});
-        
     }
 
     if (result.isSuccess) {
         navigate("/budgets");
-        console.log("RESULT", result)
     } else if (result.isError) {
         // setError(result.error);
         console.log("ERROR")

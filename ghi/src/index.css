@@ -84,6 +84,12 @@ a:hover {
   background-color: #70c24499;
 }
 
+.logout {
+  width: 100px;
+  margin-top: 3px;
+  margin-right: 20px;
+}
+
 .auth-form-div {
   position: absolute;
   top: 50%;
@@ -116,6 +122,19 @@ a:hover {
 
 .auth-button {
   margin-top: 20px;
+}
+
+.signup-card {
+  width: 500px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.signup-button {
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-bottom: 40px;
 }
 
 .dashboard-title {
@@ -222,7 +241,6 @@ label {
   font-family: Avenir;
   font-size: 18px;
   width: 300px;
-  margin-top: -50px;
 }
 
 .form-buttons-div {
@@ -311,6 +329,10 @@ label {
   font-size: 16px;
 }
 
+#description {
+  max-width: 500px;
+}
+
 #budget-remaining {
   color: #70c244;
   font-size: 18px;
@@ -329,6 +351,20 @@ label {
 
 #row-no-border {
   border-bottom: 1px solid white;
+}
+
+.expense-popup-title {
+  font-family: Avenir;
+  margin-top: 10px;
+}
+
+.category-input {
+  margin-top: 25px;
+}
+
+.expense-save {
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .recs-div {
@@ -388,4 +424,9 @@ label {
 
 .footer-div p {
   font-size: 14px;
+}
+
+
+#sign-up-button {
+  margin-left: 10px;
 }
