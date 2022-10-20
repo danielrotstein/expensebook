@@ -20,12 +20,11 @@ function Login() {
     if (result.isSuccess) {
         navigate("/budgets");
         localStorage.setItem('email', JSON.stringify(email));
-        localStorage.setItem('token', JSON.stringify(result.data.access_token));
+        // localStorage.setItem('token', JSON.stringify(result.data.access_token));
         console.log("localStorage email: ", localStorage.getItem('email'));
-        console.log("localStorage token: ", localStorage.getItem('token'));
-        console.log("TOKEN: ", result.data.access_token);
-        console.log("RESULT: ", result);
-        
+        // console.log("localStorage token: ", localStorage.getItem('token'))
+        console.log("TOKEN", result.data.access_token)
+        console.log("RESULT", result)
     } else if (result.isError) {
         setError(result.error);
     }
