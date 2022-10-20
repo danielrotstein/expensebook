@@ -20,7 +20,7 @@ export const accountsApi = createApi({
       query: () => '/accounts',
       providesTags: ['Account'],
     }),
-    getAccountByEmail: builder.query({
+    getOneAccount: builder.query({
       query: (email) => `/accounts/${email}`,
       providesTags: ['Account'],
     }), 
@@ -63,7 +63,7 @@ export const accountsApi = createApi({
 
 export const { 
   useGetAccountsQuery, 
-  useGetAccountByEmailQuery, 
+  useGetOneAccountQuery, 
   useCreateAccountsMutation, 
   useCreateTokenMutation, useLogOutMutation,
   useGetTokenQuery,} = accountsApi;
