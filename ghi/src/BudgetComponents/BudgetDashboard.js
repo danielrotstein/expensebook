@@ -50,7 +50,7 @@ function BudgetDashboard() {
                 </>
                 : 
                 <>
-                    navigate("/about")
+                    navigate("/budgets/add-budget")
                 </>
                 }
             </div>
