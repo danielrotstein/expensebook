@@ -49,7 +49,7 @@ function ExpensesList(props) {
                             <td className="table-data">{expense.title}</td>
                             <td className="table-data">{Moment(expense.date).format('MMM DD, YYYY')}</td>
                             <td className="table-data">{categories[expense.category_id]}</td>
-                            <td className="table-data">{expense.description}</td>
+                            <td className="table-data" id="description">{expense.description}</td>
                             <td className="table-data">€{expense.expense_total.toLocaleString()}</td>
                             <td className="table-data">${expense.expense_total.toLocaleString()}</td>
                         </tr>

@@ -124,6 +124,19 @@ a:hover {
   margin-top: 20px;
 }
 
+.signup-card {
+  width: 500px;
+  border-radius: 20px;
+  background-color: #dcdcdc60;
+  box-shadow: 10px 10px 1px #70c244;
+}
+
+.signup-button {
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-bottom: 40px;
+}
+
 .dashboard-title {
   font-size: 30px;
   font-weight: 500;
@@ -316,6 +329,10 @@ label {
   font-size: 16px;
 }
 
+#description {
+  max-width: 500px;
+}
+
 #budget-remaining {
   color: #70c244;
   font-size: 18px;
@@ -334,6 +351,20 @@ label {
 
 #row-no-border {
   border-bottom: 1px solid white;
+}
+
+.expense-popup-title {
+  font-family: Avenir;
+  margin-top: 10px;
+}
+
+.category-input {
+  margin-top: 25px;
+}
+
+.expense-save {
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .recs-div {
@@ -393,4 +424,9 @@ label {
 
 .footer-div p {
   font-size: 14px;
+}
+
+
+#sign-up-button {
+  margin-left: 10px;
 }

@@ -27,36 +27,30 @@ function BudgetForm(props) {
         setStep(step + 1);
     };
 
-
     const handleResetClick = () => {
         setStep(1);
     };
-
 
     const handleHomeCountryInputChange = (e) => {
         const value = e.target.value;
         setHomeCountry(value);
     };
 
-
     const handleDestinationCountryInputChange = (e) => {
         const value = e.target.value;
         setDestinationCountry(value);
     };
-
 
     const handleConfirmClick = (data) => {
         const value = data[0].account_id
         setAccountID(value)
     }
  
-
     async function handleSubmit(e) {
         e.preventDefault();
         createBudget({title, start_date, end_date, budget, 
             home_country, destination_country, account_id});
     }
-
 
     if (result.isSuccess) {
         navigate("/budgets");
