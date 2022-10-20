@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRow from './CurrencyRow';
 
+
 const url = "https://api.exchangerate.host/latest"
 
 function CurrencyConverter() {
@@ -11,6 +12,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+
 
   let toAmount, fromAmount
   if (amountInFromCurrency) {
@@ -25,10 +27,11 @@ function CurrencyConverter() {
     fetch(`${url}`)
       .then(res => res.json())
       .then(data => {
+        console.log(data.rates)
         const firstCurrency = Object.keys(data.rates)[46]
         setCurrencyOptions([data.base="USD", ...Object.keys(data.rates)])
-        setFromCurrency(data.base) // EURO
-        setToCurrency(firstCurrency) // USD
+        setFromCurrency(data.base) // USD
+        setToCurrency(firstCurrency) // EURO
         setExchangeRate(data.rates[firstCurrency])
       })
   }, [])
@@ -51,32 +54,37 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
+
   return (
     <>
-      <div className="create-new-budget-div">
-        <Link to="/signup" className="btn btn-primary px-4 gap-3" id="sign-up-button">Sign Up</Link>
+      <div className="container">
+        {/* <Link to="/signup" className="btn btn-primary px-4 gap-3" id="sign-up-button">Sign Up</Link> */}
+      
+        <p className="converter-title">Your Friendly Currency Converter</p>
+        <br/>
+        <div className="sub-container">
+          <p className="converter-sub-title">From:</p>
+          <CurrencyRow
+            currencyOptions={currencyOptions}
+            selectedCurrency={fromCurrency}
+            onChangeCurrency={e => setFromCurrency(e.target.value)}
+            onChangeAmount={handleFromAmountChange}
+            amount={fromAmount}
+            className="input"
+          />
+          <br/>
+          <p className="converter-sub-title">To:</p>
+          <CurrencyRow
+            currencyOptions={currencyOptions}
+            selectedCurrency={toCurrency}
+            onChangeCurrency={e => setToCurrency(e.target.value)}
+            onChangeAmount={handleToAmountChange}
+            amount={toAmount}
+            className="input"
+          />
+          <br />
+        </div>  
       </div>
-      <div className='container'>
-      <h1>Your Friendly Currency Converter</h1>
-      <br/>
-      <h3>From</h3>
-      <CurrencyRow
-        currencyOptions={currencyOptions}
-        selectedCurrency={fromCurrency}
-        onChangeCurrency={e => setFromCurrency(e.target.value)}
-        onChangeAmount={handleFromAmountChange}
-        amount={fromAmount}
-      />
-      <br/>
-      <h3>To</h3>
-      <CurrencyRow
-        currencyOptions={currencyOptions}
-        selectedCurrency={toCurrency}
-        onChangeCurrency={e => setToCurrency(e.target.value)}
-        onChangeAmount={handleToAmountChange}
-        amount={toAmount}
-      />
-      </div>     
     </>
   );
 }

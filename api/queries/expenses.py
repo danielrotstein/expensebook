@@ -11,17 +11,19 @@ class Error(BaseModel):
 class ExpenseIn(BaseModel):
     title: str
     date: date
-    expense_total: int
+    expense_total: float
+    expense_converted: float
     description: Optional[str]
     budget_id: int
     category_id: int
-    
+
 
 class ExpenseOut(BaseModel):
     id: int
     title: str
     date: date
-    expense_total: int
+    expense_total: float
+    expense_converted: float
     description: Optional[str]
     budget_id: int
     category_id: int
@@ -41,6 +43,7 @@ class ExpenseRepository:
                              , e.title
                              , e.date
                              , e.expense_total
+                             , e.expense_converted
                              , e.description
                              , b.id
                              , c.id
@@ -74,6 +77,7 @@ class ExpenseRepository:
                              , e.title
                              , e.date
                              , e.expense_total
+                             , e.expense_converted
                              , e.description
                              , b.id
                              , c.id
@@ -93,7 +97,7 @@ class ExpenseRepository:
                     return self.record_to_expense_out(record)
         except Exception as e:
             print(e)
-            
+
 
     def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
         try:
@@ -108,17 +112,19 @@ class ExpenseRepository:
                             ( title
                             , date
                             , expense_total
+                            , expense_converted
                             , description
                             , budget_id
                             , category_id)
                         VALUES
-                            (%s, %s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
                               expense.title
                             , expense.date
                             , expense.expense_total
+                            , expense.expense_converted
                             , expense.description
                             , expense.budget_id
                             , expense.category_id
@@ -161,6 +167,7 @@ class ExpenseRepository:
                         SET title = %s
                           , date = %s
                           , expense_total = %s
+                          , expense_converted = %s
                           , description = %s
                           , budget_id = %s
                           , category_id = %s
@@ -170,6 +177,7 @@ class ExpenseRepository:
                             expense.title
                             ,expense.date
                             ,expense.expense_total
+                            ,expense.expense_converted
                             ,expense.description
                             ,expense.budget_id
                             ,expense.category_id
@@ -187,7 +195,7 @@ class ExpenseRepository:
     def expense_in_to_out(self, id: int, expense: ExpenseIn):
         old_data = expense.dict()
         return ExpenseOut(id=id, **old_data)
-            
+
 
     def record_to_expense_out(self, record):
         return ExpenseOut(
@@ -195,8 +203,8 @@ class ExpenseRepository:
             title=record[1],
             date=record[2],
             expense_total=record[3],
-            description=record[4],
-            budget_id=record[5],
-            category_id=record[6]
+            expense_converted=record[4],
+            description=record[5],
+            budget_id=record[6],
+            category_id=record[7]
         )
-

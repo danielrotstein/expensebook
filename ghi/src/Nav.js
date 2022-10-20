@@ -41,28 +41,31 @@ function Nav() {
                             ? <></>
                             : token
                               ? <>                            
-                                  <li className="nav-item">
-                                      <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
-                                  </li>
-                                  <li className="nav-item">
-                                      <Logout className="nav-link" />
-                                  </li>
-                                  <li className="nav-item">
-                                    <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
-                                  </li>
-                                </>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Converter</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <Logout className="nav-link" />
+                                </li>
+                              </>
                               : 
-                                <>
-                                  <li className="nav-item">
-                                    <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
-                                  </li>
-                                  <li className="nav-item">
-                                      <NavLink className="nav-link" to="/login">Login</NavLink>
-                                  </li>
-                                  <li className="nav-item">
-                                      <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
-                                  </li>                              
-                                </>
+                              <>
+                                <li className="nav-item">
+                                  <NavLink className="nav-link" to="/$converter">Converter</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/login">Login</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+                                </li>     
+                                <script type="text/javascript">
+                                    document.body.innerHTML = '';
+                                </script>                         
+                              </>
                             }
                         </ul>
                     </div>

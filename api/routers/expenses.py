@@ -59,5 +59,3 @@ def update_expense(
     # account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[Error, ExpenseOut]:
     return repo.update_expense(expense_id, expense)
-
-
