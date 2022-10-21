@@ -11,8 +11,6 @@ import { useGetOneAccountQuery } from '../store/accountsApi';
 function BudgetForm(props) {
     const email = JSON.parse(localStorage.getItem('email'));
     console.log("email: ", email);
-    // const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
-    // console.log("ACCOUNT ID ", data);
     const { data, error, isLoading } = useGetOneAccountQuery(email);
 
     const navigate = useNavigate();

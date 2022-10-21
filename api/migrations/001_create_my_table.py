@@ -54,6 +54,7 @@ steps = [
             image TEXT NULL,
             url TEXT NOT NULL,
             description TEXT NULL,
+            country VARCHAR(50) NOT NULL,
             category_id INT REFERENCES categories(id)
         );
         """,

@@ -1,3 +1,15 @@
+## 10/20/22
+
+Today, I worked on:
+
+* Helping George with the update & delete functions in the budget dashboard, and helping the team to fix some bugs.
+
+George was driving and Olivia and I helped to implement code so user can update & delete an expense in the budget dashboard from the expenses list. Also, we had a couple of errors and could fix most of them as a team.
+
+I learned that the query in the update method of the builder mutation requires a spread for the data to get successfully saved.
+
+
+
 ## 10/19/22
 
 Today, I worked on:
