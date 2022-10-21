@@ -23,6 +23,7 @@ function SignUpForm() {
 
     if (result.isSuccess) {
         navigate("/budgets");
+        localStorage.setItem('email', JSON.stringify(email));
     } else if (result.isError) {
         setError(result.error);
         console.log()

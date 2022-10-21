@@ -36,8 +36,54 @@ a:hover {
   flex-wrap: wrap;
 }
 
+.home-image {
+  min-width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+}
+
+.forward-div {
+  width: 50%;
+  max-width: 700px;
+  min-width: 600px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10%;
+  padding: 30px 40px 40px;
+  border-radius: 50px;
+  background-color: #fff;
+}
+
+.home-title {
+  font-family: Avenir;
+  font-size: 50px;
+  font-weight: 800;
+  color: #70c244;
+  width: 90%;
+}
+
+.home-cta-div {
+  margin-top: 30px;
+  margin-left: -30px;
+}
+
+.home-cta {
+  font-family: Avenir;
+  font-size: 20px;
+  margin-left: 30px;
+}
+
 .navbar {
   border-bottom: 1px solid #dcdcdc80;
+}
+
+.custom-nav {
+  background-color: #fff;
+  width: 100%;
 }
 
 .navbar-brand {
@@ -66,6 +112,10 @@ a:hover {
   text-decoration: underline;
 }
 
+#logout {
+  margin-left: -10px;
+}
+
 .navbar-toggler-icon {
   background-color: #70c244;
 }
@@ -73,6 +123,10 @@ a:hover {
 /* .navbar-collapse {
   margin-right: 20px;
 } */
+
+#signup {
+  margin-left: -40px;
+}
 
 .btn-primary {
   background-color: #70c244;

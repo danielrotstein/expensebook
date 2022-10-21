@@ -1,3 +1,7 @@
+10/20/2022
+Fixed the newly signed up user can not create budget bug.
+Prepared for the practice test.
+
 10/19/2022
 Fixing bugs with team.
 
