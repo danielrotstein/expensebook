@@ -14,7 +14,6 @@ function BudgetForm(props) {
     // const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
     // console.log("ACCOUNT ID ", data);
     const { data, error, isLoading } = useGetOneAccountQuery(email);
-    console.log("data: ", data);
 
     const navigate = useNavigate();
     const [step, setStep] = useState(1);

@@ -11,7 +11,6 @@ function ExpensesList(props) {
     const { data, error, isLoading } = useGetCategoriesQuery();
 
     const [categories, setCategories] = useState({});
-    console.log("props:", props.homeCurrency)
 
     useEffect(() => {
         if (!(isLoading)) {
