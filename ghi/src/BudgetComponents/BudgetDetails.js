@@ -9,6 +9,7 @@ import ExpensesList from './ExpensesList';
 import TravelRecommendations from './TravelRecommendations';
 import Notification from '../Notification';
 import Moment from 'moment';
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 
 
@@ -16,19 +17,20 @@ function BudgetDetails() {
     const { budget_id } = useParams();
     const wrap = "id".concat("=", budget_id);
 
-    const { 
-        data: budgetsData, 
-        error: budgetsError, 
+    const {
+        data: budgetsData,
+        error: budgetsError,
         isLoading: budgetsIsLoading,
     } = useGetBudgetQuery(wrap);
-    const { 
-        data: expensesData, 
-        error: expensesError, 
+
+    const {
+        data: expensesData,
+        error: expensesError,
         isLoading: expensesIsLoading,
     } = useGetExpensesQuery();
-    const { 
-        data: categoriesData, 
-        error: categoriesError, 
+    const {
+        data: categoriesData,
+        error: categoriesError,
         isLoading: categoriesIsLoading,
     } = useGetCategoriesQuery();
 
@@ -37,7 +39,6 @@ function BudgetDetails() {
     const [dates, setDates] = useState([]);
     const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [total, setTotal] = useState(0);
-
 
     useEffect(() => {
         if (!(expensesIsLoading)) {
@@ -58,7 +59,7 @@ function BudgetDetails() {
 
             let total = 0;
             expenses.map(expense => {
-                total += expense.expense_total;
+                total += expense.expense_converted;
             });
             setTotal(total);
         }
@@ -97,7 +98,9 @@ function BudgetDetails() {
             setFilteredExpenses(categoryExpenses);
         }
     }
-
+    // console.log("Budget Data: ---",budgetsData.home_country)
+    // console.log("data: ",budgetsData["home_country"])
+    // console.log(getSymbolFromCurrency(budgetsData["home_country"]))
 
     if (budgetsIsLoading || expensesIsLoading || categoriesIsLoading) {
         return (
@@ -105,7 +108,7 @@ function BudgetDetails() {
             <Notification type="info">Loading...</Notification>
           </div>
         );
-    } else {    
+    } else {
         return (
             <>
                 <div className="container">
@@ -113,15 +116,22 @@ function BudgetDetails() {
                     <p className="dashboard-title">{budgetsData.title}</p>
                     <div className="row metrics-div">
                         <div className="col-sm">
-                            <p className="sub-metric">${budgetsData.budget.toLocaleString()}</p>
+                            <p className="sub-metric">
+                                {getSymbolFromCurrency(budgetsData["home_country"])}
+                                {budgetsData.budget.toLocaleString()}</p>
                             <p className="metric-label">Budget</p>
                         </div>
                         <div className="col-sm">
-                            <p className={(budgetsData.budget - total) > 0 ? "primary-metric" : "primary-metric-over"}>${(budgetsData.budget - total).toLocaleString()}</p>
+                            <p className={(budgetsData.budget - total) > 0 ? "primary-metric" : "primary-metric-over"}>
+                                {getSymbolFromCurrency(budgetsData["home_country"])}
+                                {(budgetsData.budget - total).toLocaleString()}</p>
                             <p className="metric-label">Budget Remaining</p>
                         </div>
                         <div className="col-sm">
-                            <p className="sub-metric">${total.toLocaleString()}</p>
+                            <p className="sub-metric">
+                                {getSymbolFromCurrency(budgetsData["home_country"])}
+                                {total.toLocaleString()}
+                            </p>
                             <p className="metric-label">Spend</p>
                         </div>
                     </div>
@@ -147,25 +157,29 @@ function BudgetDetails() {
                             </select>
                         </div>
                         <div className="add-expense-component">
-                            <ExpenseForm 
-                                props={budget_id} 
+                            <ExpenseForm
+                                props={budget_id}
                                 remaining={budgetsData.budget - total}
+                                homeCurrency={budgetsData.home_country}
+                                destinationCurrency={budgetsData.destination_country}
                             />
                         </div>
                     </div>
                 </div>
                 <div className="container">
-                    <br />         
-                    <ExpensesList 
-                        expenses={filteredExpenses} 
+                    <br />
+                    <ExpensesList
+                        expenses={filteredExpenses}
                         budget={budgetsData.budget}
                         total={total}
                         remaining={budgetsData.budget - total}
+                        homeCurrency={budgetsData.home_country}
+                        destinationCurrency={budgetsData.destination_country}
                     />
                 </div>
-                <TravelRecommendations 
+                <TravelRecommendations
                     budget={budget_id}
-                    categories={categoriesData} 
+                    categories={categoriesData}
                     remaining={budgetsData.budget - total}
                 />
             </>

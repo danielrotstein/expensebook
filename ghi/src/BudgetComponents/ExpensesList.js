@@ -4,12 +4,14 @@ import { useGetCategoriesQuery } from '../store/expensesApi';
 import ErrorNotification from '../ErrorNotification';
 import Notification from '../Notification';
 import Moment from 'moment';
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 
 function ExpensesList(props) {
     const { data, error, isLoading } = useGetCategoriesQuery();
 
     const [categories, setCategories] = useState({});
+    console.log("props:", props.homeCurrency)
 
     useEffect(() => {
         if (!(isLoading)) {
@@ -28,7 +30,7 @@ function ExpensesList(props) {
             <Notification type="info">Loading...</Notification>
           </div>
         );
-    } else { 
+    } else {
         return (
             <table className="table">
                 <ErrorNotification error={error} />
@@ -38,8 +40,8 @@ function ExpensesList(props) {
                         <th className="table-header">Date</th>
                         <th className="table-header">Category</th>
                         <th className="table-header">Description</th>
-                        <th className="table-header">Euros</th>
-                        <th className="table-header">USD</th>
+                        <th className="table-header">{props.destinationCurrency}</th>
+                        <th className="table-header">{props.homeCurrency}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,8 +52,14 @@ function ExpensesList(props) {
                             <td className="table-data">{Moment(expense.date).format('MMM DD, YYYY')}</td>
                             <td className="table-data">{categories[expense.category_id]}</td>
                             <td className="table-data" id="description">{expense.description}</td>
-                            <td className="table-data">€{expense.expense_total.toLocaleString()}</td>
-                            <td className="table-data">${expense.expense_total.toLocaleString()}</td>
+                            <td className="table-data">
+                                {getSymbolFromCurrency(props.destinationCurrency)}
+                                {expense.expense_total.toLocaleString()}
+                            </td>
+                            <td className="table-data">
+                                {getSymbolFromCurrency(props.homeCurrency)}
+                                {expense.expense_converted.toLocaleString()}
+                            </td>
                         </tr>
                         );
                     })}
@@ -61,7 +69,10 @@ function ExpensesList(props) {
                         <td className="table-data"></td>
                         <td className="table-data"></td>
                         <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>Budget Remaining</td>
-                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>${props.remaining.toLocaleString()}</td>
+                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>
+                            {getSymbolFromCurrency(props.homeCurrency)}
+                            {props.remaining.toLocaleString()}
+                        </td>
                     </tr>
                 </tbody>
             </table>
