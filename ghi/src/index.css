@@ -63,7 +63,13 @@ a:hover {
   font-size: 50px;
   font-weight: 800;
   color: #70c244;
-  width: 90%;
+}
+
+.home-sub-title {
+  font-family: Avenir;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: -10px;
 }
 
 .home-cta-div {
@@ -75,6 +81,7 @@ a:hover {
   font-family: Avenir;
   font-size: 20px;
   margin-left: 30px;
+  width: 280px;
 }
 
 .navbar {
