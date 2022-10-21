@@ -8,6 +8,7 @@ import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 
 function ExpenseForm(props) {
@@ -110,7 +111,7 @@ function ExpenseForm(props) {
                                 <label htmlFor="expenseTotal">Expense Total
                                 ({props.destinationCurrency})
                                 </label>
-                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control"/>
+                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control" />
                             </div>
                             <div className="mb-3 text-left">
                                 <label htmlFor='convertedTotal'>Home Currency Total
@@ -120,6 +121,7 @@ function ExpenseForm(props) {
                                     placeholder='0'
 
                                     >
+                                    {getSymbolFromCurrency(props.homeCurrency)}
                                     {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
                                 </p>
                             </div>
