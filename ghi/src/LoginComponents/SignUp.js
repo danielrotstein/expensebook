@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCreateAccountsMutation } from '../store/accountsApi';
 import ErrorNotification from '../ErrorNotification';
 import BulmaInput from '../BulmaInput';
+import { NavLink } from 'react-router-dom';
 
 function SignUpForm() {
     const navigate = useNavigate();
@@ -63,6 +64,8 @@ function SignUpForm() {
                             </div>
                         </div>
                         <button className="btn btn-primary signup-button">Sign Up</button>
+                        <p className='mx-5'>Already have an Account? <NavLink to="/login">Login</NavLink></p>
+                    
                     </div>
                 </form>
             </div>
