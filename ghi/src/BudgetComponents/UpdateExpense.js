@@ -28,20 +28,19 @@ function UpdateExpenseForm(props) {
     const [expense_total, setExpenseTotal] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState(0);
-    // const [budget_id, setBudgetID] = useState(0)
+    const [budget_id, setBudgetID] = useState(0)
     const [updateExpense, updated_expense] = useUpdateExpenseMutation(expense_id);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    if (isLoading) {
-        return (
-            <progress className="progress is-primary" max="100"></progress>
-        );
-    } else {
-        console.log("DATA", data)
-        console.log("TITLE ", data.title);
-    }
+
+    useEffect(() => {
+        if (!(isLoading)) {
+            const value = data.budget_id
+            setBudgetID(value)
+        }
+    } , [data])
 
 
     const handleCategoryIdInputChange = (e) => {
@@ -50,22 +49,11 @@ function UpdateExpenseForm(props) {
         setCategory({ ...category, [name]: parseInt(value) });
     };
 
-    // const handleConfirmClick = () => {
-    //     const value = data.budget_id
-    //     console.log("VALUE", value)
-    //     setBudgetID(value)
-    // }
-
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const id = expense_id
-        const category_id = category
-        console.log("PROPS", props.props)
-        console.log("EXPENSE ID", id)
-        console.log("EXPENSE ID TYPE", typeof id)
-        updateExpense(expense_id);
-        // updateExpense(id, title, date, expense_total, description, budget_id, category_id)
+        const category_id = category.category_id
+        updateExpense({ expense_id, title, date, expense_total, description, category_id, budget_id});
     }
 
     if (budgetsIsLoading || categoriesIsLoading) {
@@ -75,6 +63,7 @@ function UpdateExpenseForm(props) {
           </div>
         );
     } else {
+        
         return (
             <div className="container">
                 <div className="columns is-centered">
@@ -113,12 +102,8 @@ function UpdateExpenseForm(props) {
                                     }
                                 </select>
                             </div>
-                            {/* <div className='field'>
-                                <button className="btn btn-primary expense-save" onClick={handleConfirmClick} value={data.budget_id}></button>
-                            </div> */}
                             <div className="field">
-                                {console.log(expense_id)}
-                                <button className="btn btn-primary expense-save" onClick={() => handleSubmit({expense_id})}>Save</button>
+                                <button className="btn btn-primary expense-save" onClick={() => handleSubmit}>Save</button>
                             </div>
                         </form> 
                         </Modal.Body>

@@ -37,34 +37,28 @@ export const expensesApi = createApi({
       }),
       invalidatesTags: ['BudgetDetails'],
     }),
-    // updateExpense: builder.mutation({
-    //   query: ({ expense_id, ...data }) => ({
-    //     url: `/expenses/${expense_id}`,
-    //     body: data,
-    //     method: 'PATCH',
-    //     credentials: 'include',
-    //   }),
-    //   invalidatesTags: ['BudgetDetails'],
-    // }),
-    // updateExpense: builder.mutation({
-    //   query: ( expense_id ) => ({
-    //     url: `/expenses/${expense_id}`,
-    //     method: 'PUT',
-    //     credentials: 'include',
-    //   }),
-    //   invalidatesTags: ['BudgetDetails'],
-    // })
     updateExpense: builder.mutation({
       query(data) {
         const { expense_id, ...body } = data
         return {
-          url: `/expenses/${data}`,
+          url: `/expenses/${expense_id}`,
           body,
-          method: 'PATCH',
+          method: 'PUT',
         }
       },
       invalidatesTags: ['BudgetDetails'],
     }),
+    // patchExpense: builder.mutation({
+    //   query(data) {
+    //     const { expense_id, ...body } = data
+    //     return {
+    //       url: `/expenses/${data}`,
+    //       body,
+    //       method: 'PATCH',
+    //     }
+    //   },
+    //   invalidatesTags: ['BudgetDetails'],
+    // }),
   }),
 });
 
