@@ -28,7 +28,7 @@ function Logout() {
 function Nav() {
     const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
     return (
-        <div>
+        <div className="custom-nav">
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to="/">ExpenseBook</NavLink>
@@ -45,23 +45,26 @@ function Nav() {
                                     <NavLink className="nav-link" to="/budgets">Budgets</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Logout className="nav-link" />
+                                  <NavLink className="nav-link" to="/$converter">Converter</NavLink>
                                 </li>
-                                <li className="nav-item">
-                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                <li className="nav-item" id="logout">
+                                    <Logout className="nav-link" />
                                 </li>
                               </>
                               : 
                               <>
                                 <li className="nav-item">
-                                  <NavLink className="nav-link" to="/$converter">Currency Converter</NavLink>
+                                  <NavLink className="nav-link" to="/$converter">Converter</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to="/login">Login</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
-                                </li>                              
+                                    <NavLink className="nav-link" id="signup" to="/signup">Sign Up</NavLink>
+                                </li>     
+                                <script type="text/javascript">
+                                    document.body.innerHTML = '';
+                                </script>                         
                               </>
                             }
                         </ul>

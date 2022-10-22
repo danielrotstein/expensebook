@@ -14,6 +14,7 @@ class RecommendationIn(BaseModel):
     image: str
     url: str
     description: str
+    country: str
     category_id: int
     
 
@@ -24,6 +25,7 @@ class RecommendationOut(BaseModel):
     image: str
     url: str
     description: str
+    country: str
     category_id: int
 
 
@@ -43,6 +45,7 @@ class RecommendationRepository:
                              , r.image
                              , r.url
                              , r.description
+                             , r.country
                              , c.id
                         FROM recommendations AS r
                         LEFT JOIN categories AS c
@@ -74,6 +77,7 @@ class RecommendationRepository:
                              , r.image
                              , r.url
                              , r.description
+                             , r.country
                              , c.id
                         FROM recommendations AS r
                         LEFT JOIN categories AS c
@@ -107,10 +111,11 @@ class RecommendationRepository:
                                 , image
                                 , url
                                 , description
+                                , country
                                 , category_id
                             )
                         VALUES
-                            (%s, %s, %s, %s, %s, %s)
+                            (%s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -119,6 +124,7 @@ class RecommendationRepository:
                             , recommendation.image
                             , recommendation.url
                             , recommendation.description
+                            , recommendation.country
                             , recommendation.category_id
                         ]
                     )
@@ -158,6 +164,7 @@ class RecommendationRepository:
                           , image = %s
                           , url = %s
                           , description = %s
+                          , country = %s
                           , category_id = %s
                         WHERE id = %s
                         """,
@@ -167,6 +174,7 @@ class RecommendationRepository:
                             , recommendation.image
                             , recommendation.url
                             , recommendation.description
+                            , recommendation.country
                             , recommendation.category_id
                             , recommendation_id
                         ],
@@ -192,5 +200,6 @@ class RecommendationRepository:
             image=record[3],
             url=record[4],
             description=record[5],
-            category_id=record[6]
+            country=record[6],
+            category_id=record[7]
         )

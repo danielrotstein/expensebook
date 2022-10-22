@@ -5,6 +5,7 @@ import ErrorNotification from '../ErrorNotification';
 import Notification from '../Notification';
 import Moment from 'moment';
 import UpdateExpenseForm from './UpdateExpense.js';
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 
 function ExpensesList(props) {
@@ -37,7 +38,7 @@ function ExpensesList(props) {
             <Notification type="info">Loading...</Notification>
           </div>
         );
-    } else { 
+    } else {
         return (
             <table className="table">
                 <ErrorNotification error={error} />
@@ -51,6 +52,8 @@ function ExpensesList(props) {
                         <th className="table-header">USD</th>
                         <th className='table-header'>Update</th>
                         <th className="table-header">Edit</th>
+                        <th className="table-header">{props.destinationCurrency}</th>
+                        <th className="table-header">{props.homeCurrency}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +76,14 @@ function ExpensesList(props) {
                             <td>
                                 <button onClick={() => deleteExpense(expense.id)}>Delete</button>
                             </td>
+                            <td className="table-data">
+                                {getSymbolFromCurrency(props.destinationCurrency)}
+                                {expense.expense_total.toLocaleString()}
+                            </td>
+                            <td className="table-data">
+                                {getSymbolFromCurrency(props.homeCurrency)}
+                                {expense.expense_converted.toLocaleString()}
+                            </td>
                         </tr>
                         );
                     })}
@@ -82,7 +93,10 @@ function ExpensesList(props) {
                         <td className="table-data"></td>
                         <td className="table-data"></td>
                         <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>Budget Remaining</td>
-                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>${props.remaining.toLocaleString()}</td>
+                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>
+                            {getSymbolFromCurrency(props.homeCurrency)}
+                            {props.remaining.toLocaleString()}
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -1,3 +1,27 @@
+## 10/20/22
+
+Today, I worked on:
+
+* Helping George with the update & delete functions in the budget dashboard, and helping the team to fix some bugs.
+
+George was driving and Olivia and I helped to implement code so user can update & delete an expense in the budget dashboard from the expenses list. Also, we had a couple of errors and could fix most of them as a team.
+
+I learned that the query in the update method of the builder mutation requires a spread for the data to get successfully saved.
+
+
+
+## 10/19/22
+
+Today, I worked on:
+
+* Helping to implement a list of country name & currency code into a dropdown for the currency converter and fixing some bugs with the team.
+
+Right now we can only use the currency converter by the 3 digits currency code, because that's what the Api is using to fetch the exchange rate. We would like to add the country name to the currency code, so its more user friendly. We were able to add the list to the dropdown but every time we select a country that has a currency code thats shared with multiple countries (e.g. USD, EUR) the dropdown would always switch to the first currency code in the list, so for example if we select United States it would always switch to American Samoa because they're using USD aswell and its the first USD in the list. We'll work on that tomorrow. 
+
+I learned how to add a delete & update method to the Api builder mutation.
+
+
+
 ## 10/18/22
 
 Today, I worked on:
@@ -6,7 +30,7 @@ Today, I worked on:
 
 The page will be accessible for ExpenseBook users, aswell as guests who want to use a free currency converter. Found a currency converter Api, no key necessary and no limits on requests (https://exchangerate.host). Now user is able to convert from over 150 currencies with a daily updated exchange rate. Used my knowledge of useState, useEffect and fetching to get the converter up & running.
 
-I learned that its really hard to find Api's with good documentation, usage and free of use.
+I learned that its really hard to find Api's with good documentation and free of use.
 
 
 

@@ -1,3 +1,10 @@
+10/20/2022
+Fixed the newly signed up user can not create budget bug.
+Prepared for the practice test.
+
+10/19/2022
+Fixing bugs with team.
+
 10/18/2022
 Got the user authorization work, logged-in user can only see his/her budgets list. Updated the budgets files in routers and queries to resovle the url confliction between account_id and email. Worked with George on the budget create function: only logged-in user can create his own budget. George drove coding.
 
