@@ -11,6 +11,7 @@ import UpdateExpenseForm from './BudgetComponents/UpdateExpense';
 import BudgetDashboard from './BudgetComponents/BudgetDashboard';
 import BudgetDetails from './BudgetComponents/BudgetDetails';
 import BudgetForm from './BudgetComponents/BudgetForm';
+import NotFoundPage from './404Page';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         <Route path='login' element={< Login/>}/>
         <Route path='signup' element={< SignUpForm/>} />
         <Route path='accounts' />
-        <Route path='budgets'> 
+        <Route path='budgets'>
           <Route index element={<BudgetDashboard />} />
           <Route path='id=:budget_id' element={< BudgetDetails/>} />
           <Route path='add-budget' element={< BudgetForm/>} />
@@ -33,8 +34,9 @@ function App() {
           {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}
         </Route>
         <Route path='$converter' element={< CurrencyConverter/>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      
+
     </BrowserRouter>
     // {/* </div> */}
     // <Footer />
