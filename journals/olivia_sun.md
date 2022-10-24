@@ -1,6 +1,8 @@
+10/24/2022
+Fixed the wrong password bug. Start reviewing the test procedure and how to write the test code.
+
 10/20/2022
 Fixed the newly signed up user can not create budget bug.
-Prepared for the practice test.
 
 10/19/2022
 Fixing bugs with team.

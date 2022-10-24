@@ -11,7 +11,7 @@ function MainPage() {
                         <p className="home-sub-title">Enjoy your travels without sweating your budget.</p>
                         <p>ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.</p>
                         <div className="d-flex home-cta-div">
-                            <Link className="btn btn-primary home-cta" to="/signup">Create a Budget</Link>
+                            <Link className="btn btn-primary home-cta" to="/signup">Create an Account</Link>
                             <Link className="btn btn-primary home-cta" to="$converter">Free Currency Converter</Link>
                         </div>
                     </div>
