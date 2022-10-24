@@ -83,11 +83,11 @@ function ExpensesList(props) {
                             <td className="table-data" id="description">{expense.description}</td>
                             <td className="table-data">
                                 {getSymbolFromCurrency(props.destinationCurrency)}
-                                {expense.expense_total.toLocaleString()}
+                                {expense.expense_total.toLocaleString(undefined, {minimumFractionDigits: 2})}
                             </td>
                             <td className="table-data">
                                 {getSymbolFromCurrency(props.homeCurrency)}
-                                {expense.expense_converted.toLocaleString()}
+                                {expense.expense_converted.toLocaleString(undefined, {minimumFractionDigits: 2})}
                             </td>
                             <td className='table-data'>
                                 <div className="actions-dropdown">
@@ -99,7 +99,7 @@ function ExpensesList(props) {
                                             <ul className="menu">
                                                 <li className="menu-item">
                                                     <div className="button table-data" onClick={() => handleSubmit(expense.id)}>
-                                                        <UpdateExpenseForm 
+                                                        <UpdateExpenseForm
                                                             props={budget_id}
                                                             homeCurrency={budgetsData.home_country}
                                                             destinationCurrency={budgetsData.destination_country}
@@ -129,7 +129,7 @@ function ExpensesList(props) {
                         <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>Budget Remaining</td>
                         <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>
                             {getSymbolFromCurrency(props.homeCurrency)}
-                            {props.remaining.toLocaleString()}
+                            {props.remaining.toLocaleString(undefined, {minimumFractionDigits: 2})}
                         </td>
                     </tr>
                 </tbody>
@@ -151,7 +151,7 @@ function ExpensesList(props) {
                         <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>Budget Remaining</td>
                         <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>
                             {getSymbolFromCurrency(props.homeCurrency)}
-                            {props.remaining.toLocaleString()}
+                            {props.remaining.toLocaleString(undefined, {minimumFractionDigits: 2})}
                         </td>
                     </tr>
                 </tbody>
