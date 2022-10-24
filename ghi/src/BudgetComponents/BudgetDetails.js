@@ -149,12 +149,6 @@ function BudgetDetails() {
                         }
                     </div>
                     </div>
-
-
-
-
-
-                    
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">
