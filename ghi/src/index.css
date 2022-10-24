@@ -56,6 +56,7 @@ a:hover {
   padding: 30px 40px 40px;
   border-radius: 50px;
   background-color: #fff;
+  box-shadow: 10px 10px 1px #70c244;
 }
 
 .home-title {
@@ -120,7 +121,7 @@ a:hover {
 }
 
 #logout {
-  margin-left: -10px;
+  margin-left: -15px;
 }
 
 .navbar-toggler-icon {
@@ -152,7 +153,7 @@ a:hover {
 
 .auth-form-div {
   position: absolute;
-  top: 50%;
+  top: 52%;
   transform: translateY(-50%);
   left: 0px;
   width: 100%;
@@ -389,6 +390,37 @@ label {
   font-size: 16px;
 }
 
+.actions-dropdown {
+  position: relative;
+}
+
+#budgets-dropdown {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.menu {
+  position: absolute;
+  list-style-type: none;
+  padding: 0px;
+  border-radius: 10px;
+  background-color: #dcdcdc;
+  z-index: 10;
+}
+
+.menu li {
+  margin: 10px 15px;
+}
+
+.menu > li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#delete-budget {
+  text-decoration: none;
+}
+
 #description {
   max-width: 500px;
 }
@@ -420,6 +452,14 @@ label {
 
 .category-input {
   margin-top: 25px;
+}
+
+#converted-total {
+  color: #70c244;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 2px;
+  margin-left: 5px;
 }
 
 .expense-save {
@@ -505,7 +545,8 @@ label {
   font-size: 14px;
 }
 
-
-#sign-up-button {
-  margin-left: 10px;
+.member {
+  font-size: 16px;
+  margin-left: 35px;
+  margin-top: 20px;
 }
