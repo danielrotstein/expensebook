@@ -110,8 +110,6 @@ function BudgetDetails() {
         setShowActions(!showActions);
     }
 
-    console.log("locale total", Math.floor(total.toLocaleString()))
-    console.log("total", total.toLocaleString())
     if (budgetsIsLoading || expensesIsLoading || categoriesIsLoading) {
         return (
           <div className="container">

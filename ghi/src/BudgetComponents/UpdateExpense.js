@@ -15,15 +15,15 @@ function UpdateExpenseForm(props) {
     const { data, isLoading } = useGetExpenseQuery(expense_id);
 
 
-    const { 
-        data: budgetsData, 
-        error: budgetsError, 
-        isLoading: budgetsIsLoading 
+    const {
+        data: budgetsData,
+        error: budgetsError,
+        isLoading: budgetsIsLoading
     } = useGetBudgetsQuery();
-    const { 
-        data: categoriesData, 
-        error: categoriesError, 
-        isLoading: categoriesIsLoading 
+    const {
+        data: categoriesData,
+        error: categoriesError,
+        isLoading: categoriesIsLoading
     } = useGetCategoriesQuery();
     const {
         data: currencyData,
@@ -65,6 +65,7 @@ function UpdateExpenseForm(props) {
         handleClose();
         const category_id = category.category_id
         updateExpense({ expense_id, title, date, expense_total, expense_converted, description, category_id, budget_id});
+        setExpenseConverted(0);
     }
 
     function setExpenseAndConvert(expense_total){
@@ -112,7 +113,7 @@ function UpdateExpenseForm(props) {
 
                             >
                             {getSymbolFromCurrency(props.homeCurrency)}
-                            {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
+                            {expense_converted}
                         </p>
                     </div>
                     <div className="mb-3">
@@ -131,7 +132,7 @@ function UpdateExpenseForm(props) {
                     <div className="field">
                         <button className="btn btn-primary expense-save" onClick={() => handleSubmit}>Save</button>
                     </div>
-                </form> 
+                </form>
                 </Modal.Body>
                 </Modal>
             </>
