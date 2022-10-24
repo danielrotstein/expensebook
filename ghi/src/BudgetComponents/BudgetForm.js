@@ -24,13 +24,12 @@ function BudgetForm(props) {
     const [createBudget, result] = useCreateBudgetMutation();
 
 
-    if (isLoading) {
-        return (
-            <progress className="progress is-primary" max="100"></progress>
-        );
-    } else {
-        console.log("data.id ", data.id);
-    }
+    useEffect(() => {
+        if (!(isLoading)) {
+            const value = data.id
+            setAccountID(value)
+        }
+    } , [data])
 
 
     const handleNextClick = () => {
@@ -56,11 +55,6 @@ function BudgetForm(props) {
     };
 
 
-    const handleConfirmClick = () => {
-        const value = data.id;
-            setAccountID(value);
-    }
-
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -72,7 +66,6 @@ function BudgetForm(props) {
     if (result.isSuccess) {
         navigate("/budgets");
     } else if (result.isError) {
-        // setError(result.error);
         console.log("ERROR")
     }
 
@@ -176,19 +169,12 @@ function BudgetForm(props) {
                                         <p className="reset-button" onClick={handleResetClick}>Reset</p>
                                         {!(home_country) || !(destination_country)
                                             ? <button className="btn btn-primary form-button">Save</button>
-                                            : <button onClick={handleNextClick} className="btn btn-primary form-button">Save</button>
+                                            : <button className="btn btn-primary form-button">Save</button>
                                         }
                                     </div>
                                 </div>
                             </div>
                         </div> : null
-                    }
-                    {step == 5
-                        ?   <div>
-                                {console.log("data.id: ", data.id)}
-                                {console.log("tpye of data.id: ", typeof data.id)}
-                                <button onClick={handleConfirmClick} value={account_id} className="btn btn-primary next-button">Confirm</button>
-                            </div> : null
                     }
                 </form>
             </div>
