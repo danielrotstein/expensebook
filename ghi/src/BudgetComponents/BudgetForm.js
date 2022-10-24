@@ -178,21 +178,14 @@ function BudgetForm(props) {
                                     <div className="form-buttons-div d-flex">
                                         <p className="reset-button" onClick={handleResetClick}>Reset</p>
                                         {!(home_country) || !(destination_country)
-                                            ? <button className="btn btn-primary form-button">Next</button>
-                                            : <button className="btn btn-primary form-button">Next</button>
+                                            ? <button className="btn btn-primary form-button">Save</button>
+                                            : <button className="btn btn-primary form-button">Save</button>
                                         }
                                     </div>
                                 </div>
                             </div>
                         </div> : null
                     }
-                    {/* {step == 5
-                        ?   <div>
-                                {console.log("data.id: ", data.id)}
-                                {console.log("tpye of data.id: ", typeof data.id)}
-                                <button onClick={handleConfirmClick} value={account_id} className="btn btn-primary next-button">Confirm</button>
-                            </div> : null
-                    } */}
                 </form>
             </div>
         </div>
