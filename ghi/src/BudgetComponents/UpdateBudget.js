@@ -16,7 +16,7 @@ function UpdateBudgetForm(props) {
     const budget_id = props.props
     const email = JSON.parse(localStorage.getItem('email'));
     const { data, error, isLoading } = useGetOneAccountQuery(email);
-    console.log("BUDGETS DATA", props.props)
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -37,6 +37,7 @@ function UpdateBudgetForm(props) {
             setHomeCountry(value);
     };
 
+
     const handleDestinationCountryInputChange = (e) => {
         const value = e.target.value;
             setDestinationCountry(value);
@@ -55,7 +56,8 @@ function UpdateBudgetForm(props) {
         handleClose();
         updateBudget({ budget_id, title, start_date, end_date, budget,
             home_country, destination_country, account_id });
-    }
+    };
+
 
     if (result.isSuccess) {
         navigate("/budgets");
@@ -66,18 +68,16 @@ function UpdateBudgetForm(props) {
 
 
     return (
-<div className="container">
-                <div className="columns is-centered">
-                    <div className="column is-one-third">
-                        <ErrorNotification />
-                        <ErrorNotification />
-                        <Button className="btn" id="show" onClick={handleShow}>
-                            Update
-                        </Button>
-                        <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
-                            <Modal.Title className="budget-popup-title">Update Budget</Modal.Title>
-                            </Modal.Header>
+        <>
+            <ErrorNotification />
+            <ErrorNotification />
+            <a id="show" onClick={handleShow}>
+                Update
+            </a>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title className="budget-popup-title">Update Budget</Modal.Title>
+                </Modal.Header>
 
                         <Modal.Body>
                         <form onSubmit={(e) => handleSubmit(e)}>
