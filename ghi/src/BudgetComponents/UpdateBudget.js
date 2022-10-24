@@ -43,12 +43,6 @@ function UpdateBudgetForm(props) {
         console.log("setDestinationCountry: ", destination_country)
     };
 
-    // const handleConfirmClick = () => {
-    //     const value = data.id;
-    //         setAccountID(value);
-
-    // }
-
     useEffect(() => {
         if (!(isLoading)) {
             const value = data.id
