@@ -11,7 +11,8 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 
 
 function UpdateExpenseForm(props) {
-    const expense_id = JSON.parse(localStorage.getItem('expense_id'));
+    const expense_id = props.expense_id
+    // const expense_id = JSON.parse(localStorage.getItem('expense_id'));
     console.log("EXPENSE ID", expense_id)
     const { data, isLoading } = useGetExpenseQuery(expense_id);
     console.log("DATA", data)
