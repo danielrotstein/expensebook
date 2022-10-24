@@ -48,7 +48,8 @@ function ExpenseForm(props) {
         const category_id = category.category_id
         createExpense({title, date, expense_total, expense_converted, description,
             budget_id, category_id,});
-    }
+        setExpenseConverted(0);
+        }
 
     // let homeCountry = "";
     // let destination = "";
@@ -119,7 +120,7 @@ function ExpenseForm(props) {
                                     placeholder='0'
                                     >
                                     {getSymbolFromCurrency(props.homeCurrency)}
-                                    {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
+                                    {expense_converted}
                                 </p>
                             </div>
                             <div className="mb-3">
