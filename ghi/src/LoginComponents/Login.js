@@ -26,13 +26,19 @@ function Login() {
         console.log("TOKEN", result.data.access_token)
         console.log("RESULT", result)
     } else if (result.isError) {
-        setError(result.error);
+        navigate("/");
+        alert("User name or password not correct. Please sign up or log in again. ");
     }
 
     return (
+       
         <div className="container">
             <div className="auth-form-div">
             <ErrorNotification error={error} />
+            {result.isError
+            ? 
+                <></>
+            :
                 <form onSubmit={(e) => handleSubmit(e)} className="auth-form">
                     <div className="auth-card">
                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#70c244" className="bi bi-box-arrow-in-right budget-form-icon" viewBox="0 0 16 16">
@@ -58,7 +64,8 @@ function Login() {
                             <button className="btn btn-primary auth-button">Login</button>
                         </div>
                     </div> 
-                </form>                  
+                </form>  
+            }                
             </div>
         </div>
     )
