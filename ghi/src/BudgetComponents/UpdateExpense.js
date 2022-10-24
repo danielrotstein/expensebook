@@ -13,9 +13,8 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 function UpdateExpenseForm(props) {
     // const expense_id = JSON.parse(localStorage.getItem('expense_id'));
     const expense_id = props.expense_id
-    console.log("EXPENSE ID", expense_id)
     const { data, isLoading } = useGetExpenseQuery(expense_id);
-    console.log("DATA", data)
+
 
     const { 
         data: budgetsData, 
@@ -27,15 +26,12 @@ function UpdateExpenseForm(props) {
         error: categoriesError, 
         isLoading: categoriesIsLoading 
     } = useGetCategoriesQuery();
-
     const {
         data: currencyData,
         error: currencyError,
         isLoading: currencyIsLoading
     } = useGetCurrencyRatesQuery(props.homeCurrency);
 
-    console.log("CURRENCY DATA", currencyData)
-    console.log("PROPS", props)
 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
@@ -48,7 +44,6 @@ function UpdateExpenseForm(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [expense_converted, setExpenseConverted] = useState(0)
-    // const [total, setTotal] = useState(0);
 
 
     useEffect(() => {
@@ -85,68 +80,62 @@ function UpdateExpenseForm(props) {
           </div>
         );
     } else {
-        
         return (
-            <div className="container">
-                <div className="columns is-centered">
-                    <div className="column is-one-third">
-                        <ErrorNotification error={budgetsError} />
-                        <ErrorNotification error={categoriesError} />
-                        <ErrorNotification error={currencyError} />
-                        <Button className="btn" id={props.remaining < 0 ? "over-budget" : null} onClick={handleShow}>
-                            Update
-                        </Button>
-                        <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
-                            <Modal.Title className="expense-popup-title">Update Expense</Modal.Title>
-                            </Modal.Header>
+            <>
+                <ErrorNotification error={budgetsError} />
+                <ErrorNotification error={categoriesError} />
+                <ErrorNotification error={currencyError} />
+                <a id={props.remaining < 0 ? "over-budget" : null} onClick={handleShow}>
+                    Update
+                </a>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                    <Modal.Title className="expense-popup-title">Update Expense</Modal.Title>
+                    </Modal.Header>
 
-                        <Modal.Body>
-                        <form onSubmit={(e) => handleSubmit(e)}>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setTitle} value={title.title} required placeholder="Title" type="text" name="title" id="title" className="form-control input" label="Title"/>
-                            </div>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
-                            </div>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
-                            </div>
-                            <div className="mb-3 text-left">
-                                <label htmlFor='convertedTotal'>Home Currency Total
-                                ({props.homeCurrency})
-                                </label>
-                                <p name="convertedTotal"
-                                    placeholder='0'
-
-                                    >
-                                    {getSymbolFromCurrency(props.homeCurrency)}
-                                    {console.log("HOME CURRENCY", props.homeCurrency)}
-                                    {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
-                                </p>
-                            </div>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control input" label="Description"/>
-                            </div>
-                            <div className="mb-3">
-                                <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select category-input input" label="Select a Category">
-                                    <option value="">Categories:</option>
-                                    {
-                                        categoriesData.map(category => {
-                                            return <option key={category.id} value={category.id}>{category.title}</option>
-                                        })
-                                    }
-                                </select>
-                            </div>
-                            <div className="field">
-                                <button className="btn btn-primary expense-save" onClick={() => handleSubmit}>Save</button>
-                            </div>
-                        </form> 
-                        </Modal.Body>
-                        </Modal>
+                <Modal.Body>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <div className="mb-3">
+                        <BulmaInput onChange={setTitle} value={title.title} required placeholder="Title" type="text" name="title" id="title" className="form-control input" label="Title"/>
                     </div>
-                </div>
-            </div>
+                    <div className="mb-3">
+                        <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
+                    </div>
+                    <div className="mb-3">
+                        <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
+                    </div>
+                    <div className="mb-3 text-left">
+                        <label htmlFor='convertedTotal'>Home Currency Total
+                        ({props.homeCurrency})
+                        </label>
+                        <p name="convertedTotal"
+                            placeholder='0'
+
+                            >
+                            {getSymbolFromCurrency(props.homeCurrency)}
+                            {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
+                        </p>
+                    </div>
+                    <div className="mb-3">
+                        <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control input" label="Description"/>
+                    </div>
+                    <div className="mb-3">
+                        <select onChange={handleCategoryIdInputChange} value={category.category_id} required name="category_id" id="category" className="form-select category-input input" label="Select a Category">
+                            <option value="">Categories:</option>
+                            {
+                                categoriesData.map(category => {
+                                    return <option key={category.id} value={category.id}>{category.title}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+                    <div className="field">
+                        <button className="btn btn-primary expense-save" onClick={() => handleSubmit}>Save</button>
+                    </div>
+                </form> 
+                </Modal.Body>
+                </Modal>
+            </>
         )
     }
 }

@@ -390,6 +390,37 @@ label {
   font-size: 16px;
 }
 
+.actions-dropdown {
+  position: relative;
+}
+
+#budgets-dropdown {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.menu {
+  position: absolute;
+  list-style-type: none;
+  padding: 0px;
+  border-radius: 10px;
+  background-color: #dcdcdc;
+  z-index: 10;
+}
+
+.menu li {
+  margin: 10px 15px;
+}
+
+.menu > li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#delete-budget {
+  text-decoration: none;
+}
+
 #description {
   max-width: 500px;
 }
