@@ -68,21 +68,19 @@ function CurrencyConverter() {
         <p className="converter-title">Your Friendly Currency Converter</p>
         <br/>
 
+
+
         <div className='container'>
-      <h4>Look up currency code for each country:</h4>
+          <h4>Look up currency code for each country:</h4>
 
-      <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
-          <option value="">Search</option>
-          {
-              countries.map(country => {
-                  return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
-              })
-          }
-        </select>
-
-
-
-
+            <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
+                <option value="">Search</option>
+                {
+                    countries.map(country => {
+                        return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
+                    })
+                }
+              </select>
 
           </div>
 
@@ -110,9 +108,7 @@ function CurrencyConverter() {
             className="input"
           />
           <br />
-
-          
-          </div>
+        </div>
       </div>
     </>
   );
