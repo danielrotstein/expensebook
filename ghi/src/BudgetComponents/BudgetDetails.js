@@ -1,8 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import ExpenseForm from './ExpenseForm';
-import { useGetBudgetQuery } from '../store/budgetsApi';
+import { useGetBudgetQuery, useDeleteBudgetMutation, useUpdateBudgetMutation } from '../store/budgetsApi';
 import { useGetExpensesQuery } from '../store/expensesApi';
 import { useGetCategoriesQuery } from '../store/expensesApi';
 import ExpensesList from './ExpensesList';
@@ -10,12 +10,14 @@ import TravelRecommendations from './TravelRecommendations';
 import Notification from '../Notification';
 import Moment from 'moment';
 import getSymbolFromCurrency from 'currency-symbol-map'
+import UpdateBudgetForm from './UpdateBudget';
 
 
 
 function BudgetDetails() {
     const { budget_id } = useParams();
     const wrap = "id".concat("=", budget_id);
+    console.log("BUDGET ID", budget_id)
 
     const {
         data: budgetsData,
@@ -28,6 +30,7 @@ function BudgetDetails() {
         error: expensesError,
         isLoading: expensesIsLoading,
     } = useGetExpensesQuery();
+
     const {
         data: categoriesData,
         error: categoriesError,
@@ -39,6 +42,9 @@ function BudgetDetails() {
     const [dates, setDates] = useState([]);
     const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [total, setTotal] = useState(0);
+    const [deleteBudget, deleted] = useDeleteBudgetMutation(budget_id);
+    const [updateBudget, update_response] = useUpdateBudgetMutation(budget_id);
+
 
     useEffect(() => {
         if (!(expensesIsLoading)) {
@@ -114,6 +120,8 @@ function BudgetDetails() {
                 <div className="container">
                     <ErrorNotification error={budgetsError} />
                     <p className="dashboard-title">{budgetsData.title}</p>
+                    <Link to={'/budgets'}><button onClick={() => deleteBudget(budget_id)} className="btn btn-primary">Delete</button></Link>
+                    <UpdateBudgetForm className="btn btn-primary" />
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">

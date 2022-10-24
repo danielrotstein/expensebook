@@ -7,6 +7,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import Footer from './Footer';
 import ExpenseForm from './BudgetComponents/ExpenseForm';
+import UpdateExpenseForm from './BudgetComponents/UpdateExpense';
 import BudgetDashboard from './BudgetComponents/BudgetDashboard';
 import BudgetDetails from './BudgetComponents/BudgetDetails';
 import BudgetForm from './BudgetComponents/BudgetForm';
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<BudgetDashboard />} />
           <Route path='id=:budget_id' element={< BudgetDetails/>} />
           <Route path='add-budget' element={< BudgetForm/>} />
+          {/* <Route path=':budget_id/update-expense' element={< UpdateExpenseForm/>} /> */}
           {/* <Route path=':budget_id/add-expense' element={< ExpenseForm/>} /> */}
         </Route>
         <Route path='$converter' element={< CurrencyConverter/>} />
