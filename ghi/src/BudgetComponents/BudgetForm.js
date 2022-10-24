@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import { useCreateBudgetMutation } from '../store/budgetsApi';
-// import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
 import countries from '../CountryList';
 import { useNavigate } from "react-router-dom";
@@ -22,16 +21,8 @@ function BudgetForm(props) {
     const [home_country, setHomeCountry] = useState('');
     const [destination_country, setDestinationCountry] = useState('');
     const [account_id, setAccountID] = useState(0)
-    // const [error, setError] = useState('');
     const [createBudget, result] = useCreateBudgetMutation();
 
-    // if (isLoading) {
-    //     return (
-    //         <progress className="progress is-primary" max="100"></progress>
-    //     );
-    // } else {
-    //     console.log("data.id ", data.id);
-    // }
 
     useEffect(() => {
         if (!(isLoading)) {
@@ -60,11 +51,6 @@ function BudgetForm(props) {
         console.log("setDestinationCountry: ", destination_country)
     };
 
-    // const handleConfirmClick = () => {
-    //     const value = data.id;
-    //         setAccountID(value);
-
-    // }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -75,7 +61,6 @@ function BudgetForm(props) {
     if (result.isSuccess) {
         navigate("/budgets");
     } else if (result.isError) {
-        // setError(result.error);
         console.log("ERROR")
     }
 
