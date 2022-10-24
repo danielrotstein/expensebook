@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useGetCategoriesQuery, useDeleteExpenseMutation, useUpdateExpenseMutation } from '../store/expensesApi';
-import { useGetBudgetsQuery } from '../store/budgetsApi'
+import { useGetBudgetQuery } from '../store/budgetsApi'
 import ErrorNotification from '../ErrorNotification';
 import Notification from '../Notification';
 import Moment from 'moment';
@@ -11,12 +11,14 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 
 function ExpensesList(props) {
     const { expense_id, budget_id } = useParams();
+    const wrap = "id".concat("=", budget_id);
 
     const {
         data: budgetsData,
         error: budgetsError,
         isLoading: budgetsIsLoading
-    } = useGetBudgetsQuery();
+    } = useGetBudgetQuery(wrap);
+    console.log("BUDGETS DATA", budgetsData)
 
     const { data, error, isLoading } = useGetCategoriesQuery();
     const [deleteExpense, deleted] = useDeleteExpenseMutation(expense_id);
@@ -70,17 +72,15 @@ function ExpensesList(props) {
                             <td className="table-data">{categories[expense.category_id]}</td>
                             <td className="table-data" id="description">{expense.description}</td>
                             <td className="table-data">
-                                <div className="button" onClick={() => handleSubmit(expense.id)}>
+                                <div className="button table-data" onClick={() => handleSubmit(expense.id)}>
                                     <UpdateExpenseForm 
-                                        props={expense.id}
-                                        // props={budget_id}
-                                        // remaining={budgetsData.budget - total}
-                                        // homeCurrency={budgetsData.home_country}
-                                        // destinationCurrency={budgetsData.destination_country}
+                                        props={budget_id}
+                                        homeCurrency={budgetsData.home_country}
+                                        destinationCurrency={budgetsData.destination_country}
                                     />
                                 </div>
                             </td>
-                            <td>
+                            <td className='table-data'>
                                 <button onClick={() => deleteExpense(expense.id)}>Delete</button>
                             </td>
                             <td className="table-data">

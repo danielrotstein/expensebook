@@ -33,6 +33,9 @@ function UpdateExpenseForm(props) {
         isLoading: currencyIsLoading
     } = useGetCurrencyRatesQuery(props.homeCurrency);
 
+    console.log("CURRENCY DATA", currencyData)
+    console.log("PROPS", props)
+
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
@@ -43,7 +46,7 @@ function UpdateExpenseForm(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // const [expense_converted, setExpenseConverted] = useState(0)
+    const [expense_converted, setExpenseConverted] = useState(0)
     // const [total, setTotal] = useState(0);
 
 
@@ -65,15 +68,15 @@ function UpdateExpenseForm(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         const category_id = category.category_id
-        updateExpense({ expense_id, title, date, expense_total, description, category_id, budget_id});
+        updateExpense({ expense_id, title, date, expense_total, expense_converted, description, category_id, budget_id});
     }
 
-    // function setExpenseAndConvert(expense_total){
-    //     setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)))
-    //     setExpenseTotal(Number(expense_total))
-    // }
+    function setExpenseAndConvert(expense_total){
+        setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)))
+        setExpenseTotal(Number(expense_total))
+    }
 
-    if (budgetsIsLoading || categoriesIsLoading) {
+    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading ) {
         return (
           <div className="container">
             <Notification type="info">Loading...</Notification>
@@ -87,6 +90,7 @@ function UpdateExpenseForm(props) {
                     <div className="column is-one-third">
                         <ErrorNotification error={budgetsError} />
                         <ErrorNotification error={categoriesError} />
+                        <ErrorNotification error={currencyError} />
                         <Button className="btn" id={props.remaining < 0 ? "over-budget" : null} onClick={handleShow}>
                             Update
                         </Button>
@@ -103,7 +107,7 @@ function UpdateExpenseForm(props) {
                             <div className="mb-3">
                                 <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
                             </div>
-                            {/* <div className="mb-3">
+                            <div className="mb-3">
                                 <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
                             </div>
                             <div className="mb-3 text-left">
@@ -118,7 +122,7 @@ function UpdateExpenseForm(props) {
                                     {console.log("HOME CURRENCY", props.homeCurrency)}
                                     {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
                                 </p>
-                            </div> */}
+                            </div>
                             <div className="mb-3">
                                 <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control input" label="Description"/>
                             </div>

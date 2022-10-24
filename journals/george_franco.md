@@ -49,3 +49,6 @@ I felt I learned more about React and React Hooks by going through this process 
 Today I spent the majority of my time fleshing out some additional features on both the front end and back end. I mainly focused on setting up the ability for users to both edit and delete their budgets and expenses from their records. What was consistently the hardest part of this was querying up the correct data so that we could dig in and filter the data by various values. 
 
 My work today involved writing the API methods on both our expenses and budgets APIs. After this was done I began working on the react forms, often first using a query to get a value such as account or budget ID, from there I would use the appropriate mutation to update or delete the value. In my work with the expenses update form I found the most difficult part was formatting things correctly so that the form would appear as a popup. 
+
+## 10/20/22
+Today I continued upon my previous days work and began to focus on the update expense functionality. Passing budget ID intrinsically, as we didn't want that to be changed, proved to be a challenge. By diving into my react notes I recalled learning about useEffect. It worked perfectly for what I needed to do. After solving this blocker I was able to get the forms to submit properly. 

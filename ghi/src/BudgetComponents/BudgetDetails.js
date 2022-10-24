@@ -30,7 +30,7 @@ function BudgetDetails() {
         error: expensesError,
         isLoading: expensesIsLoading,
     } = useGetExpensesQuery();
-    console.log("EXPENSES DATA", expensesData)
+
     const {
         data: categoriesData,
         error: categoriesError,
@@ -122,7 +122,6 @@ function BudgetDetails() {
                     <p className="dashboard-title">{budgetsData.title}</p>
                     <Link to={'/budgets'}><button onClick={() => deleteBudget(budget_id)} className="btn btn-primary">Delete</button></Link>
                     <UpdateBudgetForm className="btn btn-primary" />
-                    {/* <Link to={'/budgets/add-budget'}><button onChange={updateBudget} className="btn btn-primary">Update</button></Link> */}
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">
