@@ -1,3 +1,15 @@
+## 10/20/24
+
+Today, I worked on:
+
+* Finishing the update & delete functions for budgets, and starting on the readme file for the team.
+
+George was driving and I helped to implement code so user can update & delete a budget. Then started on the foundation for our readme file, by setting up the layout and adding some text. Also, reviewed the explorations on unit tests and CI/CD.
+
+I learned that the CI/CD requires some good preparations one of them includes a .gitlab-ci.yml file that contains the instructions that we want it to perform to check our code.
+
+
+
 ## 10/20/22
 
 Today, I worked on:
