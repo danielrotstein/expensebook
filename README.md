@@ -7,7 +7,7 @@
   <h3 align="center">ExpenseBook</h3>
 
   <p align="center">
-    A website to help users to budget their international trips by adding expenses and getting real time exchange rates to their destination country. 
+    A website to help users to budget international trips by adding expenses and getting real time exchange rates for their destination country. 
     Free currency converter usage - no account sign up required!
   </p>
 </div>
