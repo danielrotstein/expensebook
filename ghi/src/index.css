@@ -454,6 +454,14 @@ label {
   margin-top: 25px;
 }
 
+#converted-total {
+  color: #70c244;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
 .expense-save {
   margin-top: 10px;
   margin-bottom: 15px;

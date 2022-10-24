@@ -108,18 +108,15 @@ function ExpenseForm(props) {
                                 <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="expenseTotal">Expense Total
-                                ({props.destinationCurrency})
-                                </label>
-                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control" />
+                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control" label={`Expense Total
+                                ${props.destinationCurrency}`} />
                             </div>
                             <div className="mb-3 text-left">
                                 <label htmlFor='convertedTotal'>Home Currency Total
                                 ({props.homeCurrency})
                                 </label>
-                                <p name="convertedTotal"
+                                <p id="converted-total" name="convertedTotal"
                                     placeholder='0'
-
                                     >
                                     {getSymbolFromCurrency(props.homeCurrency)}
                                     {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}

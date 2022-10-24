@@ -71,57 +71,52 @@ function UpdateBudgetForm(props) {
         <>
             <ErrorNotification />
             <ErrorNotification />
-            <a id="show" onClick={handleShow}>
-                Update
-            </a>
+            <a id="show" onClick={handleShow}>Update</a>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title className="budget-popup-title">Update Budget</Modal.Title>
                 </Modal.Header>
-
-                        <Modal.Body>
-                        <form onSubmit={(e) => handleSubmit(e)}>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setTitle} value={title.title} required type="text" name="title" id="title" className="form-control input" placeholder="Title" label="Title" />
-                            </div>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setStartDate} value={start_date.start_date} required type="date" name="startDate" id="startDate" className="form-control input" label="Start Date" />
-                            </div>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setEndDate} value={end_date.end_date} required type="date" name="endDate" id="endDate" className="form-control input" label="End Date" />
-                            </div>
-                            <div className="mb-3">
-                                <BulmaInput onChange={setBudget} value={budget.budget} required type="number" name="budget" id="budget" className="form-control input" label="Budget" placeholder="Budget" />
-                            </div>
-                            <div className='mb-3'>
-                                <select onChange={handleHomeCountryInputChange} value={home_country.home_country} required name="homeCountry" id="homeCountry" className="form-select input">
-                                        <option value="">Home Country</option>
-                                        {
-                                            countries.map(country => {
-                                                return <option key={country.name} value={country.currency_code}>{country.name}</option>
-                                            })
-                                        }
-                                </select>
-                            </div>
-                            <div className='mb-3'>
-                                <select onChange={handleDestinationCountryInputChange} value={destination_country.destination_country} required name="destinationCountry" id="destinationCountry" className="form-select input">
-                                        <option value="">Destination Country</option>
-                                        {
-                                            countries.map(country => {
-                                                return <option key={country.name} value={country.currency_code}>{country.name}</option>
-                                            })
-                                        }
-                                </select>
-                            </div>
-                            <div className="field">
-                                <button className="btn btn-primary expense-save">Save</button>
-                            </div>
-                        </form> 
-                        </Modal.Body>
-                        </Modal>
-                    </div>
-                </div>
-            </div>
+                    <Modal.Body>
+                    <form onSubmit={(e) => handleSubmit(e)}>
+                        <div className="mb-3">
+                            <BulmaInput onChange={setTitle} value={title.title} required type="text" name="title" id="title" className="form-control input" placeholder="Title" label="Title" />
+                        </div>
+                        <div className="mb-3">
+                            <BulmaInput onChange={setStartDate} value={start_date.start_date} required type="date" name="startDate" id="startDate" className="form-control input" label="Start Date" />
+                        </div>
+                        <div className="mb-3">
+                            <BulmaInput onChange={setEndDate} value={end_date.end_date} required type="date" name="endDate" id="endDate" className="form-control input" label="End Date" />
+                        </div>
+                        <div className="mb-3">
+                            <BulmaInput onChange={setBudget} value={budget.budget} required type="number" name="budget" id="budget" className="form-control input" label="Budget" placeholder="Budget" />
+                        </div>
+                        <div className='mb-3'>
+                            <select onChange={handleHomeCountryInputChange} value={home_country.home_country} required name="homeCountry" id="homeCountry" className="form-select input">
+                                    <option value="">Home Country</option>
+                                    {
+                                        countries.map(country => {
+                                            return <option key={country.name} value={country.currency_code}>{country.name}</option>
+                                        })
+                                    }
+                            </select>
+                        </div>
+                        <div className='mb-3'>
+                            <select onChange={handleDestinationCountryInputChange} value={destination_country.destination_country} required name="destinationCountry" id="destinationCountry" className="form-select input">
+                                    <option value="">Destination Country</option>
+                                    {
+                                        countries.map(country => {
+                                            return <option key={country.name} value={country.currency_code}>{country.name}</option>
+                                        })
+                                    }
+                            </select>
+                        </div>
+                        <div className="field">
+                            <button className="btn btn-primary expense-save">Save</button>
+                        </div>
+                    </form> 
+                </Modal.Body>
+            </Modal>
+        </>
     )
 }
 
