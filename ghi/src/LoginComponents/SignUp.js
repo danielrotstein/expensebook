@@ -14,20 +14,20 @@ function SignUpForm() {
     const [error, setError] = useState('');
     const [createAccount, result] = useCreateAccountsMutation();
 
+    
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log("E.TARGET", e.target);
-        // createAccount(new FormData(e.target));
         createAccount({first_name, last_name, email, password});
     }
+
 
     if (result.isSuccess) {
         navigate("/budgets");
         localStorage.setItem('email', JSON.stringify(email));
     } else if (result.isError) {
         setError(result.error);
-        console.log()
     }
+
 
     return (
         <div className="container">
@@ -62,11 +62,10 @@ function SignUpForm() {
                                 <BulmaInput onChange={setPassword} value={password}
                                 required placeholder="Password" type="password" name="password" id="password"
                                 className="form-control input"/>
+                                <p className="member">Already have an Account? <NavLink to="/login">Login</NavLink></p>
                             </div>
                         </div>
                         <button className="btn btn-primary signup-button">Sign Up</button>
-                        <p className='mx-5'>Already have an Account? <NavLink to="/login">Login</NavLink></p>
-                    
                     </div>
                 </form>
             </div>

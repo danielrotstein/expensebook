@@ -57,8 +57,6 @@ function CurrencyConverter() {
   return (
     <>
       <div className="container">
-        {/* <Link to="/signup" className="btn btn-primary px-4 gap-3" id="sign-up-button">Sign Up</Link> */}
-      
         <p className="converter-title">Your Friendly Currency Converter</p>
         <br/>
         <div className="sub-container">
