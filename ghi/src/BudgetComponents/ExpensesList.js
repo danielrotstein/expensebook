@@ -72,7 +72,8 @@ function ExpensesList(props) {
                         <th className="table-header"></th>
                     </tr>
                 </thead>
-                <tbody>
+                {props.expenses.length > 0
+                ? <tbody>
                     {props.expenses.map(expense => {
                         return (
                         <tr key={expense.id}>
@@ -132,6 +133,29 @@ function ExpensesList(props) {
                         </td>
                     </tr>
                 </tbody>
+                : <tbody>
+                        <tr>
+                            <td className="table-data">-</td>
+                            <td className="table-data">-</td>
+                            <td className="table-data">-</td>
+                            <td className="table-data" id="description">-</td>
+                            <td className="table-data">-</td>
+                            <td className="table-data">-</td>
+                            <td className='table-data'>-</td>
+                        </tr>
+                    <tr id="row-no-border">
+                        <td className="table-data"></td>
+                        <td className="table-data"></td>
+                        <td className="table-data"></td>
+                        <td className="table-data"></td>
+                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>Budget Remaining</td>
+                        <td className="table-data" id={props.remaining > 0 ? "budget-remaining" : "budget-remaining-over"}>
+                            {getSymbolFromCurrency(props.homeCurrency)}
+                            {props.remaining.toLocaleString()}
+                        </td>
+                    </tr>
+                </tbody>
+                }
             </table>
         )
     }
