@@ -77,6 +77,7 @@ function ExpensesList(props) {
                                         props={budget_id}
                                         homeCurrency={budgetsData.home_country}
                                         destinationCurrency={budgetsData.destination_country}
+                                        expense_id={expense.id}
                                     />
                                 </div>
                             </td>
