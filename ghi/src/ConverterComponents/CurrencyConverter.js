@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CurrencyRow from './CurrencyRow';
+import countries from '../CountryList';
 
 
 const url = "https://api.exchangerate.host/latest"
@@ -12,6 +13,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
+  const [country, setCountry] = useState()
 
 
   let toAmount, fromAmount
@@ -53,12 +55,40 @@ function CurrencyConverter() {
     setAmountInFromCurrency(false)
   }
 
+  const handleSearchCountryInputChange = (e) => {
+    const value = e.target.value;
+    setCountry(value);
+};
+
+
 
   return (
     <>
       <div className="container">
         <p className="converter-title">Your Friendly Currency Converter</p>
         <br/>
+
+        <div className='container'>
+      <h4>Look up currency code for each country:</h4>
+
+      <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
+          <option value="">Search</option>
+          {
+              countries.map(country => {
+                  return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
+              })
+          }
+        </select>
+
+
+
+
+
+          </div>
+
+
+
+
         <div className="sub-container">
           <p className="converter-sub-title">From:</p>
           <CurrencyRow
@@ -80,7 +110,9 @@ function CurrencyConverter() {
             className="input"
           />
           <br />
-        </div>  
+
+          
+          </div>
       </div>
     </>
   );
