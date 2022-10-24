@@ -44,6 +44,7 @@ export const expensesApi = createApi({
           url: `/expenses/${expense_id}`,
           body,
           method: 'PUT',
+          credentials: 'include',
         }
       },
       invalidatesTags: ['BudgetDetails'],

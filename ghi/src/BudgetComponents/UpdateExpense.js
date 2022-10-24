@@ -77,7 +77,7 @@ function UpdateExpenseForm(props) {
         setExpenseTotal(Number(expense_total))
     }
 
-    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading ) {
+    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading || isLoading) {
         return (
           <div className="container">
             <Notification type="info">Loading...</Notification>
