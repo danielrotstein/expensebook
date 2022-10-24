@@ -8,6 +8,7 @@ import { useGetOneAccountQuery } from '../store/accountsApi';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import NotFoundPage from '../404Page';
 
 
 function BudgetDashboard() {
@@ -49,9 +50,7 @@ function BudgetDashboard() {
                     )}
                 </>
                 :
-                <>
-                    navigate("/budgets/add-budget")
-                </>
+                <NotFoundPage />
                 }
             </div>
             <br />
