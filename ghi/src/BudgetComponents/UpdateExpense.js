@@ -67,6 +67,7 @@ function UpdateExpenseForm(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        handleClose();
         const category_id = category.category_id
         updateExpense({ expense_id, title, date, expense_total, expense_converted, description, category_id, budget_id});
     }

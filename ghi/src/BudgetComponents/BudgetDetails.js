@@ -121,7 +121,10 @@ function BudgetDetails() {
                     <ErrorNotification error={budgetsError} />
                     <p className="dashboard-title">{budgetsData.title}</p>
                     <Link to={'/budgets'}><button onClick={() => deleteBudget(budget_id)} className="btn btn-primary">Delete</button></Link>
-                    <UpdateBudgetForm className="btn btn-primary" />
+                    <UpdateBudgetForm 
+                        className="btn btn-primary" 
+                        props={budget_id}
+                    />
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">

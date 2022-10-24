@@ -13,11 +13,10 @@ import { useParams } from 'react-router-dom';
 import { useGetOneAccountQuery } from '../store/accountsApi';
 
 function UpdateBudgetForm(props) {
-    const { budget_id } = useParams();
-    console.log("budget_id", budget_id)
+    const budget_id = props.props
     const email = JSON.parse(localStorage.getItem('email'));
-    console.log("email: ", email);
     const { data, error, isLoading } = useGetOneAccountQuery(email);
+    console.log("BUDGETS DATA", props.props)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -44,15 +43,23 @@ function UpdateBudgetForm(props) {
         console.log("setDestinationCountry: ", destination_country)
     };
 
-    const handleConfirmClick = () => {
-        const value = data.id;
-            setAccountID(value);
+    // const handleConfirmClick = () => {
+    //     const value = data.id;
+    //         setAccountID(value);
 
-    }
+    // }
+
+    useEffect(() => {
+        if (!(isLoading)) {
+            const value = data.id
+            setAccountID(value)
+        }
+    } , [data])
 
     async function handleSubmit(e) {
         e.preventDefault();
-        updateBudget({ title, start_date, end_date, budget,
+        handleClose();
+        updateBudget({ budget_id, title, start_date, end_date, budget,
             home_country, destination_country, account_id });
     }
 
@@ -79,7 +86,7 @@ function UpdateBudgetForm(props) {
                             </Modal.Header>
 
                         <Modal.Body>
-                        <form>
+                        <form onSubmit={(e) => handleSubmit(e)}>
                             <div className="mb-3">
                                 <BulmaInput onChange={setTitle} value={title.title} required type="text" name="title" id="title" className="form-control input" placeholder="Title" label="Title" />
                             </div>
@@ -91,6 +98,26 @@ function UpdateBudgetForm(props) {
                             </div>
                             <div className="mb-3">
                                 <BulmaInput onChange={setBudget} value={budget.budget} required type="number" name="budget" id="budget" className="form-control input" label="Budget" placeholder="Budget" />
+                            </div>
+                            <div className='mb-3'>
+                                <select onChange={handleHomeCountryInputChange} value={home_country.home_country} required name="homeCountry" id="homeCountry" className="form-select input">
+                                        <option value="">Home Country</option>
+                                        {
+                                            countries.map(country => {
+                                                return <option key={country.name} value={country.currency_code}>{country.name}</option>
+                                            })
+                                        }
+                                </select>
+                            </div>
+                            <div className='mb-3'>
+                                <select onChange={handleDestinationCountryInputChange} value={destination_country.destination_country} required name="destinationCountry" id="destinationCountry" className="form-select input">
+                                        <option value="">Destination Country</option>
+                                        {
+                                            countries.map(country => {
+                                                return <option key={country.name} value={country.currency_code}>{country.name}</option>
+                                            })
+                                        }
+                                </select>
                             </div>
                             <div className="field">
                                 <button className="btn btn-primary expense-save">Save</button>
