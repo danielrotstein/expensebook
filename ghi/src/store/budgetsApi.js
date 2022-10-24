@@ -37,11 +37,14 @@ export const budgetsApi = createApi({
       invalidatesTags: ['BudgetDashboard'],
     }),
     updateBudget: builder.mutation({
-      query: (budget_id) => ({
-        url: `/budgets/id=${budget_id}`,
-        method: 'PUT',
-        credentials: 'include',
-      }),
+      query(data) {
+        const { budget_id, ...body } = data
+        return {
+          url: `/budgets/id=${budget_id}`,
+          body,
+          method: 'PUT',
+        }
+      },
       invalidatesTags: ['BudgetDashboard'],
     }),
   }),
