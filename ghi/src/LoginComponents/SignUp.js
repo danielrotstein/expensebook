@@ -62,7 +62,7 @@ function SignUpForm() {
                                 <BulmaInput onChange={setPassword} value={password}
                                 required placeholder="Password" type="password" name="password" id="password"
                                 className="form-control input"/>
-                                <p className="member">Already have an Account? <NavLink to="/login">Login</NavLink></p>
+                                <p className="member">Already have an account? <NavLink to="/login">Login</NavLink></p>
                             </div>
                         </div>
                         <button className="btn btn-primary signup-button">Sign Up</button>
