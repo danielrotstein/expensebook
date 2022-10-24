@@ -116,12 +116,10 @@ function UpdateBudgetForm(props) {
                             <div className="field">
                                 <button className="btn btn-primary expense-save">Save</button>
                             </div>
-                        </form> 
+                        </form>
                         </Modal.Body>
                         </Modal>
-                    </div>
-                </div>
-            </div>
+                    </>
     )
 }
 
