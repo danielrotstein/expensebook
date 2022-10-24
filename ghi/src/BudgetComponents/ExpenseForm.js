@@ -8,6 +8,7 @@ import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 
 function ExpenseForm(props) {
@@ -49,28 +50,28 @@ function ExpenseForm(props) {
             budget_id, category_id,});
     }
 
-    let homeCountry = "";
-    let destination = "";
-    async function budgetInfo(){
-        try{
-            destination += budgetsData[parseInt(props.props)-1]["destination_country"];
-            homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
-        } catch(err) {
-            console.log("EEEKK")
-        }
-    }
-    budgetInfo();
+    // let homeCountry = "";
+    // let destination = "";
+    // async function currencyCodeInfo(){
+    //     try{
+    //         destination += budgetsData[parseInt(props.props)-1]["destination_country"];
+    //         homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
+    //     } catch(err) {
+    //         console.log("")
+    //     }
+    // }
+    // currencyCodeInfo();
+    // console.log("props", props)
 
     const {
         data: currencyData,
         error: currencyError,
         isLoading: currencyIsLoading
-    } = useGetCurrencyRatesQuery(homeCountry);
-    console.log("currency", currencyData)
+    } = useGetCurrencyRatesQuery(props.homeCurrency);
+
 
     function setExpenseAndConvert(expense_total){
-        // set converted value
-        setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[destination]).toFixed(2)))
+        setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)))
         setExpenseTotal(Number(expense_total))
     }
 
@@ -107,22 +108,19 @@ function ExpenseForm(props) {
                                 <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="expenseTotal">Expense Total
-                                ({destination})
-                                </label>
-                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control"/>
+                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control" label={`Expense Total
+                                ${props.destinationCurrency}`} />
                             </div>
                             <div className="mb-3 text-left">
                                 <label htmlFor='convertedTotal'>Home Currency Total
-                                ({homeCountry})
+                                ({props.homeCurrency})
                                 </label>
-                                <p name="convertedTotal"
+                                <p id="converted-total" name="convertedTotal"
                                     placeholder='0'
-
                                     >
-                                    {parseFloat(expense_total / currencyData.rates[destination]).toFixed(2)}
+                                    {getSymbolFromCurrency(props.homeCurrency)}
+                                    {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
                                 </p>
-                                {/* <input onChange={handleCurrencyChange} type="text" value={expense_converted.expense_converted}></input> */}
                             </div>
                             <div className="mb-3">
                                 <BulmaInput onChange={setDescription} value={description.description} required placeholder="Description" type="text" name="description" id="description" className="form-control input" label="Description"/>

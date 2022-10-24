@@ -1,3 +1,10 @@
+## 10/20/22
+Today:
+
+I worked on updating the logic on the expense list and by adding they currency symbols onto the foreign currency. Also added the symbols to the budget dashboard and the expense form.
+
+I learned a bit more about using props and hooks was able to delete 10 lines of code by using the correct props. I also learned that props passed to a component can be named anything that you want and is just called in the component by props.{name of prop}.
+
 ## 10/19/22
 Today:
 

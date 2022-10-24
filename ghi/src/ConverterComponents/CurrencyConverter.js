@@ -27,7 +27,6 @@ function CurrencyConverter() {
     fetch(`${url}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data.rates)
         const firstCurrency = Object.keys(data.rates)[46]
         setCurrencyOptions([data.base="USD", ...Object.keys(data.rates)])
         setFromCurrency(data.base) // USD
@@ -58,8 +57,6 @@ function CurrencyConverter() {
   return (
     <>
       <div className="container">
-        {/* <Link to="/signup" className="btn btn-primary px-4 gap-3" id="sign-up-button">Sign Up</Link> */}
-      
         <p className="converter-title">Your Friendly Currency Converter</p>
         <br/>
         <div className="sub-container">

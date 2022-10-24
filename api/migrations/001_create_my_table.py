@@ -72,7 +72,7 @@ steps = [
             expense_total DECIMAL NOT NULL,
             expense_converted DECIMAL NOT NULL,
             description TEXT NULL,
-            budget_id INT REFERENCES budgets(id),
+            budget_id INT REFERENCES budgets(id) ON DELETE CASCADE,
             category_id INT REFERENCES categories(id)
         );
         """,
