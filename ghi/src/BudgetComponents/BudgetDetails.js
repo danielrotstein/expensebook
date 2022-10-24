@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { matchPath, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import ExpenseForm from './ExpenseForm';
@@ -117,11 +117,11 @@ function BudgetDetails() {
                             <p className="metric-label">Budget</p>
                         </div>
                         <div className="col-sm">
-                            <p className={(budgetsData.budget - total) > 0 ? "primary-metric" : "primary-metric-over"}>${(budgetsData.budget - total).toLocaleString()}</p>
+                            <p className={(budgetsData.budget - total) > 0 ? "primary-metric" : "primary-metric-over"}>${Math.floor(budgetsData.budget - total).toLocaleString()}</p>
                             <p className="metric-label">Budget Remaining</p>
                         </div>
                         <div className="col-sm">
-                            <p className="sub-metric">${total.toLocaleString()}</p>
+                            <p className="sub-metric">${Math.floor(total.toLocaleString())}</p>
                             <p className="metric-label">Spend</p>
                         </div>
                     </div>
