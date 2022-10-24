@@ -9,9 +9,9 @@ import { useGetOneAccountQuery } from '../store/accountsApi';
 
 function BudgetForm(props) {
     const email = JSON.parse(localStorage.getItem('email'));
-    console.log("email: ", email);
     const { data, error, isLoading } = useGetOneAccountQuery(email);
 
+    
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [title, setTitle] = useState('');
@@ -36,14 +36,17 @@ function BudgetForm(props) {
         setStep(step + 1);
     };
 
+
     const handleResetClick = () => {
         setStep(1);
     };
+
 
     const handleHomeCountryInputChange = (e) => {
         const value = e.target.value;
             setHomeCountry(value);
     };
+
 
     const handleDestinationCountryInputChange = (e) => {
         const value = e.target.value;
@@ -52,11 +55,13 @@ function BudgetForm(props) {
     };
 
 
+
     async function handleSubmit(e) {
         e.preventDefault();
         createBudget({title, start_date, end_date, budget,
             home_country, destination_country, account_id});
     }
+
 
     if (result.isSuccess) {
         navigate("/budgets");

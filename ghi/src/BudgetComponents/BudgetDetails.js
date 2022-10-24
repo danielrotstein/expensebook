@@ -110,7 +110,8 @@ function BudgetDetails() {
         setShowActions(!showActions);
     }
 
-
+    console.log("locale total", Math.floor(total.toLocaleString()))
+    console.log("total", total.toLocaleString())
     if (budgetsIsLoading || expensesIsLoading || categoriesIsLoading) {
         return (
           <div className="container">
@@ -149,12 +150,6 @@ function BudgetDetails() {
                         }
                     </div>
                     </div>
-
-
-
-
-
-
                     <div className="row metrics-div">
                         <div className="col-sm">
                             <p className="sub-metric">
@@ -171,7 +166,7 @@ function BudgetDetails() {
                         <div className="col-sm">
                             <p className="sub-metric">
                                 {getSymbolFromCurrency(budgetsData["home_country"])}
-                                {Math.floor(total.toLocaleString())}
+                                {Math.floor(total).toLocaleString()}
                             </p>
                             <p className="metric-label">Spend</p>
                         </div>
