@@ -9,7 +9,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import countries from '../CountryList';
 import { useNavigate } from "react-router-dom";
-import { useParams } from 'react-router-dom';
 import { useGetOneAccountQuery } from '../store/accountsApi';
 
 function UpdateBudgetForm(props) {
@@ -119,9 +118,7 @@ function UpdateBudgetForm(props) {
                         </form> 
                         </Modal.Body>
                         </Modal>
-                    </div>
-                </div>
-            </div>
+                    </>
     )
 }
 

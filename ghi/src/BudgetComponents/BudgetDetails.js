@@ -133,7 +133,9 @@ function BudgetDetails() {
                                 <ul className="menu">
                                     <li className="menu-item">
                                         <div className="button table-data">
-                                            <UpdateBudgetForm />
+                                            <UpdateBudgetForm 
+                                                props={budget_id}
+                                            />
                                         </div>
                                     </li>
                                     <li>
