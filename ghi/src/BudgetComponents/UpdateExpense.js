@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
+import { useGetCategoriesQuery, useUpdateExpenseMutation, useGetExpenseQuery } from '../store/expensesApi';
 import { useGetCurrencyRatesQuery } from '../store/exchangeRatesApi';
-import { useGetCategoriesQuery } from '../store/expensesApi';
-import { useCreateExpenseMutation } from '../store/expensesApi';
 import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
 import Button from 'react-bootstrap/Button';
@@ -11,29 +10,53 @@ import Modal from 'react-bootstrap/Modal';
 import getSymbolFromCurrency from 'currency-symbol-map'
 
 
-function ExpenseForm(props) {
-    const {
-        data: budgetsData,
-        error: budgetsError,
-        isLoading: budgetsIsLoading
+function UpdateExpenseForm(props) {
+    // const expense_id = JSON.parse(localStorage.getItem('expense_id'));
+    const expense_id = props.expense_id
+    console.log("EXPENSE ID", expense_id)
+    const { data, isLoading } = useGetExpenseQuery(expense_id);
+    console.log("DATA", data)
+
+    const { 
+        data: budgetsData, 
+        error: budgetsError, 
+        isLoading: budgetsIsLoading 
     } = useGetBudgetsQuery();
-    const {
-        data: categoriesData,
-        error: categoriesError,
-        isLoading: categoriesIsLoading
+    const { 
+        data: categoriesData, 
+        error: categoriesError, 
+        isLoading: categoriesIsLoading 
     } = useGetCategoriesQuery();
+
+    const {
+        data: currencyData,
+        error: currencyError,
+        isLoading: currencyIsLoading
+    } = useGetCurrencyRatesQuery(props.homeCurrency);
+
+    console.log("CURRENCY DATA", currencyData)
+    console.log("PROPS", props)
 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
-    const [expense_converted, setExpenseConverted] = useState(0)
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState(0);
-    const [error, setError] = useState('');
-    const [createExpense, result] = useCreateExpenseMutation();
+    const [budget_id, setBudgetID] = useState(0)
+    const [updateExpense, updated_expense] = useUpdateExpenseMutation(expense_id);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [expense_converted, setExpenseConverted] = useState(0)
+    // const [total, setTotal] = useState(0);
+
+
+    useEffect(() => {
+        if (!(isLoading)) {
+            const value = data.budget_id
+            setBudgetID(value)
+        }
+    } , [data])
 
 
     const handleCategoryIdInputChange = (e) => {
@@ -42,61 +65,40 @@ function ExpenseForm(props) {
         setCategory({ ...category, [name]: parseInt(value) });
     };
 
+
     async function handleSubmit(e) {
         e.preventDefault();
-        const budget_id = props.props
+        handleClose();
         const category_id = category.category_id
-        createExpense({title, date, expense_total, expense_converted, description,
-            budget_id, category_id,});
+        updateExpense({ expense_id, title, date, expense_total, expense_converted, description, category_id, budget_id});
     }
-
-    // let homeCountry = "";
-    // let destination = "";
-    // async function currencyCodeInfo(){
-    //     try{
-    //         destination += budgetsData[parseInt(props.props)-1]["destination_country"];
-    //         homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
-    //     } catch(err) {
-    //         console.log("")
-    //     }
-    // }
-    // currencyCodeInfo();
-    // console.log("props", props)
-
-    const {
-        data: currencyData,
-        error: currencyError,
-        isLoading: currencyIsLoading
-    } = useGetCurrencyRatesQuery(props.homeCurrency);
-
 
     function setExpenseAndConvert(expense_total){
         setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)))
         setExpenseTotal(Number(expense_total))
     }
 
-
-    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading) {
+    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading || isLoading) {
         return (
           <div className="container">
             <Notification type="info">Loading...</Notification>
           </div>
         );
     } else {
+        
         return (
             <div className="container">
                 <div className="columns is-centered">
                     <div className="column is-one-third">
                         <ErrorNotification error={budgetsError} />
                         <ErrorNotification error={categoriesError} />
-                        <ErrorNotification error={error} />
-                        <Button className="btn btn-primary" id={props.remaining < 0 ? "over-budget" : null} variant="dark my-3" onClick={handleShow}>
-                            Add Expense
+                        <ErrorNotification error={currencyError} />
+                        <Button className="btn" id={props.remaining < 0 ? "over-budget" : null} onClick={handleShow}>
+                            Update
                         </Button>
-
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
-                            <Modal.Title className="expense-popup-title">Add Expense</Modal.Title>
+                            <Modal.Title className="expense-popup-title">Update Expense</Modal.Title>
                             </Modal.Header>
 
                         <Modal.Body>
@@ -108,10 +110,7 @@ function ExpenseForm(props) {
                                 <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="expenseTotal">Expense Total
-                                ({props.destinationCurrency})
-                                </label>
-                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control" />
+                                <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
                             </div>
                             <div className="mb-3 text-left">
                                 <label htmlFor='convertedTotal'>Home Currency Total
@@ -122,6 +121,7 @@ function ExpenseForm(props) {
 
                                     >
                                     {getSymbolFromCurrency(props.homeCurrency)}
+                                    {console.log("HOME CURRENCY", props.homeCurrency)}
                                     {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
                                 </p>
                             </div>
@@ -139,9 +139,9 @@ function ExpenseForm(props) {
                                 </select>
                             </div>
                             <div className="field">
-                                <button className="btn btn-primary expense-save" onClick={handleClose}>Save</button>
+                                <button className="btn btn-primary expense-save" onClick={() => handleSubmit}>Save</button>
                             </div>
-                        </form>
+                        </form> 
                         </Modal.Body>
                         </Modal>
                     </div>
@@ -152,4 +152,4 @@ function ExpenseForm(props) {
 }
 
 
-export default ExpenseForm;
+export default UpdateExpenseForm;

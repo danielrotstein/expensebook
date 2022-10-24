@@ -12,7 +12,6 @@ function BudgetForm(props) {
     const email = JSON.parse(localStorage.getItem('email'));
     console.log("email: ", email);
     const { data, error, isLoading } = useGetOneAccountQuery(email);
-    console.log("data: ", data);
 
     const navigate = useNavigate();
     const [step, setStep] = useState(1);

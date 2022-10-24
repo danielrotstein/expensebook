@@ -1,4 +1,5 @@
 import Moment from 'moment';
+import getSymbolFromCurrency from 'currency-symbol-map'
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsQuery } from '../store/budgetsApi';
 import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
@@ -12,9 +13,9 @@ import { Link } from 'react-router-dom';
 function BudgetDashboard() {
     const email = JSON.parse(localStorage.getItem('email'));
     const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
-    console.log("data: ", data);
+    // console.log("data: ", data);
     const { data:accountdata, error:accounterror, isLoading:accountisLoading } = useGetOneAccountQuery(email);
-    console.log("accountdata: ", accountdata);
+    // console.log("accountdata: ", accountdata);
 
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ function BudgetDashboard() {
         return (
             <progress className="progress is-primary" max="100"></progress>
         );
-    } 
+    }
 
 
     return (
@@ -34,20 +35,20 @@ function BudgetDashboard() {
             </div>
             <div className="sub-container d-flex">
                 {data
-                ? <> 
+                ? <>
                     {data.map(budget => {
                         return (
                             <a href={`/budgets/id=${budget.id}`} key={budget.id} className="budget-card">
                                 <div>
                                     <p className="budget-title">{budget.title}</p>
                                     <p className="budget-date">{`${Moment(budget.start_date).format('MMM DD, YYYY')} - ${Moment(budget.end_date).format('MMM DD, YYYY')}`}</p>
-                                    <p className="budget-amount">${budget.budget.toLocaleString()}</p>
+                                    <p className="budget-amount">{getSymbolFromCurrency(budget.home_country)}{budget.budget.toLocaleString()}</p>
                                 </div>
                             </a>
                         )}
                     )}
                 </>
-                : 
+                :
                 <>
                     navigate("/budgets/add-budget")
                 </>

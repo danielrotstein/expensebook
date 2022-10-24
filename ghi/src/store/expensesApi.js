@@ -28,7 +28,38 @@ export const expensesApi = createApi({
         }
       },
       invalidatesTags: ['BudgetDetails'],
-    })
+    }),
+    deleteExpense: builder.mutation({
+      query: (expense_id) => ({
+        url: `/expenses/${expense_id}`,
+        method: 'delete',
+        credentials: 'include',
+      }),
+      invalidatesTags: ['BudgetDetails'],
+    }),
+    updateExpense: builder.mutation({
+      query(data) {
+        const { expense_id, ...body } = data
+        return {
+          url: `/expenses/${expense_id}`,
+          body,
+          method: 'PUT',
+          credentials: 'include',
+        }
+      },
+      invalidatesTags: ['BudgetDetails'],
+    }),
+    // patchExpense: builder.mutation({
+    //   query(data) {
+    //     const { expense_id, ...body } = data
+    //     return {
+    //       url: `/expenses/${data}`,
+    //       body,
+    //       method: 'PATCH',
+    //     }
+    //   },
+    //   invalidatesTags: ['BudgetDetails'],
+    // }),
   }),
 });
 
@@ -38,4 +69,6 @@ export const {
     useGetExpensesQuery,
     useGetExpenseQuery, 
     useCreateExpenseMutation,
+    useDeleteExpenseMutation,
+    useUpdateExpenseMutation,
 } = expensesApi;
