@@ -66,7 +66,7 @@ function UpdateBudgetForm(props) {
 
 
     return (
-<div className="container">
+        <div className="container">
                 <div className="columns is-centered">
                     <div className="column is-one-third">
                         <ErrorNotification />
