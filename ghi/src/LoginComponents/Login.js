@@ -27,7 +27,6 @@ function Login() {
     }
     
     return (
-       
         <div className="container">
             <div className="auth-form-div">
             <ErrorNotification error={error} />

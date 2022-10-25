@@ -26,8 +26,8 @@ function Logout() {
 function Nav() {
     const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
     return (
-        <div className='custom-nav'>
-            <nav className="navbar navbar-expand-sm">
+        <div className="custom-nav">
+            <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to="/">ExpenseBook</NavLink>
                     <div className="navbar-default">
