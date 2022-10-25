@@ -52,3 +52,8 @@ My work today involved writing the API methods on both our expenses and budgets 
 
 ## 10/20/22
 Today I continued upon my previous days work and began to focus on the update expense functionality. Passing budget ID intrinsically, as we didn't want that to be changed, proved to be a challenge. By diving into my react notes I recalled learning about useEffect. It worked perfectly for what I needed to do. After solving this blocker I was able to get the forms to submit properly. 
+
+## 10/24/22
+Today Daniel and I finished the Budget update function on both the back end and front end side. We also made a change to the database so that expenses would be deleted when their budget_id foreign key was deleted. Prior to this we could only delete budgets with no expenses. After this I have no finished my task of creating update and delete functionality for expenses and budgets.
+
+After this I used what I learned on 10/20/22 to pass Account ID to the budgets form using useEffect. This served as an improvement on our previous method of creating a new budget form.
