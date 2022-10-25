@@ -11,6 +11,15 @@ class EmptyCategoryRepository:
         return []
 
 
+class CreateCategoryQueries:
+    def create_category(self, category):
+        result = {
+            "id": 999,
+            "title": "Test event",
+        }
+        result.update(category)
+        return result
+
 
 def test_get_all_categories():
     # Arrange
@@ -27,67 +36,26 @@ def test_get_all_categories():
     assert response.json() == []
 
 
+def test_create_categories():
+    # Arrange
+    app.dependency_overrides[CategoryRepository] = CreateCategoryQueries
+    json = {
+        "title": "Test event",
+    }
+    expected = {
+        "id": 999,
+        "title": "Test event",
+    }
 
+    # Act 
+    response = client.post("/categories", json=json)
 
+    # Clean up
+    app.dependency_overrides = {}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class CreateCategoryQueries:
-#     def create_category(self, category):
-#         result = {
-#             "id": 999,
-#             "title": "Test event",
-#         }
-#         result.update(category)
-#         return result
-
-
-
-# def test_create_categories():
-#     # Arrange
-#     app.dependency_overrides[CategoryRepository] = EmptyCategoryRepository
-#     json = {
-#         "title": "Test event",
-#     }
-#     expected = {
-#         "id": 999,
-#         "name": "Test event",
-#     }
-
-#     # Act 
-#     response = client.post("/categories", json=json)
-
-#     # Clean up
-#     app.dependency_overrides = {}
-
-#     # Assert
-#     assert response.status_code == 200
-#     assert response.json() == expected
+    # Assert
+    assert response.status_code == 200
+    assert response.json() == expected
 
 
 
