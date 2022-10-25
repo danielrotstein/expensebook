@@ -1,6 +1,7 @@
 import React from 'react'
 import countries from '../CountryList';
 
+
 export default function CurrencyRow(props) {
   const {
     currencyOptions,
@@ -10,11 +11,11 @@ export default function CurrencyRow(props) {
     amount
   } = props
 
-  console.log(currencyOptions)
+
   return (
-    <div>
-      <input type="number" className="input" value={amount} onChange={onChangeAmount} />
-      <select value={selectedCurrency} onChange={onChangeCurrency}>
+    <div className="converter-input-div">
+      <input type="number" className="converter-input" value={amount} onChange={onChangeAmount} />
+      <select className="converter-dropdown" value={selectedCurrency} onChange={onChangeCurrency}>
         {countries.map(option => (
           <option key={option} value={option.currency_code}>{option.name} - {option.currency_code}</option>
         ))}

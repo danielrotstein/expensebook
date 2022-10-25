@@ -5,6 +5,7 @@ import CurrencyRow from './CurrencyRow';
 
 const url = "https://api.exchangerate.host/latest"
 
+
 function CurrencyConverter() {
   const [currencyOptions, setCurrencyOptions] = useState([])
   const [fromCurrency, setFromCurrency] = useState()
@@ -23,6 +24,7 @@ function CurrencyConverter() {
     fromAmount = amount / exchangeRate
   }
 
+
   useEffect(() => {
     fetch(`${url}`)
       .then(res => res.json())
@@ -35,6 +37,7 @@ function CurrencyConverter() {
       })
   }, [])
   
+
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null) {
       fetch(`${url}?base=${fromCurrency}&symbols=${toCurrency}`)
@@ -43,10 +46,12 @@ function CurrencyConverter() {
     }
   }, [fromCurrency, toCurrency])
 
+
   function handleFromAmountChange(e) {
     setAmount(e.target.value)
     setAmountInFromCurrency(true)
   }
+
 
   function handleToAmountChange(e) {
     setAmount(e.target.value)
@@ -57,30 +62,37 @@ function CurrencyConverter() {
   return (
     <>
       <div className="container">
-        <p className="converter-title">Your Friendly Currency Converter</p>
-        <br/>
-        <div className="sub-container">
-          <p className="converter-sub-title">From:</p>
-          <CurrencyRow
-            currencyOptions={currencyOptions}
-            selectedCurrency={fromCurrency}
-            onChangeCurrency={e => setFromCurrency(e.target.value)}
-            onChangeAmount={handleFromAmountChange}
-            amount={fromAmount}
-            className="input"
-          />
-          <br/>
-          <p className="converter-sub-title">To:</p>
-          <CurrencyRow
-            currencyOptions={currencyOptions}
-            selectedCurrency={toCurrency}
-            onChangeCurrency={e => setToCurrency(e.target.value)}
-            onChangeAmount={handleToAmountChange}
-            amount={toAmount}
-            className="input"
-          />
-          <br />
-        </div>  
+        <div className="converter-div">
+          <div className="converter-sub-div">
+            <div className="converter-block-div">
+            <p className="converter-title">Your Friendly Currency Converter</p>
+            <div className="sub-container">
+              <p className="converter-sub-title">From:</p>
+              <CurrencyRow
+                currencyOptions={currencyOptions}
+                selectedCurrency={fromCurrency}
+                onChangeCurrency={e => setFromCurrency(e.target.value)}
+                onChangeAmount={handleFromAmountChange}
+                amount={fromAmount}
+                className="input"
+              />
+              <br/>
+              <p className="converter-sub-title">To:</p>
+              <CurrencyRow
+                currencyOptions={currencyOptions}
+                selectedCurrency={toCurrency}
+                onChangeCurrency={e => setToCurrency(e.target.value)}
+                onChangeAmount={handleToAmountChange}
+                amount={toAmount}
+                className="input"
+              />
+              <br />
+              <p className="converter-cta">Create a budget to track all your converted expenses in one place.  <Link to="../signup">Signup</Link> to get started with ExpenseBook today.</p>
+              <br />
+            </div>  
+          </div>
+          </div>
+        </div>
       </div>
     </>
   );
