@@ -102,7 +102,7 @@ function UpdateExpenseForm(props) {
                         <BulmaInput onChange={setDate} value={date.date} required placeholder="Date" type="date" name="date" id="date" className="form-control input" label="Date"/>
                     </div>
                     <div className="mb-3">
-                        <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="number" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
+                        <BulmaInput onChange={setExpenseAndConvert} value={expense_total.expense_total} required placeholder="Expense Total" type="float" name="expenseTotal" id="expenseTotal" className="form-control input" label="Expense Total"/>
                     </div>
                     <div className="mb-3 text-left">
                         <label htmlFor='convertedTotal'>Home Currency Total
