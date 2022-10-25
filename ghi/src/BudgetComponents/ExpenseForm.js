@@ -23,6 +23,7 @@ function ExpenseForm(props) {
         isLoading: categoriesIsLoading
     } = useGetCategoriesQuery();
 
+
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [expense_total, setExpenseTotal] = useState(0);
@@ -42,13 +43,16 @@ function ExpenseForm(props) {
         setCategory({ ...category, [name]: parseInt(value) });
     };
 
+
     async function handleSubmit(e) {
         e.preventDefault();
         const budget_id = props.props
         const category_id = category.category_id
         createExpense({title, date, expense_total, expense_converted, description,
             budget_id, category_id,});
-    }
+        setExpenseConverted(0);
+        }
+
 
     // let homeCountry = "";
     // let destination = "";
@@ -63,6 +67,7 @@ function ExpenseForm(props) {
     // currencyCodeInfo();
     // console.log("props", props)
 
+    
     const {
         data: currencyData,
         error: currencyError,
@@ -119,7 +124,7 @@ function ExpenseForm(props) {
                                     placeholder='0'
                                     >
                                     {getSymbolFromCurrency(props.homeCurrency)}
-                                    {parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)}
+                                    {expense_converted}
                                 </p>
                             </div>
                             <div className="mb-3">

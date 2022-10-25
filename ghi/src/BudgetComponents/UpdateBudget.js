@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import ErrorNotification from '../ErrorNotification';
-import { useGetBudgetsQuery,useUpdateBudgetMutation } from '../store/budgetsApi';
-import { useGetCategoriesQuery, useUpdateExpenseMutation, useGetExpenseQuery } from '../store/expensesApi';
-import { useGetCurrencyRatesQuery } from '../store/exchangeRatesApi';
+import { useUpdateBudgetMutation } from '../store/budgetsApi';
 import BulmaInput from '../BulmaInput';
-import Notification from '../Notification';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import countries from '../CountryList';
 import { useNavigate } from "react-router-dom";

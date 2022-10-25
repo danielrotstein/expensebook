@@ -43,12 +43,12 @@ function SignUpForm() {
                         <div className="auth-div mb-3">
                             <div className="auth-input">
                                 <label htmlFor="first_name">First Name</label>
-                                <BulmaInput onChange={setFirstName} value={first_name} required placeholder="first_name" type="text" name="first_name" id="first_name" className="form-control input"/>
+                                <BulmaInput onChange={setFirstName} value={first_name} required placeholder="First Name" type="text" name="first_name" id="first_name" className="form-control input"/>
                             </div>
                             <br />
                             <div className="auth-input">
                                 <label htmlFor="last_name">Last Name</label>
-                                <BulmaInput onChange={setLastName} value={last_name} required placeholder="last_name" type="text" name="last_name" id="last_name" className="form-control input"/>
+                                <BulmaInput onChange={setLastName} value={last_name} required placeholder="Last Name" type="text" name="last_name" id="last_name" className="form-control input"/>
                             </div>
                             <br />
                             <div className="auth-input">

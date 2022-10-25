@@ -1,3 +1,11 @@
+##10/24/22
+
+Today:
+
+I worked on adding a 404 page to the app and added the route to the browser routers. I also worked on cleaning up code and fixed bugs that were on the front end. The bugs consisted of the html element not being set to the state. The state also needed to be reset after submit. 
+
+I learned that toLocaleString can be passed minimumFractionDigits to set the decimal point and how many digits after. 
+
 ## 10/20/22
 Today:
 
