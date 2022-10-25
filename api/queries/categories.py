@@ -28,7 +28,8 @@ class CategoryRepository:
                         ORDER BY id;
                         """,
                     )
-                    return [self.record_to_category_out(record) for record in result]
+                    return [self.record_to_category_out(record)
+                            for record in result]
         except Exception as e:
             print(e)
             return {"message": "Could not get all categories"}
@@ -54,7 +55,8 @@ class CategoryRepository:
         except Exception as e:
             print(e)
 
-    def create_category(self, category: CategoryIn) -> Union[CategoryOut, Error]:
+    def create_category(
+            self, category: CategoryIn) -> Union[CategoryOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -89,7 +91,7 @@ class CategoryRepository:
                         [category_id],
                     )
                     return True
-        except Exception as e:
+        except Exception:
             return False
 
     def update_category(
