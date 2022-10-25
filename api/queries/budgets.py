@@ -40,7 +40,7 @@ class BudgetRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT 
+                        SELECT
                             id
                             , title
                             , start_date
@@ -54,7 +54,8 @@ class BudgetRepository:
                         """,
                     )
 
-                    return [self.record_to_budget_out(record) for record in result]
+                    return [self.record_to_budget_out(record)
+                            for record in result]
         except Exception as e:
             print("There was an error: ", e)
             return {"message": "Unable to get all budgets"}
@@ -88,7 +89,8 @@ class BudgetRepository:
         except Exception as e:
             print(e)
 
-    def get_all_budget_by_oneuser(self, email: str) -> Union[List[BudgetOut], Error]:
+    def get_all_budget_by_oneuser(
+            self, email: str) -> Union[List[BudgetOut], Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -111,10 +113,12 @@ class BudgetRepository:
                         """,
                         [email],
                     )
-                    return [self.record_to_budget_out(record) for record in result]
+                    return [self.record_to_budget_out(record)
+                            for record in result]
         except Exception as e:
             print("There was an error: ", e)
-            return {"message": "Unable to get all budgets for this user: {email}"}
+            return {"message":
+                    "Unable to get all budgets for this user: {email}"}
 
     def create_budget(self, budget: BudgetIn) -> BudgetOut:
         try:
@@ -124,10 +128,10 @@ class BudgetRepository:
                         """
                         INSERT INTO budgets
                             (
-                                 title 
+                                 title
                                 , start_date
                                 , end_date
-                                , budget 
+                                , budget
                                 , home_country
                                 , destination_country
                                 , account_id
@@ -164,7 +168,7 @@ class BudgetRepository:
                         [budget_id],
                     )
                     return True
-        except Exception as e:
+        except Exception:
             return False
 
     def update_budget(
