@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from typing import ( 
-    Union, 
+from typing import (
+    Union,
     List,
 )
 from queries.pool import pool
@@ -57,12 +57,12 @@ class AccountRepository:
                     output = []
                     for record in db:
                         account = AccountOut(
-                            id = record[0],
-                            first_name = record[1],
-                            last_name = record[2],
-                            email = record[3],
-                            password = record[4],
-                            hashed_password = record[5]
+                            id=record[0],
+                            first_name=record[1],
+                            last_name=record[2],
+                            email=record[3],
+                            password=record[4],
+                            hashed_password=record[5],
                         )
                         output.append(account)
                     return output
@@ -85,7 +85,7 @@ class AccountRepository:
                     FROM accounts
                     WHERE email = %s;
                     """,
-                    [email]
+                    [email],
                 )
                 record = result.fetchone()
                 if record is None:
@@ -108,7 +108,13 @@ class AccountRepository:
                     VALUES (%s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
-                    [account.first_name, account.last_name, account.email, account.password, hashed_password]
+                    [
+                        account.first_name,
+                        account.last_name,
+                        account.email,
+                        account.password,
+                        hashed_password,
+                    ],
                 )
                 id = result.fetchone()[0]
                 print("ACCOUNT: ", account.password)
@@ -120,7 +126,7 @@ class AccountRepository:
                     password=account.password,
                     hashed_password=hashed_password,
                 )
-    
+
     def delete_account(self, account_id):
         try:
             with pool.connection() as conn:
@@ -136,7 +142,9 @@ class AccountRepository:
         except Exception as e:
             return False
 
-    def update_account(self, account_id: int, account: AccountIn) -> Union[AccountOut, Error]:
+    def update_account(
+        self, account_id: int, account: AccountIn
+    ) -> Union[AccountOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -150,11 +158,11 @@ class AccountRepository:
                         WHERE id = %s
                         """,
                         [
-                              account.first_name
-                            , account.last_name
-                            , account.email
-                            , account.password
-                            , account_id
+                            account.first_name,
+                            account.last_name,
+                            account.email,
+                            account.password,
+                            account_id,
                         ],
                     )
                     return self.account_in_to_out(account_id, account)
@@ -164,13 +172,13 @@ class AccountRepository:
 
     def account_in_to_out(self, id: int, account: AccountIn):
         old_data = account.dict()
-        return AccountOut(id=id, **old_data) 
+        return AccountOut(id=id, **old_data)
 
     def record_to_account_out(self, record):
         return AccountOut(
-            id = record[0],
-            first_name = record[1],
-            last_name = record[2],
-            email = record[3],
-            password = record[4]
+            id=record[0],
+            first_name=record[1],
+            last_name=record[2],
+            email=record[3],
+            password=record[4],
         )

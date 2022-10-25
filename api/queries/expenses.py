@@ -28,12 +28,14 @@ class ExpenseOut(BaseModel):
     budget_id: int
     category_id: int
 
+
 class ExpensePatch(BaseModel):
     title: str
     date: date
     expense_total: int
     description: Optional[str]
     category_id: int
+
 
 class ExpenseRepository:
     def get_all_expenses(self) -> Optional[ExpenseOut]:
@@ -58,10 +60,7 @@ class ExpenseRepository:
                         ORDER BY date;
                         """,
                     )
-                    return [
-                        self.record_to_expense_out(record)
-                        for record in result
-                    ]
+                    return [self.record_to_expense_out(record) for record in result]
         except Exception as e:
             print(e)
             return {"message": "Could not get all expenses"}
@@ -116,14 +115,14 @@ class ExpenseRepository:
                         RETURNING id;
                         """,
                         [
-                              expense.title
-                            , expense.date
-                            , expense.expense_total
-                            , expense.expense_converted
-                            , expense.description
-                            , expense.budget_id
-                            , expense.category_id
-                        ]
+                            expense.title,
+                            expense.date,
+                            expense.expense_total,
+                            expense.expense_converted,
+                            expense.description,
+                            expense.budget_id,
+                            expense.category_id,
+                        ],
                     )
                     id = result.fetchone()[0]
                     return self.expense_in_to_out(id, expense)
@@ -145,7 +144,9 @@ class ExpenseRepository:
         except Exception as e:
             return False
 
-    def update_expense(self, expense_id: int, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
+    def update_expense(
+        self, expense_id: int, expense: ExpenseIn
+    ) -> Union[ExpenseOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -162,14 +163,14 @@ class ExpenseRepository:
                         WHERE id = %s
                         """,
                         [
-                            expense.title
-                            ,expense.date
-                            ,expense.expense_total
-                            ,expense.expense_converted
-                            ,expense.description
-                            ,expense.budget_id
-                            ,expense.category_id
-                            ,expense_id
+                            expense.title,
+                            expense.date,
+                            expense.expense_total,
+                            expense.expense_converted,
+                            expense.description,
+                            expense.budget_id,
+                            expense.category_id,
+                            expense_id,
                         ],
                     )
                     return self.expense_in_to_out(expense_id, expense)
@@ -190,5 +191,5 @@ class ExpenseRepository:
             expense_converted=record[4],
             description=record[5],
             budget_id=record[6],
-            category_id=record[7]
+            category_id=record[7],
         )

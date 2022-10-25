@@ -18,7 +18,9 @@ def get_all_recommendations(
     return repo.get_all_recommendations()
 
 
-@router.get("/recommendations/{recommendation_id}", response_model=Optional[RecommendationOut])
+@router.get(
+    "/recommendations/{recommendation_id}", response_model=Optional[RecommendationOut]
+)
 def get_one_recommendation(
     recommendation_id: int,
     response: Response,
@@ -46,7 +48,10 @@ def delete_recommendation(
     return repo.delete_recommendation(recommendation_id)
 
 
-@router.put("/recommendations/{recommendation_id}", response_model=Union[RecommendationOut, Error])
+@router.put(
+    "/recommendations/{recommendation_id}",
+    response_model=Union[RecommendationOut, Error],
+)
 def update_recommendation(
     recommendation_id: int,
     recommendation: RecommendationIn,

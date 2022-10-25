@@ -9,7 +9,7 @@ class Error(BaseModel):
 
 class CategoryIn(BaseModel):
     title: str
- 
+
 
 class CategoryOut(BaseModel):
     id: int
@@ -28,10 +28,7 @@ class CategoryRepository:
                         ORDER BY id;
                         """,
                     )
-                    return [
-                        self.record_to_category_out(record)
-                        for record in result
-                    ]
+                    return [self.record_to_category_out(record) for record in result]
         except Exception as e:
             print(e)
             return {"message": "Could not get all categories"}
@@ -71,7 +68,7 @@ class CategoryRepository:
                         """,
                         [
                             category.title,
-                        ]
+                        ],
                     )
                     id = result.fetchone()[0]
                     old_data = category.dict()
@@ -95,7 +92,9 @@ class CategoryRepository:
         except Exception as e:
             return False
 
-    def update_category(self, category_id: int, category: CategoryIn) -> Union[CategoryOut, Error]:
+    def update_category(
+        self, category_id: int, category: CategoryIn
+    ) -> Union[CategoryOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -105,10 +104,7 @@ class CategoryRepository:
                         SET title = %s
                         WHERE id = %s
                         """,
-                        [
-                            category.title
-                            , category_id
-                        ],
+                        [category.title, category_id],
                     )
                     return self.category_in_to_out(category_id, category)
         except Exception as e:
