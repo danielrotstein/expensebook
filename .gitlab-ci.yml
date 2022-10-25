@@ -25,13 +25,16 @@ lint-job:
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
+  needs:
+    - api-unit-test-job
+    - lint-job
   variables:
     PUBLIC_URL: https://george.franco.gitlab.io/expensebook
   script:
     - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
     - npm install
     - npm run build
-    - cp public/index.html build/404.html  # Make this a SPA
+    - cp build/index.html build/404.html  # Make this a SPA
   artifacts:
     paths:
       - ghi/build/  # Save all of the files in the build path
