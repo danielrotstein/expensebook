@@ -10,7 +10,6 @@ from queries.budgets import (
     BudgetIn,
     BudgetOut,
 )
-from authenticator import authenticator
 
 
 router = APIRouter(tags=["Budgets"])
