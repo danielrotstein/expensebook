@@ -26,6 +26,7 @@ function Login() {
         alert("User name or password not correct. Please sign up or log in again. ");
     }
     
+    
     return (
         <div className="container">
             <div className="auth-form-div">
@@ -66,4 +67,5 @@ function Login() {
     )
 }
 
-  export default Login;
+
+export default Login;

@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useGetTokenQuery, useLogOutMutation } from './store/accountsApi';
 import { useEffect } from 'react';
 
+
 function Logout() {
     const [logOut, { data }] = useLogOutMutation();
 
@@ -54,5 +55,6 @@ function Nav() {
         </div>
     )
 }
+
 
 export default Nav;
