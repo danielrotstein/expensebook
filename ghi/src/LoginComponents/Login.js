@@ -11,7 +11,6 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [createToken, result] = useCreateTokenMutation();
-    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -26,10 +25,8 @@ function Login() {
         navigate("/");
         alert("User name or password not correct. Please sign up or log in again. ");
     }
-
     
     return (
-       
         <div className="container">
             <div className="auth-form-div">
             <ErrorNotification error={error} />

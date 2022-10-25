@@ -6,6 +6,7 @@ import countries from '../CountryList';
 
 const url = "https://api.exchangerate.host/latest"
 
+
 function CurrencyConverter() {
   const [currencyOptions, setCurrencyOptions] = useState([])
   const [fromCurrency, setFromCurrency] = useState()
@@ -25,6 +26,7 @@ function CurrencyConverter() {
     fromAmount = amount / exchangeRate
   }
 
+
   useEffect(() => {
     fetch(`${url}`)
       .then(res => res.json())
@@ -37,6 +39,7 @@ function CurrencyConverter() {
       })
   }, [])
   
+
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null) {
       fetch(`${url}?base=${fromCurrency}&symbols=${toCurrency}`)
@@ -45,10 +48,12 @@ function CurrencyConverter() {
     }
   }, [fromCurrency, toCurrency])
 
+
   function handleFromAmountChange(e) {
     setAmount(e.target.value)
     setAmountInFromCurrency(true)
   }
+
 
   function handleToAmountChange(e) {
     setAmount(e.target.value)
@@ -64,49 +69,47 @@ function CurrencyConverter() {
   return (
     <>
       <div className="container">
-        <p className="converter-title">Your Friendly Currency Converter</p>
-        <br/>
-
-
-
-        <div className='container'>
-          <h4>Look up currency code for each country:</h4>
-
-            <select onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry" className="form-select input">
+        <div className="converter-div">
+          <div className="converter-sub-div">
+            <div className="converter-block-div">
+              <p className="converter-title">Your Friendly Currency Converter</p>
+              <p className="converter-cta" ><strong style={{color: "#70c244"}}>Step 1:</strong> To use our free currency converter, search for your countries' currency codes using the dropdown below.</p>
+              <select className="form-select converter-country-dropdown" onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry">
                 <option value="">Search</option>
                 {
-                    countries.map(country => {
-                        return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
-                    })
+                  countries.map(country => {
+                      return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
+                  })
                 }
               </select>
-
+              <br />
+              <p className="converter-cta"><strong style={{color: "#70c244"}}>Step 2:</strong> Input the codes into the converter, and we'll calculate the conversion for you.</p>
+            <div className="sub-container">
+              <p className="converter-sub-title"><strong style={{color: "#70c244"}}>From:</strong></p>
+              <CurrencyRow
+                currencyOptions={currencyOptions}
+                selectedCurrency={fromCurrency}
+                onChangeCurrency={e => setFromCurrency(e.target.value)}
+                onChangeAmount={handleFromAmountChange}
+                amount={fromAmount}
+                className="input"
+              />
+              <br/>
+              <p className="converter-sub-title"><strong style={{color: "#70c244"}}>To:</strong></p>
+              <CurrencyRow
+                currencyOptions={currencyOptions}
+                selectedCurrency={toCurrency}
+                onChangeCurrency={e => setToCurrency(e.target.value)}
+                onChangeAmount={handleToAmountChange}
+                amount={toAmount}
+                className="input"
+              />
+              <br />
+              <p className="converter-cta" style={{marginTop: "15px"}}><strong style={{color: "#70c244"}}>Step 3:</strong> Create a budget to track your converted expenses in one place.  <Link to="../signup">Signup</Link> to get started today.</p>
+              <br />
+            </div>  
           </div>
-
-
-
-
-        <div className="sub-container">
-          <p className="converter-sub-title">From:</p>
-          <CurrencyRow
-            currencyOptions={currencyOptions}
-            selectedCurrency={fromCurrency}
-            onChangeCurrency={e => setFromCurrency(e.target.value)}
-            onChangeAmount={handleFromAmountChange}
-            amount={fromAmount}
-            className="input"
-          />
-          <br/>
-          <p className="converter-sub-title">To:</p>
-          <CurrencyRow
-            currencyOptions={currencyOptions}
-            selectedCurrency={toCurrency}
-            onChangeCurrency={e => setToCurrency(e.target.value)}
-            onChangeAmount={handleToAmountChange}
-            amount={toAmount}
-            className="input"
-          />
-          <br />
+          </div>
         </div>
       </div>
     </>

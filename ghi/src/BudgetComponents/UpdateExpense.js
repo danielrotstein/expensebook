@@ -108,9 +108,8 @@ function UpdateExpenseForm(props) {
                         <label htmlFor='convertedTotal'>Home Currency Total
                         ({props.homeCurrency})
                         </label>
-                        <p name="convertedTotal"
+                        <p id="converted-total" name="convertedTotal"
                             placeholder='0'
-
                             >
                             {getSymbolFromCurrency(props.homeCurrency)}
                             {expense_converted}

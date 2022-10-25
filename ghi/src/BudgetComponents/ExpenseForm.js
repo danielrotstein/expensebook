@@ -53,20 +53,6 @@ function ExpenseForm(props) {
         setExpenseConverted(0);
         }
 
-
-    // let homeCountry = "";
-    // let destination = "";
-    // async function currencyCodeInfo(){
-    //     try{
-    //         destination += budgetsData[parseInt(props.props)-1]["destination_country"];
-    //         homeCountry += budgetsData[parseInt(props.props)-1]["home_country"];
-    //     } catch(err) {
-    //         console.log("")
-    //     }
-    // }
-    // currencyCodeInfo();
-    // console.log("props", props)
-
     
     const {
         data: currencyData,

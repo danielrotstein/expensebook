@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreateAccountsMutation } from '../store/accountsApi';
+import { useCreateTokenMutation } from '../store/accountsApi';
 import ErrorNotification from '../ErrorNotification';
 import BulmaInput from '../BulmaInput';
 import { NavLink } from 'react-router-dom';
@@ -13,21 +14,20 @@ function SignUpForm() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [createAccount, result] = useCreateAccountsMutation();
-
-    
+  
     async function handleSubmit(e) {
         e.preventDefault();
         createAccount({first_name, last_name, email, password});
     }
 
-
     if (result.isSuccess) {
-        navigate("/budgets");
         localStorage.setItem('email', JSON.stringify(email));
+        navigate("/");
+        window.location.reload();
     } else if (result.isError) {
-        setError(result.error);
+        navigate("/");
+        alert("User name has already been used. Please try again. ");
     }
-
 
     return (
         <div className="container">
