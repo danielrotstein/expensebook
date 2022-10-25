@@ -9,8 +9,6 @@ function Logout() {
     useEffect(() => {
       if (data) {
         localStorage.clear();
-        console.log("email before clear local storage: ", localStorage.getItem('email'));
-        console.log("token before clear local storage: ", localStorage.getItem('token'));
       }
     }, [data]);
   
@@ -28,7 +26,7 @@ function Logout() {
 function Nav() {
     const { data: token, isLoading: tokenLoading } = useGetTokenQuery();
     return (
-        <div className="custom-nav">
+        <div>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to="/">ExpenseBook</NavLink>
@@ -47,7 +45,7 @@ function Nav() {
                                 <li className="nav-item">
                                   <NavLink className="nav-link" to="/$converter">Converter</NavLink>
                                 </li>
-                                <li className="nav-item" id="logout">
+                                <li className="nav-item">
                                     <Logout className="nav-link" />
                                 </li>
                               </>
