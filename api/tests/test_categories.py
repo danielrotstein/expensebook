@@ -56,7 +56,3 @@ def test_create_categories():
     # Assert
     assert response.status_code == 200
     assert response.json() == expected
-
-
-
-
