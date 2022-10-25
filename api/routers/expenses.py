@@ -6,7 +6,6 @@ from queries.expenses import (
     ExpenseRepository,
     ExpenseOut,
 )
-from authenticator import authenticator
 
 
 router = APIRouter(tags=["Expenses"])
