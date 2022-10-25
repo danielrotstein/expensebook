@@ -16,8 +16,8 @@ import NotFoundPage from './404Page';
 
 function App() {
   return (
-    // <div className="page-container">
-    //   <div className="content-wrap">
+    <div className="page-container">
+    <div className="content-wrap">
     <BrowserRouter>
       <Nav />
       <Routes>
@@ -38,9 +38,9 @@ function App() {
       </Routes>
 
     </BrowserRouter>
-    // {/* </div> */}
-    // <Footer />
-    // {/* </div> */}
+    </div>
+    <Footer />
+    </div>
   );
 }
 

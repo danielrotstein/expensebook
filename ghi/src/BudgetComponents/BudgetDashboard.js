@@ -20,7 +20,7 @@ function BudgetDashboard() {
 
     
     return (
-        <div className="container">
+        <div className="container" id="add-footer-margin">
             <ErrorNotification error={error} />
             <p className="dashboard-title">Budget Dashboard</p>
             <div className="create-new-budget-div">

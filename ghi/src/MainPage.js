@@ -14,6 +14,14 @@ function MainPage() {
                             <Link className="btn btn-primary home-cta" to="/signup">Create an Account</Link>
                             <Link className="btn btn-primary home-cta" to="$converter">Free Currency Converter</Link>
                         </div>
+
+
+
+                       
+
+
+
+
                     </div>
                 </div>
             </div>
