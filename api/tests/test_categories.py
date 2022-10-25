@@ -12,8 +12,6 @@ class EmptyCategoryRepository:
 
 
 
-
-
 def test_get_all_categories():
     # Arrange
     app.dependency_overrides[CategoryRepository] = EmptyCategoryRepository
