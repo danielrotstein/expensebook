@@ -12,19 +12,6 @@ class EmptyCategoryRepository:
         return []
 
 
-<<<<<<< HEAD
-class CreateCategoryQueries:
-    def create_category(self, category):
-        result = {
-            "id": 999,
-            "title": "Test event",
-        }
-        result.update(category)
-        return result
-
-
-=======
->>>>>>> main
 def test_get_all_categories():
     # Arrange
     app.dependency_overrides[CategoryRepository] = EmptyCategoryRepository
@@ -40,34 +27,13 @@ def test_get_all_categories():
     assert response.json() == []
 
 
-<<<<<<< HEAD
-def test_create_categories():
-    # Arrange
-    app.dependency_overrides[CategoryRepository] = CreateCategoryQueries
-    json = {
-        "title": "Test event",
-    }
-    expected = {
-        "id": 999,
-        "title": "Test event",
-    }
-=======
 class EmptyExpenseRepository:
     def get_all_expenses(self):
         return []
->>>>>>> main
 
     # Act 
     response = client.post("/categories", json=json)
 
-<<<<<<< HEAD
-    # Clean up
-    app.dependency_overrides = {}
-
-    # Assert
-    assert response.status_code == 200
-    assert response.json() == expected
-=======
 class CreateExpenseQueries:
     def create_expense(self, event):
         result = {
@@ -235,4 +201,3 @@ def test_create_budget():
     assert response.json() == expected
 
 
->>>>>>> main
