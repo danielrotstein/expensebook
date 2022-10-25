@@ -1,6 +1,13 @@
 # October 20, 2022
 Today, I worked on:
 
+Fine tuning the last bit of styling we needed to do across our app, and worked on building our .gitlab-ci.yml file for deployment.
+
+I learned how to code a .gitlab-ci.yml file and how the overall process of deploying with Heroku and Gitlab works.
+
+# October 20, 2022
+Today, I worked on:
+
 Adding a handful of finishing touches to the design and stling of our app, the toughest of which was creating a dropdown menu in our ListExpenses component, which required passing in an ID to the dropdown menu via an onClick listener, so that the dropdown would only appear for the specific expense that was clicked rather than all expenses in the list.
 
 I learned how to accomplish the above based on a tutorial found online.
