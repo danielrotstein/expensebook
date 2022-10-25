@@ -1,6 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List, Union
-from datetime import date
+from typing import Optional, Union
 from queries.pool import pool
 
 
@@ -16,7 +15,7 @@ class RecommendationIn(BaseModel):
     description: str
     country: str
     category_id: int
-    
+
 
 class RecommendationOut(BaseModel):
     id: int
@@ -32,11 +31,8 @@ class RecommendationOut(BaseModel):
 class RecommendationRepository:
     def get_all_recommendations(self) -> Optional[RecommendationOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT r.id
@@ -54,21 +50,16 @@ class RecommendationRepository:
                         """,
                     )
                     return [
-                        self.record_to_recommendation_out(record)
-                        for record in result
+                        self.record_to_recommendation_out(record) for record in result
                     ]
         except Exception as e:
             print(e)
             return {"message": "Could not get all recommendations"}
 
-
     def get_one_recommendation(self, recommendation_id) -> Optional[RecommendationOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT r.id
@@ -94,14 +85,12 @@ class RecommendationRepository:
         except Exception as e:
             print(e)
 
-
-    def create_recommendation(self, recommendation: RecommendationIn) -> Union[RecommendationOut, Error]:
+    def create_recommendation(
+        self, recommendation: RecommendationIn
+    ) -> Union[RecommendationOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our INSERT statement
                     result = db.execute(
                         """
                         INSERT INTO recommendations
@@ -119,20 +108,19 @@ class RecommendationRepository:
                         RETURNING id;
                         """,
                         [
-                            recommendation.title
-                            , recommendation.price
-                            , recommendation.image
-                            , recommendation.url
-                            , recommendation.description
-                            , recommendation.country
-                            , recommendation.category_id
-                        ]
+                            recommendation.title,
+                            recommendation.price,
+                            recommendation.image,
+                            recommendation.url,
+                            recommendation.description,
+                            recommendation.country,
+                            recommendation.category_id,
+                        ],
                     )
                     id = result.fetchone()[0]
                     return self.recommendation_in_to_out(id, recommendation)
         except Exception:
             return {"message": "Unable to create a recommendation"}
-
 
     def delete_recommendation(self, recommendation_id):
         try:
@@ -149,12 +137,11 @@ class RecommendationRepository:
         except Exception as e:
             return False
 
-
-    def update_recommendation(self, recommendation_id: int, recommendation: RecommendationIn) -> Union[RecommendationOut, Error]:
+    def update_recommendation(
+        self, recommendation_id: int, recommendation: RecommendationIn
+    ) -> Union[RecommendationOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
                     db.execute(
                         """
@@ -169,28 +156,26 @@ class RecommendationRepository:
                         WHERE id = %s
                         """,
                         [
-                            recommendation.title
-                            , recommendation.price
-                            , recommendation.image
-                            , recommendation.url
-                            , recommendation.description
-                            , recommendation.country
-                            , recommendation.category_id
-                            , recommendation_id
+                            recommendation.title,
+                            recommendation.price,
+                            recommendation.image,
+                            recommendation.url,
+                            recommendation.description,
+                            recommendation.country,
+                            recommendation.category_id,
+                            recommendation_id,
                         ],
                     )
-                    # old_data = expense.dict()
-                    # return ExpenseOut(id=expense_id, **old_data)
-                    return self.recommendation_in_to_out(recommendation_id, recommendation)
+                    return self.recommendation_in_to_out(
+                        recommendation_id, recommendation
+                    )
         except Exception as e:
             print(e)
             return {"message": "Could not update that recommendation"}
 
-
     def recommendation_in_to_out(self, id: int, recommendation: RecommendationIn):
         old_data = recommendation.dict()
         return RecommendationOut(id=id, **old_data)
-            
 
     def record_to_recommendation_out(self, record):
         return RecommendationOut(
@@ -201,5 +186,5 @@ class RecommendationRepository:
             url=record[4],
             description=record[5],
             country=record[6],
-            category_id=record[7]
+            category_id=record[7],
         )

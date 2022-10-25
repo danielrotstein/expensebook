@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+
 export const currencyApi = createApi({
     reducerPath: 'currency',
     baseQuery: fetchBaseQuery({
@@ -10,5 +11,6 @@ export const currencyApi = createApi({
             }),
         }),
 });
+
 
 export const { useGetCurrencyRatesQuery } = currencyApi;

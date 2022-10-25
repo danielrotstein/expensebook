@@ -1,4 +1,3 @@
-
 from fastapi import (
     Depends,
     HTTPException,
@@ -11,10 +10,8 @@ from jwtdown_fastapi.authentication import Token
 from authenticator import authenticator
 from typing import List, Optional, Union
 from pydantic import BaseModel
-
 from queries.accounts import (
     Error,
-    DuplicateAccountError,
     AccountRepository,
     AccountOut,
     AccountIn,
@@ -26,14 +23,17 @@ class AccountForm(BaseModel):
     username: str
     password: str
 
+
 class AccountToken(Token):
     account: AccountOut
+
 
 class HttpError(BaseModel):
     detail: str
 
 
 router = APIRouter(tags=["SIGN IN"])
+
 
 not_authorized = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED,
@@ -95,12 +95,11 @@ def delete_account(
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: Account = Depends(authenticator.try_get_current_account_data)
+    account: Account = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
-        return { 
+        return {
             "access_token": request.cookies[authenticator.cookie_name],
             "type": "Bearer",
             "account": account,
         }
-

@@ -49,17 +49,6 @@ export const expensesApi = createApi({
       },
       invalidatesTags: ['BudgetDetails'],
     }),
-    // patchExpense: builder.mutation({
-    //   query(data) {
-    //     const { expense_id, ...body } = data
-    //     return {
-    //       url: `/expenses/${data}`,
-    //       body,
-    //       method: 'PATCH',
-    //     }
-    //   },
-    //   invalidatesTags: ['BudgetDetails'],
-    // }),
   }),
 });
 
