@@ -7,6 +7,7 @@ import countries from '../CountryList';
 import { useNavigate } from "react-router-dom";
 import { useGetOneAccountQuery } from '../store/accountsApi';
 
+
 function UpdateBudgetForm(props) {
     const budget_id = props.props
     const email = JSON.parse(localStorage.getItem('email'));
@@ -35,9 +36,9 @@ function UpdateBudgetForm(props) {
 
     const handleDestinationCountryInputChange = (e) => {
         const value = e.target.value;
-            setDestinationCountry(value);
-        console.log("setDestinationCountry: ", destination_country)
+        setDestinationCountry(value);
     };
+
 
     useEffect(() => {
         if (!(isLoading)) {
@@ -46,6 +47,7 @@ function UpdateBudgetForm(props) {
         }
     } , [data])
 
+    
     async function handleSubmit(e) {
         e.preventDefault();
         handleClose();
@@ -114,5 +116,6 @@ function UpdateBudgetForm(props) {
         </>
     )
 }
+
 
 export default UpdateBudgetForm;

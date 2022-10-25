@@ -13,7 +13,6 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 import UpdateBudgetForm from './UpdateBudget';
 
 
-
 function BudgetDetails() {
     const { budget_id } = useParams();
     const wrap = "id".concat("=", budget_id);
@@ -92,7 +91,6 @@ function BudgetDetails() {
     const handleCategoryChange = event => {
         const value = event.target.value;
         const categoryExpenses = [];
-
         if (value === "") {
             setFilteredExpenses(expenses);
         } else {
@@ -109,6 +107,7 @@ function BudgetDetails() {
     const handleSettingsClick = () => {
         setShowActions(!showActions);
     }
+
 
     if (budgetsIsLoading || expensesIsLoading || categoriesIsLoading) {
         return (

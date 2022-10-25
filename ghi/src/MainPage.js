@@ -1,4 +1,5 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 function MainPage() {
     return (
@@ -14,19 +15,12 @@ function MainPage() {
                             <Link className="btn btn-primary home-cta" to="/signup">Create an Account</Link>
                             <Link className="btn btn-primary home-cta" to="$converter">Free Currency Converter</Link>
                         </div>
-
-
-
-                       
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>    
     )
 }
+
 
 export default MainPage;

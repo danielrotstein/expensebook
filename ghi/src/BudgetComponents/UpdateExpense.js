@@ -5,7 +5,6 @@ import { useGetCategoriesQuery, useUpdateExpenseMutation, useGetExpenseQuery } f
 import { useGetCurrencyRatesQuery } from '../store/exchangeRatesApi';
 import BulmaInput from '../BulmaInput';
 import Notification from '../Notification';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import getSymbolFromCurrency from 'currency-symbol-map'
 
@@ -68,10 +67,12 @@ function UpdateExpenseForm(props) {
         setExpenseConverted(0);
     }
 
+
     function setExpenseAndConvert(expense_total){
         setExpenseConverted(Number(parseFloat(expense_total / currencyData.rates[props.destinationCurrency]).toFixed(2)))
         setExpenseTotal(Number(expense_total))
     }
+
 
     if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading || isLoading) {
         return (

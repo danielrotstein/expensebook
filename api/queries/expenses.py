@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List, Union
+from typing import Optional, Union
 from datetime import date
 from queries.pool import pool
 
@@ -28,6 +28,7 @@ class ExpenseOut(BaseModel):
     budget_id: int
     category_id: int
 
+
 class ExpensePatch(BaseModel):
     title: str
     date: date
@@ -35,14 +36,12 @@ class ExpensePatch(BaseModel):
     description: Optional[str]
     category_id: int
 
+
 class ExpenseRepository:
     def get_all_expenses(self) -> Optional[ExpenseOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT e.id
@@ -61,22 +60,15 @@ class ExpenseRepository:
                         ORDER BY date;
                         """,
                     )
-                    return [
-                        self.record_to_expense_out(record)
-                        for record in result
-                    ]
+                    return [self.record_to_expense_out(record) for record in result]
         except Exception as e:
             print(e)
             return {"message": "Could not get all expenses"}
 
-
     def get_one_expense(self, expense_id) -> Optional[ExpenseOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT e.id
@@ -104,14 +96,10 @@ class ExpenseRepository:
         except Exception as e:
             print(e)
 
-
     def create_expense(self, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our INSERT statement
                     result = db.execute(
                         """
                         INSERT INTO expenses
@@ -127,23 +115,19 @@ class ExpenseRepository:
                         RETURNING id;
                         """,
                         [
-                              expense.title
-                            , expense.date
-                            , expense.expense_total
-                            , expense.expense_converted
-                            , expense.description
-                            , expense.budget_id
-                            , expense.category_id
-                        ]
+                            expense.title,
+                            expense.date,
+                            expense.expense_total,
+                            expense.expense_converted,
+                            expense.description,
+                            expense.budget_id,
+                            expense.category_id,
+                        ],
                     )
                     id = result.fetchone()[0]
-                    # Return new data
-                    # old_data = expense.dict()
-                    # return ExpenseOut(id=id, **old_data)
                     return self.expense_in_to_out(id, expense)
         except Exception:
             return {"message": "Unable to create an expense"}
-
 
     def delete_expense(self, expense_id):
         try:
@@ -160,12 +144,11 @@ class ExpenseRepository:
         except Exception as e:
             return False
 
-
-    def update_expense(self, expense_id: int, expense: ExpenseIn) -> Union[ExpenseOut, Error]:
+    def update_expense(
+        self, expense_id: int, expense: ExpenseIn
+    ) -> Union[ExpenseOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
                     db.execute(
                         """
@@ -180,60 +163,24 @@ class ExpenseRepository:
                         WHERE id = %s
                         """,
                         [
-                            expense.title
-                            ,expense.date
-                            ,expense.expense_total
-                            ,expense.expense_converted
-                            ,expense.description
-                            ,expense.budget_id
-                            ,expense.category_id
-                            ,expense_id
+                            expense.title,
+                            expense.date,
+                            expense.expense_total,
+                            expense.expense_converted,
+                            expense.description,
+                            expense.budget_id,
+                            expense.category_id,
+                            expense_id,
                         ],
                     )
-                    # old_data = expense.dict()
-                    # return ExpenseOut(id=expense_id, **old_data)
                     return self.expense_in_to_out(expense_id, expense)
         except Exception as e:
             print(e)
             return {"message": "Could not update that expense"}
 
-    # def patch_expense(self, expense_id: int, expense: ExpensePatch) -> Union[ExpensePatch, Error]:
-    #     try:
-    #         # connect the database
-    #         with pool.connection() as conn:
-    #             # get a cursor (something to run SQL with)
-    #             with conn.cursor() as db:
-    #                 db.execute(
-    #                     """
-    #                     UPDATE expenses
-    #                     SET title = %s
-    #                       , date = %s
-    #                       , expense_total = %s
-    #                       , description = %s
-    #                       , category_id = %s
-    #                     WHERE id = %s
-    #                     """,
-    #                     [
-    #                         expense.title
-    #                         ,expense.date
-    #                         ,expense.expense_total
-    #                         ,expense.description
-    #                         ,expense.category_id
-    #                         ,expense_id
-    #                     ],
-    #                 )
-    #                 # old_data = expense.dict()
-    #                 # return ExpenseOut(id=expense_id, **old_data)
-    #                 return self.expense_in_to_out(expense_id, expense)
-    #     except Exception as e:
-    #         print(e)
-    #         return {"message": "Could not update that expense"}
-
-
     def expense_in_to_out(self, id: int, expense: ExpenseIn):
         old_data = expense.dict()
         return ExpenseOut(id=id, **old_data)
-
 
     def record_to_expense_out(self, record):
         return ExpenseOut(
@@ -244,5 +191,5 @@ class ExpenseRepository:
             expense_converted=record[4],
             description=record[5],
             budget_id=record[6],
-            category_id=record[7]
+            category_id=record[7],
         )

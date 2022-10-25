@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
-from datetime import date
 from queries.categories import (
     Error,
     CategoryIn,
     CategoryRepository,
     CategoryOut,
 )
+
 
 router = APIRouter(tags=["Categories"])
 
@@ -53,4 +53,3 @@ def delete_category(
     repo: CategoryRepository = Depends(),
 ) -> bool:
     return repo.delete_category(category_id)
-

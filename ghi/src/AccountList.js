@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import { useGetAccountsQuery } from './store/accountsApi';
-// import ErrorNotification from './ErrorNotification';
+
 
 function AccountList() {
   const { data, isLoading } = useGetAccountsQuery();
+
 
   if (isLoading) {
     return (
@@ -11,10 +11,10 @@ function AccountList() {
     );
   }
 
+
   return (
     <div className="columns is-centered">
       <div className="column is-narrow">
-        {/* <ErrorNotification error={error} /> */}
         <table className="table is-striped">
           <thead>
             <tr>
@@ -41,5 +41,6 @@ function AccountList() {
     </div>
   );
 }
+
 
 export default AccountList;
