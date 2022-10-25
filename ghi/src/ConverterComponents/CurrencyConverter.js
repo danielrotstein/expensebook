@@ -72,9 +72,20 @@ function CurrencyConverter() {
         <div className="converter-div">
           <div className="converter-sub-div">
             <div className="converter-block-div">
-            <p className="converter-title">Your Friendly Currency Converter</p>
+              <p className="converter-title">Your Friendly Currency Converter</p>
+              <p className="converter-cta" ><strong style={{color: "#70c244"}}>Step 1:</strong> To use our free currency converter, search for your countries' currency codes using the dropdown below.</p>
+              <select className="form-select converter-country-dropdown" onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry">
+                <option value="">Search</option>
+                {
+                  countries.map(country => {
+                      return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>
+                  })
+                }
+              </select>
+              <br />
+              <p className="converter-cta"><strong style={{color: "#70c244"}}>Step 2:</strong> Input the codes into the converter, and we'll calculate the conversion for you.</p>
             <div className="sub-container">
-              <p className="converter-sub-title">From:</p>
+              <p className="converter-sub-title"><strong style={{color: "#70c244"}}>From:</strong></p>
               <CurrencyRow
                 currencyOptions={currencyOptions}
                 selectedCurrency={fromCurrency}
@@ -84,7 +95,7 @@ function CurrencyConverter() {
                 className="input"
               />
               <br/>
-              <p className="converter-sub-title">To:</p>
+              <p className="converter-sub-title"><strong style={{color: "#70c244"}}>To:</strong></p>
               <CurrencyRow
                 currencyOptions={currencyOptions}
                 selectedCurrency={toCurrency}
@@ -94,7 +105,7 @@ function CurrencyConverter() {
                 className="input"
               />
               <br />
-              <p className="converter-cta">Create a budget to track all your converted expenses in one place.  <Link to="../signup">Signup</Link> to get started with ExpenseBook today.</p>
+              <p className="converter-cta" style={{marginTop: "15px"}}><strong style={{color: "#70c244"}}>Step 3:</strong> Create a budget to track your converted expenses in one place.  <Link to="../signup">Signup</Link> to get started today.</p>
               <br />
             </div>  
           </div>

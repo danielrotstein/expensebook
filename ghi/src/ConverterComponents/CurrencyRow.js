@@ -16,8 +16,8 @@ export default function CurrencyRow(props) {
     <div className="converter-input-div">
       <input type="number" className="converter-input" value={amount} onChange={onChangeAmount} />
       <select className="converter-dropdown" value={selectedCurrency} onChange={onChangeCurrency}>
-        {countries.map(option => (
-          <option key={option} value={option.currency_code}>{option.name} - {option.currency_code}</option>
+        {currencyOptions.map(option => (
+          <option key={option} value={option}>{option}</option>
         ))}
       </select>
     </div>
