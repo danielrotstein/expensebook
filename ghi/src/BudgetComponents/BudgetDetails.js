@@ -211,11 +211,13 @@ function BudgetDetails() {
                         destinationCurrency={budgetsData.destination_country}
                     />
                 </div>
-                <TravelRecommendations
-                    budget={budget_id}
-                    categories={categoriesData}
-                    remaining={budgetsData.budget - total}
-                />
+                <div id="add-footer-margin">
+                    <TravelRecommendations
+                        budget={budget_id}
+                        categories={categoriesData}
+                        remaining={budgetsData.budget - total}
+                    />
+                </div>
             </>
         )
     }
