@@ -1,9 +1,9 @@
-from fastapi.testclient import Testclient
+from fastapi.testclient import TestClient
 from main import app
 from queries.categories import CategoryRepository
 
 
-client = Testclient(app)
+client = TestClient(app)
 
 
 class EmptyCategoryRepository:
@@ -25,6 +25,17 @@ def test_get_all_categories():
     # Assert
     assert response.status_code == 200
     assert response.json() == []
+
+
+
+
+
+
+
+
+
+
+
 
 
 
