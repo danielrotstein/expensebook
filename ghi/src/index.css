@@ -186,6 +186,7 @@ a:hover {
 }
 
 .signup-card {
+  margin: auto;
   width: 500px;
   border-radius: 20px;
   background-color: #dcdcdc60;
