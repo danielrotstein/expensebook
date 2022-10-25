@@ -75,7 +75,7 @@ function CurrencyConverter() {
               <p className="converter-title">Your Friendly Currency Converter</p>
               <p className="converter-cta" ><strong style={{color: "#70c244"}}>Step 1:</strong> To use our free currency converter, search for your countries' currency codes using the dropdown below.</p>
               <select className="form-select converter-country-dropdown" onChange={handleSearchCountryInputChange} required name="searchCountry" id="searchCountry">
-                <option value="">Search</option>
+                <option value="">Lookup Currency Code by Country</option>
                 {
                   countries.map(country => {
                       return <option key={country.name} value={country.name}>{country.name} - {country.currency_code}</option>

@@ -186,6 +186,7 @@ a:hover {
 }
 
 .signup-card {
+  margin: auto;
   width: 500px;
   border-radius: 20px;
   background-color: #dcdcdc60;
@@ -587,12 +588,12 @@ label {
 }
 
 .footer-container {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   border-top: 1px solid #dcdcdc;
   margin-top: 10px;
-  padding: 30px 20px 20px;
+  padding: 25px 20px 15px;
   background-color: white;
 }
 
@@ -602,6 +603,10 @@ label {
 
 .footer-div p {
   font-size: 14px;
+}
+
+#add-footer-margin {
+  margin-bottom: 80px;
 }
 
 .member {
