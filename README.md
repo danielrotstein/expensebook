@@ -7,7 +7,7 @@ ExpenseBook
   <h3 align="center">ExpenseBook</h3>
 
   <p align="center">
-    A website to help users to budget international trips by adding expenses and getting real time exchange rates for their destination country. 
+    ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.
     Free currency converter usage - no account sign up required!
   </p>
 </div>

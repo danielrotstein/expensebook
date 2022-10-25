@@ -1,11 +1,7 @@
 import Moment from 'moment';
 import getSymbolFromCurrency from 'currency-symbol-map'
 import ErrorNotification from '../ErrorNotification';
-import { useGetBudgetsQuery } from '../store/budgetsApi';
 import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
-
-import { useGetOneAccountQuery } from '../store/accountsApi';
-import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import NotFoundPage from '../404Page';
@@ -14,11 +10,7 @@ import NotFoundPage from '../404Page';
 function BudgetDashboard() {
     const email = JSON.parse(localStorage.getItem('email'));
     const { data, error, isLoading } = useGetBudgetsByOneUserQuery(email);
-    // console.log("data: ", data);
-    const { data:accountdata, error:accounterror, isLoading:accountisLoading } = useGetOneAccountQuery(email);
-    // console.log("accountdata: ", accountdata);
 
-    const navigate = useNavigate();
 
     if (isLoading) {
         return (
@@ -26,7 +18,7 @@ function BudgetDashboard() {
         );
     }
 
-
+    
     return (
         <div className="container">
             <ErrorNotification error={error} />
