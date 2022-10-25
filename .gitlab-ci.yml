@@ -4,7 +4,7 @@ stages:
   - deploy
 
 
-## TEST STAGE
+## TEST
 api-unit-test-job:
   image: python:3-bullseye
   stage: test
@@ -21,7 +21,7 @@ lint-job:
     - flake8 api
 
 
-## BUILD STAGE
+## BUILD
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
@@ -58,7 +58,7 @@ build-expensebook-api:  # RENAME THIS
     - docker push ${CI_REGISTRY_IMAGE}/api:latest
 
 
-## DEPLOY STAGE
+## DEPLOY
 deploy-expensebook-api:  # RENAME THIS
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
