@@ -12,10 +12,12 @@ import NotFoundPage from './404Page';
 
 
 function App() {
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, '');
   return (
     <div className="page-container">
     <div className="content-wrap">
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Nav />
       <Routes>
         <Route path='/' element={<MainPage />}/>
