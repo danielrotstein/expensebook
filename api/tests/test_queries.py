@@ -5,6 +5,7 @@ from queries.expenses import ExpenseRepository
 from queries.budgets import BudgetRepository
 from queries.recommendations import RecommendationRepository
 
+
 client = TestClient(app)
 
 
@@ -131,6 +132,7 @@ def test_create_expense():
 class EmptyBudgetRepository:
     def get_all_budget(self):
         return []
+
 
 class CreateBudgetRepository:
     def create_budget(self, budget):

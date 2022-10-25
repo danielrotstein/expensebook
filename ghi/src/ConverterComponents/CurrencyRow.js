@@ -1,5 +1,4 @@
 import React from 'react'
-import countries from '../CountryList';
 
 
 export default function CurrencyRow(props) {

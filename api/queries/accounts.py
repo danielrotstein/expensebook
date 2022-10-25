@@ -2,14 +2,13 @@ from pydantic import BaseModel
 from typing import ( 
     Union, 
     List,
-    Optional,
 )
-from datetime import date
 from queries.pool import pool
 
 
 class DuplicateAccountError(ValueError):
     pass
+
 
 class Error(BaseModel):
     message: str
@@ -23,12 +22,12 @@ class Account(BaseModel):
     password: str
     hashed_password: str
 
+
 class AccountIn(BaseModel):
     first_name: str
     last_name: str
     email: str
     password: str
-    # hashed_password: str
 
 
 class AccountOut(BaseModel):
@@ -39,7 +38,6 @@ class AccountOut(BaseModel):
 
 
 class AccountRepository:
-
     def get_accounts(self) -> Union[List[AccountOut], Error]:
         try:
             with pool.connection() as conn:
@@ -72,13 +70,9 @@ class AccountRepository:
             print("There was an error: ", e)
             return {"message": "Unable to get all accounts"}
 
-
     def get_one_account(self, email: str) -> Account:
-        # connect the database
         with pool.connection() as conn:
-            # get a cursor (something to run SQL with)
             with conn.cursor() as db:
-                # Run our SELECT statement
                 result = db.execute(
                     """
                     SELECT id
@@ -105,13 +99,9 @@ class AccountRepository:
                     hashed_password=record[5],
                 )
 
-
     def create_account(self, account: AccountIn, hashed_password: str) -> Account:
-    # connect the database
         with pool.connection() as conn:
-            # get a cursor (something to run SQL with)
             with conn.cursor() as db:
-                # Run our SELECT statement
                 result = db.execute(
                     """
                     INSERT INTO accounts (first_name, last_name, email, password, hashed_password)
@@ -131,7 +121,6 @@ class AccountRepository:
                     hashed_password=hashed_password,
                 )
     
-
     def delete_account(self, account_id):
         try:
             with pool.connection() as conn:
@@ -147,12 +136,9 @@ class AccountRepository:
         except Exception as e:
             return False
 
-
     def update_account(self, account_id: int, account: AccountIn) -> Union[AccountOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
                     db.execute(
                         """
@@ -176,11 +162,9 @@ class AccountRepository:
             print(e)
             return {"message": "Could not update that account"}
 
-
     def account_in_to_out(self, id: int, account: AccountIn):
         old_data = account.dict()
-        return AccountOut(id=id, **old_data)
-            
+        return AccountOut(id=id, **old_data) 
 
     def record_to_account_out(self, record):
         return AccountOut(

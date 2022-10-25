@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useGetCategoriesQuery, useDeleteExpenseMutation, useUpdateExpenseMutation } from '../store/expensesApi';
+import { useGetCategoriesQuery, useDeleteExpenseMutation } from '../store/expensesApi';
 import { useGetBudgetQuery } from '../store/budgetsApi'
 import ErrorNotification from '../ErrorNotification';
 import Notification from '../Notification';

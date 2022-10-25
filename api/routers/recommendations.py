@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
-from datetime import date
 from queries.recommendations import (
     Error,
     RecommendationIn,
     RecommendationRepository,
     RecommendationOut,
 )
+
 
 router = APIRouter(tags=["Recommendation"])
 
@@ -53,5 +53,3 @@ def update_recommendation(
     repo: RecommendationRepository = Depends(),
 ) -> Union[Error, RecommendationOut]:
     return repo.update_recommendation(recommendation_id, recommendation)
-
-

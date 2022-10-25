@@ -2,7 +2,6 @@ import Moment from 'moment';
 import getSymbolFromCurrency from 'currency-symbol-map'
 import ErrorNotification from '../ErrorNotification';
 import { useGetBudgetsByOneUserQuery } from '../store/budgetsApi';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import NotFoundPage from '../404Page';
 
@@ -50,5 +49,6 @@ function BudgetDashboard() {
         </div>
     )
 }
+
 
 export default BudgetDashboard;

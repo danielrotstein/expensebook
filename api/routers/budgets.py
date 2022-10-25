@@ -4,15 +4,14 @@ from fastapi import(
     Response,
 )
 from typing import List, Optional, Union
-from datetime import date
 from queries.budgets import(
     Error,
     BudgetRepository,
     BudgetIn,
     BudgetOut,
 )
-
 from authenticator import authenticator
+
 
 router = APIRouter(tags=["Budgets"])
 
@@ -48,7 +47,6 @@ def get_all_budget_by_oneuser(
 def create_budget(
     budget: BudgetIn,
     repo: BudgetRepository = Depends(),
-    # account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create_budget(budget)
 

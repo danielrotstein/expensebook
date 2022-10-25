@@ -62,14 +62,10 @@ class BudgetRepository:
             print("There was an error: ", e)
             return {"message": "Unable to get all budgets"}
 
-
     def get_one_budget(self, budget_id: int) -> Optional[BudgetOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT b.id
@@ -95,7 +91,6 @@ class BudgetRepository:
         except Exception as e:
             print(e)
 
-
     def get_all_budget_by_oneuser(self, email: str) -> Union[List[BudgetOut], Error]:
         try:
             with pool.connection() as conn:
@@ -119,7 +114,6 @@ class BudgetRepository:
                         """,
                         [email],
                     )
-
                     return [
                         self.record_to_budget_out(record)
                         for record in result
@@ -127,7 +121,6 @@ class BudgetRepository:
         except Exception as e:
             print("There was an error: ", e)
             return {"message": "Unable to get all budgets for this user: {email}"}
-
 
     def create_budget(self, budget: BudgetIn) -> BudgetOut:
         try:
@@ -165,7 +158,6 @@ class BudgetRepository:
             print("There was an error: ", e)
             return {"message": "Unable to create a budget"}
 
-
     def delete_budget(self, budget_id):
         try:
             with pool.connection() as conn:
@@ -181,12 +173,9 @@ class BudgetRepository:
         except Exception as e:
             return False
 
-
     def update_budget(self, budget_id: int, budget: BudgetIn) -> Union[BudgetOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
                     db.execute(
                         """
@@ -219,7 +208,6 @@ class BudgetRepository:
     def budget_in_to_out(self, id: int, budget: BudgetIn):
         old_data = budget.dict()
         return BudgetOut(id=id, **old_data)            
-
 
     def record_to_budget_out(self, record):
         return BudgetOut(

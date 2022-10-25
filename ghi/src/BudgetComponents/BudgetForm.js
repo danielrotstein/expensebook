@@ -51,7 +51,6 @@ function BudgetForm(props) {
     const handleDestinationCountryInputChange = (e) => {
         const value = e.target.value;
             setDestinationCountry(value);
-        console.log("setDestinationCountry: ", destination_country)
     };
 
 

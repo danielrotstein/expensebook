@@ -1,6 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List, Union
-from datetime import date
+from typing import Optional, Union
 from queries.pool import pool
 
 
@@ -20,11 +19,8 @@ class CategoryOut(BaseModel):
 class CategoryRepository:
     def get_all_categories(self) -> Optional[CategoryOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT id, title
@@ -32,7 +28,6 @@ class CategoryRepository:
                         ORDER BY id;
                         """,
                     )
-
                     return [
                         self.record_to_category_out(record)
                         for record in result
@@ -41,14 +36,10 @@ class CategoryRepository:
             print(e)
             return {"message": "Could not get all categories"}
 
-
     def get_one_category(self, category_id) -> Optional[CategoryOut]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
-                    # Run our SELECT statement
                     result = db.execute(
                         """
                         SELECT id
@@ -65,7 +56,6 @@ class CategoryRepository:
                     return self.record_to_category_out(record)
         except Exception as e:
             print(e)
-
 
     def create_category(self, category: CategoryIn) -> Union[CategoryOut, Error]:
         try:
@@ -90,7 +80,6 @@ class CategoryRepository:
             print("There was an error: ", e)
             return {"message": "Unable to create a category"}
 
-
     def delete_category(self, category_id):
         try:
             with pool.connection() as conn:
@@ -106,12 +95,9 @@ class CategoryRepository:
         except Exception as e:
             return False
 
-
     def update_category(self, category_id: int, category: CategoryIn) -> Union[CategoryOut, Error]:
         try:
-            # connect the database
             with pool.connection() as conn:
-                # get a cursor (something to run SQL with)
                 with conn.cursor() as db:
                     db.execute(
                         """
@@ -129,17 +115,12 @@ class CategoryRepository:
             print(e)
             return {"message": "Could not update that category"}
 
-
     def category_in_to_out(self, id: int, category: CategoryIn):
         old_data = category.dict()
         return CategoryOut(id=id, **old_data)
-
 
     def record_to_category_out(self, record):
         return CategoryOut(
             id=record[0],
             title=record[1],
         )
-
-
-
