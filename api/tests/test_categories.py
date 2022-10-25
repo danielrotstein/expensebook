@@ -2,7 +2,7 @@ from fastapi.testclient import TestClient
 from main import app
 from queries.categories import CategoryRepository
 from queries.expenses import ExpenseRepository
-
+from queries.budgets import BudgetRepository
 
 client = TestClient(app)
 
@@ -133,5 +133,69 @@ def test_create_expense():
 #     assert response.json() == expected
 
 
+class EmptyBudgetRepository:
+    def get_all_budget(self):
+        return []
+
+class CreateBudgetRepository:
+    def create_budget(self, budget):
+        result = {
+            "id": 1,
+            "title": "string",
+            "start_date": "2022-10-24",
+            "end_date": "2022-11-24",
+            "budget": 100,
+            "home_country": "string",
+            "destination_country": "string",
+            "account_id": 1
+        }
+        result.update(budget)
+        return result
+
+def test_get_all_budget():
+    #Arrange
+    app.dependency_overrides[BudgetRepository] = EmptyBudgetRepository
+
+    #Act
+    response = client.get("/budgets")
+
+    # Clean up
+    app.dependency_overrides = {}
+    
+    # Assert
+    assert response.status_code == 200
+    assert response.json() == []
+
+def test_create_budget():
+    #Arrange
+    app.dependency_overrides[BudgetRepository] = CreateBudgetRepository
+    json = {
+            "title": "string",
+            "start_date": "2022-10-24",
+            "end_date": "2022-11-24",
+            "budget": 100,
+            "home_country": "string",
+            "destination_country": "string",
+            "account_id": 1
+    }
+    expected = {
+        "id": 1,
+        "title": "string",
+        "start_date": "2022-10-24",
+        "end_date": "2022-11-24",
+        "budget": 100,
+        "home_country": "string",
+        "destination_country": "string",
+        "account_id": 1
+    }
+    #Act
+    response = client.post("/budgets", json=json)
+
+    # Clean up
+    app.dependency_overrides = {}
+    
+    # Assert
+    assert response.status_code == 200
+    assert response.json() == expected
 
 
