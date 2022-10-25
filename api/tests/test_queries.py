@@ -25,23 +25,19 @@ class CreateCategoryQueries:
 
 
 def test_get_all_categories():
-    # Arrange
-    app.dependency_overrides[CategoryRepository] = EmptyCategoryRepository
-
-    # Act
+    app.dependency_overrides[
+        CategoryRepository
+    ] = EmptyCategoryRepository
     response = client.get("/categories")
-
-    # Clean up
     app.dependency_overrides = {}
-    
-    # Assert
     assert response.status_code == 200
     assert response.json() == []
 
 
 def test_create_categories():
-    # Arrange
-    app.dependency_overrides[CategoryRepository] = CreateCategoryQueries
+    app.dependency_overrides[
+        CategoryRepository
+    ] = CreateCategoryQueries
     json = {
         "title": "Test event",
     }
@@ -49,13 +45,8 @@ def test_create_categories():
         "id": 999,
         "title": "Test event",
     }
-    # Act 
     response = client.post("/categories", json=json)
-
-    # Clean up
     app.dependency_overrides = {}
-
-    # Assert
     assert response.status_code == 200
     assert response.json() == expected
 
@@ -82,23 +73,19 @@ class CreateExpenseQueries:
 
 
 def test_get_all_expenses():
-    # Arrange
-    app.dependency_overrides[ExpenseRepository] = EmptyExpenseRepository
-
-    # Act
+    app.dependency_overrides[
+        ExpenseRepository
+    ] = EmptyExpenseRepository
     response = client.get("/expenses")
-
-    # Clean up
     app.dependency_overrides = {}
-    
-    # Assert
     assert response.status_code == 200
     assert response.json() == []
 
 
 def test_create_expense():
-    # Arrange
-    app.dependency_overrides[ExpenseRepository] = CreateExpenseQueries
+    app.dependency_overrides[
+        ExpenseRepository
+    ] = CreateExpenseQueries
     json = {
         "title": "Airbnb in Reykjavik",
         "date": "2022-10-01",
@@ -118,13 +105,8 @@ def test_create_expense():
         "budget_id": 1,
         "category_id": 1,
     }
-    # Act 
     response = client.post("/expenses", json=json)
-
-    # Clean up
     app.dependency_overrides = {}
-
-    # Assert
     assert response.status_code == 200
     assert response.json() == expected
 
@@ -151,31 +133,27 @@ class CreateBudgetRepository:
 
 
 def test_get_all_budget():
-    #Arrange
-    app.dependency_overrides[BudgetRepository] = EmptyBudgetRepository
-
-    #Act
+    app.dependency_overrides[
+        BudgetRepository
+    ] = EmptyBudgetRepository
     response = client.get("/budgets")
-
-    # Clean up
     app.dependency_overrides = {}
-    
-    # Assert
     assert response.status_code == 200
     assert response.json() == []
 
 
 def test_create_budget():
-    #Arrange
-    app.dependency_overrides[BudgetRepository] = CreateBudgetRepository
+    app.dependency_overrides[
+        BudgetRepository
+    ] = CreateBudgetRepository
     json = {
-            "title": "string",
-            "start_date": "2022-10-24",
-            "end_date": "2022-11-24",
-            "budget": 100,
-            "home_country": "string",
-            "destination_country": "string",
-            "account_id": 1
+        "title": "string",
+        "start_date": "2022-10-24",
+        "end_date": "2022-11-24",
+        "budget": 100,
+        "home_country": "string",
+        "destination_country": "string",
+        "account_id": 1
     }
     expected = {
         "id": 1,
@@ -187,13 +165,8 @@ def test_create_budget():
         "destination_country": "string",
         "account_id": 1
     }
-    #Act
     response = client.post("/budgets", json=json)
-
-    # Clean up
     app.dependency_overrides = {}
-    
-    # Assert
     assert response.status_code == 200
     assert response.json() == expected
 
@@ -220,23 +193,19 @@ class CreateRecommendationQueries:
 
 
 def test_get_all_recommendations():
-    # Arrange
-    app.dependency_overrides[RecommendationRepository] = EmptyRecommendationRepository
-
-    # Act
+    app.dependency_overrides[
+        RecommendationRepository
+    ] = EmptyRecommendationRepository
     response = client.get("/recommendations")
-
-    # Clean up
     app.dependency_overrides = {}
-    
-    # Assert
     assert response.status_code == 200
     assert response.json() == []
 
 
 def test_create_recommendations():
-    # Arrange
-    app.dependency_overrides[RecommendationRepository] = CreateRecommendationQueries
+    app.dependency_overrides[
+        RecommendationRepository
+    ] = CreateRecommendationQueries
     json = {
         "title": "Test event",
         "price": 99,
@@ -256,12 +225,7 @@ def test_create_recommendations():
         "country": "USD",
         "category_id": 99,
     }
-    # Act 
     response = client.post("/recommendation", json=json)
-
-    # Clean up
     app.dependency_overrides = {}
-
-    # Assert
     assert response.status_code == 200
     assert response.json() == expected
