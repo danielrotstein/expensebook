@@ -60,7 +60,9 @@ class ExpenseRepository:
                         ORDER BY date;
                         """,
                     )
-                    return [self.record_to_expense_out(record) for record in result]
+                    return [
+                        self.record_to_expense_out(record)
+                        for record in result]
         except Exception as e:
             print(e)
             return {"message": "Could not get all expenses"}
@@ -141,7 +143,7 @@ class ExpenseRepository:
                         [expense_id],
                     )
                     return True
-        except Exception as e:
+        except Exception:
             return False
 
     def update_expense(
