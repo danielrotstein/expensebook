@@ -28,8 +28,7 @@ class CategoryRepository:
                         ORDER BY id;
                         """,
                     )
-                    return [self.record_to_category_out(record) 
-                        for record in result]
+                    return [self.record_to_category_out(record)for record in result]
         except Exception as e:
             print(e)
             return {"message": "Could not get all categories"}

@@ -51,7 +51,7 @@ class RecommendationRepository:
                     )
                     return [
                         self.record_to_recommendation_out(record) 
-                            for record in result
+                        for record in result
                     ]
         except Exception as e:
             print(e)
@@ -140,8 +140,8 @@ class RecommendationRepository:
             return False
 
     def update_recommendation(
-        self, recommendation_id: int, 
-        recommendation: RecommendationIn
+    self, recommendation_id: int, 
+    recommendation: RecommendationIn
     ) -> Union[RecommendationOut, Error]:
         try:
             with pool.connection() as conn:
@@ -178,7 +178,7 @@ class RecommendationRepository:
                 "Could not update that recommendation"}
 
     def recommendation_in_to_out(self, id: int, 
-        recommendation: RecommendationIn):
+    recommendation: RecommendationIn):
         old_data = recommendation.dict()
         return RecommendationOut(id=id, **old_data)
 
