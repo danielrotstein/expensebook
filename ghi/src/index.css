@@ -588,7 +588,7 @@ label {
 }
 
 .footer-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   border-top: 1px solid #dcdcdc;

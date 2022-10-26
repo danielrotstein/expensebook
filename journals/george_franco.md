@@ -57,3 +57,6 @@ Today I continued upon my previous days work and began to focus on the update ex
 Today Daniel and I finished the Budget update function on both the back end and front end side. We also made a change to the database so that expenses would be deleted when their budget_id foreign key was deleted. Prior to this we could only delete budgets with no expenses. After this I have no finished my task of creating update and delete functionality for expenses and budgets.
 
 After this I used what I learned on 10/20/22 to pass Account ID to the budgets form using useEffect. This served as an improvement on our previous method of creating a new budget form.
+
+## 10/25/22
+Today my main focus was on beginning the deployment process for our application. We began to build out the dockerfile and the .gitlab-ci.yml. Since deployment is something new for our group and we are ahead of schedule we decided to work through it all together. 
