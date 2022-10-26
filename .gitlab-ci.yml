@@ -4,6 +4,10 @@ stages:
   - deploy
 
 
+variables:
+    DATABASE_URL: postgresql://admin:admin@postgres/db
+
+
 ## TEST
 api-unit-test-job:
   image: python:3-bullseye
