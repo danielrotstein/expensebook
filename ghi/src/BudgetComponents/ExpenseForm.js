@@ -13,7 +13,6 @@ import getSymbolFromCurrency from 'currency-symbol-map'
 
 function ExpenseForm(props) {
     const {
-        data: budgetsData,
         error: budgetsError,
         isLoading: budgetsIsLoading
     } = useGetBudgetsQuery();
@@ -30,8 +29,8 @@ function ExpenseForm(props) {
     const [expense_converted, setExpenseConverted] = useState(0)
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState(0);
-    const [error, setError] = useState('');
-    const [createExpense, result] = useCreateExpenseMutation();
+    const [error] = useState('');
+    const [createExpense] = useCreateExpenseMutation();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -53,10 +52,9 @@ function ExpenseForm(props) {
         setExpenseConverted(0);
         }
 
-    
+
     const {
         data: currencyData,
-        error: currencyError,
         isLoading: currencyIsLoading
     } = useGetCurrencyRatesQuery(props.homeCurrency);
 
