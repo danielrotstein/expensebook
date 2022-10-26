@@ -38,9 +38,9 @@ def create_category(
     return repo.create_category(category)
 
 
-@router.put("/categories/{category_id}", 
-    response_model=Union[CategoryOut, Error]
-)
+@router.put("/categories/{category_id}",
+            response_model=Union[CategoryOut, Error]
+            )
 def update_category(
     category_id: int,
     category: CategoryIn,
