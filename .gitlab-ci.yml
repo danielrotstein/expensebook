@@ -9,7 +9,7 @@ variables:
     SIGNING_KEY: 87fe4a3fcfb60092dbaeb854a196bc3d9b190aed7930c734749e85245de698420c25f8e6899c421b4494e99459e01058de5daa9d49584cd62ec975da9aea33da
 
 
-## TEST
+## TEST STAGE
 api-unit-test-job:
   image: python:3-bullseye
   stage: test
@@ -26,7 +26,7 @@ lint-job:
     - flake8 api
 
 
-## BUILD
+## BUILD STAGE
 build-front-end-job:
   stage: build
   image: node:lts-bullseye
@@ -63,7 +63,7 @@ build-expensebook-api:  # RENAME THIS
     - docker push ${CI_REGISTRY_IMAGE}/api:latest
 
 
-## DEPLOY
+## DEPLOY STAGE
 deploy-expensebook-api:  # RENAME THIS
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
