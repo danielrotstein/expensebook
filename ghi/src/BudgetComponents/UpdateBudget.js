@@ -11,7 +11,7 @@ import { useGetOneAccountQuery } from '../store/accountsApi';
 function UpdateBudgetForm(props) {
     const budget_id = props.props
     const email = JSON.parse(localStorage.getItem('email'));
-    const { data, error, isLoading } = useGetOneAccountQuery(email);
+    const { data, isLoading } = useGetOneAccountQuery(email);
 
 
     const [show, setShow] = useState(false);
@@ -45,7 +45,7 @@ function UpdateBudgetForm(props) {
             const value = data.id
             setAccountID(value)
         }
-    } , [data])
+    } , [data, isLoading])
 
     
     async function handleSubmit(e) {
@@ -68,7 +68,7 @@ function UpdateBudgetForm(props) {
         <>
             <ErrorNotification />
             <ErrorNotification />
-            <a id="show" onClick={handleShow}>Update</a>
+            <p id="show" onClick={handleShow}>Update</p>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title className="budget-popup-title">Update Budget</Modal.Title>
