@@ -3,6 +3,7 @@ from routers import expenses, accounts
 from routers import budgets, categories, recommendations, currency
 from authenticator import authenticator
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 
 app = FastAPI()
@@ -17,7 +18,11 @@ app.include_router(recommendations.router)
 app.include_router(authenticator.router)
 
 
-origins = ["*"]
+origins = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    os.environ.get("CORS_HOST", None),
+]
 
 
 app.add_middleware(
