@@ -1,3 +1,6 @@
+10/25/2022
+Fixed the nav bar appearance after signup submition, fixed the already existing user try to signup bug. Finished two unit test function: get all budgets and create budget. Worked with group on deployment of project. 
+
 10/24/2022
 Fixed the wrong password bug. Start reviewing the test procedure and how to write the test code.
 
@@ -18,7 +21,7 @@ Debugged for gitlab conflictions and gitlab "can not log in" issue, team members
 Did a lot of test, wrote test code for the user authorization functionality, made it working under test enviroment.
 
 10/14/2022
-Continued to research for the authentication, tried to save the password in the localstorage. Working with George for the authentication part.
+Continued to research for the authentication, got the idea of saving varibles such as token in the localstorage for future use. Working with George for the authentication part.
 
 10/13/2022
 Daniel did a lot of work on the user athentication part. Based on his previous work, I tried to write code for getting token and reset user state. 
@@ -37,7 +40,7 @@ Updated routers/accounts.py, budgets.py, categories.py, expenses.py, queries/acc
 
 10/5/2022
 Migrated and created tables in Postgres with team, started coding on main.py, router.expenses.py, queries.expenses.py with team;
-Got through create category, get all categories, create budget, get all budgets, create expense, get all expenses, get one expense".
+Got through create category, get all categories, create budget, get all budgets, create expense, get all expenses, get one expense.
 
 10/4/2022
 Tried to modify the Docker compose.yaml when switch from mulitiple database to one database with team.
