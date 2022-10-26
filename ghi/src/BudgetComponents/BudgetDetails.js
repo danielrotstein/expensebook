@@ -25,13 +25,11 @@ function BudgetDetails() {
 
     const {
         data: expensesData,
-        error: expensesError,
         isLoading: expensesIsLoading,
     } = useGetExpensesQuery();
 
     const {
         data: categoriesData,
-        error: categoriesError,
         isLoading: categoriesIsLoading,
     } = useGetCategoriesQuery();
 
@@ -40,8 +38,7 @@ function BudgetDetails() {
     const [dates, setDates] = useState([]);
     const [filteredExpenses, setFilteredExpenses] = useState([]);
     const [total, setTotal] = useState(0);
-    const [deleteBudget, deleted] = useDeleteBudgetMutation(budget_id);
-    const [updateBudget, update_response] = useUpdateBudgetMutation(budget_id);
+    const [deleteBudget] = useDeleteBudgetMutation(budget_id);
     const [showActions, setShowActions] = useState(false);
 
 
@@ -67,8 +64,9 @@ function BudgetDetails() {
                 total += expense.expense_converted;
             });
             setTotal(total);
+            return;
         }
-    }, [expensesData]);
+    }, [expensesData, budget_id, expensesIsLoading]);
 
 
     const handleDateChange = event => {
@@ -82,6 +80,7 @@ function BudgetDetails() {
                 if (expense.date === value) {
                     dateExpenses.push(expense);
                 }
+                return;
             });
             setFilteredExpenses(dateExpenses);
         }
@@ -98,6 +97,7 @@ function BudgetDetails() {
                 if (expense.category_id.toString() === value) {
                     categoryExpenses.push(expense);
                 }
+                return;
             });
             setFilteredExpenses(categoryExpenses);
         }
