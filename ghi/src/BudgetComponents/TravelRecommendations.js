@@ -13,7 +13,6 @@ function TravelRecommendations(props) {
     } = useGetRecommendationsQuery();
     const {
         data: budgetData, 
-        error: budgetError, 
         isLoading: budgetIsLoading
     } = useGetBudgetsQuery();
 
@@ -29,12 +28,14 @@ function TravelRecommendations(props) {
                 if (budget.id === parseInt(props.budget)) {
                     currentBudget = budget
                 }
+                return;
             });
             const tempRecs = [];
             recData.map(rec => {
                 if (rec.country === currentBudget.destination_country) {
                     tempRecs.push(rec);
                 }
+                return;
             });
             setRecommendations(tempRecs);
             setFilteredRecs(tempRecs); 
