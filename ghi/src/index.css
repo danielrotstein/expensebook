@@ -128,10 +128,6 @@ a:hover {
   background-color: #70c244;
 }
 
-/* .navbar-collapse {
-  margin-right: 20px;
-} */
-
 #signup {
   margin-left: -40px;
 }
@@ -152,11 +148,8 @@ a:hover {
 }
 
 .auth-form-div {
-  position: absolute;
-  top: 52%;
-  transform: translateY(-50%);
-  left: 0px;
-  width: 100%;
+  margin-top: 130px;
+  margin-bottom: 220px;
 }
 
 .auth-form {
@@ -186,7 +179,6 @@ a:hover {
 }
 
 .signup-card {
-  margin: auto;
   width: 500px;
   border-radius: 20px;
   background-color: #dcdcdc60;
@@ -506,11 +498,8 @@ label {
 }
 
 .converter-div {
-  position: absolute;
-  top: 36%;
-  transform: translateY(-50%);
-  left: 0px;
-  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 350px;
 }
 
 .converter-sub-div {
@@ -588,7 +577,7 @@ label {
 }
 
 .footer-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   border-top: 1px solid #dcdcdc;

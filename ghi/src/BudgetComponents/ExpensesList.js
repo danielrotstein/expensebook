@@ -16,13 +16,11 @@ function ExpensesList(props) {
 
     const {
         data: budgetsData,
-        error: budgetsError,
-        isLoading: budgetsIsLoading
     } = useGetBudgetQuery(wrap);
 
 
     const { data, error, isLoading } = useGetCategoriesQuery();
-    const [deleteExpense, deleted] = useDeleteExpenseMutation(expense_id);
+    const [deleteExpense] = useDeleteExpenseMutation(expense_id);
     const [categories, setCategories] = useState({});
     const [showActions, setShowActions] = useState(false);
     const [showActionsId, setShowActionsId] = useState(0);
@@ -37,7 +35,7 @@ function ExpensesList(props) {
             });
             setCategories(categoryObj);
         }
-    }, [props.expenses]);
+    }, [props.expenses, data, isLoading]);
 
 
     async function handleSubmit(expense_id) {
@@ -109,7 +107,7 @@ function ExpensesList(props) {
                                                 </li>
                                                 <li>
                                                     <div className="button table-data">
-                                                        <a onClick={() => deleteExpense(expense.id)}>Delete</a>
+                                                        <p onClick={() => deleteExpense(expense.id)}>Delete</p>
                                                     </div>
                                                 </li>
                                             </ul>

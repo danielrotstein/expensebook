@@ -11,9 +11,9 @@ from queries.recommendations import (
 router = APIRouter(tags=["Recommendation"])
 
 
-@router.get("/recommendations", 
-    response_model=Union[List[RecommendationOut], Error]
-)
+@router.get("/recommendations",
+            response_model=Union[List[RecommendationOut], Error]
+            )
 def get_all_recommendations(
     repo: RecommendationRepository = Depends(),
 ):
@@ -21,8 +21,8 @@ def get_all_recommendations(
 
 
 @router.get("/recommendations/{recommendation_id}",
-    response_model=Optional[RecommendationOut]
-)
+            response_model=Optional[RecommendationOut]
+            )
 def get_one_recommendation(
     recommendation_id: int,
     response: Response,

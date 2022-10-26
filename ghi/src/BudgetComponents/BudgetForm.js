@@ -11,7 +11,7 @@ function BudgetForm(props) {
     const email = JSON.parse(localStorage.getItem('email'));
     const { data, error, isLoading } = useGetOneAccountQuery(email);
 
-    
+
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [title, setTitle] = useState('');
@@ -29,7 +29,7 @@ function BudgetForm(props) {
             const value = data.id
             setAccountID(value)
         }
-    } , [data])
+    } , [data, isLoading])
 
 
     const handleNextClick = () => {
@@ -74,7 +74,7 @@ function BudgetForm(props) {
             <div className="budget-form-div">
                 <ErrorNotification error={error} />
                 <form onSubmit={(e) => handleSubmit(e)} className="create-budget-form">
-                    {step == 1
+                    {step === 1
                         ? <div className="create-budget-card">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#70c244" className="bi bi-currency-exchange budget-form-icon" viewBox="0 0 16 16">
                                 <path d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z"/>
@@ -93,7 +93,7 @@ function BudgetForm(props) {
                             </div>
                         </div> : null
                     }
-                    {step == 2
+                    {step === 2
                         ? <div className="create-budget-card">
                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#70c244" className="bi bi-calendar-day budget-form-icon" viewBox="0 0 16 16">
                                 <path d="M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43zm.094 5.093h.672V7.418h-.672v4.105z"/>
@@ -117,7 +117,7 @@ function BudgetForm(props) {
                             </div>
                         </div> : null
                     }
-                    {step == 3
+                    {step === 3
                         ? <div className="create-budget-card">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#70c244" className="bi bi-piggy-bank budget-form-icon" viewBox="0 0 16 16">
                                 <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.138-1.496A6.613 6.613 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.602 7.602 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962z"/>
@@ -138,7 +138,7 @@ function BudgetForm(props) {
                             </div>
                         </div> : null
                     }
-                    {step == 4
+                    {step === 4
                         ? <div className="create-budget-card mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="#70c244" className="bi bi-airplane-engines budget-form-icon" viewBox="0 0 16 16">
                                     <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0ZM7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1c.213 0 .458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7V3Z"/>

@@ -12,7 +12,7 @@ function SignUpForm() {
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error] = useState('');
     const [createAccount, result] = useCreateAccountsMutation();
   
 
@@ -45,26 +45,22 @@ function SignUpForm() {
                         <br />
                         <div className="auth-div mb-3">
                             <div className="auth-input">
-                                <label htmlFor="first_name">First Name</label>
-                                <BulmaInput onChange={setFirstName} value={first_name} required placeholder="First Name" type="text" name="first_name" id="first_name" className="form-control input"/>
+                                <BulmaInput onChange={setFirstName} value={first_name} required type="text" name="first_name" id="first_name" className="form-control input" label="First Name"/>
                             </div>
                             <br />
                             <div className="auth-input">
-                                <label htmlFor="last_name">Last Name</label>
-                                <BulmaInput onChange={setLastName} value={last_name} required placeholder="Last Name" type="text" name="last_name" id="last_name" className="form-control input"/>
+                                <BulmaInput onChange={setLastName} value={last_name} required type="text" name="last_name" id="last_name" className="form-control input" label="Last Name"/>
                             </div>
                             <br />
                             <div className="auth-input">
-                                <label htmlFor="email">Email</label>
-                                <BulmaInput onChange={setEmail} value={email} required placeholder="Email"
-                                type="email" name="email" id="email" className="form-control input"/>
+                                <BulmaInput onChange={setEmail} value={email} required
+                                type="email" name="email" id="email" className="form-control input" label="Email"/>
                             </div>
                             <br />
                             <div className="auth-input">
-                                <label htmlFor="password">Password</label>
                                 <BulmaInput onChange={setPassword} value={password}
-                                required placeholder="Password" type="password" name="password" id="password"
-                                className="form-control input"/>
+                                required type="password" name="password" id="password"
+                                className="form-control input" label="Password"/>
                                 <p className="member">Already have an account? <NavLink to="/login">Login</NavLink></p>
                             </div>
                         </div>

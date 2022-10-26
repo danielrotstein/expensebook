@@ -9,7 +9,7 @@ function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error] = useState('');
     const [createToken, result] = useCreateTokenMutation();
 
     async function handleSubmit(e) {
@@ -43,19 +43,17 @@ function Login() {
                         </svg>
                         <div className="auth-div mb-3">
                             <div className="auth-input">
-                                <label htmlFor="email">Email</label>
                                 <BulmaInput onChange={setEmail} value={email.email} 
-                                required placeholder="Email" 
+                                required 
                                 type="email" name="username" id="email" 
-                                className="form-control input"/>
+                                className="form-control input" label="Email"/>
                             </div>
                             <br />
                             <div className="auth-input">
-                                <label htmlFor="password">Password</label>
                                 <BulmaInput onChange={setPassword} value={password.password} 
-                                required placeholder="Password" 
+                                required 
                                 type="password" name="password" id="password" 
-                                className="form-control input"/>
+                                className="form-control input" label="Password"/>
                             </div>
                             <button className="btn btn-primary auth-button">Login</button>
                         </div>

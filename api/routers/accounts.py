@@ -76,8 +76,8 @@ async def create_account(
 
 
 @router.put("/accounts/id={account_id}",
-    response_model=Union[AccountOut, Error]
-)
+            response_model=Union[AccountOut, Error]
+            )
 def update_account(
     account_id: int,
     account: AccountIn,
