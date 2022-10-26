@@ -9,9 +9,10 @@ router = APIRouter(tags=["Currency"])
 
 @router.get("/currency/{search}")
 async def convert_expense(search: int, home_currency: str, away_currency: str):
-    base_url = f"https://api.exchangerate.host/convert?from={home_currency.upper()}"
-    path = f"&to={away_currency.upper()}&amount={search}&places=2"
-    result = urljoin(base_url, path)
+    base_url = "https://api.exchangerate.host/convert"
+    path = f"?from={home_currency.upper()}"
+    path2 = f"&to={away_currency.upper()}&amount={search}&places=2"
+    result = urljoin(base_url, path, path2)
     response = requests.get(result)
     content = json.loads(response.content)
     return content["result"]
