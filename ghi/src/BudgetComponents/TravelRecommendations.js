@@ -13,7 +13,6 @@ function TravelRecommendations(props) {
     } = useGetRecommendationsQuery();
     const {
         data: budgetData, 
-        error: budgetError, 
         isLoading: budgetIsLoading
     } = useGetBudgetsQuery();
 
@@ -29,17 +28,25 @@ function TravelRecommendations(props) {
                 if (budget.id === parseInt(props.budget)) {
                     currentBudget = budget
                 }
+                return;
             });
             const tempRecs = [];
             recData.map(rec => {
                 if (rec.country === currentBudget.destination_country) {
                     tempRecs.push(rec);
                 }
+                return;
             });
             setRecommendations(tempRecs);
             setFilteredRecs(tempRecs); 
         }
-    }, [budgetIsLoading, recIsLoading]);
+    }, [
+            budgetIsLoading, 
+            recIsLoading, 
+            budgetData, 
+            props.budget, 
+            recData,
+        ]);
 
 
     const handlePriceChange = event => {
@@ -122,7 +129,7 @@ function TravelRecommendations(props) {
                     <br />
                     {filteredRecs.map(rec => {
                         return <div key={rec.id} className="d-flex recs-div">
-                            <img src={rec.image} className="rec-image"></img>
+                            <img src={rec.image} className="rec-image" alt="travel"></img>
                             <div className="rec-details">
                                 <p className="rec-title">{rec.title}</p>
                                 <p>{rec.description}</p>
