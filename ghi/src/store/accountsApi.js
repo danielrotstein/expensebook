@@ -29,7 +29,7 @@ export const accountsApi = createApi({
         url: '/accounts',
         body: data,
         method: 'POST',
-        credentials: 'same-origin',
+        credentials: 'omit',
       }),
       invalidatesTags: ['Account'],
     }),
@@ -38,14 +38,14 @@ export const accountsApi = createApi({
         url: '/token',
         body: data,
         method: 'POST',
-        credentials: 'same-origin',
+        credentials: 'omit',
       }),
       invalidatesTags: ['Token'],
     }),
     getToken: builder.query({
       query: () => ({
         url: '/token',
-        credentials: 'same-origin',
+        credentials: 'omit',
       }),
       providesTags: ['Token'],
     }),
@@ -53,7 +53,7 @@ export const accountsApi = createApi({
       query: () => ({
         url: '/token',
         method: 'delete',
-        credentials: 'same-origin',
+        credentials: 'omit',
       }),
       invalidatesTags: ['Token'],
     })
