@@ -42,7 +42,7 @@ class AccountRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         SELECT id
                             , first_name
@@ -51,7 +51,7 @@ class AccountRepository:
                             , password
                             , hashed_password
                         FROM accounts
-                        ORDER BY id 
+                        ORDER BY id
                         """
                     )
                     output = []
@@ -81,7 +81,6 @@ class AccountRepository:
                          , email
                          , password
                          , hashed_password
-                         
                     FROM accounts
                     WHERE email = %s;
                     """,
@@ -99,12 +98,14 @@ class AccountRepository:
                     hashed_password=record[5],
                 )
 
-    def create_account(self, account: AccountIn, hashed_password: str) -> Account:
+    def create_account(self,
+                       account: AccountIn, hashed_password: str) -> Account:
         with pool.connection() as conn:
             with conn.cursor() as db:
                 result = db.execute(
                     """
-                    INSERT INTO accounts (first_name, last_name, email, password, hashed_password)
+                    INSERT INTO accounts (first_name,
+                    last_name, email, password, hashed_password)
                     VALUES (%s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
@@ -139,7 +140,7 @@ class AccountRepository:
                         [account_id],
                     )
                     return True
-        except Exception as e:
+        except Exception:
             return False
 
     def update_account(

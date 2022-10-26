@@ -9,7 +9,7 @@ export const accountsApi = createApi({
       const selector = accountsApi.endpoints.getToken.select();
       const { data: tokenData } = selector(getState());
       if (tokenData && tokenData.access_token) {
-        headers.set('Authorization', 'Bearer ${tokenData.access_token}')
+        headers.set('Authorization', `Bearer ${tokenData.access_token}`)
       }
       return headers;
     }

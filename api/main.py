@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routers import expenses, accounts, budgets, categories, recommendations, currency
+from routers import expenses, accounts
+from routers import budgets, categories, recommendations, currency
 from authenticator import authenticator
 from fastapi.middleware.cors import CORSMiddleware
 

@@ -1,3 +1,15 @@
+## 10/25/22
+
+Today, I worked on:
+
+* Writing tests for the app, finishing the footer, and worked with the team on building our .gitlab-ci.yml file for deployment.
+
+Wrote tests for get_all & create recommendations and categories. Could finally finish up the footer. Then Alex was driving while we all helped implement the code for the .gitlab-ci.yml file.
+
+I learned that the CI/CD requires some good preparations one of them includes a .gitlab-ci.yml file that contains the instructions that we want it to perform to check our code.
+
+
+
 ## 10/24/22
 
 Today, I worked on:
