@@ -12,7 +12,7 @@ function SignUpForm() {
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error] = useState('');
     const [createAccount, result] = useCreateAccountsMutation();
   
 
