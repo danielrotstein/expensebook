@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ErrorNotification from '../ErrorNotification';
 import ExpenseForm from './ExpenseForm';
-import { useGetBudgetQuery, useDeleteBudgetMutation, useUpdateBudgetMutation } from '../store/budgetsApi';
+import { useGetBudgetQuery, useDeleteBudgetMutation } from '../store/budgetsApi';
 import { useGetExpensesQuery } from '../store/expensesApi';
 import { useGetCategoriesQuery } from '../store/expensesApi';
 import ExpensesList from './ExpensesList';
@@ -62,9 +62,9 @@ function BudgetDetails() {
             let total = 0;
             expenses.map(expense => {
                 total += expense.expense_converted;
+                return null;
             });
             setTotal(total);
-            return;
         }
     }, [expensesData, budget_id, expensesIsLoading]);
 
@@ -80,7 +80,7 @@ function BudgetDetails() {
                 if (expense.date === value) {
                     dateExpenses.push(expense);
                 }
-                return;
+                return null;
             });
             setFilteredExpenses(dateExpenses);
         }
@@ -97,7 +97,7 @@ function BudgetDetails() {
                 if (expense.category_id.toString() === value) {
                     categoryExpenses.push(expense);
                 }
-                return;
+                return null;
             });
             setFilteredExpenses(categoryExpenses);
         }

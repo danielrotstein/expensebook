@@ -28,14 +28,14 @@ function TravelRecommendations(props) {
                 if (budget.id === parseInt(props.budget)) {
                     currentBudget = budget
                 }
-                return;
+                return null;
             });
             const tempRecs = [];
             recData.map(rec => {
                 if (rec.country === currentBudget.destination_country) {
                     tempRecs.push(rec);
                 }
-                return;
+                return null;
             });
             setRecommendations(tempRecs);
             setFilteredRecs(tempRecs); 
@@ -67,7 +67,7 @@ function TravelRecommendations(props) {
                 if (rec.price.toString() >= priceRange[value][0] && rec.price.toString() <= priceRange[value][1]) {
                     priceRecs.push(rec);
                 }
-                return;
+                return null;
             });
             setFilteredRecs(priceRecs);
         }
@@ -85,7 +85,7 @@ function TravelRecommendations(props) {
                 if (rec.category_id.toString() === value) {
                     categoryRecs.push(rec);
                 }
-                return;
+                return null;
             });
             setFilteredRecs(categoryRecs);
         }

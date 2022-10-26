@@ -14,7 +14,7 @@ function CurrencyConverter() {
   const [exchangeRate, setExchangeRate] = useState()
   const [amount, setAmount] = useState(1)
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
-  const [country, setCountry] = useState()
+  const [setCountry] = useState()
 
 
   let toAmount, fromAmount
