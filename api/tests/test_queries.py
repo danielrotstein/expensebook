@@ -4,6 +4,7 @@ from queries.categories import CategoryRepository
 from queries.expenses import ExpenseRepository
 from queries.budgets import BudgetRepository
 from queries.recommendations import RecommendationRepository
+from queries.recommendations import RecommendationRepository
 
 
 client = TestClient(app)

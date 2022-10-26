@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import ErrorNotification from '../ErrorNotification';
-import { useGetBudgetsQuery } from '../store/budgetsApi';
 import { useGetCategoriesQuery, useUpdateExpenseMutation, useGetExpenseQuery } from '../store/expensesApi';
 import { useGetCurrencyRatesQuery } from '../store/exchangeRatesApi';
 import BulmaInput from '../BulmaInput';
@@ -13,12 +12,6 @@ function UpdateExpenseForm(props) {
     const expense_id = props.expense_id
     const { data, isLoading } = useGetExpenseQuery(expense_id);
 
-
-    const {
-        data: budgetsData,
-        error: budgetsError,
-        isLoading: budgetsIsLoading
-    } = useGetBudgetsQuery();
     const {
         data: categoriesData,
         error: categoriesError,
@@ -37,7 +30,7 @@ function UpdateExpenseForm(props) {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState(0);
     const [budget_id, setBudgetID] = useState(0)
-    const [updateExpense, updated_expense] = useUpdateExpenseMutation(expense_id);
+    const [updateExpense] = useUpdateExpenseMutation(expense_id);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -49,7 +42,7 @@ function UpdateExpenseForm(props) {
             const value = data.budget_id
             setBudgetID(value)
         }
-    } , [data])
+    } , [data, isLoading])
 
 
     const handleCategoryIdInputChange = (e) => {
@@ -74,7 +67,7 @@ function UpdateExpenseForm(props) {
     }
 
 
-    if (budgetsIsLoading || categoriesIsLoading || currencyIsLoading || isLoading) {
+    if (categoriesIsLoading || currencyIsLoading || isLoading) {
         return (
           <div className="container">
             <Notification type="info">Loading...</Notification>
@@ -83,12 +76,11 @@ function UpdateExpenseForm(props) {
     } else {
         return (
             <>
-                <ErrorNotification error={budgetsError} />
                 <ErrorNotification error={categoriesError} />
                 <ErrorNotification error={currencyError} />
-                <a id={props.remaining < 0 ? "over-budget" : null} onClick={handleShow}>
+                <p id={props.remaining < 0 ? "over-budget" : null} onClick={handleShow}>
                     Update
-                </a>
+                </p>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     <Modal.Title className="expense-popup-title">Update Expense</Modal.Title>

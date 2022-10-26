@@ -13,11 +13,11 @@ code {
 }
 
 p {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
 }
 
 a {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   color: black;
 }
 
@@ -60,14 +60,14 @@ a:hover {
 }
 
 .home-title {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 50px;
   font-weight: 800;
   color: #70c244;
 }
 
 .home-sub-title {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 22px;
   font-weight: 600;
   margin-top: -10px;
@@ -79,7 +79,7 @@ a:hover {
 }
 
 .home-cta {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 20px;
   margin-left: 30px;
   width: 280px;
@@ -95,7 +95,7 @@ a:hover {
 }
 
 .navbar-brand {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 24px;
   font-weight: 800;
   color: #70c244;
@@ -109,7 +109,7 @@ a:hover {
 
 .nav-link {
   width: 120px;
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 18px;
   font-weight: 500;
   color: #70c244;
@@ -134,7 +134,7 @@ a:hover {
 
 .btn-primary {
   background-color: #70c244;
-  font: Avenir;
+  font: Avenir, Montserrat;
   border: none;
 }
 
@@ -286,13 +286,13 @@ a:hover {
 }
 
 label {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 18px;
   margin-left: 5px;
 }
 
 .input {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 18px;
   width: 300px;
 }
@@ -379,7 +379,7 @@ label {
 }
 
 .table-header, .table-data {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 16px;
 }
 
@@ -439,7 +439,7 @@ label {
 }
 
 .expense-popup-title {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   margin-top: 10px;
 }
 
@@ -533,7 +533,7 @@ label {
 }
 
 .converter-country-dropdown {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 18px;
   width: 480px;
   margin-bottom: 10px;
@@ -544,7 +544,7 @@ label {
 }
 
 .converter-input {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 18px;
   width: 400px;
   border-top-left-radius: 5px;
@@ -553,7 +553,7 @@ label {
 }
 
 .converter-dropdown {
-  font-family: Avenir;
+  font-family: Avenir, Montserrat;
   font-size: 18px;
   width: 80px;
   border-top-right-radius: 5px;
@@ -577,7 +577,7 @@ label {
 }
 
 .footer-container {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   border-top: 1px solid #dcdcdc;

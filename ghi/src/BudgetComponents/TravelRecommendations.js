@@ -67,6 +67,7 @@ function TravelRecommendations(props) {
                 if (rec.price.toString() >= priceRange[value][0] && rec.price.toString() <= priceRange[value][1]) {
                     priceRecs.push(rec);
                 }
+                return;
             });
             setFilteredRecs(priceRecs);
         }
@@ -82,8 +83,9 @@ function TravelRecommendations(props) {
         } else {
             recommendations.map(rec => {
                 if (rec.category_id.toString() === value) {
-                    categoryRecs .push(rec);
+                    categoryRecs.push(rec);
                 }
+                return;
             });
             setFilteredRecs(categoryRecs);
         }
