@@ -1,10 +1,7 @@
-ExpenseBook
-
-
 <br />
 <div align="center">
 
-  <h3 align="center">ExpenseBook</h3>
+  <h1 align="center">ExpenseBook</h1>
 
   <p align="center">
     ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.
@@ -65,7 +62,7 @@ To manipulate dates & times we used Moment.js.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+### 🚀 Built With
 
 This page was build with the use of following frameworks/libraries and tools:
 
@@ -113,7 +110,7 @@ Joey Salvo - joey.salvo.dev@gmail.com
 
 Olivia Sun - apinet2003@gmail.com
 
-Project Link: https://gitlab.com/george-franco/expensebook
+Project Link: https://gitlab.com/george.franco/expensebook
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
