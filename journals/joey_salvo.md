@@ -1,10 +1,28 @@
-##10/24/22
+## 10/26/22
 
 Today:
 
-I worked on adding a 404 page to the app and added the route to the browser routers. I also worked on cleaning up code and fixed bugs that were on the front end. The bugs consisted of the html element not being set to the state. The state also needed to be reset after submit. 
+I worked with the team to clean up more of the code to ready the app for deployment. This consisted of identifying more Flake8 and React that needed to be cleaned up/formatted. We then worked together to try and fix bugs on the deployed project to get it to run on the cloud.
 
-I learned that toLocaleString can be passed minimumFractionDigits to set the decimal point and how many digits after. 
+I learned that once the back end is going on HEROKU, you can get to the fastAPI swaggar page by adding /#docs and you will be able to get to the swagger page to do manual tests.
+
+## 10/25/22
+
+Today:
+
+We worked on writing tests, cleaning up front-end GUI, building our .gitlab-ci.yml file for deployment.
+
+Cleaned up code for deployment for Flake8. Then Alex was driving while we all helped implement the code for the .gitlab-ci.yml file.
+
+I learned that the CI/CD requires some good preparations one of them includes a .gitlab-ci.yml file that contains the instructions that we want it to perform to check our code.
+
+## 10/24/22
+
+Today:
+
+I worked on adding a 404 page to the app and added the route to the browser routers. I also worked on cleaning up code and fixed bugs that were on the front end. The bugs consisted of the html element not being set to the state. The state also needed to be reset after submit.
+
+I learned that toLocaleString can be passed minimumFractionDigits to set the decimal point and how many digits after.
 
 ## 10/20/22
 Today:
