@@ -1,4 +1,30 @@
-##10/24/22
+## 10/27/22
+
+Today:
+
+As a team we worked on updating the README.md file to add descriptions and animations.
+
+Today I learned how to convert a file into a GIF and using copy and paste in GITLAB was able to add the gif to the README.md. The site that I used was https://ezgif.com/
+
+## 10/26/22
+
+Today:
+
+I worked with the team to clean up more of the code to ready the app for deployment. This consisted of identifying more Flake8 and React that needed to be cleaned up/formatted. We then worked together to try and fix bugs on the deployed project to get it to run on the cloud.
+
+I learned that once the back end is going on HEROKU, you can get to the fastAPI swaggar page by adding /#docs and you will be able to get to the swagger page to do manual tests.
+
+## 10/25/22
+
+Today:
+
+We worked on writing tests, cleaning up front-end GUI, building our .gitlab-ci.yml file for deployment.
+
+Cleaned up code for deployment for Flake8. Then Alex was driving while we all helped implement the code for the .gitlab-ci.yml file.
+
+I learned that the CI/CD requires some good preparations one of them includes a .gitlab-ci.yml file that contains the instructions that we want it to perform to check our code.
+
+## 10/24/22
 
 Today:
 
