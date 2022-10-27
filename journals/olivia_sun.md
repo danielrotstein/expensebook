@@ -1,5 +1,8 @@
+10/27/2022
+Work with team on the revertion of the deployment from yesterday. Candice stayed and helped a lot on the revertion. George drove coding and sucessfully rervesed to the full-functional version we had yesterday. 
+
 10/26/2022
-Working with all group on the deployment of project and successfully got all pipelines work. Alex drove the deployment. Tried to import the database to Heroku but confined by the hobby-level limitation. Debug with group and instructor Danniel for the CORS error after deployment. Danniel guided to link the Heroku postgres to beeskeeper sucessfully. 
+Tried to import the database to Heroku but confined by the hobby-level limitation. Working with all group on the deployment of project and successfully got all pipelines work. Alex drove the deployment. Debug with group for the CORS error after deployment, Dalonte and Candice stayed with us for hours to help, and instructor Danniel spent hours to help with the deployment after that. Danniel guided us to link the Heroku postgres to beeskeeper sucessfully. 
 
 10/25/2022
 Fixed the nav bar appearance after signup submition, fixed the already existing user try to signup bug. Finished two unit test function: get all budgets and create budget. Worked with all group on deployment of project, Alex drove the deployment files. 
