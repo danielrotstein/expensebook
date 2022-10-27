@@ -44,7 +44,7 @@ Team members:
 
 
 ### Budgets
-<img src="https://imgur.com/a/40whfF4" width="40" height="40" />
+![Alt Text](https://imgur.com/a/40whfF4)
 ...
 
 
