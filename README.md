@@ -75,7 +75,7 @@ To fully enjoy ExpenseBook on your local machine, please make sure to follow the
 5. For Windows and Macs without Apple silicon (M1 chip), run `docker compose build`
 6. For Macs with Apple silicon (M1 chip), run `DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose build`
 7. Run `docker compose up`
-8. Run `docker exec -it expensebook-ghi-1`, to enter the expensebook-ghi-1 container's CLI
+8. Run `docker exec -it expensebook-ghi-1` to enter the expensebook-ghi-1 container's CLI
 9. Run `npm install moment --force`
 10. Run `npm install currency-symbol-map --force`
 11. Exit the container's CLI

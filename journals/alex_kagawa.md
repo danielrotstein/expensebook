@@ -1,3 +1,10 @@
+# October 27, 2022
+Today, I worked on:
+
+Getting our localhost up and running again after we hit a handful of roadblocks yesterday related to deployment that took down our local, and assisting with the creation/finalization of our README.
+
+I learned the best practices for how to structure a README and what to include in it.
+
 # October 26, 2022
 Today, I worked on:
 
