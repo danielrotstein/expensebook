@@ -27,11 +27,11 @@
 </details>
 
 
-## About The Project
+## 💻 About The Project
 
 This project is designed to help users to manage their budget on international trips. A free currency converter for anyone interested in comparing currencies without the need of creating an account.
 
-Team members:
+🧠 Team members:
 
 - Alex Kagawa
 - Daniel Rotstein
@@ -40,17 +40,17 @@ Team members:
 - Olivia Sun
 
 
-### Budgets
+### 📌 Budgets
 
 ...
 
 
-### Expenses
+### 📌 Expenses
 
 ...
 
 
-### Currency Converter
+### 📌 Currency Converter
 
 ...
 
