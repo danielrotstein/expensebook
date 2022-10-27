@@ -35,7 +35,8 @@ Also be sure to make use of the recommendation section. Filter by categories lik
 
 ### 📌 Expenses
 
-...
+Expenses are one of the main tables of data that our application includes. Users can add expenses to their budgets from a budget details page in order to better track their spending while on a trip. The add expense form includes fields such as title, description, date, category, and cost in order to create a descriptive entry for each of a user's entered expenses. Using up to date exchange rates passed in from our third party Currency Converter API, a user's expenses will always be calculated in the currency of both their home and destination countries.
+With the ability to create, update, and delete expenses, as well as filter the data by category or date, users are fully in control of their expense tracking from the budget details page.
 
 
 ### 📌 Currency Converter
@@ -71,7 +72,7 @@ To fully enjoy ExpenseBook on your local machine, please make sure to follow the
 2. CD into the new project directory
 3. Run docker volume create pg-admin
 4. Run docker volume create postgres-data
-5. Run docker compose build
+5. Windows: Run docker compose build
 6. Run docker compose up
 <!-- 6. Run docker exec -it smelli-belli-inventory-api-1 bash
 7. Run python manage.py loaddata products.json

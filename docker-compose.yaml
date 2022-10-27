@@ -39,7 +39,6 @@ services:
             NODE_ENV: development
             HOST: "0.0.0.0"
             REACT_APP_FAST_API: http://localhost:8000
-            FAST_API_HOST_NAME: http://localhost:8000
     api:
         build:
             context: ./api
