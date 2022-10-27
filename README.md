@@ -32,16 +32,25 @@ The user can click a budget to get to the budget details page, where the user ca
 
 The recommendations section on the budget details page, displays recommendations based on the users destination country. A click on the "Learn More" button opens up a new tab with info about it. The user is able to filter recommendations by price and category.
 
+## Creating a budget
+![budget-flow.gif](./budget-flow.gif)
+
 
 ### 📌 Expenses
 
 Expenses are one of the main tables of data that our application includes. Users can add expenses to their budgets from a budget details page in order to better track their spending while on a trip. The add expense form includes fields such as title, description, date, category, and cost in order to create a descriptive entry for each of a user's entered expenses. Using up to date exchange rates passed in from our third party Currency Converter API, a user's expenses will always be calculated in the currency of both their home and destination countries.
 With the ability to create, update, and delete expenses, as well as filter the data by category or date, users are fully in control of their expense tracking from the budget details page.
 
+## Adding an expense
+![create-expense.gif](./create-expense.gif)
+
 
 ### 📌 Currency Converter
 
 Free currency converter ready to calculate any amount from and to a specific currency.
+
+## Currency Converter
+![Currency-Converter.gif](./Currency-Converter.gif)
 
 
 ### 🎨 Styling
