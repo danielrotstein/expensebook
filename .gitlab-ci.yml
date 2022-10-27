@@ -34,8 +34,7 @@ build-front-end-job:
     - api-unit-test-job
     - lint-job
   variables:
-    FAST_API_HOST_NAME: https://expensebook-api.herokuapp.com
-    REACT_HOST_NAME: https://george-franco.gitlab.io/expensebook
+    PUBLIC_URL: https://george-franco.gitlab.io/expensebook
   script:
     - cd ghi  # CHANGE THIS TO THE DIRECTORY THAT HAS package.json
     - npm install
