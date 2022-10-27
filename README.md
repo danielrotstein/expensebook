@@ -27,7 +27,9 @@
 
 ### 📌 Budgets
 
-Create a budget for a trip, give it a title like "Wedding Anniversary", add a budget, set the dates, and select the country you're traveling to. Each individual budget contains expenses made before, during or after the trip. The budget dashboard keeps track of your budgets and for a more detailed insight, please click on a budget - the details page got all your expenses listed for you. The remaining budget tracker makes sure you're always aware of your current budget situation.
+Once a user successfully creates an account or logged in, the user selects "add a budget" for a new trip, gives it a title, adds a budget total, sets the dates, and currencies based on their home country and the country they plan to visit. Once a budget is created, the budget will be displayed on the budget dashboard. The user can click a budget to get to the budget details page, where the user can add expenses and categorize them. The budget dashboard keeps track of all expense totals and remaining budget balance.  For a detailed insight, the user can click on a budget - the details page got all the expenses listed. The remaining budget tracker makes sure the user is always aware of the current budget situation.
+
+
 Also be sure to make use of the recommendation section. Filter by categories like, activities or restaurants or search recommendations by price. 
 
 
