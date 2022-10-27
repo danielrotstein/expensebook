@@ -27,7 +27,8 @@
 
 ### 📌 Budgets
 
-Create a budget for a trip, give it a title like "Wedding Anniversary", set the dates, select the country where you based 
+Create a budget for a trip, give it a title like "Wedding Anniversary", add a budget, set the dates, and select the country you're traveling to. Each individual budget contains expenses made before, during or after the trip. The budget dashboard keeps track of your budgets and for a more detailed insight, please click on a budget - the details page got all your expenses listed for you. The remaining budget tracker makes sure you're always aware of your current budget situation.
+Also be sure to make use of the recommendation section. Filter by categories like, activities or restaurants or search recommendations by price. 
 
 
 ### 📌 Expenses
@@ -37,7 +38,7 @@ Create a budget for a trip, give it a title like "Wedding Anniversary", set the 
 
 ### 📌 Currency Converter
 
-...
+Free currency converter ready to convert any amount from and to a specific currency.
 
 
 ### 🎨 Styling
