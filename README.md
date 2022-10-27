@@ -3,10 +3,6 @@
 
   <h1 align="center">ExpenseBook</h1>
 
-  <p align="center">
-    ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.
-    Free currency converter usage - no account sign up required!
-  </p>
 </div>
 
 
@@ -21,12 +17,17 @@
 
 ## 💻 About The Project
 
-This project is designed to help users to manage their budget on international trips. A free currency converter for anyone interested in comparing currencies without the need of creating an account.
+<p align="center">
+    ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.
+</p>
+<p align="center">
+    Free currency converter usage - no account sign up required!
+</p>
 
 
 ### 📌 Budgets
 
-...
+Create a budget for a trip, give it a title like "Wedding Anniversary", set the dates, select the country where you based 
 
 
 ### 📌 Expenses
