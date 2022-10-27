@@ -60,3 +60,6 @@ After this I used what I learned on 10/20/22 to pass Account ID to the budgets f
 
 ## 10/25/22
 Today my main focus was on beginning the deployment process for our application. We began to build out the dockerfile and the .gitlab-ci.yml. Since deployment is something new for our group and we are ahead of schedule we decided to work through it all together. 
+
+## 10/26/22
+Today we continued the process of deploying. We were able to succesfully complete the Gitlab pipeline and set up our application in Heroku. After succesfully deploying our application we ran into a CORS error that took many hours of debugging work.

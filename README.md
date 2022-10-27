@@ -113,7 +113,7 @@ Joey Salvo - joey.salvo.dev@gmail.com
 
 Olivia Sun - apinet2003@gmail.com
 
-Project Link: https://gitlab.com/george.franco/expensebook
+Project Link: https://gitlab.com/george-franco/expensebook
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

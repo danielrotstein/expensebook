@@ -1,3 +1,15 @@
+## 10/26/22
+
+Today, I worked on:
+
+* Finishing the deployment process for our app as a team.
+
+We got our gitlab pipelines for test, build and deploy to pass, yeaaah, super exciting! However when we load our app in deployment mode, we get like a CORS error and can't log-in/sign-in. We got help from 3 instructors on troubleshooting the issue - still no luck, we'll continue tomorrow. 
+
+I learned that the CI/CD requires a lot of attention to details and that CORS errors don't necessarly mean its a CORS related error at all.
+
+
+
 ## 10/25/22
 
 Today, I worked on:
@@ -6,7 +18,7 @@ Today, I worked on:
 
 Wrote tests for get_all & create recommendations and categories. Could finally finish up the footer. Then Alex was driving while we all helped implement the code for the .gitlab-ci.yml file.
 
-I learned that the CI/CD requires some good preparations one of them includes a .gitlab-ci.yml file that contains the instructions that we want it to perform to check our code.
+I learned how to write class unit tests using TestClient from fastapi.testclient with overriding dependencies for testing purposes.
 
 
 
@@ -16,9 +28,9 @@ Today, I worked on:
 
 * Finishing the update & delete functions for budgets, and starting on the readme file for the team.
 
-George was driving and I helped to implement code so user can update & delete a budget. Then started on the foundation for our readme file, by setting up the layout and adding some text. Also, reviewed the explorations on unit tests and CI/CD.
+George was driving and I helped to implement code so users can update & delete a budget. Then started on the foundation for our readme file, by setting up the layout and adding some text. Also, reviewed the explorations on unit tests and CI/CD.
 
-I learned that the CI/CD requires some good preparations one of them includes a .gitlab-ci.yml file that contains the instructions that we want it to perform to check our code.
+I learned that the CI/CD requires a .gitlab-ci.yml file that includes all the instructions that we want it to perform and that we'll working with Heroku.
 
 
 
@@ -62,7 +74,7 @@ I learned that its really hard to find Api's with good documentation and free of
 
 Today, I worked on:
 
-*  Changing code so only budget detail of a specific ID will be displayed and creating a modal for Add Expense "form".
+* Changing code so only budget detail of a specific ID will be displayed and creating a modal for Add Expense "form".
 
 When user clicks on a specific budget in the dashboard, only that specific budget will be displayed in details page, so with that, once we create a new expense for that certain budget, the budget ID is already stored in the DB. Inside specific budget detail, there's now an Add Expense modal "form", just need to figure out how the data gets populated to the details page without having to refresh the page first.
 
@@ -74,7 +86,7 @@ I learned how to write code to use modal for one of our forms.
 
 Today, I worked on:
 
-*  Creating a currency converter for Expensebook.
+* Creating a currency converter for Expensebook.
 
 Joey and I created a new file countryList that has an array of objects with country name and the associate currency code. We then imported that file to the BudgetForm so we can select countries via dropdown menu. Now the country is saved in the DB. We then should be able to work with the associate currency code to fill out the ExpenseForm to perform a currency conversion.
 
