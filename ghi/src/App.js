@@ -13,7 +13,7 @@ import NotFoundPage from './404Page';
 
 function App() {
   const domain = /https:\/\/[^/]+/;
-  const hostName = "https://expensebook-api.herokuapp.com";
+  const hostName = "https://george-franco.gitlab.io/expensebook";
   const basename = hostName.replace(domain, '');
   // const basename = process.env.FAST_API_HOST_NAME.replace(domain, '');
   return (
