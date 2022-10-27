@@ -70,13 +70,15 @@ To fully enjoy ExpenseBook on your local machine, please make sure to follow the
 
 1. Clone the repository down to your local machine
 2. CD into the new project directory
-3. Run docker volume create pg-admin
-4. Run docker volume create postgres-data
-5. Windows: Run docker compose build
-6. Run docker compose up
-<!-- 6. Run docker exec -it smelli-belli-inventory-api-1 bash
-7. Run python manage.py loaddata products.json
-8. Exit the container's CLI, and enjoy Smelli Belli to its fullest! -->
+3. Run: docker volume create pg-admin
+4. Run: docker volume create postgres-data
+5A. For Windows and Macs without Apple silicon (M1 chip), run: docker compose build
+5B. For Macs with Apple silicon (M1 chip), run: DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose build
+6. Run: docker compose up
+7. Run: docker exec -it expensebook-ghi-1, to enter the expensebook-ghi-1 container's CLI
+8. Run: npm install moment --force
+9. Run: npm install currency-symbol-map --force
+10. Exit the container's CLI 
 
 
 
