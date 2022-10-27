@@ -10,22 +10,6 @@
 </div>
 
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
 ## 💻 About The Project
 
 This project is designed to help users to manage their budget on international trips. A free currency converter for anyone interested in comparing currencies without the need of creating an account.
@@ -60,7 +44,6 @@ This project is designed to help users to manage their budget on international t
 For styling we used Bootstrap and also CSS to customize the design.
 To manipulate dates & times we used Moment.js.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### 🛠 Built With
 
@@ -74,7 +57,6 @@ This page was build with the use of following frameworks/libraries and tools:
 - [Currency Converter API][currency-converter-url]
 - [Docker][docker-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🚀 Installation and Setup
@@ -91,7 +73,6 @@ To fully enjoy ExpenseBook on your local machine, please make sure to follow the
 7. Run python manage.py loaddata products.json
 8. Exit the container's CLI, and enjoy Smelli Belli to its fullest! -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🪪 Contact
@@ -106,9 +87,8 @@ Joey Salvo - joey.salvo.dev@gmail.com
 
 Olivia Sun - apinet2003@gmail.com
 
-Project Link: https://gitlab.com/george.franco/expensebook
+<h4> Project Link: https://gitlab.com/george-franco/expensebook </h4>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 [react-url]: https://reactjs.org/
@@ -119,4 +99,4 @@ Project Link: https://gitlab.com/george.franco/expensebook
 [currency-converter-url]: https://exchangerate.host/
 [docker-url]: https://docker.com/
 
-(back to top)
+
