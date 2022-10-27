@@ -1,3 +1,15 @@
+## 10/27/22
+
+Today, I worked on:
+
+* Fixing errors so our localhost is up & running again, as during yesterdays deployment it failed to load locally, and also finalized the README file. 
+
+We worked as a team to get localhost back up, unfortuntaly the deployment process is put on ice at the moment, because we need some more help from more experienced engineers. I finished up the README with help of the team.
+
+I learned how important a README is and what should be included in it.
+
+
+
 ## 10/26/22
 
 Today, I worked on:
@@ -6,7 +18,7 @@ Today, I worked on:
 
 We got our gitlab pipelines for test, build and deploy to pass, yeaaah, super exciting! However when we load our app in deployment mode, we get like a CORS error and can't log-in/sign-in. We got help from 3 instructors on troubleshooting the issue - still no luck, we'll continue tomorrow. 
 
-I learned that the CI/CD requires a lot of attention to details and that CORS errors don't necessarly mean its a CORS related error at all.
+I learned that the CI/CD requires a lot of attention to details and that CORS errors don't necessarly mean its a CORS related error at all. 
 
 
 
