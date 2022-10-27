@@ -23,7 +23,6 @@ origins = [
     "http://localhost:3000",
     os.environ.get("CORS_HOST", None),
 ]
-print("ORIGINS ------", origins)
 
 
 app.add_middleware(
