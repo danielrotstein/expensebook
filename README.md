@@ -6,7 +6,7 @@
 </div>
 
 
-## 🧠 Team members:
+## 🧠 Team members
 
 - Alex Kagawa
 - Daniel Rotstein
