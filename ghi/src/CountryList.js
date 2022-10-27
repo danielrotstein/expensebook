@@ -77,7 +77,7 @@ const countries = [
     },
     {
         "name": "Belarus",
-        "currency_code": "BYR"
+        "currency_code": "BYN"
     },
     {
         "name": "Belgium",
