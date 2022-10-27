@@ -10,11 +10,6 @@
 </div>
 
 
-## 💻 About The Project
-
-This project is designed to help users to manage their budget on international trips. A free currency converter for anyone interested in comparing currencies without the need of creating an account.
-
-
 ## 🧠 Team members:
 
 - Alex Kagawa
@@ -22,6 +17,11 @@ This project is designed to help users to manage their budget on international t
 - George Franco
 - Joey Salvo
 - Olivia Sun
+
+
+## 💻 About The Project
+
+This project is designed to help users to manage their budget on international trips. A free currency converter for anyone interested in comparing currencies without the need of creating an account.
 
 
 ### 📌 Budgets
@@ -87,7 +87,7 @@ Joey Salvo - joey.salvo.dev@gmail.com
 
 Olivia Sun - apinet2003@gmail.com
 
-<h4> Project Link: https://gitlab.com/george-franco/expensebook </h4>
+<h5> Project Link: https://gitlab.com/george-franco/expensebook </h5>
 
 
 
