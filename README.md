@@ -44,7 +44,7 @@ Team members:
 
 
 ### Budgets
-
+<img src="https://imgur.com/a/40whfF4" width="40" height="40" />
 ...
 
 
@@ -82,7 +82,7 @@ This page was build with the use of following frameworks/libraries and tools:
 
 ## Roadmap
 
-- [ ] Add forms to allow editing and deleting budgets and expenses 
+- [ ] Add forms to allow editing and deleting budgets and expenses
 - [ ] Add registration and authentication to restrict access to budgets pages
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
