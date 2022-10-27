@@ -38,7 +38,7 @@ Also be sure to make use of the recommendation section. Filter by categories lik
 
 ### 📌 Currency Converter
 
-Free currency converter ready to convert any amount from and to a specific currency.
+Free currency converter ready to calculate any amount from and to a specific currency.
 
 
 ### 🎨 Styling
