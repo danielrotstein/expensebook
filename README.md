@@ -30,10 +30,13 @@
 Once a user successfully creates an account or logged in, the user selects "Create New Budget" for a new trip, gives it a title, adds a budget total, sets the dates, and currencies based on their home country and the country they plan to visit. Once a budget is created, the budget will be displayed on the budget dashboard including title, dates and budget total. 
 The user can click a budget to get to the budget details page, where the user can add expenses and categorize them. The details page keeps track of all expense totals and remaining budget balance in their home country currency. The user is able to update and delete a budget inside the budget details page.
 
-The recommendations section on the budget details page, displays recommendations based on the users destination country. A click on the "Learn More" button opens up a new tab with info about it. The user is able to filter recommendations by price and category.
-
 #### Creating a budget
 ![budget-flow.gif](./budget-flow.gif)
+
+The recommendations section on the budget details page, displays recommendations based on the users destination country. A click on the "Learn More" button opens up a new tab with info about it. The user is able to filter recommendations by price and category.
+
+#### Recommendations
+![recommendations.gif](./recommendations.gif)
 
 
 ### 📌 Expenses
