@@ -1,40 +1,12 @@
-ExpenseBook
-
-
 <br />
 <div align="center">
 
-  <h3 align="center">ExpenseBook</h3>
+  <h1 align="center">ExpenseBook</h1>
 
-  <p align="center">
-    ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.
-    Free currency converter usage - no account sign up required!
-  </p>
 </div>
 
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-## About The Project
-
-This project is designed to help users to manage their budget on international trips. A free currency converter for anyone interested in comparing currencies without the need of creating an account.
-
-Team members:
+## 🧠 Team members
 
 - Alex Kagawa
 - Daniel Rotstein
@@ -43,29 +15,51 @@ Team members:
 - Olivia Sun
 
 
-### Budgets
+## 💻 About The Project
 
-...
-
-
-### Expenses
-
-...
-
-
-### Currency Converter
-
-...
+<p align="center">
+    ExpenseBook makes it easy to create and manage a budget, track and convert expenses, and stay on top of your finances while you trot around the world.
+</p>
+<p align="center">
+    Free currency converter usage - no account sign up required!
+</p>
 
 
-### Styling
+### 📌 Budgets
+
+Once a user successfully creates an account or logged in, the user selects "Create New Budget" for a new trip, gives it a title, adds a budget total, sets the dates, and currencies based on their home country and the country they plan to visit. Once a budget is created, the budget will be displayed on the budget dashboard including title, dates and budget total. 
+The user can click a budget to get to the budget details page, where the user can add expenses and categorize them. The details page keeps track of all expense totals and remaining budget balance in their home country currency. The user is able to update and delete a budget inside the budget details page.
+
+The recommendations section on the budget details page, displays recommendations based on the users destination country. A click on the "Learn More" button opens up a new tab with info about it. The user is able to filter recommendations by price and category.
+
+#### Creating a budget
+![budget-flow.gif](./budget-flow.gif)
+
+
+### 📌 Expenses
+
+Expenses are one of the main tables of data that our application includes. Users can add expenses to their budgets from a budget details page in order to better track their spending while on a trip. The add expense form includes fields such as title, description, date, category, and cost in order to create a descriptive entry for each of a user's entered expenses. Using up to date exchange rates passed in from our third party Currency Converter API, a user's expenses will always be calculated in the currency of both their home and destination countries.
+With the ability to create, update, and delete expenses, as well as filter the data by category or date, users are fully in control of their expense tracking from the budget details page.
+
+#### Adding an expense
+![create-expense.gif](./create-expense.gif)
+
+
+### 📌 Currency Converter
+
+Free currency converter ready to calculate any amount from and to a specific currency.
+
+#### Currency Converter
+![Currency-Converter.gif](./Currency-Converter.gif)
+
+
+### 🎨 Styling
 
 For styling we used Bootstrap and also CSS to customize the design.
 To manipulate dates & times we used Moment.js.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+### 🛠 Built With
 
 This page was build with the use of following frameworks/libraries and tools:
 
@@ -77,31 +71,27 @@ This page was build with the use of following frameworks/libraries and tools:
 - [Currency Converter API][currency-converter-url]
 - [Docker][docker-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Roadmap
+## 🚀 Installation and Setup
 
-- [ ] Add forms to allow editing and deleting budgets and expenses 
-- [ ] Add registration and authentication to restrict access to budgets pages
+To fully enjoy ExpenseBook on your local machine, please make sure to follow these steps:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## Contributing
-
-If you have any suggestions that would improve this project, please fork the repo and create a pull request.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+1. Clone the repository down to your local machine
+2. CD into the new project directory
+3. Run `docker volume create pg-admin`
+4. Run `docker volume create postgres-data`
+5. For Windows and Macs without Apple silicon (M1 chip), run `docker compose build`
+6. For Macs with Apple silicon (M1 chip), run `DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose build`
+7. Run `docker compose up`
+8. Run `docker exec -it expensebook-ghi-1` to enter the expensebook-ghi-1 container's CLI
+9. Run `npm install moment --force`
+10. Run `npm install currency-symbol-map --force`
+11. Exit the container's CLI
 
 
-## Contact
+
+## 🪪 Contact
 
 Alex Kagawa - alex.a.kagawa@gmail.com
 
@@ -113,21 +103,9 @@ Joey Salvo - joey.salvo.dev@gmail.com
 
 Olivia Sun - apinet2003@gmail.com
 
-Project Link: https://gitlab.com/george.franco/expensebook
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<h5> Project Link: https://gitlab.com/george-franco/expensebook </h5>
 
 
-## Acknowledgments
-
-Thanks to our classmates, instructors, and student residents for all their encouragement and support!
-
-Special shout-out to W3Schools and Stack Overflow for their boundless resources.
-
-- [W3Schools](https://w3schools.com/)
-- [Stack Overflow](https://stackoverflow.com/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [react-url]: https://reactjs.org/
 [fastapi-url]: https://fastapi.tiangolo.com/
@@ -137,4 +115,3 @@ Special shout-out to W3Schools and Stack Overflow for their boundless resources.
 [currency-converter-url]: https://exchangerate.host/
 [docker-url]: https://docker.com/
 
-(back to top)

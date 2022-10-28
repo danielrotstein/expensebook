@@ -1,5 +1,8 @@
+10/26/2022
+Working with all group on the deployment of project and successfully got all pipelines work. Alex drove the deployment. Tried to import the database to Heroku but confined by the hobby-level limitation. Debug with group and instructor Danniel for the CORS error after deployment. Danniel guided to link the Heroku postgres to beeskeeper sucessfully. 
+
 10/25/2022
-Fixed the nav bar appearance after signup submition, fixed the already existing user try to signup bug. Finished two unit test function: get all budgets and create budget. Worked with group on deployment of project. 
+Fixed the nav bar appearance after signup submition, fixed the already existing user try to signup bug. Finished two unit test function: get all budgets and create budget. Worked with all group on deployment of project, Alex drove the deployment files. 
 
 10/24/2022
 Fixed the wrong password bug. Start reviewing the test procedure and how to write the test code.
